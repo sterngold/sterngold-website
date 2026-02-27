@@ -95,8 +95,8 @@ section { padding: 5rem 0; }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url('../img/hero-sailing-full.png') center 55% / cover no-repeat;
-  filter: brightness(0.4);
+  background: url('../img/hero-sailing-full.jpg') center 55% / cover no-repeat;
+  filter: brightness(0.6);
   z-index: 0;
 }
 
