@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>The Promethean Gap | Vlad Sterngold</title>
+  <meta name="description" content="The Promethean Gap: research into the space between what humans can build and what humans can feel about what they've built. Drawing on Günther Anders, Joy Buolamwini, and 15 years of corporate AI transformation.">
+  <meta property="og:title" content="The Promethean Gap — Vlad Sterngold">
+  <meta property="og:description" content="What happens to people when machines get better than them. Research into the gap between building and understanding.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sterngold.nl/research.html">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="canonical" href="https://sterngold.nl/research.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Promethean Gap — Vlad Sterngold">
+  <meta name="twitter:description" content="What happens to people when machines get better than them. Research into the gap between building and understanding.">
+  <meta property="og:image" content="https://sterngold.nl/img/social-card-default.png">
+  <meta name="twitter:image" content="https://sterngold.nl/img/social-card-default.png">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            brand: '#A855F7',
+            darkBg: '#0a0a0b',
+            cardBg: '#1a1a1c',
+            pride: {
+              red: '#ef4444',
+              orange: '#f97316',
+              yellow: '#eab308',
+              green: '#22c55e',
+              blue: '#3b82f6',
+              purple: '#a855f7',
+              grey: '#71717a'
+            }
+          },
+          backgroundImage: {
+            'pride-gradient': 'linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #a855f7)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(26, 26, 28, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .pride-text {
+      background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .vignette-card {
+      border-left: 2px solid rgba(168, 85, 247, 0.3);
+      transition: all 0.3s ease;
+    }
+    .vignette-card:hover {
+      border-left-color: #A855F7;
+      background: rgba(168, 85, 247, 0.03);
+    }
+    blockquote {
+      position: relative;
+    }
+    blockquote::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, #A855F7, transparent);
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ResearchProject",
+    "name": "The Promethean Gap",
+    "description": "Research into the gap between what humans can build and what humans can feel about what they've built, drawing on Günther Anders' philosophy, Joy Buolamwini's algorithmic justice work, and 15 years of corporate AI transformation.",
+    "author": {
+      "@type": "Person",
+      "name": "Vlad Sterngold",
+      "url": "https://sterngold.nl",
+      "jobTitle": "Digital Transformation Executive"
+    },
+    "about": ["artificial intelligence", "digital transformation", "philosophy of technology", "Günther Anders", "algorithmic bias", "human-machine interaction"],
+    "url": "https://sterngold.nl/research.html"
+  }
+  </script>
+</head>
+<body class="bg-darkBg text-gray-300 font-sans selection:bg-brand selection:text-darkBg">
+
+  <!-- Sticky Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-darkBg/85 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="index.html" class="text-white font-bold tracking-tight text-sm hover:text-brand transition-colors">Vlad Sterngold</a>
+      <div class="flex gap-6">
+        <a href="index.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Home</a>
+        <a href="research.html" class="text-xs uppercase tracking-widest text-white hover:text-brand transition-colors">Research</a>
+        <a href="writing.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Writing</a>
+        <a href="cooking.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Cooking</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-40 pb-24 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-xs uppercase tracking-[0.3em] text-brand mb-6 font-semibold">Research</p>
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 font-display">
+        The Promethean Gap
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto">
+        What happens to people when machines get better than them
+      </p>
+      <p class="text-sm text-gray-600 mt-6">&mdash; Vlad Sterngold</p>
+    </div>
+  </section>
+
+  <!-- The Origin -->
+  <section class="py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-8 font-semibold">The Origin</h2>
+      <div class="space-y-6 text-gray-300 leading-relaxed">
+        <p class="text-lg">
+          In 1956, a German-Jewish philosopher named G&uuml;nther Anders sat in his apartment in New York and wrote about factory workers in Vienna. They were <em>ashamed</em>. Not of what they'd done &mdash; of what they <em>couldn't</em> do. The machines on their production lines were faster, more precise, more reliable. The workers looked at them and felt something no one had a name for.
+        </p>
+        <p>
+          Anders named it. <strong>Prometheische Scham</strong> &mdash; Promethean shame. The feeling that strikes when the thing you made is better than you. It was 1956. The machines in question were mechanical looms.
+        </p>
+        <p>
+          Now the machines write code, compose music, diagnose disease, and negotiate contracts. The shame Anders described hasn't disappeared. It's moved from the factory floor to the open-plan office. From the loom operator to the marketing director. From Vienna to everywhere.
+        </p>
+        <p>
+          I've spent fifteen years watching it happen &mdash; at Booking.com, at Danone, in boardrooms across Europe. The gap Anders measured between what humans build and what humans can grasp about what they've built is no longer a philosophical thought experiment. It's the central challenge of every organization I've worked with.
+        </p>
+        <p class="text-gray-500 text-sm">
+          This research draws on Anders' framework and extends it with the work of <strong>Joy Buolamwini</strong>, who proved the gap is measurable, and <strong>Alice Guy-Blach&eacute;</strong>, who showed &mdash; a century before AI &mdash; that outsiders see what inventors can't.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Framework -->
+  <section class="py-24 bg-cardBg/30 border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-4 font-semibold">The Framework</h2>
+      <p class="text-gray-500 text-sm mb-12 max-w-2xl">Three concepts. One gap. Each builds on the last.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Card 1: Promethean Shame -->
+        <div class="glass-card p-8 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-brand/50">
+          <div class="text-3xl mb-4">&#x1F525;</div>
+          <h3 class="text-xl font-bold mb-2 text-white font-display">Promethean Shame</h3>
+          <p class="text-sm text-brand mb-4">The feeling</p>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            The moment when the machine is faster than you. You've felt it. The intern who uses ChatGPT to do in ten minutes what took you a career to learn. The spreadsheet that renders your expertise decorative. Anders named it in 1956. It hasn't aged a day.
+          </p>
+          <p class="text-gray-600 text-xs">
+            &ldquo;Man is ashamed of having been born instead of made.&rdquo;<br>&mdash; G&uuml;nther Anders, <em>The Obsolescence of Man</em>, 1956
+          </p>
+        </div>
+
+        <!-- Card 2: Promethean Gap -->
+        <div class="glass-card p-8 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-brand/50">
+          <div class="text-3xl mb-4">&#x1F4CF;</div>
+          <h3 class="text-xl font-bold mb-2 text-white font-display">The Promethean Gap</h3>
+          <p class="text-sm text-brand mb-4">The structure</p>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            The structural distance between what we make and what we understand about what we've made. It's not abstract &mdash; Joy Buolamwini proved it's encoded. Her research showed facial recognition that works on white faces and fails on dark ones. The gap isn't philosophical. It's in the training data.
+          </p>
+          <p class="text-gray-600 text-xs">
+            &ldquo;If you have a face, you have a place in this conversation.&rdquo;<br>&mdash; Joy Buolamwini, Algorithmic Justice League, 2018
+          </p>
+        </div>
+
+        <!-- Card 3: Promethean Blindness -->
+        <div class="glass-card p-8 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-brand/50">
+          <div class="text-3xl mb-4">&#x1F441;</div>
+          <h3 class="text-xl font-bold mb-2 text-white font-display">Promethean Blindness</h3>
+          <p class="text-sm text-brand mb-4">The inability to see</p>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            The failure to see what's happening while it's happening. Cinema took thirty years to become art. The Lumi&egrave;re brothers filmed a train arriving and thought they'd invented a toy. Alice Guy-Blach&eacute; &mdash; a secretary at Gaumont &mdash; saw a story. She directed over a thousand films. Then history erased her.
+          </p>
+          <p class="text-gray-600 text-xs">
+            &ldquo;There is nothing connected with the staging of a motion picture that a woman cannot do as easily as a man.&rdquo;<br>&mdash; Alice Guy-Blach&eacute;, 1914
+          </p>
+        </div>
+      </div>
+
+      <!-- One-line definition -->
+      <div class="mt-16 max-w-3xl mx-auto">
+        <blockquote class="pl-6 py-2 text-gray-300 italic leading-relaxed">
+          The Promethean Gap is the space between what humans can build and what humans can feel about what they've built. It shows up as shame, blindness, and the quiet moment when someone realizes the machine doesn't need them anymore.
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Where I See It -->
+  <section class="py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-4 font-semibold">Where I See It</h2>
+      <p class="text-gray-500 text-sm mb-12">Three moments from fifteen years of watching this gap up close.</p>
+
+      <!-- Vignette 1: The Steering Committee -->
+      <div class="vignette-card pl-8 py-6 mb-12">
+        <h3 class="text-lg font-bold text-white mb-1 font-display">The Steering Committee</h3>
+        <p class="text-xs text-brand mb-4">Danone, 2022</p>
+        <p class="text-gray-400 leading-relaxed mb-4">
+          The marketing mix model was ready. Months of work. The data lead from Belgium &mdash; the one who'd actually built it, who could code, who understood every coefficient &mdash; sat at the back of the room. The steering committee looked at the dashboard and debated the percentage. No one asked her what it meant.
+        </p>
+        <p class="text-gray-400 leading-relaxed">
+          The percentage became the decision. The person who understood the machine became invisible. That's not a technology failure. That's a <em>Promethean</em> failure &mdash; the gap between building the tool and understanding what it's telling you.
+        </p>
+        <a class="inline-flex items-center text-brand text-sm font-semibold hover:gap-2 transition-all mt-4" href="writing/the-lumieres-didnt-know.html">
+          Read the essay <span class="ml-1">&rarr;</span>
+        </a>
+      </div>
+
+      <!-- Vignette 2: The Mole Scanner -->
+      <div class="vignette-card pl-8 py-6 mb-12">
+        <h3 class="text-lg font-bold text-white mb-1 font-display">The Mole Scanner</h3>
+        <p class="text-xs text-brand mb-4">Amsterdam, 2025</p>
+        <p class="text-gray-400 leading-relaxed mb-4">
+          207 moles. Nine minutes. The AI scanner photographed, measured, and classified every one. Faster than any dermatologist. More consistent. More thorough. Then the doctor looked at one mole the machine had flagged as benign and said: <em>&ldquo;I want to see that one again in three months.&rdquo;</em>
+        </p>
+        <p class="text-gray-400 leading-relaxed">
+          The machine processed pixels. The doctor read a body. Thirty years of looking at skin, at patients, at the way a person flinches when you ask about sun exposure. What happens to that knowledge when we optimize for speed?
+        </p>
+        <a class="inline-flex items-center text-brand text-sm font-semibold hover:gap-2 transition-all mt-4" href="writing/the-doctor-and-the-machine.html">
+          Read the essay <span class="ml-1">&rarr;</span>
+        </a>
+      </div>
+
+      <!-- Vignette 3: The Translator -->
+      <div class="vignette-card pl-8 py-6 mb-12">
+        <h3 class="text-lg font-bold text-white mb-1 font-display">The Translator</h3>
+        <p class="text-xs text-brand mb-4">Booking.com, 2011&ndash;2020</p>
+        <p class="text-gray-400 leading-relaxed mb-4">
+          For nine years, my job was bridging the gap between technical teams and business leadership. I spoke both languages &mdash; data and strategy, engineering and boardroom. I built the team that automated customer service. I helped launch machine translation across ten languages.
+        </p>
+        <p class="text-gray-400 leading-relaxed">
+          Then AI made the translation unnecessary. The thing I'd built replaced the role I'd carved out. What happens to the bridge when both sides speak the same language? That's not someone else's story. That's mine.
+        </p>
+        <a class="inline-flex items-center text-brand text-sm font-semibold hover:gap-2 transition-all mt-4" href="writing/we-adapted-to-the-machine.html">
+          Read the essay <span class="ml-1">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Question -->
+  <section class="py-24 bg-cardBg/30 border-y border-white/5">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-12 font-semibold">The Question</h2>
+      <p class="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8 font-display">
+        Who is the person in your organization that the steering committee can't see?
+      </p>
+      <p class="text-lg text-gray-400 leading-relaxed mb-8">
+        They might be there right now &mdash; too quiet for the boardroom, too technical for the C-suite, too creative for the people who decide what counts.
+      </p>
+      <p class="text-lg text-gray-400 leading-relaxed mb-8">
+        In 1896, Alice Guy-Blach&eacute; was a secretary. She asked to borrow a camera. Within a year she was directing films. Over a thousand of them. Then history forgot her name.
+      </p>
+      <p class="text-xl text-white font-semibold font-display">
+        That person in your organization? They're your AI pioneer.<br>
+        <span class="text-brand">And you're about to lose them.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Field Notes -->
+  <section class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-4 font-semibold">Field Notes</h2>
+      <p class="text-gray-500 text-sm mb-12">These essays are field notes from this research. Each one explores a different facet of the gap.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <a href="writing/a-philosopher-named-it.html" class="glass-card p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-brand/50 block">
+          <p class="text-xs text-brand mb-2">The Framework</p>
+          <h3 class="text-white font-bold mb-2">A Philosopher Named It</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">G&uuml;nther Anders and the shame we haven't finished feeling.</p>
+        </a>
+
+        <a href="writing/the-doctor-and-the-machine.html" class="glass-card p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-brand/50 block">
+          <p class="text-xs text-brand mb-2">The Gap</p>
+          <h3 class="text-white font-bold mb-2">The Doctor and the Machine</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">What a dermatologist does that an AI scanner mathematically cannot.</p>
+        </a>
+
+        <a href="writing/the-lumieres-didnt-know.html" class="glass-card p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-brand/50 block">
+          <p class="text-xs text-brand mb-2">The Blindness</p>
+          <h3 class="text-white font-bold mb-2">The Lumi&egrave;res Didn't Know</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">Cinema's inventors couldn't see what their secretary could. Neither can yours.</p>
+        </a>
+
+        <a href="writing/the-bias-i-didnt-see.html" class="glass-card p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-brand/50 block">
+          <p class="text-xs text-brand mb-2">The Shame</p>
+          <h3 class="text-white font-bold mb-2">The Bias I Didn't See</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">What happens when you realize your data set was always a mirror.</p>
+        </a>
+
+      </div>
+      <div class="text-center mt-12">
+        <a class="inline-flex items-center text-brand text-sm font-semibold hover:gap-2 transition-all" href="writing.html">
+          All essays <span class="ml-1">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the Researcher -->
+  <section class="py-24 bg-cardBg/30 border-y border-white/5">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-8 font-semibold">About the Researcher</h2>
+      <p class="text-gray-300 leading-relaxed mb-4">
+        Vlad Sterngold is a digital transformation executive with six careers behind him &mdash; from professional kitchens and military service to building data and AI teams at Booking.com and Danone. He writes about what happens to people when machines get better than them.
+      </p>
+      <p class="text-gray-400 leading-relaxed mb-4">
+        The kitchens taught him that good work is physical before it's intellectual. The military taught him that systems break people before they break machines. Fifteen years of corporate transformation taught him that the gap Anders described in 1956 isn't closing &mdash; it's widening.
+      </p>
+      <p class="text-gray-400 leading-relaxed">
+        Based in Amsterdam. Writing the field notes. Still looking for the people the steering committee can't see.
+      </p>
+      <div class="mt-8">
+        <a class="inline-flex items-center text-brand text-sm font-semibold hover:gap-2 transition-all" href="index.html">
+          Full bio <span class="ml-1">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer / CTA -->
+  <footer class="py-32 bg-darkBg text-center px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+        Navigating the <span class="pride-text">gap?</span>
+      </h2>
+      <p class="text-gray-500 mb-12">If your organization is between humans and machines, I'd welcome a conversation.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-6">
+        <a class="px-10 py-4 bg-brand text-darkBg font-bold rounded-lg hover:bg-brand/90 transition-all text-sm uppercase tracking-widest shadow-lg shadow-brand/20" href="mailto:vlad@sterngold.nl">
+          Email Me
+        </a>
+        <a class="px-10 py-4 border border-white/10 text-white font-bold rounded-lg hover:bg-white/5 transition-all text-sm uppercase tracking-widest" href="https://linkedin.com/in/sterngold" target="_blank" rel="noopener">
+          LinkedIn
+        </a>
+      </div>
+      <div class="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-gray-600 gap-6">
+        <div>&copy; 2026 Vlad Sterngold</div>
+        <nav class="flex gap-8">
+          <a class="hover:text-brand transition-colors" href="index.html">Home</a>
+          <a class="hover:text-brand transition-colors" href="research.html">Research</a>
+          <a class="hover:text-brand transition-colors" href="writing.html">Writing</a>
+          <a class="hover:text-brand transition-colors" href="cooking.html">Cooking</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
