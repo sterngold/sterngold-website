@@ -1,242 +1,442 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vlad Sterngold — Digital & Data Leader</title>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Vlad Sterngold | Digital &amp; Data Leader</title>
   <meta name="description" content="Vlad Sterngold. Six careers. Two Fortune 500s. Fifteen years of turning undefined problems into functioning teams and measurable outcomes.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <meta property="og:title" content="Vlad Sterngold — Digital & Data Leader">
+  <meta property="og:description" content="Six careers. Two Fortune 500s. Fifteen years of turning undefined problems into functioning teams and measurable outcomes.">
+  <meta property="og:type" content="website">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: '#A855F7',
+            darkBg: '#0a0a0b',
+            cardBg: '#1a1a1c',
+            pride: {
+              red: '#ef4444',
+              orange: '#f97316',
+              yellow: '#eab308',
+              green: '#22c55e',
+              blue: '#3b82f6',
+              purple: '#a855f7',
+              grey: '#71717a'
+            }
+          },
+          backgroundImage: {
+            'pride-gradient': 'linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #a855f7)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes glow {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 5px rgba(168, 85, 247, 0.2); }
+      50% { transform: scale(1.2); box-shadow: 0 0 20px rgba(168, 85, 247, 0.6); }
+    }
+    .glow-dot {
+      animation: glow 3s infinite ease-in-out;
+      transition: all 0.3s ease;
+    }
+    .timeline-node:hover .glow-dot {
+      transform: scale(1.4);
+      filter: brightness(1.2);
+    }
+    .timeline-tooltip {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      z-index: 50;
+    }
+    .timeline-node:hover .timeline-tooltip {
+      display: block;
+    }
+    .glass-card {
+      background: rgba(26, 26, 28, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .pride-text {
+      background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-bg {
+      background-image: linear-gradient(rgba(10, 10, 11, 0.4), rgba(10, 10, 11, 1)), url('img/hero-sailing-full.png');
+      background-size: cover;
+      background-position: center 40%;
+    }
+    /* Accordion */
+    details[data-purpose='career-accordion'] summary {
+      list-style: none;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+    }
+    details[data-purpose='career-accordion'] summary::-webkit-details-marker {
+      display: none;
+    }
+    details[data-purpose='career-accordion'][open] summary {
+      color: #A855F7;
+    }
+    details[data-purpose='career-accordion'] summary:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px) scale(1.01);
+    }
+    details[data-purpose='career-accordion'] summary:hover .text-white {
+      color: #A855F7;
+    }
+    details[data-purpose='career-accordion'] summary:hover svg {
+      transform: translateY(2px);
+    }
+    /* Flag Animations */
+    @keyframes funky-float {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      25% { transform: translateY(-4px) rotate(-2deg); }
+      75% { transform: translateY(-2px) rotate(2deg); }
+    }
+    .animate-funky-flag {
+      animation: funky-float 3s infinite ease-in-out;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-darkBg text-gray-300 font-sans selection:bg-brand selection:text-darkBg">
 
-  <!-- ===== NAV ===== -->
-  <nav class="site-nav">
-    <div class="container nav-inner">
-      <a href="index.html" class="nav-name">Vlad Sterngold</a>
-      <div class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="writing.html">Writing</a>
+  <!-- Sticky Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-darkBg/85 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="index.html" class="text-white font-bold tracking-tight text-sm hover:text-brand transition-colors">Vlad Sterngold</a>
+      <div class="flex gap-6">
+        <a href="index.html" class="text-xs uppercase tracking-widest text-white hover:text-brand transition-colors">Home</a>
+        <a href="writing.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Writing</a>
       </div>
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <h1 class="gradient-text">Vlad Sterngold</h1>
-      <p class="hero-tagline">Digital &amp; Data Leader. Six careers. One thread.</p>
+  <!-- Hero Section -->
+  <section class="relative h-screen flex flex-col items-center justify-center text-center px-4 hero-bg">
+    <div class="max-w-4xl">
+      <h1 class="text-6xl md:text-8xl font-extrabold mb-4 tracking-tight">
+        Vlad <span class="pride-text">Sterngold</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-400 font-light tracking-wide max-w-2xl mx-auto">
+        Digital &amp; Data Leader. Six careers. One thread.
+      </p>
     </div>
-    <div class="scroll-hint"><span></span></div>
+    <div class="absolute bottom-10 animate-bounce">
+      <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+    </div>
   </section>
 
-  <!-- ===== STATS ===== -->
-  <section>
-    <div class="container">
-      <div class="stats reveal">
-        <div class="stat">
-          <div class="stat-number coral">15+</div>
-          <div class="stat-label">Years leading</div>
+  <!-- Stats Bar -->
+  <section class="py-12 border-y border-white/5 bg-darkBg/50 backdrop-blur-sm">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
+        <div>
+          <div class="text-3xl font-bold text-brand mb-1">15+</div>
+          <div class="text-xs uppercase tracking-widest text-gray-500">Years Leading</div>
         </div>
-        <div class="stat">
-          <div class="stat-number gold">6</div>
-          <div class="stat-label">Careers</div>
+        <div>
+          <div class="text-3xl font-bold text-brand mb-1">6</div>
+          <div class="text-xs uppercase tracking-widest text-gray-500">Careers</div>
         </div>
-        <div class="stat">
-          <div class="stat-number cyan">3→50+</div>
-          <div class="stat-label">Teams built</div>
+        <div>
+          <div class="text-3xl font-bold text-brand mb-1 text-nowrap">3&rarr;50+</div>
+          <div class="text-xs uppercase tracking-widest text-gray-500">Teams Built</div>
         </div>
-        <div class="stat">
-          <div class="stat-number pink">6</div>
-          <div class="stat-label">Languages</div>
+        <div>
+          <div class="text-3xl font-bold text-brand mb-1">6</div>
+          <div class="text-xs uppercase tracking-widest text-gray-500">Languages</div>
         </div>
-        <div class="stat">
-          <div class="stat-number violet">2</div>
-          <div class="stat-label">Fortune 500s</div>
+        <div class="col-span-2 md:col-span-1">
+          <div class="text-3xl font-bold text-brand mb-1">2</div>
+          <div class="text-xs uppercase tracking-widest text-gray-500 text-nowrap">Fortune 500s</div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="container"><hr class="spectrum-line-thin"></div>
-
-  <!-- ===== ABOUT ===== -->
-  <section id="about">
-    <div class="container">
-      <span class="section-label reveal">About</span>
-      <div class="about-grid reveal">
-        <div class="photo-ring">
-          <div class="photo-placeholder">VS</div>
+  <!-- About Section -->
+  <section class="py-24 max-w-6xl mx-auto px-6" id="about">
+    <div class="flex flex-col lg:flex-row gap-16 items-start">
+      <div class="w-full lg:w-1/3 flex justify-center lg:justify-start">
+        <div class="relative w-48 h-48 rounded-full border-2 border-brand/30 flex items-center justify-center p-2 group overflow-hidden">
+          <div class="absolute inset-0 border-2 border-brand rounded-full opacity-20 group-hover:opacity-100 transition-opacity duration-700"></div>
+          <div class="w-full h-full bg-cardBg rounded-full flex items-center justify-center text-4xl font-bold tracking-tighter text-brand">
+            VS
+          </div>
         </div>
-        <div class="about-text">
+      </div>
+      <div class="w-full lg:w-2/3">
+        <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-8 font-semibold">About</h2>
+        <div class="space-y-6 text-lg leading-relaxed text-gray-400">
           <p>I've spent fifteen years walking into rooms where something was broken and nobody could name it. Scaling analytics from scratch at Booking.com. Launching digital governance at Danone that reached the boardroom. Building teams in places where no team existed.</p>
           <p>Before the Fortune 500s: professional kitchens, military service, advertising, a consulting firm I co-founded, a startup I advised. Each chapter started the same way — with a mess, a gap, and the question: who's going to fix this?</p>
           <p>I don't just talk about AI transformation. I build with it. I write code, deploy AI agents, and publish about what happens to people when the machines get faster than them. Most executives have an opinion about AI. I have a practice.</p>
-          <p class="muted">Based in Amsterdam. Bulgarian-born. Six languages. I write about the human side of technology at <a href="https://werkanders.com">werkanders.com</a>.</p>
-        </div>
-      </div>
-
-      <!-- Timeline -->
-      <div class="timeline reveal">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-year">1998</div>
-          <div class="timeline-role">Professional Kitchens</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-year">2000</div>
-          <div class="timeline-role">Military Service</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-year">2003</div>
-          <div class="timeline-role">Advertising</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-year">2004</div>
-          <div class="timeline-role">Anders Star<br><span style="font-size:0.65rem">Co-founder</span></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-year">2011</div>
-          <div class="timeline-role">Booking.com<br><span style="font-size:0.65rem">9 years</span></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-year">2020</div>
-          <div class="timeline-role">Danone<br><span style="font-size:0.65rem">5 years</span></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-year">2026</div>
-          <div class="timeline-role">What's next</div>
+          <p class="text-sm italic pt-4">Based in Amsterdam. Bulgarian-born. Six languages. I write about the human side of technology at <a class="text-brand hover:underline" href="https://werkanders.com">werkanders.com</a>.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="container"><hr class="spectrum-line-thin"></div>
-
-  <!-- ===== WHAT I DO ===== -->
-  <section id="work">
-    <div class="container">
-      <span class="section-label reveal">What I Do</span>
-      <div class="cards reveal">
-        <div class="card">
-          <span class="card-icon">&#9881;</span>
-          <h3>Digital &amp; Data Leadership</h3>
-          <p>VP-level digital transformation, data &amp; analytics, product management. Building teams from zero, scaling them globally, and delivering outcomes that reach the boardroom.</p>
-        </div>
-        <div class="card">
-          <span class="card-icon">&#9998;</span>
-          <h3>Writing</h3>
-          <p>I write about what happens to people when the machines get better than them. Technology history, philosophy, and the feelings nobody talks about in transformation meetings.</p>
-          <a href="writing.html" class="card-link">Read the essays &rarr;</a>
-        </div>
-        <div class="card">
-          <span class="card-icon">&#9733;</span>
-          <h3>AI &amp; the Human Side</h3>
-          <p>Researching how AI, robotics, and automation reshape work — and what a smart transition looks like when machines and people actually work together. Not the hype. The real shift.</p>
+  <!-- Interactive Timeline -->
+  <section class="py-20 bg-black/20">
+    <div class="max-w-6xl mx-auto px-6 overflow-x-auto pb-10">
+      <div class="relative min-w-[800px] h-48 flex items-center">
+        <div class="absolute h-[2px] w-full bg-white/10 top-1/2 -translate-y-1/2"></div>
+        <div class="flex justify-between w-full relative z-10">
+          <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
+            <div class="w-6 h-6 bg-pride-red rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <span class="text-sm font-bold text-white">1998</span>
+            <span class="text-[10px] uppercase text-gray-500 mt-1">Kitchens</span>
+            <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">The pressure of high-end service. Discipline, speed, and teamwork.</div>
+          </div>
+          <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
+            <div class="w-6 h-6 bg-pride-orange rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <span class="text-sm font-bold text-white">2000</span>
+            <span class="text-[10px] uppercase text-gray-500 mt-1">Military</span>
+            <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">Structured leadership and adaptability in high-stakes environments.</div>
+          </div>
+          <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
+            <div class="w-6 h-6 bg-pride-yellow rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <span class="text-sm font-bold text-white">2003</span>
+            <span class="text-[10px] uppercase text-gray-500 mt-1">Advertising</span>
+            <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">Creative strategy and understanding human behavior through data.</div>
+          </div>
+          <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
+            <div class="w-6 h-6 bg-pride-green rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <span class="text-sm font-bold text-white">2004</span>
+            <span class="text-[10px] uppercase text-gray-500 mt-1">Founder</span>
+            <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">Launching Anders Star. Building analytics for the hospitality sector.</div>
+          </div>
+          <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
+            <div class="w-6 h-6 bg-pride-blue rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <span class="text-sm font-bold text-white">2011</span>
+            <span class="text-[10px] uppercase text-gray-500 mt-1 text-center">Booking.com</span>
+            <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">9 years scaling teams from 3 to 50+ and driving AI innovation globally.</div>
+          </div>
+          <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
+            <div class="w-6 h-6 bg-pride-purple rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <span class="text-sm font-bold text-white">2020</span>
+            <span class="text-[10px] uppercase text-gray-500 mt-1 text-center">Danone</span>
+            <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">5 years establishing digital trust and global data governance.</div>
+          </div>
+          <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
+            <div class="w-6 h-6 bg-white rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <span class="text-sm font-bold text-white">2026</span>
+            <span class="text-[10px] uppercase text-gray-500 mt-1">Next</span>
+            <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">Focused on AI transformation and the human side of technology.</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="container"><hr class="spectrum-line-thin"></div>
-
-  <!-- ===== CAREER HIGHLIGHTS ===== -->
-  <section id="career">
-    <div class="container">
-      <span class="section-label reveal">Career Highlights</span>
-      <div class="highlights reveal">
-
-        <div class="highlight-card booking">
-          <div class="highlight-company booking">Booking.com &middot; 2011–2020</div>
-          <ul>
-            <li>Grew analytics from 3 to 50+ people across four director roles</li>
-            <li>ML automation cut customer service FTE costs by 80%</li>
-            <li>Machine translation live across 10 languages</li>
-            <li>Automated content generation — 90% partner adoption</li>
-            <li>Image recognition increased direct traffic by ~10%</li>
-            <li>GDPR-approved survey platform: 1,800 individual reports for 20K employees</li>
-          </ul>
+  <!-- What I Do -->
+  <section class="py-24 max-w-6xl mx-auto px-6" id="services">
+    <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-12 font-semibold">What I Do</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="glass-card p-8 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-brand/50 group">
+        <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-pride-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
         </div>
-
-        <div class="highlight-card danone">
-          <div class="highlight-company danone">Danone &middot; 2020–2025</div>
-          <ul>
-            <li>Global Digital Trust Programme — 7,000 properties governed, COMEX-level policy</li>
-            <li>Built data science, analytics, and MarTech teams from zero</li>
-            <li>Unified digital platforms (Aptamil, Cancer Care, DTC)</li>
-            <li>Analytics Centre of Excellence for marketing, health, and e-commerce</li>
-            <li>Data governance committees and career frameworks established globally</li>
-          </ul>
+        <h3 class="text-xl font-bold mb-4 text-white">Digital &amp; Data Leadership</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">VP-level digital transformation, data &amp; analytics, product management. Building teams from zero, scaling them globally, and delivering outcomes that reach the boardroom.</p>
+      </div>
+      <div class="glass-card p-8 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-brand/50 group">
+        <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-pride-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
         </div>
-
-        <div class="highlight-card earlier">
-          <div class="highlight-company earlier">Earlier Chapters</div>
-          <ul>
-            <li>Co-founded Anders Star — consulting and analytics for Amsterdam hospitality</li>
-            <li>Advisor &amp; investor at BeSmart — behavioral science SaaS for travel</li>
-            <li>Professional kitchens, military service, advertising — each one a different kind of pressure</li>
-          </ul>
+        <h3 class="text-xl font-bold mb-4 text-white">Writing</h3>
+        <p class="text-gray-400 text-sm leading-relaxed mb-6">I write about what happens to people when the machines get better than them. Technology history, philosophy, and the feelings nobody talks about in transformation meetings.</p>
+        <a class="inline-flex items-center text-brand text-sm font-semibold hover:gap-2 transition-all" href="writing.html">
+          Read the essays <span class="ml-1">&rarr;</span>
+        </a>
+      </div>
+      <div class="glass-card p-8 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:border-brand/50 group">
+        <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-pride-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
         </div>
-
-        <div class="highlight-card" style="border-color: #2a2a2a;">
-          <div class="highlight-company" style="color: var(--text-muted);">Education</div>
-          <ul>
-            <li>MBA, Big Data &amp; Analytics — University of Amsterdam</li>
-            <li>MSc Business Administration — VU Amsterdam</li>
-            <li>Lead Ahead (Senior Leadership) — Danone / CEDEP</li>
-            <li>Art of Leadership — Booking Academy</li>
-          </ul>
-        </div>
-
+        <h3 class="text-xl font-bold mb-4 text-white">AI &amp; the Human Side</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Researching how AI, robotics, and automation reshape work — and what a smart transition looks like when machines and people actually work together. Not the hype. The real shift.</p>
       </div>
     </div>
   </section>
 
-  <div class="container"><hr class="spectrum-line-thin"></div>
-
-  <!-- ===== LANGUAGES ===== -->
-  <section>
-    <div class="container">
-      <span class="section-label reveal">Languages</span>
-      <div class="languages reveal">
-        <div class="lang"><strong>English</strong> — working language</div>
-        <div class="lang"><strong>Bulgarian</strong> — native</div>
-        <div class="lang"><strong>Dutch</strong> — professional</div>
-        <div class="lang"><strong>Russian</strong> — fluent spoken &amp; reading</div>
-        <div class="lang"><strong>German</strong> — conversational</div>
-        <div class="lang"><strong>Hebrew</strong> — basic</div>
+  <!-- Career Highlights -->
+  <section class="py-24 bg-cardBg/30 border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-12 font-semibold">Career Highlights</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- Booking.com -->
+        <div class="space-y-6">
+          <details class="group" data-purpose="career-accordion">
+            <summary class="flex items-center gap-4 mb-2 hover:text-brand transition-colors">
+              <span class="text-white font-bold tracking-tight group-hover:text-brand transition-colors">BOOKING.COM</span>
+              <span class="text-xs text-gray-500 font-mono">2011&ndash;2020</span>
+              <svg class="w-4 h-4 text-brand transform transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            </summary>
+            <ul class="space-y-4 text-sm text-gray-400 mt-4 ml-2">
+              <li class="flex gap-3"><span class="text-brand">&bull;</span><span>Grew analytics from 3 to 50+ people across four director roles</span></li>
+              <li class="flex gap-3"><span class="text-brand">&bull;</span><span>ML automation cut customer service FTE costs by 80%</span></li>
+              <li class="flex gap-3"><span class="text-brand">&bull;</span><span>Machine translation live across 10 languages</span></li>
+              <li class="flex gap-3"><span class="text-brand">&bull;</span><span>Automated content generation — 90% partner adoption</span></li>
+              <li class="flex gap-3"><span class="text-brand">&bull;</span><span>Image recognition increased direct traffic by ~10%</span></li>
+              <li class="flex gap-3"><span class="text-brand">&bull;</span><span>GDPR-approved survey platform: 1,800 individual reports for 20K employees</span></li>
+            </ul>
+          </details>
+        </div>
+        <!-- Danone -->
+        <div class="space-y-6">
+          <details class="group" data-purpose="career-accordion">
+            <summary class="flex items-center gap-4 mb-2 hover:text-brand transition-colors">
+              <span class="text-white font-bold tracking-tight group-hover:text-brand transition-colors">DANONE</span>
+              <span class="text-xs text-gray-500 font-mono">2020&ndash;2025</span>
+              <svg class="w-4 h-4 text-brand transform transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            </summary>
+            <ul class="space-y-4 text-sm text-gray-400 mt-4 ml-2">
+              <li class="flex gap-3"><span class="text-brand">&bull;</span><span>Global Digital Trust Programme — 7,000 properties governed, COMEX-level policy</span></li>
+              <li class="flex gap-3"><span class="text-brand">&bull;</span><span>Built data science, analytics, and MarTech teams from zero</span></li>
+              <li class="flex gap-3"><span class="text-brand">&bull;</span><span>Unified digital platforms (Aptamil, Cancer Care, DTC)</span></li>
+              <li class="flex gap-3"><span class="text-brand">&bull;</span><span>Analytics Centre of Excellence for marketing, health, and e-commerce</span></li>
+              <li class="flex gap-3"><span class="text-brand">&bull;</span><span>Data governance committees and career frameworks established globally</span></li>
+            </ul>
+          </details>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="container"><hr class="spectrum-line-thin"></div>
+  <!-- Education & Earlier Chapters -->
+  <section class="py-24 max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <div>
+      <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-8 font-semibold">Earlier Chapters</h2>
+      <ul class="space-y-4 text-sm text-gray-400">
+        <li class="flex gap-3"><span class="text-brand">&bull;</span> Co-founded Anders Star — consulting and analytics for Amsterdam hospitality</li>
+        <li class="flex gap-3"><span class="text-brand">&bull;</span> Advisor &amp; investor at BeSmart — behavioral science SaaS for travel</li>
+        <li class="flex gap-3"><span class="text-brand">&bull;</span> Professional kitchens, military service, advertising — each one a different kind of pressure</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-8 font-semibold">Education</h2>
+      <ul class="space-y-4 text-sm text-gray-400">
+        <li class="flex gap-3"><span class="text-brand">&bull;</span> MBA, Big Data &amp; Analytics — University of Amsterdam</li>
+        <li class="flex gap-3"><span class="text-brand">&bull;</span> MSc Business Administration — VU Amsterdam</li>
+        <li class="flex gap-3"><span class="text-brand">&bull;</span> Lead Ahead (Senior Leadership) — Danone / CEDEP</li>
+        <li class="flex gap-3"><span class="text-brand">&bull;</span> Art of Leadership — Booking Academy</li>
+      </ul>
+    </div>
+  </section>
 
-  <!-- ===== CONNECT ===== -->
-  <section class="connect" id="connect">
-    <div class="container">
-      <h2 class="gradient-text reveal">I'd welcome a conversation.</h2>
-      <p class="connect-tagline reveal">Amsterdam, Netherlands</p>
-      <div class="connect-links reveal">
-        <a href="mailto:vlad@sterngold.nl" class="connect-link">vlad@sterngold.nl</a>
-        <a href="https://linkedin.com/in/vladsterngold" class="connect-link" target="_blank" rel="noopener">LinkedIn</a>
+  <!-- Languages -->
+  <section class="py-12 bg-white/5 border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-[10px] uppercase tracking-[0.3em] text-brand mb-6 font-semibold">Languages</h2>
+      <div class="flex flex-wrap gap-x-8 gap-y-4 text-sm">
+        <div>
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-6 rounded-sm bg-pride-blue relative overflow-hidden flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.4)] animate-funky-flag">
+              <div class="absolute w-full h-0.5 bg-white/20 rotate-45"></div>
+              <div class="absolute w-full h-0.5 bg-white/20 -rotate-45"></div>
+            </div>
+            <span class="text-white font-medium">English</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-6 rounded-sm flex flex-col shadow-[0_0_15px_rgba(34,197,94,0.4)] animate-funky-flag">
+              <div class="h-1/3 bg-white/40"></div>
+              <div class="h-1/3 bg-pride-green"></div>
+              <div class="h-1/3 bg-pride-red"></div>
+            </div>
+            <span class="text-white font-medium">Bulgarian</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-6 rounded-sm flex flex-col shadow-[0_0_15px_rgba(239,68,68,0.4)] animate-funky-flag">
+              <div class="h-1/3 bg-pride-red"></div>
+              <div class="h-1/3 bg-white/40"></div>
+              <div class="h-1/3 bg-pride-blue"></div>
+            </div>
+            <span class="text-white font-medium">Dutch</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-6 rounded-sm flex flex-col shadow-[0_0_15px_rgba(255,255,255,0.3)] animate-funky-flag">
+              <div class="h-1/3 bg-white/40"></div>
+              <div class="h-1/3 bg-pride-blue"></div>
+              <div class="h-1/3 bg-pride-red"></div>
+            </div>
+            <span class="text-white font-medium">Russian</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-6 rounded-sm flex flex-col shadow-[0_0_15px_rgba(234,179,8,0.4)] animate-funky-flag">
+              <div class="h-1/3 bg-black"></div>
+              <div class="h-1/3 bg-pride-red"></div>
+              <div class="h-1/3 bg-pride-yellow"></div>
+            </div>
+            <span class="text-white font-medium">German</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-6 rounded-sm bg-white/10 relative flex flex-col justify-between py-1 items-center shadow-[0_0_15px_rgba(255,255,255,0.2)] animate-funky-flag">
+              <div class="w-full h-[1.5px] bg-pride-blue"></div>
+              <div class="text-[8px] text-pride-blue leading-none">&#10017;</div>
+              <div class="w-full h-[1.5px] bg-pride-blue"></div>
+            </div>
+            <span class="text-white font-medium">Hebrew</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <p>&copy; 2026 Vlad Sterngold</p>
+  <!-- Footer / CTA -->
+  <footer class="py-32 bg-darkBg text-center px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+        I'd welcome a <span class="pride-text">conversation.</span>
+      </h2>
+      <p class="text-gray-500 mb-12">Amsterdam, Netherlands</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-6">
+        <a class="px-10 py-4 bg-brand text-darkBg font-bold rounded-lg hover:bg-brand/90 transition-all text-sm uppercase tracking-widest shadow-lg shadow-brand/20" href="mailto:vlad@sterngold.nl">
+          Email Me
+        </a>
+        <a class="px-10 py-4 border border-white/10 text-white font-bold rounded-lg hover:bg-white/5 transition-all text-sm uppercase tracking-widest" href="https://linkedin.com/in/vladsterngold" target="_blank" rel="noopener">
+          LinkedIn
+        </a>
+      </div>
+      <div class="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-gray-600 gap-6">
+        <div>&copy; 2026 Vlad Sterngold</div>
+        <nav class="flex gap-8">
+          <a class="hover:text-brand transition-colors" href="index.html">Home</a>
+          <a class="hover:text-brand transition-colors" href="writing.html">Writing</a>
+        </nav>
+      </div>
+    </div>
   </footer>
 
-  <script src="js/main.js"></script>
 </body>
 </html>
