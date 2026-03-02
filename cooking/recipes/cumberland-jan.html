@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Червено вино<br>Оцет от червено вино<br>сладко / мармалад<br>горчица<br>захар<br>сол/пипер<br>sterenappel<br>rozijn<br>kruidnagel, jeneverbes (във затваряща се лъжичка за чай пакетче/<br>кора от портокал и лимон – тънко обелени със спец. Белачка и първо във вода да врят окол 5 -6 мин. След което се изсипват в соса<br>за сгъстяване – майзена разтворена във вода се сипва бавно – да се сгъсти соса <br>голям Дафинов лист</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Червено вино<br>Оцет от червено вино<br>сладко / мармалад<br>горчица<br>захар<br>сол/пипер<br>sterenappel<br>rozijn<br>kruidnagel, jeneverbes (във затваряща се лъжичка за чай пакетче/<br>кора от портокал и лимон – тънко обелени със спец. Белачка и първо във вода да врят окол 5 -6 мин. След което се изсипват в соса<br>за сгъстяване – майзена разтворена във вода се сипва бавно – да се сгъсти соса <br>голям Дафинов лист</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Combine red wine, red wine vinegar, jam, mustard, sugar, salt, and pepper. Add star anise, raisins, cloves, and juniper berries (contained in a tea infuser ball). Prepare orange and lemon zest by peeling thinly with a channel knife, blanch in water for 5–6 minutes, then add to sauce along with a bay leaf. Thicken sauce slowly with cornstarch dissolved in water, stirring constantly until desired consistency is reached.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Cocos milk - 1 l <br> lemon leafe<br>lemon grass<br> fish stock - 1 l <br>cream 1 l<br>Noully prat<br>REDUCTION<br>Add t.s Green curry  -  Lime + salt</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Cocos milk - 1 l <br> lemon leafe<br>lemon grass<br> fish stock - 1 l <br>cream 1 l<br>Noully prat<br>REDUCTION<br>Add t.s Green curry  -  Lime + salt</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Coconut Milk Sauce for Fish<br><br>Combine 1 l coconut milk with 1 l fish stock and 1 l cream. Add lemon leaf and lemongrass. Reduce by half. Strain. Finish with a splash of Noilly Prat and green curry paste to taste. Season with lime juice and salt.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -162,8 +162,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- sautee leeks, carrots and knob celery in butter<br>- add broth to a boil and skim <br>- simmer for 20 min. add potaotes and simmer fro 20 min longer<br>- stir in cream and add cold butter<br>- puree with food mill<br>- bring to boil again<br>- season to taste <br>- sprinkle with chervil<br><br>- cut the toast bread into 1 cm croutns and bake in oven until golden brown</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- sautee leeks, carrots and knob celery in butter<br>- add broth to a boil and skim <br>- simmer for 20 min. add potaotes and simmer fro 20 min longer<br>- stir in cream and add cold butter<br>- puree with food mill<br>- bring to boil again<br>- season to taste <br>- sprinkle with chervil<br><br>- cut the toast bread into 1 cm croutns and bake in oven until golden brown</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">VEGETABLE PURÉE SOUP<br><br>Sauté leeks, carrots, and knob celery in butter. Add broth and bring to boil, skimming. Simmer 20 minutes. Add potatoes and simmer 20 minutes longer.<br><br>Stir in cream and add cold butter. Purée with food mill and bring to boil again. Season to taste and sprinkle with chervil.<br><br>Garnish: Cut toast bread into 1cm croutons and bake in oven until golden brown. Serve alongside soup.</div>
+          
         </section>
         
 
@@ -197,5 +206,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

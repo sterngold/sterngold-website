@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">D C<br>VITZNAU-LUCERNE<br>SWITZERLAND<br><br><br><br><br><br>VATEUCIUS<br><br><br><br>Recipe<br>St. Galler Cheese balls<br>Address<br>DCT - European Culinary Center<br>Seestrasse<br>CH - 6354 Vitznau - Lucerne<br><br><br>Switzerland<br><br><br>www.culinaryschoolch<br><br><br><br>Tel. 0041 - 41 - 399 00 00<br><br>Chef<br>Swiss Chef Instructor Patrick Diethelm<br><br>Yield<br>8 —10 servings<br><br>Infos<br><br><br>Measure<br>Ingredients<br>Mise en place / Pre —preparation<br>150g Milk	<br>40 g Butter<br>6 g Salt<br>110 g White wheat four	<br>10 g Eggs, past.	<br>400 g Tilsiter cheese red	- Cut into 2-3 mm dice or grated<br>Pepper mill, Nutmeg<br>5 g White wheat flour<br><br><br><br><br><br><br><br>Preparation<br><br>- Bring milk, butter and salt to a boil<br>- Add all flour at once and stir until firm and dry mixture (choux paste)	<br>- Remove from heat and add eggs and diced cheese<br>- Season to taste with pepper mill and nutmeg and chill<br>- Portion to 20-30 gram size balls and with shape with help of little flour<br>- Chill and let rest<br>- Deep fry Cheese balls a la minute at 170 °C until golden brown<br>- Remove and arrange on prepared tomato concasse with basil chiffonade<br>or as fingerfood</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">D C<br>VITZNAU-LUCERNE<br>SWITZERLAND<br><br><br><br><br><br>VATEUCIUS<br><br><br><br>Recipe<br>St. Galler Cheese balls<br>Address<br>DCT - European Culinary Center<br>Seestrasse<br>CH - 6354 Vitznau - Lucerne<br><br><br>Switzerland<br><br><br>www.culinaryschoolch<br><br><br><br>Tel. 0041 - 41 - 399 00 00<br><br>Chef<br>Swiss Chef Instructor Patrick Diethelm<br><br>Yield<br>8 —10 servings<br><br>Infos<br><br><br>Measure<br>Ingredients<br>Mise en place / Pre —preparation<br>150g Milk	<br>40 g Butter<br>6 g Salt<br>110 g White wheat four	<br>10 g Eggs, past.	<br>400 g Tilsiter cheese red	- Cut into 2-3 mm dice or grated<br>Pepper mill, Nutmeg<br>5 g White wheat flour<br><br><br><br><br><br><br><br>Preparation<br><br>- Bring milk, butter and salt to a boil<br>- Add all flour at once and stir until firm and dry mixture (choux paste)	<br>- Remove from heat and add eggs and diced cheese<br>- Season to taste with pepper mill and nutmeg and chill<br>- Portion to 20-30 gram size balls and with shape with help of little flour<br>- Chill and let rest<br>- Deep fry Cheese balls a la minute at 170 °C until golden brown<br>- Remove and arrange on prepared tomato concasse with basil chiffonade<br>or as fingerfood</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">ST. GALLER CHEESE BALLS<br><br>Yield: 8–10 servings<br>Chef: Patrick Diethelm, DCT European Culinary Center<br><br>INGREDIENTS<br>150g Milk<br>40g Butter<br>6g Salt<br>110g White wheat flour<br>10g Eggs, pasteurized<br>400g Tilsiter cheese, red (cut into 2–3mm dice or grated)<br>5g White wheat flour (for shaping)<br>Pepper mill<br>Nutmeg<br><br>METHOD<br>1. Bring milk, butter, and salt to a boil.<br>2. Add all flour at once and stir until the mixture is firm and dry (choux paste).<br>3. Remove from heat and fold in eggs and diced cheese.<br>4. Season to taste with pepper mill and nutmeg. Chill.<br>5. Portion into 20–30g balls and shape with the aid of a light dusting of flour.<br>6. Chill and allow to rest.<br>7. Deep fry à la minute at 170°C until golden brown.<br>8. Remove and arrange on prepared tomato concasse with basil chiffonade, or serve as fingerfood.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

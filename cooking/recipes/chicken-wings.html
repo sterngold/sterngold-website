@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Соя кетчуп <br>Sweet Chile souse – 2 лъжици <br>Чеснова паста – 1 лъжица <br>Червен пипер – 2 – 3 лъжици <br>Сол / пипер<br>Sambal oelek – 1 лъжица <br>Пилето да поседи в този сос около час <br>В тава намазана с масло се пече на фурна – около час и малко <br>Пилето на 15- 20 мин. се обръща за да не загори</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Соя кетчуп <br>Sweet Chile souse – 2 лъжици <br>Чеснова паста – 1 лъжица <br>Червен пипер – 2 – 3 лъжици <br>Сол / пипер<br>Sambal oelek – 1 лъжица <br>Пилето да поседи в този сос около час <br>В тава намазана с масло се пече на фурна – около час и малко <br>Пилето на 15- 20 мин. се обръща за да не загори</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHICKEN WINGS<br><br>Combine soy sauce, 2 tablespoons sweet chile sauce, 1 tablespoon garlic paste, 2–3 tablespoons red pepper, sambal oelek, salt, and pepper in a bowl.<br><br>Marinate chicken wings in this mixture for approximately 1 hour. Transfer to an oiled baking pan and roast in oven for about 1 hour 15 minutes. Turn wings every 15–20 minutes to prevent burning.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

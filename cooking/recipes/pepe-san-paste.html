@@ -162,8 +162,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">per portie<br>200 - 250 gr vis <br>(10 min. stomen)<br>spanse peper - 1/4 <br>Limoen blad - 3 <br>Bananen blad</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">per portie<br>200 - 250 gr vis <br>(10 min. stomen)<br>spanse peper - 1/4 <br>Limoen blad - 3 <br>Bananen blad</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Pepe San Paste (per portion)<br><br>Method:<br>- Steam fish (200–250 g) for 10 minutes until cooked through<br>- Combine steamed fish with ¼ Spanish pepper, 3 lime leaves, and banana leaf<br>- Process to paste consistency<br><br>Serve as directed.</div>
+          
         </section>
         
 
@@ -197,5 +206,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

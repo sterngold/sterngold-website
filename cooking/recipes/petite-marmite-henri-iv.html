@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Ingredients for 3 servings at 100% (Net quantity)<br>600 g 360 g 1.5 I <br>75 g<br>1 pc<br>67 g <br>60 g <br>42 g <br>64 g <br>75 g<br>600 ml 225 g <br>15 g<br>Chicken<br>Beef for boiling * Veal broth<br>Bouquet garni Sachet bag<br>Leeks spring onions<br>Carrot<br>Knob celery (celeriac)<br>Savoy Cabbage<br>*Bouquet garni for Veal broth Veal broth / bouillon<br>Marrow bones cut into slices Chives, fresh<br>Blanch. Drain. Rinse first in hot, then cold water. Blanch. Drain. Rinse first in hot, then cold water.<br><br>Make sachet bag consisting of parsley, bay leaf, thyme, cloves and peppercorns.<br>Wash and trim. Cut into losanges Wash and trim. Cut into losanges Wash and trim. Cut into losanges Wash and trim. Cut into losanges<br><br><br>Dip in simmering water to blanch. Wash and cut into slivers.<br>- BRING BOUILLON TO A BOIL; ADD BEEF, BOUQUET GARNI AND SACHET BAG. - SIMMER FOR 2 HOURS; SKIM AND REMOVE IMPURITIES .<br>- ADD CHICKEN; AND CONTINUE SIMMERING.<br>- BOIL LEEKS, CARROTS, KNOB CELERY, AND SAVOY CABBAGE SEPARATELY IN BOUILLON. - REMOVE BEEF AND CHICKEN FROM STOCK; CUT INTO ATTRACTIVE PIECES.<br>- SERVE MARMITE WITH BEEF, CHICKEN, VEGETABLES AND MARROW BONES. - SPRINKLE WITH CHIVES.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Ingredients for 3 servings at 100% (Net quantity)<br>600 g 360 g 1.5 I <br>75 g<br>1 pc<br>67 g <br>60 g <br>42 g <br>64 g <br>75 g<br>600 ml 225 g <br>15 g<br>Chicken<br>Beef for boiling * Veal broth<br>Bouquet garni Sachet bag<br>Leeks spring onions<br>Carrot<br>Knob celery (celeriac)<br>Savoy Cabbage<br>*Bouquet garni for Veal broth Veal broth / bouillon<br>Marrow bones cut into slices Chives, fresh<br>Blanch. Drain. Rinse first in hot, then cold water. Blanch. Drain. Rinse first in hot, then cold water.<br><br>Make sachet bag consisting of parsley, bay leaf, thyme, cloves and peppercorns.<br>Wash and trim. Cut into losanges Wash and trim. Cut into losanges Wash and trim. Cut into losanges Wash and trim. Cut into losanges<br><br><br>Dip in simmering water to blanch. Wash and cut into slivers.<br>- BRING BOUILLON TO A BOIL; ADD BEEF, BOUQUET GARNI AND SACHET BAG. - SIMMER FOR 2 HOURS; SKIM AND REMOVE IMPURITIES .<br>- ADD CHICKEN; AND CONTINUE SIMMERING.<br>- BOIL LEEKS, CARROTS, KNOB CELERY, AND SAVOY CABBAGE SEPARATELY IN BOUILLON. - REMOVE BEEF AND CHICKEN FROM STOCK; CUT INTO ATTRACTIVE PIECES.<br>- SERVE MARMITE WITH BEEF, CHICKEN, VEGETABLES AND MARROW BONES. - SPRINKLE WITH CHIVES.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">MISE EN PLACE<br>Blanche beef and chicken separately. Drain, rinse first in hot water then cold water. Prepare sachet bag with parsley, bay leaf, thyme, cloves, and peppercorns. Wash and trim all vegetables (leeks, carrots, knob celery, savoy cabbage). Cut vegetables into losanges. Blanch marrow bones and cut into slices. Chop chives.<br><br>COOKING<br>Bring veal broth to boil. Add beef, bouquet garni, and sachet bag. Simmer 2 hours, skimming and removing impurities regularly. Add chicken and continue simmering. Boil leeks, carrots, knob celery, and savoy cabbage separately in bouillon until tender. Remove beef and chicken from stock and cut into attractive pieces.<br><br>FINISH AND SERVE<br>Arrange beef, chicken, vegetables, and marrow bones in marmite. Pour hot bouillon over. Sprinkle with fresh chives and serve.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

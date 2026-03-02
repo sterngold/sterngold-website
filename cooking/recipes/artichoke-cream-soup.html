@@ -146,8 +146,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- sweet fine matignon of shallots, leeks, and knob celer in butter. <br>- add artchoke and continue cooking<br>- add lemon juice and white chicken stock, bring to boil and simmer until vegetables are soft<br>- thicken with little roux <br>- add cream and bring to boil <br>- season to taste <br>- blend in bar blender, strain through a china cap<br>- add extra brunoise of artichoke bottoms<br>- garnish with some artichoke chips in small amuse bouche dishes for soups <br>- decorate with small leaves chervil</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- sweet fine matignon of shallots, leeks, and knob celer in butter. <br>- add artchoke and continue cooking<br>- add lemon juice and white chicken stock, bring to boil and simmer until vegetables are soft<br>- thicken with little roux <br>- add cream and bring to boil <br>- season to taste <br>- blend in bar blender, strain through a china cap<br>- add extra brunoise of artichoke bottoms<br>- garnish with some artichoke chips in small amuse bouche dishes for soups <br>- decorate with small leaves chervil</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sweat a fine matignon of shallots, leeks, and knob celery in butter. Add artichoke and continue cooking. Add lemon juice and white chicken stock; bring to boil and simmer until vegetables are tender. Thicken lightly with roux. Add cream and return to boil. Season to taste. Blend in a bar blender and strain through a china cap. Fold in brunoise of artichoke bottoms. Garnish with artichoke chips in small amuse bouche dishes. Decorate with chervil leaves.</div>
+          
         </section>
         
 
@@ -187,5 +196,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Gnocchi Piemontaise<br>Kartoffelnocken PiemonteserArt Gnocchi piémontaise<br><br>Recipe #	: 607<br>Category	: Potato Dishes<br>Chef	: Patrick Diethelm<br>Date	: 02.112005<br>Cost of goods	: CHF 0.38 / EUR 0.24<br><br>Ingredients for 5 servings at 100% [Net quantity)<br>450 g	Potatoes, boiled in their skins Bintje Peeled C Type<br>60 g Egg<br>1 x	Seasoning (salt and pepper)<br>1 x	Nutmeg (pinch)<br>100 g White wheat flour<br>10 g	Butter<br>50 g Sbrinz grated or Parmesan <br>40 g Butter melted<br>- Grate, peeled steamed potatoes<br>- Mix with egg, season with salt and pepper and nutmeg, and let chill.<br>Add sifted flour to the cold potato mixture and stir carefully.<br>- Place mixture on floured work table and knead in flour. The dough should be rather stiff.<br>- DRESS ROLLS ABOUT 12 mm THICK, DIRECTLY ONTO FLOURED SURFACE.<br>- CUT ROLLS WITH FLOURED SPATULA INTO 20 mm LONG PIECES.<br>- ROLL PIECES INTO OBLONG SHAPE, AND GENTLY ROLL OVER THE BACK OF A FORK OR SPECIAL ITALIAN GNOCCHI BOARD.<br>THIS WILL GIVE THE GNOCCHIS THEIR TRADITIONAL SHAPE. - BRING AMPLE AMOUNT OF SALTED WATER TO A BOIL.<br>- SIMMER GNOCCHIS FOR ABOUT 5 MINUTES. THEY WILL FLOAT TO THE TOP WHEN DONE.<br>- REMOVE WITH SKIMMER AND DRAIN IN A COLANDER. - BUTTER A SUITABLE OVENPROOF DISH (GRATIN DISH).<br>- HEAT STEWED TOMATOES CONCASSE AND PUT INTO GRATIN DISH.<br>- PUT GNOCCHIS ON TOP AND SPRINKLE WITH GRATED CHEESE AND MELTED BUTTER.<br>- BAKE IN HOT OVEN UNTIL HOT AND BROWN ON TOP.<br>Notes: The amount of eggs and flour needed depends on the moisture content of the potatoes. The dough should be elastic, yet dry. If potatoes are very moist, use egg yolks only.<br>(A small amount of dehydrated potato can be added to stiffen the dough.) Potato gnocchis can also be served sautéed with butter.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Gnocchi Piemontaise<br>Kartoffelnocken PiemonteserArt Gnocchi piémontaise<br><br>Recipe #	: 607<br>Category	: Potato Dishes<br>Chef	: Patrick Diethelm<br>Date	: 02.112005<br>Cost of goods	: CHF 0.38 / EUR 0.24<br><br>Ingredients for 5 servings at 100% [Net quantity)<br>450 g	Potatoes, boiled in their skins Bintje Peeled C Type<br>60 g Egg<br>1 x	Seasoning (salt and pepper)<br>1 x	Nutmeg (pinch)<br>100 g White wheat flour<br>10 g	Butter<br>50 g Sbrinz grated or Parmesan <br>40 g Butter melted<br>- Grate, peeled steamed potatoes<br>- Mix with egg, season with salt and pepper and nutmeg, and let chill.<br>Add sifted flour to the cold potato mixture and stir carefully.<br>- Place mixture on floured work table and knead in flour. The dough should be rather stiff.<br>- DRESS ROLLS ABOUT 12 mm THICK, DIRECTLY ONTO FLOURED SURFACE.<br>- CUT ROLLS WITH FLOURED SPATULA INTO 20 mm LONG PIECES.<br>- ROLL PIECES INTO OBLONG SHAPE, AND GENTLY ROLL OVER THE BACK OF A FORK OR SPECIAL ITALIAN GNOCCHI BOARD.<br>THIS WILL GIVE THE GNOCCHIS THEIR TRADITIONAL SHAPE. - BRING AMPLE AMOUNT OF SALTED WATER TO A BOIL.<br>- SIMMER GNOCCHIS FOR ABOUT 5 MINUTES. THEY WILL FLOAT TO THE TOP WHEN DONE.<br>- REMOVE WITH SKIMMER AND DRAIN IN A COLANDER. - BUTTER A SUITABLE OVENPROOF DISH (GRATIN DISH).<br>- HEAT STEWED TOMATOES CONCASSE AND PUT INTO GRATIN DISH.<br>- PUT GNOCCHIS ON TOP AND SPRINKLE WITH GRATED CHEESE AND MELTED BUTTER.<br>- BAKE IN HOT OVEN UNTIL HOT AND BROWN ON TOP.<br>Notes: The amount of eggs and flour needed depends on the moisture content of the potatoes. The dough should be elastic, yet dry. If potatoes are very moist, use egg yolks only.<br>(A small amount of dehydrated potato can be added to stiffen the dough.) Potato gnocchis can also be served sautéed with butter.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">DOUGH: Grate peeled boiled potatoes (Bintje C-type). Mix with egg, season with salt, pepper, and a pinch of nutmeg, then chill. Add sifted flour to the cold mixture and stir carefully. Transfer to a floured work surface and knead in flour until the dough is rather stiff and elastic but dry. If potatoes are very moist, use egg yolks only; a small amount of dehydrated potato can be added to stiffen if needed.<br><br>SHAPING: Roll dough into 12 mm thick logs directly onto a floured surface. Cut logs into 20 mm pieces with a floured spatula. Roll pieces into oblong shapes and gently roll over the back of a fork or Italian gnocchi board to create traditional ridges.<br><br>COOKING: Bring an ample amount of salted water to a boil. Simmer gnocchi for about 5 minutes until they float to the top. Remove with a skimmer and drain in a colander.<br><br>FINISHING: Butter an ovenproof gratin dish. Heat stewed tomato concassée and place in the dish. Top with gnocchi, sprinkle with grated cheese and melted butter, then bake in a hot oven until golden brown on top. Note: Gnocchi can also be served sautéed with butter.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

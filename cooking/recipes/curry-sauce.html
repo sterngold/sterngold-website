@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Sjalotten schoonmaken en in plakjes snijden. Zachtjes aanzetten met stukje gember, knoglook en rode pepper. Kerry poeder toevoegen en zachtjes myoteren. Afblussen met witte kookwijn en laten reduceren. Nu eventueel mosselvocht toevoegen. Room toevoegen en verderlaten reduceren. Passeren door fijne zeef en moteren met ijskoude botter. Pepper en zout naar smaak toevoegen</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Sjalotten schoonmaken en in plakjes snijden. Zachtjes aanzetten met stukje gember, knoglook en rode pepper. Kerry poeder toevoegen en zachtjes myoteren. Afblussen met witte kookwijn en laten reduceren. Nu eventueel mosselvocht toevoegen. Room toevoegen en verderlaten reduceren. Passeren door fijne zeef en moteren met ijskoude botter. Pepper en zout naar smaak toevoegen</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CURRY SAUCE<br>Station: Entremétier | Source: Vijf<br><br>METHOD<br>Clean shallots and slice thinly. Gently heat with ginger, garlic, and red pepper. Add curry powder and sweat gently without coloring.<br><br>Deglaze with white cooking wine and reduce. If using, add mussel stock. Add cream and continue reducing.<br><br>Pass through a fine sieve. Finish with ice-cold butter mounted in. Season to taste with pepper and salt.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">V6IZNAU- MCERNE<br>SWtIZERLAND<br>Maluns<br>Long-fried Potatoes, Graubunden Style<br>Serves 6 - 1 0<br>Preparation: 1 day<br>1 kg	Potatoes<br>300 g White wheat flour salt, Nutmeg<br>300 g Butter<br>Serve with Bundner alp cheese<br>PREPARATION<br>The day before, boil potatoes in their skins.<br>Peel while warm.<br>Grate half of the potatoes, thinly slice the other half. Mix salt with flour.<br>Mix in loosely with sliced and grated potatoes.<br>Heat 50 g butter in frying pan and add mixture.<br>Fry potatoes on medium to low flame while stirring constantly. Add butter from time to time.<br>Small, crispy potato "crumbs" will form in 30 - 45 minutes.<br>Add remaining butter and serve with large piece of Bundnerkase and apple sauce.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">V6IZNAU- MCERNE<br>SWtIZERLAND<br>Maluns<br>Long-fried Potatoes, Graubunden Style<br>Serves 6 - 1 0<br>Preparation: 1 day<br>1 kg	Potatoes<br>300 g White wheat flour salt, Nutmeg<br>300 g Butter<br>Serve with Bundner alp cheese<br>PREPARATION<br>The day before, boil potatoes in their skins.<br>Peel while warm.<br>Grate half of the potatoes, thinly slice the other half. Mix salt with flour.<br>Mix in loosely with sliced and grated potatoes.<br>Heat 50 g butter in frying pan and add mixture.<br>Fry potatoes on medium to low flame while stirring constantly. Add butter from time to time.<br>Small, crispy potato "crumbs" will form in 30 - 45 minutes.<br>Add remaining butter and serve with large piece of Bundnerkase and apple sauce.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Serves 6–10 | Preparation: 1 day ahead<br><br>Day Before:<br>Boil 1 kg potatoes in their skins. Peel while warm.<br><br>Service Day:<br>Grate half the potatoes; thinly slice the remaining half. Mix salt and 300 g wheat flour together. Loosely combine flour mixture with sliced and grated potatoes.<br><br>Cooking:<br>Heat 50 g butter in frying pan, add potato mixture. Fry over medium-low heat, stirring constantly, 30–45 minutes until small crispy potato crumbles form. Add remaining 250 g butter gradually during cooking.<br><br>Finish and Serve:<br>Serve with large piece of Bündner Alp cheese and apple sauce.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Crispy Austrian dumpling leaves<br>Knusprige Semmelkпödelblätter<br>Recipe #<br>Category	: ECA - Garde-manger special<br>Chef	: Patrick Diethelm<br>Date	: 12.12.2005<br>Cost of goods 	: CHF 0.52 / EUR 0.33 <br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br>20<br>g<br>Butter<br><br>50<br>g<br>Bacon slices<br><br>20<br>g<br>Shallots<br><br>10<br>g<br>Wild garlic or parsley<br><br>80<br>g<br>Butter<br>r)<br>400<br>g<br>White bread (Pullman loaf)<br><br>1<br>x<br>Seasoning (salt and pepper)<br><br>250<br>ml<br>Milk<br><br>120<br>g<br>Egg past.<br><br>100<br>g<br>Mie de pain<br><br>Critical<br>CUT BACON INTO VERY FINE BRUNOISE <br>FINE CHOPPED SHALLOTS<br>DICE THE BREAD INTO 1 CM x 1 CM <br> CHOP THE PARSLEY<br>- SAUTE THE SHALLOTS AND BACON IN BUTTER, THEN ADD CHOPPED HERBS AND PLACE INTO BOWL<br>TOAST THE BREAD WITH THE REMAINING BUTTER IN THE OVEN AT 180°C. <br> ADD TO SHALLOTS AND BACON<br>- SEASON WITH SALT, PEPPER MILL AND NUTMEG<br>- BRING MILK TO A BOIL AND ADD INTO BOWL. DO NOT STIR AND COOL DOWN<br>- ADD EGGS AND MIE DE PAIN AND ROLL INTO PLASTIC FOIL<br>- POACH AT 85 - 90° HOT SALTED WATER FOR 1 HOUR. <br>- REMOVE AND COOL DOWN<br>- SLICE ON MEAT SLICER INTO 2-3 mm THICK SLICES AND PLACE ON PARCHMENT PAPER INTO 80°C OVEN FOR 20 MINUTES OR OVER NIGHT IN PLATE WARMER TO CRISP UP.<br>- SERVE AS GARNISH FOR AMUSE BOUCHE OR APPETIZER</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Crispy Austrian dumpling leaves<br>Knusprige Semmelkпödelblätter<br>Recipe #<br>Category	: ECA - Garde-manger special<br>Chef	: Patrick Diethelm<br>Date	: 12.12.2005<br>Cost of goods 	: CHF 0.52 / EUR 0.33 <br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br>20<br>g<br>Butter<br><br>50<br>g<br>Bacon slices<br><br>20<br>g<br>Shallots<br><br>10<br>g<br>Wild garlic or parsley<br><br>80<br>g<br>Butter<br>r)<br>400<br>g<br>White bread (Pullman loaf)<br><br>1<br>x<br>Seasoning (salt and pepper)<br><br>250<br>ml<br>Milk<br><br>120<br>g<br>Egg past.<br><br>100<br>g<br>Mie de pain<br><br>Critical<br>CUT BACON INTO VERY FINE BRUNOISE <br>FINE CHOPPED SHALLOTS<br>DICE THE BREAD INTO 1 CM x 1 CM <br> CHOP THE PARSLEY<br>- SAUTE THE SHALLOTS AND BACON IN BUTTER, THEN ADD CHOPPED HERBS AND PLACE INTO BOWL<br>TOAST THE BREAD WITH THE REMAINING BUTTER IN THE OVEN AT 180°C. <br> ADD TO SHALLOTS AND BACON<br>- SEASON WITH SALT, PEPPER MILL AND NUTMEG<br>- BRING MILK TO A BOIL AND ADD INTO BOWL. DO NOT STIR AND COOL DOWN<br>- ADD EGGS AND MIE DE PAIN AND ROLL INTO PLASTIC FOIL<br>- POACH AT 85 - 90° HOT SALTED WATER FOR 1 HOUR. <br>- REMOVE AND COOL DOWN<br>- SLICE ON MEAT SLICER INTO 2-3 mm THICK SLICES AND PLACE ON PARCHMENT PAPER INTO 80°C OVEN FOR 20 MINUTES OR OVER NIGHT IN PLATE WARMER TO CRISP UP.<br>- SERVE AS GARNISH FOR AMUSE BOUCHE OR APPETIZER</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Crispy Austrian Dumpling Leaves** | Chef: Patrick Diethelm | 12.12.2005<br><br>Cut bacon into very fine brunoise. Finely chop shallots and dice bread into 1 cm × 1 cm cubes. Chop parsley.<br><br>Sauté shallots and bacon in 20g butter, then add chopped herbs and transfer to bowl. Toast diced bread with remaining 80g butter in 180°C oven, then add to shallots and bacon mixture. Season with salt, pepper, and nutmeg.<br><br>Bring milk to boil and add to bowl without stirring. Cool completely. Fold in eggs and breadcrumbs (mie de pain). Roll mixture tightly in plastic foil and poach in 85–90°C salted water for 1 hour. Remove and cool.<br><br>Slice on meat slicer into 2–3 mm thick slices. Place on parchment and dry in 80°C oven for 20 minutes, or leave overnight in plate warmer to crisp. Serve as garnish for amuse-bouche or appetizers.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

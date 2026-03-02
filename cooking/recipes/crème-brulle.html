@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1.5 l cream <br>150 ml milk<br>170 g sugar<br>400 g egg yolk<br>1.5 vanilla <br>salt <br>Boil slowly cream with vanilla and salt<br>Dissolve sugar in milk add to cream<br>Put trough hair sieve<br>Boil again - add egg yolks<br>Leave for 30 min till foam is gone <br>Add to Bain Marie <br>In oven 120 C for - 20 - 25 min<br>Add lot's of sugar burn <br>Repeat the burning one more time</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1.5 l cream <br>150 ml milk<br>170 g sugar<br>400 g egg yolk<br>1.5 vanilla <br>salt <br>Boil slowly cream with vanilla and salt<br>Dissolve sugar in milk add to cream<br>Put trough hair sieve<br>Boil again - add egg yolks<br>Leave for 30 min till foam is gone <br>Add to Bain Marie <br>In oven 120 C for - 20 - 25 min<br>Add lot's of sugar burn <br>Repeat the burning one more time</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Heat 1.5l cream slowly with 1.5 vanilla pods and salt. Dissolve 170g sugar in 150ml milk and add to cream. Pass through fine sieve. Return to heat and bring to boil. Remove from heat and temper in 400g egg yolk, whisking constantly. Let stand 30 minutes until foam subsides.<br><br>Pour through sieve again into baking vessels set in a bain-marie. Bake at 120°C for 20–25 minutes until just set. Cool completely. Before service, coat generously with sugar and caramelize with torch. Repeat caramelizing once more for double crust.</div>
+          
         </section>
         
 
@@ -90,5 +99,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

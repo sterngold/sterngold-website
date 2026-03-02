@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Ingredients for 1.00 pieces at 100% (Net quantity)<br>60 g Carrot<br>50 g	String beans, fresh<br>50 g	Broccoli, fres<br>60 g	Yellow bell pepper<br>50 g	Red bell pepper <br>15 g Salt<br><br>Farce:<br>300 g	Chicken breast, skinless<br>8 g Sea salt<br>30 g	Egg whites<br>300 g * Hèavy cream<br><br>- Line terrine mold carefully with plastic foil and then with blanched vegetables or Swiss chard.<br>- Wash and trim vegetables.<br>Cut into small long batonet. Cut broccoli into fine florets.<br>Boil vegetables in salt water, or steam, until cooked lightly but still firm. <br>Chill in ice water. Salt. Drain and dry on absorbent kitchen paper.<br><br><br>For Mousseline Farce<br><br>- Cut chicken breasts into small dice and chill with cream and egg white<br>Blend chicken meat in food processor with salt and strain through drum sieve. <br>Place in a bowl over ice. Season to taste.<br><br>- LINE PREPARED TERRINE MOLD WITH FARCE.<br>- FILL TERRINE WITH LAYERS OF VEGETABLES AND FARCE. BE SURE THERE ARE NO AIR BUBBLES.THE TOP LAYER SHOULD BE FARCE. COVER WITH PLASTIC FOIL<br>- POACH IN CONVECTION OVEN AT 75° - 80 °C, UNTIL TERRINE HAS A CENTER TEMPERATURE OF 60-62°C. PLACE WEIGHT ON TOP AND LET COOL.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Ingredients for 1.00 pieces at 100% (Net quantity)<br>60 g Carrot<br>50 g	String beans, fresh<br>50 g	Broccoli, fres<br>60 g	Yellow bell pepper<br>50 g	Red bell pepper <br>15 g Salt<br><br>Farce:<br>300 g	Chicken breast, skinless<br>8 g Sea salt<br>30 g	Egg whites<br>300 g * Hèavy cream<br><br>- Line terrine mold carefully with plastic foil and then with blanched vegetables or Swiss chard.<br>- Wash and trim vegetables.<br>Cut into small long batonet. Cut broccoli into fine florets.<br>Boil vegetables in salt water, or steam, until cooked lightly but still firm. <br>Chill in ice water. Salt. Drain and dry on absorbent kitchen paper.<br><br><br>For Mousseline Farce<br><br>- Cut chicken breasts into small dice and chill with cream and egg white<br>Blend chicken meat in food processor with salt and strain through drum sieve. <br>Place in a bowl over ice. Season to taste.<br><br>- LINE PREPARED TERRINE MOLD WITH FARCE.<br>- FILL TERRINE WITH LAYERS OF VEGETABLES AND FARCE. BE SURE THERE ARE NO AIR BUBBLES.THE TOP LAYER SHOULD BE FARCE. COVER WITH PLASTIC FOIL<br>- POACH IN CONVECTION OVEN AT 75° - 80 °C, UNTIL TERRINE HAS A CENTER TEMPERATURE OF 60-62°C. PLACE WEIGHT ON TOP AND LET COOL.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHICKEN VEGETABLE TERRINE<br><br>Ingredients (1 terrine):<br>60 g carrot<br>50 g string beans<br>50 g broccoli<br>60 g yellow bell pepper<br>50 g red bell pepper<br>15 g salt<br>Plastic foil and blanched vegetables or Swiss chard for lining<br><br>Mousseline Farce:<br>300 g chicken breast, skinless<br>8 g sea salt<br>30 g egg whites<br>300 g heavy cream<br><br>Method:<br>Line terrine mold with plastic foil, then with blanched vegetables or Swiss chard, creating a vegetable shell.<br><br>Wash and trim all vegetables. Cut carrots, beans, and peppers into small batonnet. Cut broccoli into fine florets.<br><br>Boil or steam vegetables in salted water until lightly cooked but still firm. Chill in ice water, season with salt, and dry on absorbent paper.<br><br>For mousse: Dice chilled chicken breast. Blend in food processor with salt, cream, and egg whites until smooth. Pass through fine sieve. Place over ice and season to taste.<br><br>Line terrine mold with thin layer of mousse. Alternate layers of vegetables and mousse, ensuring no air pockets. Top layer must be mousse. Cover with plastic foil.<br><br>Poach in convection oven at 75–80°C until center temperature reaches 60–62°C. Place weight on top and cool completely before unmolding.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">European Gourmet Cuisine<br><br>300<br>g<br>Chicken livers<br>50<br>g<br>Clarified butter<br>80<br>g<br>Shallots	<br>500<br>mg<br>Marjoram 1 pinch	/,гr4]<br><br>60<br>g<br>White bread (Pullman loaf)<br>20<br>ml<br>Red Port wine<br>20<br>ml<br>Marsala wine<br>6<br>g<br>Gelatine leaves<br>200<br>ml<br>Heavy cream (36%)<br>60<br>g<br>Egg whites<br>12<br>g<br>Salt<br>1<br>x<br>Seasoning (pepper)<br><br>- CLEAN THE CHICKEN LIVER<br>- SOAK THE GELATINE IN COLD WATER<br>- CUT THE BREAD INTO SMALL CROUTONS<br>- CHOP THE SHALLOTS<br>- SAUTE THE CHICKEN LIVER IN BUTTER QUICKLY AND REMOVE<br>ADD SHALLOTS INTO THE FRYING PAN<br>- DEGLAZE WITH THE PORT WINE AND MARSALA, MARJORAM<br>- ADD TO THE LIVER IN BOWL<br>- SQUEEZE OUT GEALTINE AND DISSOLVE WITH 3OG OF CREAM AND STIR INTO LIVER<br>- ADD THE REMAINING INGREDIENTS AND STIR WELL<br>- ADD ALL THE SEASONING AND FILL IN THE PACOJET BEAKER<br>- ENSURE SURFACE IS LEVEL, THEN FREEZE AT MINUS 20°C FOR 24 HOURS<br>METHOD OF PACOTISE:<br>- pacotise twice, portion by portion or the whole beaker, and serve</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">European Gourmet Cuisine<br><br>300<br>g<br>Chicken livers<br>50<br>g<br>Clarified butter<br>80<br>g<br>Shallots	<br>500<br>mg<br>Marjoram 1 pinch	/,гr4]<br><br>60<br>g<br>White bread (Pullman loaf)<br>20<br>ml<br>Red Port wine<br>20<br>ml<br>Marsala wine<br>6<br>g<br>Gelatine leaves<br>200<br>ml<br>Heavy cream (36%)<br>60<br>g<br>Egg whites<br>12<br>g<br>Salt<br>1<br>x<br>Seasoning (pepper)<br><br>- CLEAN THE CHICKEN LIVER<br>- SOAK THE GELATINE IN COLD WATER<br>- CUT THE BREAD INTO SMALL CROUTONS<br>- CHOP THE SHALLOTS<br>- SAUTE THE CHICKEN LIVER IN BUTTER QUICKLY AND REMOVE<br>ADD SHALLOTS INTO THE FRYING PAN<br>- DEGLAZE WITH THE PORT WINE AND MARSALA, MARJORAM<br>- ADD TO THE LIVER IN BOWL<br>- SQUEEZE OUT GEALTINE AND DISSOLVE WITH 3OG OF CREAM AND STIR INTO LIVER<br>- ADD THE REMAINING INGREDIENTS AND STIR WELL<br>- ADD ALL THE SEASONING AND FILL IN THE PACOJET BEAKER<br>- ENSURE SURFACE IS LEVEL, THEN FREEZE AT MINUS 20°C FOR 24 HOURS<br>METHOD OF PACOTISE:<br>- pacotise twice, portion by portion or the whole beaker, and serve</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHICKEN LIVER MOUSSE (PACOJET)<br><br>Ingredients:<br>300 g chicken livers<br>50 g clarified butter<br>80 g shallots<br>60 g white bread (Pullman loaf)<br>20 ml red Port wine<br>20 ml Marsala wine<br>6 g gelatine leaves<br>200 ml heavy cream (36%)<br>60 g egg whites<br>12 g salt<br>1 pinch marjoram<br>Pepper to season<br><br>Method:<br>Clean chicken livers carefully. Soak gelatine leaves in cold water.<br><br>Cut bread into small croutons. Chop shallots.<br><br>Sauté chicken livers in butter quickly over high heat. Remove and set aside.<br><br>Add shallots to pan and cook briefly. Deglaze with Port and Marsala wines. Add marjoram. Combine with liver in bowl.<br><br>Squeeze out gelatine and dissolve with 30 g cream, stirring well into liver mixture.<br><br>Add remaining cream, egg whites, salt, and pepper. Mix thoroughly.<br><br>Fill PACOJET beaker, ensuring level surface. Freeze at −20°C for 24 hours.<br><br>PACOTISE twice, portion by portion or process entire beaker. Serve immediately.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

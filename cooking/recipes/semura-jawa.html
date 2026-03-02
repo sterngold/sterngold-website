@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">per portie<br>Rundvlees - 250 / 300 gr.<br><br>Ui - 200 gr. <br>Knof - 2 <br>Gember - 4 cm. <br>Nootmuskat - 1 eetlepel<br>Kruidnagel - 1 thee lepel<br>Salamblad - 8 <br>Koenjit - theelepel<br>Cocosmelk - 70 ml. afblussen</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">per portie<br>Rundvlees - 250 / 300 gr.<br><br>Ui - 200 gr. <br>Knof - 2 <br>Gember - 4 cm. <br>Nootmuskat - 1 eetlepel<br>Kruidnagel - 1 thee lepel<br>Salamblad - 8 <br>Koenjit - theelepel<br>Cocosmelk - 70 ml. afblussen</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SEMURA JAWA | Tabac | Saucier | Per portion<br><br>Ingredients:<br>- Beef: 250–300 g<br>- Onion: 200 g<br>- Garlic: 2 cloves<br>- Ginger: 4 cm<br>- Nutmeg: 1 tablespoon<br>- Clove: 1 teaspoon<br>- Bay leaves: 8<br>- Turmeric: 1 teaspoon<br>- Coconut milk: 70 ml<br><br>Method: Braise beef with onion, garlic, and ginger. Toast nutmeg, clove, and turmeric, then add to pot with bay leaves. Finish with coconut milk to deglaze.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

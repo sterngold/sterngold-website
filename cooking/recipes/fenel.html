@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Samll cubes<br>With orange zest and juce <br>tyme and rozmerain<br>white wine <br>on slow fire</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Samll cubes<br>With orange zest and juce <br>tyme and rozmerain<br>white wine <br>on slow fire</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Fennel** | Vijf, Entremétier<br><br>**Ingredients:**<br>- Fennel, cut into small cubes<br>- Orange zest and juice<br>- Thyme and rosemary<br>- White wine<br><br>**Method:**<br>1. Combine fennel cubes with orange zest, orange juice, thyme, and rosemary.<br>2. Add white wine.<br>3. Cook slowly over low heat until tender.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

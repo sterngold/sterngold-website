@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">SWITZERLAND<br><br>POACHED BRUSSELS SPROUT TIMBALE<br><br>Yield: 5 - 6 servings<br>120 g	cooked Brussels sprout (well done) <br>80 g cream<br>100 g	past. egg mixture<br>4 g	salt and pepper mill<br><br><br>Preparation:<br>Clean the Brussels sprout and remove the outside leaves and reserve<br>Cut into 1/4 and boil in salted water until well done<br>Blanch the nice leaves and refresh, keep in sauteuse with some butter and seasoning.<br>Dry the cooked Brussels sprout on a kitchen paper, then chop<br>Blend in a bar blender with cream and egg and pass through a fine sieve<br>Season with salt and pepper<br>Pour the mixture into prepared buttered darioles and poach in Convection oven with steam at 90° C.	<br>Unmold the timbale on parchment paper<br>Arrange extra cooked sprout leaves on top	<br>For serving add for 1- 2 min. into steam and brush with melted butter<br>Heat up extra leaves a la minute and sprinkle on the dish</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">SWITZERLAND<br><br>POACHED BRUSSELS SPROUT TIMBALE<br><br>Yield: 5 - 6 servings<br>120 g	cooked Brussels sprout (well done) <br>80 g cream<br>100 g	past. egg mixture<br>4 g	salt and pepper mill<br><br><br>Preparation:<br>Clean the Brussels sprout and remove the outside leaves and reserve<br>Cut into 1/4 and boil in salted water until well done<br>Blanch the nice leaves and refresh, keep in sauteuse with some butter and seasoning.<br>Dry the cooked Brussels sprout on a kitchen paper, then chop<br>Blend in a bar blender with cream and egg and pass through a fine sieve<br>Season with salt and pepper<br>Pour the mixture into prepared buttered darioles and poach in Convection oven with steam at 90° C.	<br>Unmold the timbale on parchment paper<br>Arrange extra cooked sprout leaves on top	<br>For serving add for 1- 2 min. into steam and brush with melted butter<br>Heat up extra leaves a la minute and sprinkle on the dish</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">POACHED BRUSSELS SPROUT TIMBALE<br><br>Yield: 5–6 servings<br><br>Ingredients:<br>120 g cooked Brussels sprouts (well done)<br>80 g cream<br>100 g pasteurized egg mixture<br>4 g salt and pepper<br><br>Method:<br>Clean Brussels sprouts and remove outer leaves; reserve the nice leaves. Cut sprouts into quarters and boil in salted water until well done. Blanch the reserved leaves, refresh, and keep in a sauteuse with butter and seasoning.<br><br>Dry the cooked sprouts on paper towel, then chop finely. Blend in a bar blender with cream and egg mixture. Pass through a fine sieve and season with salt and pepper.<br><br>Pour mixture into buttered dariole molds and poach in a convection oven with steam at 90°C until set. Unmold onto parchment paper.<br><br>Arrange cooked sprout leaves on top. Before service, heat in steam for 1–2 minutes and brush with melted butter. Warm additional leaves à la minute and sprinkle over the dish.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

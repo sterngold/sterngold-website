@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Braised Belgian Endive<br>Geschmorte Brüsseler Endivie<br>Endives braisées<br><br><br>Recipe #	: 541<br>Category	: ECA - Vegetables<br>Chef	: Patrick Diethelm<br>Date	:18.10.2005<br>Cost of goods	: CHF 0.71 / EUR 0.45<br><br>European SourmetCuisine<br><br>Ingredients for 2 servings at 100% (Net quantity)<br> 300 g	Belgian endive<br>2 g	Salt<br>10 g	Butter<br>40 g White Matignon<br>1 x	Seasoning (salt and pepper)<br>60 ml *Vegetable Stock<br>0.5 pc Lemon 10 g	Butter<br>Wash endives, trim if necessary. With a pointed knife, remove the bitter core. Be sure endive leaves do not separate. Blanch endives in salt and lemon water, drain.<br><br>- ADD BUTTER IN SUITABLE RONDEAU PAN.<br>- ADD MATIGNON AND SWEAT.<br>- PLACE ENDIVE TIGHTLY, SIDE BY SIDE, ON TOP.<br>- ADD VEGETABLE STOCK AND LEMON JUICE.<br>THE STOCK SHOULD COVER ABOUT ONE THIRD OF THE VEGETABLES. -SEASON WITH SALT AND PEPPER. COVER WITH BUTTERED ALUMINUM FOIL -BRING TO A BOIL.<br>- BRAISE IN OVEN AT 180°C UNTIL BELGIAN ENDIVE ARE TENDER. - COOL WWN WITH STOCK IN ICE WATER<br>- REMOVE FROM STOCK<br>- CUT LENGHTWISE IN HALF OR QUARTER AND TRIM<br>- SEASON WITH SALT AND PEPPER<br>- SAUTE IN CLARIFIED BUTTER UNTIL GOLDEN BROWN AND SERVE - BRUSH WITH HOT BUTTER AND SERVE.<br>Up to date methods for serving	<br><br>Belgian endive can also be breaded and then sauteed in butter until golden brown with some herbs<br>or Parisian style or Piccata style</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Braised Belgian Endive<br>Geschmorte Brüsseler Endivie<br>Endives braisées<br><br><br>Recipe #	: 541<br>Category	: ECA - Vegetables<br>Chef	: Patrick Diethelm<br>Date	:18.10.2005<br>Cost of goods	: CHF 0.71 / EUR 0.45<br><br>European SourmetCuisine<br><br>Ingredients for 2 servings at 100% (Net quantity)<br> 300 g	Belgian endive<br>2 g	Salt<br>10 g	Butter<br>40 g White Matignon<br>1 x	Seasoning (salt and pepper)<br>60 ml *Vegetable Stock<br>0.5 pc Lemon 10 g	Butter<br>Wash endives, trim if necessary. With a pointed knife, remove the bitter core. Be sure endive leaves do not separate. Blanch endives in salt and lemon water, drain.<br><br>- ADD BUTTER IN SUITABLE RONDEAU PAN.<br>- ADD MATIGNON AND SWEAT.<br>- PLACE ENDIVE TIGHTLY, SIDE BY SIDE, ON TOP.<br>- ADD VEGETABLE STOCK AND LEMON JUICE.<br>THE STOCK SHOULD COVER ABOUT ONE THIRD OF THE VEGETABLES. -SEASON WITH SALT AND PEPPER. COVER WITH BUTTERED ALUMINUM FOIL -BRING TO A BOIL.<br>- BRAISE IN OVEN AT 180°C UNTIL BELGIAN ENDIVE ARE TENDER. - COOL WWN WITH STOCK IN ICE WATER<br>- REMOVE FROM STOCK<br>- CUT LENGHTWISE IN HALF OR QUARTER AND TRIM<br>- SEASON WITH SALT AND PEPPER<br>- SAUTE IN CLARIFIED BUTTER UNTIL GOLDEN BROWN AND SERVE - BRUSH WITH HOT BUTTER AND SERVE.<br>Up to date methods for serving	<br><br>Belgian endive can also be breaded and then sauteed in butter until golden brown with some herbs<br>or Parisian style or Piccata style</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Wash 300g Belgian endives and trim if necessary. Using a pointed knife, remove the bitter core while keeping leaves intact. Blanch in salted lemon water and drain.<br><br>Melt butter in a suitable rondeau pan. Add matignon (white vegetable dice) and sweat. Arrange blanched endives tightly, side by side, on top. Add vegetable stock and lemon juice—stock should cover about one-third of the vegetables. Season with salt and pepper. Cover with buttered aluminum foil and bring to a boil. Braise in oven at 180°C until tender. Cool with stock in ice water. Remove from stock, cut lengthwise in half or quarter, and trim. Season with salt and pepper. Sauté in clarified butter until golden brown. Brush with hot butter and serve.<br><br>Alternatively, bread the endives and sauté in butter until golden, or prepare Parisian or Piccata style.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

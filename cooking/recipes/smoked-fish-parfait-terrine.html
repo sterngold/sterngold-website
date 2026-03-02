@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">`в ТZNAU-LUCERNE SWITZEгΡRLAND<br>SMOKED FISH PARFAIT TERRINE<br>Yield: 10 servings<br>150 g smoked fish fillets <br>20 g fine chopped shallots <br>50 g tomato concasse<br>50 g button mushrooms sliced <br>10 g butter<br>50 g	noilly prat<br>50 g white wine<br>150 g fish stock<br>150 g cream<br>5 g chopped dill<br>8 g sea salt<br>15 g freshly grated, chopped horseradish<br>8 g sea salt<br>pepper mill, lemon juice <br>4	sheet gelatine<br>30 g cream<br>150 g whipped cream (soft)<br>5-6 freshly smoked clean fillets<br>Preparation:<br>Sweat the shallots, button mushroom and tomato concassé in butter<br>Add the noilly prat, white wine and fish stock nd reduce to syrup<br>Pour in the cream and reduce to сГesired consistency<br>Cool down<br><br>Remove the skin and fat from the smoked fish fillets and blend in food processor with the 3 cold fish sauce and season<br> - Pass through drum sieve.<br><br><br>Remove the skin from the freshly smoked lokal fish and fillet.<br>Soak the gelatine in cold water, squeeze out and dissolve in 30 g cream.<br>Stir into fish mousse with a whisk.<br><br>Line out terrine mold first with plastic foil<br>*- Fold in the dill, horseradish, whipped cream into mousseline and fill with remaining fillets into prepared terrine mold<br>Cover and rest for one hour in refrigerator<br>Unmold the parfait, slice carefully.<br>critical step</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">`в ТZNAU-LUCERNE SWITZEгΡRLAND<br>SMOKED FISH PARFAIT TERRINE<br>Yield: 10 servings<br>150 g smoked fish fillets <br>20 g fine chopped shallots <br>50 g tomato concasse<br>50 g button mushrooms sliced <br>10 g butter<br>50 g	noilly prat<br>50 g white wine<br>150 g fish stock<br>150 g cream<br>5 g chopped dill<br>8 g sea salt<br>15 g freshly grated, chopped horseradish<br>8 g sea salt<br>pepper mill, lemon juice <br>4	sheet gelatine<br>30 g cream<br>150 g whipped cream (soft)<br>5-6 freshly smoked clean fillets<br>Preparation:<br>Sweat the shallots, button mushroom and tomato concassé in butter<br>Add the noilly prat, white wine and fish stock nd reduce to syrup<br>Pour in the cream and reduce to сГesired consistency<br>Cool down<br><br>Remove the skin and fat from the smoked fish fillets and blend in food processor with the 3 cold fish sauce and season<br> - Pass through drum sieve.<br><br><br>Remove the skin from the freshly smoked lokal fish and fillet.<br>Soak the gelatine in cold water, squeeze out and dissolve in 30 g cream.<br>Stir into fish mousse with a whisk.<br><br>Line out terrine mold first with plastic foil<br>*- Fold in the dill, horseradish, whipped cream into mousseline and fill with remaining fillets into prepared terrine mold<br>Cover and rest for one hour in refrigerator<br>Unmold the parfait, slice carefully.<br>critical step</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SMOKED FISH PARFAIT TERRINE<br>Zug-Lucerne, Switzerland<br>Yield: 10 servings<br><br>INGREDIENTS<br>150 g Smoked fish fillets<br>20 g Fine chopped shallots<br>50 g Tomato concassé<br>50 g Button mushrooms, sliced<br>10 g Butter<br>50 g Noilly Prat<br>50 g White wine<br>150 g Fish stock<br>150 g Cream<br>5 g Chopped dill<br>8 g Sea salt<br>15 g Freshly grated horseradish, chopped<br>Pepper, lemon juice to taste<br>4 sheets Gelatine<br>30 g Cream<br>150 g Whipped cream (soft peaks)<br>5–6 Freshly smoked fish fillets<br><br>METHOD<br>Sweat shallots, mushrooms, and tomato concassé in butter. Deglaze with Noilly Prat and white wine, add fish stock and reduce to syrup. Add 150 g cream and reduce to desired consistency. Cool completely. Skin and bone smoked fillets, blend with cooled sauce in food processor, and season. Pass through drum sieve. Skin and fillet fresh smoked fish. Soak gelatine in cold water, squeeze dry, and dissolve in 30 g cream. Whisk into fish mousse. Line terrine mold with plastic film. Fold dill, horseradish, and whipped cream into mousseline. Layer with remaining fillets in mold. Cover and refrigerate 1 hour. Unmold and slice carefully.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

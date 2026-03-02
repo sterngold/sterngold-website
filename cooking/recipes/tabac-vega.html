@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Wortel - 50 gr. <br>Paprika - 50 gr. <br>Brocillie - 50 gr. <br>Sugarsnaps - 25 gr. <br>Paksoy - 50 gr. <br>Bambooscheuten - 10 gr. <br>Baby mais - 10 gr. <br>Oestersaus - 60 gr.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Wortel - 50 gr. <br>Paprika - 50 gr. <br>Brocillie - 50 gr. <br>Sugarsnaps - 25 gr. <br>Paksoy - 50 gr. <br>Bambooscheuten - 10 gr. <br>Baby mais - 10 gr. <br>Oestersaus - 60 gr.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">TABAC VEGA | Tabac | Entremétier<br><br>Ingredients:<br>- Carrot: 50 g<br>- Bell pepper: 50 g<br>- Broccoli: 50 g<br>- Sugar snap peas: 25 g<br>- Bok choy: 50 g<br>- Bamboo shoots: 10 g<br>- Baby corn: 10 g<br>- Oyster sauce: 60 g<br><br>Note: Ingredient list only. Preparation method not specified in original notes.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Ingredients for 8 servings at 100% [Net quantity)<br>100 ml Olive oil<br>100 ml Sherry vinegar <br>200 ml Beer <br>60 ml *Fish Stock 30 g	Shallots<br>2 pc Thyme sprig, fresh 30 g	Ginger, ground<br>60 g Lemon gras or more ginger<br>40 g Lemon juice ml<br>10 g	Salt<br>2 g	Pink peppercorns</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Ingredients for 8 servings at 100% [Net quantity)<br>100 ml Olive oil<br>100 ml Sherry vinegar <br>200 ml Beer <br>60 ml *Fish Stock 30 g	Shallots<br>2 pc Thyme sprig, fresh 30 g	Ginger, ground<br>60 g Lemon gras or more ginger<br>40 g Lemon juice ml<br>10 g	Salt<br>2 g	Pink peppercorns</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">MARINADE FOR PIKE PERCH ROYALE FILET<br><br>Ingredients for 8 servings:<br>100 ml olive oil<br>100 ml sherry vinegar<br>200 ml beer<br>60 ml fish stock<br>30 g shallots<br>2 sprigs fresh thyme<br>30 g ground ginger<br>60 g lemongrass (or additional ginger)<br>40 ml lemon juice<br>10 g salt<br>2 g pink peppercorns<br><br>Method:<br>Combine all ingredients. Use to marinate pike perch fillets.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

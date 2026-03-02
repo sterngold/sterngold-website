@@ -98,8 +98,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- make a light yellow roux with butter and flour. Cool the roux<br>- bring veal stock to a boil, add roux and mix well<br>- bring to a boil, stirring continously<br>- simmer for about 30 minutes<br>- season to taste<br>- strain through fien china cap</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- make a light yellow roux with butter and flour. Cool the roux<br>- bring veal stock to a boil, add roux and mix well<br>- bring to a boil, stirring continously<br>- simmer for about 30 minutes<br>- season to taste<br>- strain through fien china cap</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Make a light yellow roux with butter and flour; cool. Bring veal stock to a boil and add roux, mixing well. Return to a boil, stirring continuously. Simmer approximately 30 minutes. Season to taste. Strain through fine china cap.</div>
+          
         </section>
         
 
@@ -139,5 +148,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

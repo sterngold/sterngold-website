@@ -146,8 +146,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- sweet leeks , onions and knob celery in butter<br>- add diced topinambour and continue cooking<br>- dust with flour and stir<br>- add stock and bring to boil, stirring<br>- boil for  at least 10 min. skim occasionally<br>- stri in cream. Bring to a boil again. Season to taste<br>- mix with bar blender<br>- strain through china cap and chill<br>- for serving bring to a boil and foam up with pole blender<br><br>- garnish with freshly baked topinabour clavotis (extra recipe pauli) sprinkle with chervil</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- sweet leeks , onions and knob celery in butter<br>- add diced topinambour and continue cooking<br>- dust with flour and stir<br>- add stock and bring to boil, stirring<br>- boil for  at least 10 min. skim occasionally<br>- stri in cream. Bring to a boil again. Season to taste<br>- mix with bar blender<br>- strain through china cap and chill<br>- for serving bring to a boil and foam up with pole blender<br><br>- garnish with freshly baked topinabour clavotis (extra recipe pauli) sprinkle with chervil</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sweat sweet leeks, onions, and knob celery in butter. Add diced topinambour and continue cooking. Dust with flour and stir to combine. Add stock and bring to a boil, stirring frequently. Boil for at least 10 minutes, skimming occasionally. Stir in cream and bring to a boil again. Season to taste. Blend with an immersion blender until smooth. Strain through a china cap and chill. For service, bring to a boil and aerate with an immersion blender to create foam. Garnish with freshly baked topinambour clavotis (see Pauli recipe) and sprinkle with chervil.</div>
+          
         </section>
         
 
@@ -181,5 +190,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

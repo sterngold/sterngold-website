@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Sauce allemande<br>Deutsche Sauce<br>Sauce allemande<br><br>Rezept Nr. :45<br><br>Kategorie : Sauces<br><br>Koch: Patrick Diethelm <br><br>Datum : 18.01.2005<br>Warenkosten: CHF 3.54 LEUR 2.24<br><br><br><br>European Gourmet Cuisine<br>Zutaten fUr 0.500 Liter zu 100% [Nettomenge)<br><br>400 ml * Veal Veloute Sauce<br>200 ml * WhIte Veal Stock<br><br>1 st Egg yolks<br>100 ml Heavy cream [36%)<br>25 g Butter Cold<br><br>1 x Seasoning (lemon juice)<br>1 x Seasoning [salt, cayenne pepper)<br><br>- REDUCE VEAL STOCK QUICKLY TO A SYRUPY CONSISTENCY. BUT 00 NOT BROWN.<br>- ADO VELOUTEDE VEAU; BRING TO BOILING POINT.<br>- COMBINE EGG YOLKS WITH CREAM AND MIX INTO SAUCE. 00 NOT ALLOW TO BOIL.<br>SEASON TO TASTE AND STRAIN THROUGH FINE CHINA CAP.<br>ADO COLO BUDER IN SMALL NUGGETS.<br><br>APPLICATIONS<br>Use as an ingredient in white meat sauce variations. J,.k:f. as a sauce with pasta.<br>with veal fillings for patty shells.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Sauce allemande<br>Deutsche Sauce<br>Sauce allemande<br><br>Rezept Nr. :45<br><br>Kategorie : Sauces<br><br>Koch: Patrick Diethelm <br><br>Datum : 18.01.2005<br>Warenkosten: CHF 3.54 LEUR 2.24<br><br><br><br>European Gourmet Cuisine<br>Zutaten fUr 0.500 Liter zu 100% [Nettomenge)<br><br>400 ml * Veal Veloute Sauce<br>200 ml * WhIte Veal Stock<br><br>1 st Egg yolks<br>100 ml Heavy cream [36%)<br>25 g Butter Cold<br><br>1 x Seasoning (lemon juice)<br>1 x Seasoning [salt, cayenne pepper)<br><br>- REDUCE VEAL STOCK QUICKLY TO A SYRUPY CONSISTENCY. BUT 00 NOT BROWN.<br>- ADO VELOUTEDE VEAU; BRING TO BOILING POINT.<br>- COMBINE EGG YOLKS WITH CREAM AND MIX INTO SAUCE. 00 NOT ALLOW TO BOIL.<br>SEASON TO TASTE AND STRAIN THROUGH FINE CHINA CAP.<br>ADO COLO BUDER IN SMALL NUGGETS.<br><br>APPLICATIONS<br>Use as an ingredient in white meat sauce variations. J,.k:f. as a sauce with pasta.<br>with veal fillings for patty shells.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">ALLEMANDE SAUCE | DCT, Saucier | Chef Patrick Diethelm, 18.01.2005<br>Yield: 500 ml<br><br>400 ml veal velouté sauce<br>200 ml white veal stock<br>1 egg yolk<br>100 ml heavy cream (36%)<br>25 g cold butter<br>Seasoning: lemon juice, salt, cayenne pepper<br><br>Reduce veal stock quickly to a syrupy consistency without browning. Add veal velouté and bring to boiling point. Combine egg yolk with cream and whisk into sauce without allowing it to boil. Season to taste and strain through fine chinois. Mount with cold butter added in small nuggets.<br><br>Use as a base for white meat sauce variations, with pasta, or with veal fillings for patty shells.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

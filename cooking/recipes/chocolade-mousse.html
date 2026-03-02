@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">375 gr. Chocolade (bain marie) <br>3 dl room ----- 45 gr suiker<br>90 gr. Eiwit ----- 45 gr suiker<br>Cointrou</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">375 gr. Chocolade (bain marie) <br>3 dl room ----- 45 gr suiker<br>90 gr. Eiwit ----- 45 gr suiker<br>Cointrou</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHOCOLADE MOUSSE<br>Source: Vijf | Pâtisserie Station<br><br>1. Melt 375 gr. chocolate in bain marie.<br>2. Whip 3 dl cream with 45 gr. sugar to soft peaks. Fold into melted chocolate.<br>3. Whip 90 gr. egg white with 45 gr. sugar to stiff peaks. Fold into mousse.<br>4. Season with Cointreau to taste.<br>5. Set and serve chilled.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

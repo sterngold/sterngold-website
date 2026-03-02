@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">препоръчват да е няколко минути – от 3 до 7 – за да не разкашкат.<br>да са “ал денте” - малко твърди.<br>Явно у вас ги белят, у нас не.<br>Варят се във висок съд – като се добавя сол, захар, масло и резенче лимон.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">препоръчват да е няколко минути – от 3 до 7 – за да не разкашкат.<br>да са “ал денте” - малко твърди.<br>Явно у вас ги белят, у нас не.<br>Варят се във висок съд – като се добавя сол, захар, масло и резенче лимон.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">ASPARAGUS<br><br>Bring tall pot of water to boil with salt, sugar, butter, and a lemon slice. Add asparagus and cook 3–7 minutes until al dente (slightly firm, not soft).<br><br>Note: Traditional method as noted here; peeling not always required.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

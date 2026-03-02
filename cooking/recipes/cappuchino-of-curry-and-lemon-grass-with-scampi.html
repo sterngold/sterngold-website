@@ -218,8 +218,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- Noilly prat , port wine and wihte wine well reduced<br>- add shallots, leeks, and fond and simmer for 5 min <br>- add cream, curry and cocos and simmer another 10 min <br>- puree fein fruits and parsley in mixer machine and add to the soup <br>- simmer for another 5 min and then through towel or  china cup and still hot add the butter cubes<br>- gut wurzig abschmecken<br>- one scampi a la minute pan fray and add to the soup glass. Soup mix with stab mixer</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- Noilly prat , port wine and wihte wine well reduced<br>- add shallots, leeks, and fond and simmer for 5 min <br>- add cream, curry and cocos and simmer another 10 min <br>- puree fein fruits and parsley in mixer machine and add to the soup <br>- simmer for another 5 min and then through towel or  china cup and still hot add the butter cubes<br>- gut wurzig abschmecken<br>- one scampi a la minute pan fray and add to the soup glass. Soup mix with stab mixer</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Reduce Noilly Prat, port wine, and white wine well.<br><br>Add shallots, leeks, and fond. Simmer 5 minutes.<br><br>Add cream, curry, and coconut. Simmer another 10 minutes.<br><br>Puree fine fruits and parsley in mixer and add to the soup. Simmer 5 more minutes.<br><br>Strain through towel or china cup while still hot. Add butter cubes off heat. Season well with spices and seasoning.<br><br>Pan-fry one scampi à la minute and add to the soup glass. Finish soup with immersion blender just before service.</div>
+          
         </section>
         
 
@@ -253,5 +262,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Category:	ECA - Sauces Garde-manger<br>Source:	Patrick Diethelm<br>Date:	13.11.2005<br>Cost of goods:	CHF 0.33 /Personen Remark:<br>Ingredients for 20 Personen: ät; 100% (Net quantity)<br>200<br>g<br>Pumkin meat ripe<br>200<br>g<br>Dates<br>200<br>ml<br>Sherry wine, dry<br>10<br>g<br>Szechuan pepper<br>10<br>g<br>Ginger<br>200<br>g<br>Crystal sugar<br>2<br>dl<br>Apple vinegar<br>1<br>g<br>Star anise<br>1<br>x<br>Salt (pinch)<br>1<br>g<br>Mint Leaf Fresh<br><br>- Split dates in half and remove the seed cut into 1 cm dice and marinate with sherry wine for 1 hour - Cut pumkin into 5mm jardiniere<br>- Start toasting Szechuan pepper on low temperature add crystal sugar and ginger<br>- Deglaze with the apple vinegar<br>- Add star anise and salt and bring to a boil<br>- Add pumkin and simmer 10 minutes on low fire until soft, then add marinated dates and let rest for 10 minutes.<br>- Before serving add chopped mint leaves to give fresh flavour to pickles and served with terrine</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Category:	ECA - Sauces Garde-manger<br>Source:	Patrick Diethelm<br>Date:	13.11.2005<br>Cost of goods:	CHF 0.33 /Personen Remark:<br>Ingredients for 20 Personen: ät; 100% (Net quantity)<br>200<br>g<br>Pumkin meat ripe<br>200<br>g<br>Dates<br>200<br>ml<br>Sherry wine, dry<br>10<br>g<br>Szechuan pepper<br>10<br>g<br>Ginger<br>200<br>g<br>Crystal sugar<br>2<br>dl<br>Apple vinegar<br>1<br>g<br>Star anise<br>1<br>x<br>Salt (pinch)<br>1<br>g<br>Mint Leaf Fresh<br><br>- Split dates in half and remove the seed cut into 1 cm dice and marinate with sherry wine for 1 hour - Cut pumkin into 5mm jardiniere<br>- Start toasting Szechuan pepper on low temperature add crystal sugar and ginger<br>- Deglaze with the apple vinegar<br>- Add star anise and salt and bring to a boil<br>- Add pumkin and simmer 10 minutes on low fire until soft, then add marinated dates and let rest for 10 minutes.<br>- Before serving add chopped mint leaves to give fresh flavour to pickles and served with terrine</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PUMPKIN DATE PICKLES<br>Yield: 20 portions | Chef: Patrick Diethelm<br><br>Ingredients:<br>200 g ripe pumpkin meat<br>200 g dates<br>200 ml dry sherry wine<br>10 g Szechuan pepper<br>10 g ginger<br>200 g crystal sugar<br>200 ml apple vinegar<br>1 g star anise<br>Salt (pinch)<br>1 g fresh mint leaf<br><br>Method:<br>Halve dates, remove seeds, cut into 1 cm dice, and marinate in sherry wine for 1 hour. Cut pumpkin into 5 mm jardinière. Toast Szechuan pepper on low heat, add crystal sugar and ginger. Deglaze with apple vinegar. Add star anise and salt, bring to boil. Add pumpkin and simmer on low heat 10 minutes until soft. Add marinated dates and rest 10 minutes. Before service, fold in chopped mint to brighten flavor. Serve with terrine.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

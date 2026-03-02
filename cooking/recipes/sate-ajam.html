@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Marinade<br>Ketjap manis<br>Knof  <br>Sambal<br><br>per portie<br>Kip filet - 200 gr. <br>Pindasasu 180 gr.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Marinade<br>Ketjap manis<br>Knof  <br>Sambal<br><br>per portie<br>Kip filet - 200 gr. <br>Pindasasu 180 gr.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SATE AJAM<br><br>Marinate chicken filet (200g per portion) in a mixture of ketjap manis, garlic, and sambal for adequate time.<br><br>Serve with peanut sauce (180g per portion).</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Garnish<br>- Peel potatoes, cut into 5mm slices, and blanch<br>- Peel onions and cut into slices (emince).<br>- Sauté potatoes in peanut oil; add onions.<br>- Season with salt, nutmeg, and white pepper.<br>- Add butter' and sauté potatoes and onions together until done<br>-SEASON LEG OF LAMB WITH SEASONING SALT .<br>- ROAST WITH PEANUT OIL IN HOT OVEN, AT 220°C, TURNING TO BROWN ON ALL SIDES.<br>- LOWER HEAT AND ROAST AT 180°C, BASTING OCCASIONALLY WITH DRIPPINGS, UNTIL DESIRED DONENESS. of 54°C [CHECK WITH MEAT THERMOMETER).<br>- REMOVE LAMB FROM PAN AND KEEP WARM ON WIRE RACK.<br>- DRAIN OFF FAT FROM PAN, ADD VEGETABLES, AND SAUTÉ FOR A FEW MINUTES. ADD WINE AND REDUCE.<br>ADD BROWN VEAL STOCK, BRING TO A BOIL AND BOIL FOR 10 MINUTES.<br>STRAIN SAUCE THROUGH CHINA CAP. SKIM OFF ANY REMAINING FAT.<br>PRESENTATION<br>Slice meat and serve on top of potato and onion garnish. Serve sauce on the side.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Garnish<br>- Peel potatoes, cut into 5mm slices, and blanch<br>- Peel onions and cut into slices (emince).<br>- Sauté potatoes in peanut oil; add onions.<br>- Season with salt, nutmeg, and white pepper.<br>- Add butter' and sauté potatoes and onions together until done<br>-SEASON LEG OF LAMB WITH SEASONING SALT .<br>- ROAST WITH PEANUT OIL IN HOT OVEN, AT 220°C, TURNING TO BROWN ON ALL SIDES.<br>- LOWER HEAT AND ROAST AT 180°C, BASTING OCCASIONALLY WITH DRIPPINGS, UNTIL DESIRED DONENESS. of 54°C [CHECK WITH MEAT THERMOMETER).<br>- REMOVE LAMB FROM PAN AND KEEP WARM ON WIRE RACK.<br>- DRAIN OFF FAT FROM PAN, ADD VEGETABLES, AND SAUTÉ FOR A FEW MINUTES. ADD WINE AND REDUCE.<br>ADD BROWN VEAL STOCK, BRING TO A BOIL AND BOIL FOR 10 MINUTES.<br>STRAIN SAUCE THROUGH CHINA CAP. SKIM OFF ANY REMAINING FAT.<br>PRESENTATION<br>Slice meat and serve on top of potato and onion garnish. Serve sauce on the side.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Roast Leg of Lamb with Onions and Potatoes<br><br>GARNISH<br>Peel potatoes and cut into 5 mm slices. Blanch. Peel onions and slice (émincer). Sauté potatoes in peanut oil, then add onions. Season with salt, nutmeg, and white pepper. Add butter and sauté potatoes and onions together until done.<br><br>LAMB<br>Season leg of lamb with seasoning salt. Roast with peanut oil in hot oven at 220°C, turning to brown on all sides. Lower heat to 180°C and roast, basting occasionally with drippings, until desired doneness (54°C internal temperature, checked with meat thermometer). Remove from pan and keep warm on wire rack.<br><br>SAUCE<br>Drain fat from pan. Add vegetables and sauté for a few minutes. Add wine and reduce. Add brown veal stock, bring to boil, and boil for 10 minutes. Strain sauce through china cap and skim off remaining fat.<br><br>PRESENTATION<br>Slice meat and serve on top of potato and onion garnish. Serve sauce on the side.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

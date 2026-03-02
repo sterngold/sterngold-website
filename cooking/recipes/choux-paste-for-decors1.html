@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Choux Paste for Decors<br>Brandteig (gesalzen] Pâte à choux (salé]<br><br><br>Recipe #	: 678<br>Category	: ECA - Dough<br>Chef	: Patrick Diethelm<br>Date	: 07.11,2005<br>Cost of goods	: CHF 4.46 / EUR 2.82European Gourmet CuisineIngredients for 0.200 kilogram. at 100% (Net quantity)<br>35mlMilk35mlWater30gButter1Salt45gWhite wheat flour80gEgg<br>COMBINE MILK, WATER, BUTTER, SALT AND BRING TO A BOIL.<br>ADD FLOUR AT ONCE, STIRRING VIGOROUSLY OVER HEAT WITH A PLASTIC SPATULA	UNTIL THE<br>MIXTURE IS SMOOTH AND NO LONGER CLINGS TO THE SIDES OF THE SUTEUSE<br>- REMOVE FROM HEAT, LET COOL BRIEFLY, AND INCORPORATE THE EGGS IN SMALL	INCREMENTS.<br>- Use for Appetizer decors<br>EUROPEAN CULINARY ARTS CENTER<br>European Gourmet Course with Chef P. DíethelmCHOUX PASTE DECORS<br>VITZNAU-LUCERNE SWITZERLAND</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Choux Paste for Decors<br>Brandteig (gesalzen] Pâte à choux (salé]<br><br><br>Recipe #	: 678<br>Category	: ECA - Dough<br>Chef	: Patrick Diethelm<br>Date	: 07.11,2005<br>Cost of goods	: CHF 4.46 / EUR 2.82European Gourmet CuisineIngredients for 0.200 kilogram. at 100% (Net quantity)<br>35mlMilk35mlWater30gButter1Salt45gWhite wheat flour80gEgg<br>COMBINE MILK, WATER, BUTTER, SALT AND BRING TO A BOIL.<br>ADD FLOUR AT ONCE, STIRRING VIGOROUSLY OVER HEAT WITH A PLASTIC SPATULA	UNTIL THE<br>MIXTURE IS SMOOTH AND NO LONGER CLINGS TO THE SIDES OF THE SUTEUSE<br>- REMOVE FROM HEAT, LET COOL BRIEFLY, AND INCORPORATE THE EGGS IN SMALL	INCREMENTS.<br>- Use for Appetizer decors<br>EUROPEAN CULINARY ARTS CENTER<br>European Gourmet Course with Chef P. DíethelmCHOUX PASTE DECORS<br>VITZNAU-LUCERNE SWITZERLAND</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHOUX PASTE FOR DECORS<br><br>Yield: 200g | Chef: Patrick Diethelm | Recipe #678<br><br>INGREDIENTS<br>35ml pasteurized milk<br>35ml water<br>30g butter<br>1g salt<br>45g white wheat flour<br>80g eggs<br><br>METHOD<br>1. Combine milk, water, butter, and salt in a saucepan. Bring to a boil.<br>2. Remove from heat and add flour all at once, stirring vigorously with a plastic spatula until the mixture is smooth and no longer clings to the sides of the pot.<br>3. Cool briefly, then incorporate eggs in small increments, mixing until fully incorporated.<br>4. Use for appetizer décors.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

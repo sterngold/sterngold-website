@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">DUCK CONFIT<br>Traditional French dishes<br>Confit of duck or goose is a preserved dish made by slowly cooking<br>the salted and seasoned meat of the bird in its own [or compatible) fat. It was an effective means of preserving such meats before the age of refrigeration. However, in a confit is not merely fowl preserved, but fowl improved.<br>VITZNAU-LUCERNE SWITZERLAND<br><br>Yield for 3 - 4 servings<br>1	kg duck legs<br>	10	g	salt<br>	10	g crushed peppercorns<br>1	kg rendered duck or pork fat<br>	20	g	cloves, garlic, peeled<br>	5	Sprigs of fresh thyme<br>	3	Sprigs of rosemary<br>	1	bay leaf, crushed<br>Preparation<br>Add clean duck legs into 1/2 gastro norm<br>Sprinkle all over with salt and pepper, and set aside at room temperature for 60 minutes.<br>Then place duck pieces in a Rondeau with rendered fat, garlic and thyme.<br>Place into oven and simmer uncovered, 1 1/2 to 2 hours at 130°C.<br>To test for doneness, pierce with a trussing needle. Meat should just fall of the bones when shaken.<br>Transfer duck pieces to a 2/3 Gastro norm and add the fat.<br>Let cool to room temperature, cover with plastic wrap, and refrigerate at least 24 hours.<br>Before serving, lift duck pieces out of fat. Remove and discard skin and any excess fat by warming slightly on a rack in the oven.<br>Serve duck hot or cold.<br>Infos:<br>For use in the cassoulet, these duck legs must be started at least three days beforehand. They can be preserved in the refrigerator for up to two months, as long as they are completely covered with duck fat and no air bubbles remain.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">DUCK CONFIT<br>Traditional French dishes<br>Confit of duck or goose is a preserved dish made by slowly cooking<br>the salted and seasoned meat of the bird in its own [or compatible) fat. It was an effective means of preserving such meats before the age of refrigeration. However, in a confit is not merely fowl preserved, but fowl improved.<br>VITZNAU-LUCERNE SWITZERLAND<br><br>Yield for 3 - 4 servings<br>1	kg duck legs<br>	10	g	salt<br>	10	g crushed peppercorns<br>1	kg rendered duck or pork fat<br>	20	g	cloves, garlic, peeled<br>	5	Sprigs of fresh thyme<br>	3	Sprigs of rosemary<br>	1	bay leaf, crushed<br>Preparation<br>Add clean duck legs into 1/2 gastro norm<br>Sprinkle all over with salt and pepper, and set aside at room temperature for 60 minutes.<br>Then place duck pieces in a Rondeau with rendered fat, garlic and thyme.<br>Place into oven and simmer uncovered, 1 1/2 to 2 hours at 130°C.<br>To test for doneness, pierce with a trussing needle. Meat should just fall of the bones when shaken.<br>Transfer duck pieces to a 2/3 Gastro norm and add the fat.<br>Let cool to room temperature, cover with plastic wrap, and refrigerate at least 24 hours.<br>Before serving, lift duck pieces out of fat. Remove and discard skin and any excess fat by warming slightly on a rack in the oven.<br>Serve duck hot or cold.<br>Infos:<br>For use in the cassoulet, these duck legs must be started at least three days beforehand. They can be preserved in the refrigerator for up to two months, as long as they are completely covered with duck fat and no air bubbles remain.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Place cleaned duck legs in a half gastro norm. Season generously with salt and crushed peppercorns; let rest at room temperature for 60 minutes. Transfer legs to a Rondeau with rendered duck or pork fat, peeled garlic cloves, thyme sprigs, rosemary sprigs, and crushed bay leaf. Cook uncovered in the oven at 130°C for 1½ to 2 hours until meat falls from the bone when pierced with a trussing needle. Transfer duck and fat to a two-thirds gastro norm, cool to room temperature, cover with plastic wrap, and refrigerate at least 24 hours. Before serving, lift duck from fat and warm on a rack in the oven to remove skin and excess fat. Serve hot or cold. Note: for cassoulet use, prepare at least three days ahead. Will keep refrigerated up to two months if fully covered with fat and free of air bubbles.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

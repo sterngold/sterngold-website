@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Gnocchi Parisian Style<br>Brandteignocken Gnocchi parisienne<br><br><br>Recipe ft	: 627<br>Category	: Pasta Dishes<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 0.58 / EUR 0.37<br><br><br>Ingredients for 6 servings at 100% (Net quantity)<br>135 ml Milk<br>	48 g	Butter<br>	3 g	Salt<br>	1 x	Nutmeg (pinch)<br>	140 g	White wheat flour<br>	150 g	Egg Shelled & broken up<br>	12 g	Butter<br>150 ml *Cream Sauce [with cream)<br>	60 g	Sbrinz grated<br>	36 g	Butter melted<br>- Combine milk, butter, salt, and nutmeg and bring to a boil.<br>- Remove from heat and add sifted flour all at once.<br>- Return to heat and stir vigorously with a plastic spatula until the resulting stiff paste no longer clings to the bottom of the pot.<br>- Cool mixture slightly; stir in eggs in small increments.<br>- BRING AMPLE AMOUNT OF WATER TO SIMMER.<br>- PUT Pate choux IN PASTRY BAG WITH A LARGE, SMOOTH TIP. PIPE DUMPLINGS DIRECTLY INTO THE WATER 25- mm to make DUMPLINGS, OR USE TWO TABLE SPOONS<br>- REMOVE DUMPLINGS WITH SKIMMER AS SOON AS THEY FLOAT TO THE TOP, .AND PUT THEM INTO COLD WATER.<br>- WHEN ALL PASTE IS USED UP, LIFT DUMPLINGS FROM COLD WATER AND LEt THEM DRAIN OFF. - BUTTER A DEEP, OVENPROOF DISH (GRATIN DISH).<br>- BRING CREAM SAUCE TO A BOIL.<br>- SPOON A SMALL AMOUNT OF CREAM SAUCE INTO THE GRATIN DISH AND PLACE DUMPLINGS ON TOP. DO NOT CROWD DUMPLINGS; THEY WILL EXPAND DURING BAKING.<br>- COVER WITH REMAINING CREAM SAUCE AND SPRINKLE WITH CHEESE AND MELTED BUTTER. - BAKE FOR 10 -15 MINUTES, STARTING AT 180°C, AND FINISHING AT 220°C .<br>Note: The dumplings should be golden brown, and should have risen like a souffle. If not served at once, they will collapse.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Gnocchi Parisian Style<br>Brandteignocken Gnocchi parisienne<br><br><br>Recipe ft	: 627<br>Category	: Pasta Dishes<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 0.58 / EUR 0.37<br><br><br>Ingredients for 6 servings at 100% (Net quantity)<br>135 ml Milk<br>	48 g	Butter<br>	3 g	Salt<br>	1 x	Nutmeg (pinch)<br>	140 g	White wheat flour<br>	150 g	Egg Shelled & broken up<br>	12 g	Butter<br>150 ml *Cream Sauce [with cream)<br>	60 g	Sbrinz grated<br>	36 g	Butter melted<br>- Combine milk, butter, salt, and nutmeg and bring to a boil.<br>- Remove from heat and add sifted flour all at once.<br>- Return to heat and stir vigorously with a plastic spatula until the resulting stiff paste no longer clings to the bottom of the pot.<br>- Cool mixture slightly; stir in eggs in small increments.<br>- BRING AMPLE AMOUNT OF WATER TO SIMMER.<br>- PUT Pate choux IN PASTRY BAG WITH A LARGE, SMOOTH TIP. PIPE DUMPLINGS DIRECTLY INTO THE WATER 25- mm to make DUMPLINGS, OR USE TWO TABLE SPOONS<br>- REMOVE DUMPLINGS WITH SKIMMER AS SOON AS THEY FLOAT TO THE TOP, .AND PUT THEM INTO COLD WATER.<br>- WHEN ALL PASTE IS USED UP, LIFT DUMPLINGS FROM COLD WATER AND LEt THEM DRAIN OFF. - BUTTER A DEEP, OVENPROOF DISH (GRATIN DISH).<br>- BRING CREAM SAUCE TO A BOIL.<br>- SPOON A SMALL AMOUNT OF CREAM SAUCE INTO THE GRATIN DISH AND PLACE DUMPLINGS ON TOP. DO NOT CROWD DUMPLINGS; THEY WILL EXPAND DURING BAKING.<br>- COVER WITH REMAINING CREAM SAUCE AND SPRINKLE WITH CHEESE AND MELTED BUTTER. - BAKE FOR 10 -15 MINUTES, STARTING AT 180°C, AND FINISHING AT 220°C .<br>Note: The dumplings should be golden brown, and should have risen like a souffle. If not served at once, they will collapse.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">GNOCCHI PARISIAN STYLE<br>Chef: Patrick Diethelm | 25.10.2005<br><br>INGREDIENTS (6 servings)<br>135 ml milk<br>48 g butter<br>3 g salt<br>Pinch nutmeg<br>140 g white wheat flour<br>150 g eggs (shelled and broken)<br>12 g butter<br>150 ml cream sauce<br>60 g Sbrinz, grated<br>36 g butter, melted<br><br>METHOD<br>Combine milk, butter, salt, and nutmeg; bring to a boil. Remove from heat and add sifted flour all at once. Return to heat and stir vigorously with a plastic spatula until the paste no longer clings to the pot bottom. Cool slightly, then stir in eggs in small increments.<br><br>Bring an ample pot of water to a simmer. Transfer pâte à choux to a pastry bag fitted with a large smooth tip and pipe 25 mm dumplings directly into the water, or use two tablespoons. Remove dumplings with a skimmer as soon as they float and transfer to cold water. Drain thoroughly.<br><br>Butter a deep ovenproof gratin dish. Bring cream sauce to a boil. Spoon a small amount of sauce into the dish, arrange dumplings without crowding (they expand during baking), and cover with remaining sauce. Sprinkle with cheese and melted butter.<br><br>Bake at 180°C for 10–15 minutes, finishing at 220°C until golden brown and risen like a soufflé. Serve immediately—they will collapse if held.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Carnaroli Saffron Risotto	V)<br>Carnaroli Saffranrisotto Risotto au safran<br><br>Recipe #	: 647<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	: 02.11.2005<br>Cost of goods	: CHF 0.87 / EUR 0.55 <br><br>European Gourmet Cuisine<br><br>Ingredients for 5 servings at 100% (Net quantity)<br><br>13 ml Olive oil<br>30 g	Shallots<br>5 g	Garlic<br>150 g Carnaroli rice<br>50 ml White wine (Sylvaner or Riesling)<br> 1 x	Seasoning (salt and pepper) <br>450 ml *Chicken Stock<br>1 pc Saffron, pinch<br>1 pc Bay leaves<br>38 ml Dry white wine<br>60 g Butter Cold<br>50 g Parmesan grated Old<br>Peel and chop.<br><br>SWEAT SHALLOTS AND GARLIC IN OLIVE OIL WITHOUT GETTING COLOR.<br>ADD RICE AND SWEAT BRIEFLY WITH ONIONS AND GARLIC.<br>DEGLAZE WITH WHITE WINE<br>ADD A SMALL AMOUNT OF BROTH AND STIR.<br>ADD SAFFRON BAY LEAF.<br>ADD BROTH IN SMALL AMOUNTS AND BRING TO A BOIL EACH TIME, <br>STIRRING WITH A PLASTIC PADDLE.<br>SIMMER AND THE RICE UNTIL AL DENTE.<br>ADD WHITE WINE, COLD BUTTER, AND GRATED CHEESE.<br>SEASON TO TASTE WITH SALT AND PEPPER.<br>The wine is added at the end to stop the cooking process, and also to preserve the wine aroma.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Carnaroli Saffron Risotto	V)<br>Carnaroli Saffranrisotto Risotto au safran<br><br>Recipe #	: 647<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	: 02.11.2005<br>Cost of goods	: CHF 0.87 / EUR 0.55 <br><br>European Gourmet Cuisine<br><br>Ingredients for 5 servings at 100% (Net quantity)<br><br>13 ml Olive oil<br>30 g	Shallots<br>5 g	Garlic<br>150 g Carnaroli rice<br>50 ml White wine (Sylvaner or Riesling)<br> 1 x	Seasoning (salt and pepper) <br>450 ml *Chicken Stock<br>1 pc Saffron, pinch<br>1 pc Bay leaves<br>38 ml Dry white wine<br>60 g Butter Cold<br>50 g Parmesan grated Old<br>Peel and chop.<br><br>SWEAT SHALLOTS AND GARLIC IN OLIVE OIL WITHOUT GETTING COLOR.<br>ADD RICE AND SWEAT BRIEFLY WITH ONIONS AND GARLIC.<br>DEGLAZE WITH WHITE WINE<br>ADD A SMALL AMOUNT OF BROTH AND STIR.<br>ADD SAFFRON BAY LEAF.<br>ADD BROTH IN SMALL AMOUNTS AND BRING TO A BOIL EACH TIME, <br>STIRRING WITH A PLASTIC PADDLE.<br>SIMMER AND THE RICE UNTIL AL DENTE.<br>ADD WHITE WINE, COLD BUTTER, AND GRATED CHEESE.<br>SEASON TO TASTE WITH SALT AND PEPPER.<br>The wine is added at the end to stop the cooking process, and also to preserve the wine aroma.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Peel and chop shallots and garlic. Sweat shallots and garlic in olive oil without coloring. Add Carnaroli rice and sweat briefly with the shallots and garlic. Deglaze with 50 ml white wine. Add a small amount of chicken stock and stir. Add saffron and bay leaf. Continue adding chicken stock in small amounts, bringing to a boil each time and stirring with a plastic paddle. Simmer until rice is al dente. Finish by adding the 38 ml dry white wine, cold butter, and grated Parmesan. Season to taste with salt and pepper. The final wine addition stops the cooking process and preserves the wine aroma.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

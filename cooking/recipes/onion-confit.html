@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Onions - 12 (cut half and lengthwise)<br>Add red wine - 3 - 4 litter<br>Bay leafes<br>Anijs seeds <br>Sugar <br>Crushed pepper<br>Reduce slowly till nice mixture</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Onions - 12 (cut half and lengthwise)<br>Add red wine - 3 - 4 litter<br>Bay leafes<br>Anijs seeds <br>Sugar <br>Crushed pepper<br>Reduce slowly till nice mixture</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Onion Confit<br><br>Halve 12 onions and cut lengthwise. Deglaze with 3–4 liters red wine. Add bay leaves, aniseed, sugar, and crushed pepper to taste. Cook slowly, reducing until the mixture reaches a rich, jamlike consistency.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

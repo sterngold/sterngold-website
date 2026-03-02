@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">TZNAU- iCERN SWITZERLAND<br>FRENCH SAFFRON OYSTER SOUP WITH PERNOD<br>Yield: 6 servings<br>12	fresh oysters creuse or belon 100 g dry white wine<br>600 g fish stock<br>200 g cream<br>10 g white roux<br>saffron<br>salt, pepper<br>65 g young spinach leaves, blanched 30 g pernod<br>30 g butter<br>20 g fennel brunoise<br>20 g carrot brunoise<br>20 g leek brunoise<br>50 g egg yolks 100 g cream<br>Garnish: Fennel green Melba toast<br>Preparation:<br>- Wash and open the oysters<br>- Reserve the juice, remove and reserve<br>- Remove the stalks, blanch and dry the spinach on paper towel - Wrap the oysters in the leaves with little egg white.<br>- Add the pernod, wine, fish stock and the reserved oyster water into rondeau<br>- Simmer and reduce down to half, thicken with little roux then strain through china cap - add cream and saffron and bring to a boil<br>A LA MINUTE METHOD	<br>- sweat the vegetables brunoise in sauteuse and add to soup<br>- Mix the egg yolk with the whipped cream and add half in the soup - Stir well over a low heat but do not boil again, season to taste<br>- Warm fish stock to 65°C add the oysters for a few seconds. (a la minute)<br>- Place one prepared oysters in each espresso cup and ladle some soup over each portion - Sprinkle some fennel green to the soup<br>- spoon the remaining liaison on the soup and gratinate until golden brown. - serve melba toast.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">TZNAU- iCERN SWITZERLAND<br>FRENCH SAFFRON OYSTER SOUP WITH PERNOD<br>Yield: 6 servings<br>12	fresh oysters creuse or belon 100 g dry white wine<br>600 g fish stock<br>200 g cream<br>10 g white roux<br>saffron<br>salt, pepper<br>65 g young spinach leaves, blanched 30 g pernod<br>30 g butter<br>20 g fennel brunoise<br>20 g carrot brunoise<br>20 g leek brunoise<br>50 g egg yolks 100 g cream<br>Garnish: Fennel green Melba toast<br>Preparation:<br>- Wash and open the oysters<br>- Reserve the juice, remove and reserve<br>- Remove the stalks, blanch and dry the spinach on paper towel - Wrap the oysters in the leaves with little egg white.<br>- Add the pernod, wine, fish stock and the reserved oyster water into rondeau<br>- Simmer and reduce down to half, thicken with little roux then strain through china cap - add cream and saffron and bring to a boil<br>A LA MINUTE METHOD	<br>- sweat the vegetables brunoise in sauteuse and add to soup<br>- Mix the egg yolk with the whipped cream and add half in the soup - Stir well over a low heat but do not boil again, season to taste<br>- Warm fish stock to 65°C add the oysters for a few seconds. (a la minute)<br>- Place one prepared oysters in each espresso cup and ladle some soup over each portion - Sprinkle some fennel green to the soup<br>- spoon the remaining liaison on the soup and gratinate until golden brown. - serve melba toast.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">FRENCH SAFFRON OYSTER SOUP WITH PERNOD<br>Yield: 6 servings<br><br>Ingredients:<br>12 fresh oysters (Creuse or Belon)<br>100 g dry white wine<br>600 g fish stock<br>200 g cream<br>10 g white roux<br>Saffron (pinch)<br>Salt and pepper<br>65 g young spinach leaves, blanched<br>30 g Pernod<br>30 g butter<br>20 g fennel brunoise<br>20 g carrot brunoise<br>20 g leek brunoise<br>50 g egg yolks<br>100 g cream (additional)<br>Garnish: fennel greens, melba toast<br><br>Method:<br>1. Wash and open oysters; reserve juice and oyster meats separately.<br>2. Blanch spinach and dry on paper towel.<br>3. Wrap each oyster in spinach leaf with small amount of egg white.<br>4. Combine Pernod, wine, fish stock, and reserved oyster water in rondeau.<br>5. Simmer and reduce to half volume; thicken with white roux and strain through china cap.<br>6. Add 200 g cream and saffron; bring to boil.<br>7. In sauteuse, sweat vegetable brunoise and add to soup.<br>8. Whisk egg yolks with 100 g cream. Temper liaison by slowly adding hot soup while whisking.<br>9. Add liaison to soup and stir over low heat; do not boil. Season to taste.<br>10. À la minute: warm fish stock to 65°C, add oysters briefly (few seconds).<br>11. Place one wrapped oyster in each espresso cup; ladle soup over.<br>12. Spoon remaining liaison on top and gratinate until golden.<br>13. Serve with melba toast and garnish with fennel greens.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

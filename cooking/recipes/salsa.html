@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Доматено пюре от консерва – изцежда се много добре от сока <br>12 пресни домата – нарязват се на дребно – да се изцедят добре от сока <br>2 стръка зелен лук – на ситно <br>пресни листа от кореандър <br>1 голям бял лук <br>половин бутилка – Sweet Chile souse <br>2 малки лъжици чеснова паста <br>пипер <br>половин лимон – изстисква се <br>Spanish peper  - червена лютива чушка малка</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Доматено пюре от консерва – изцежда се много добре от сока <br>12 пресни домата – нарязват се на дребно – да се изцедят добре от сока <br>2 стръка зелен лук – на ситно <br>пресни листа от кореандър <br>1 голям бял лук <br>половин бутилка – Sweet Chile souse <br>2 малки лъжици чеснова паста <br>пипер <br>половин лимон – изстисква се <br>Spanish peper  - червена лютива чушка малка</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SALSA<br><br>Drain canned tomato purée thoroughly of excess liquid. Dice 12 fresh tomatoes finely and drain well of their juice. Finely dice 2 stalks green onion. Finely dice 1 large white onion. Mince fresh coriander leaves. Dice small red chili pepper. Combine all vegetables in a bowl.<br><br>Add 2 teaspoons garlic paste, half a bottle of sweet chile sauce, and juice from half a lemon. Season with salt and pepper. Mix thoroughly. Taste and adjust seasoning as needed.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

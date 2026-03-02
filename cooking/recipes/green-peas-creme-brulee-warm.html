@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Green peas creme brulee (warm)<br>Caremelisierte Zuckererbsencreme (warm)<br>Recipe #<br>Category	: Amuse Bouche<br>Chef	: Patrick Diethelm<br>Date	: 12.12.2005<br>Cost of goods	: CHF 0.37 / EUR 0.23<br><br>European Gourmet Cuisine<br>Ingredients for 8 servings at 100% (Net quantity)<br><br>#1 Pre-preparation:<br>Prepare light golden caramel sugar with crystal sugar add rosemary and pour on parchment paper and chill<br>Add small pieces into food prozessor until powdered.<br>Preparation:<br><br>Remove from heat, add egg and egg yolk<br>Strain and fill into prepared smaller special dishes.<br>Steam shortly before serving at 85°C with steam for about 20 minutes. Remove from oven and keep warm<br>Sprinkle rosemary sugar on   of wârm green peas creme and caramelize with torch.<br>Serve with carved royal fillet of pepper salmon and few stewed vegetable julienne Decorate with sprig of herbs</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Green peas creme brulee (warm)<br>Caremelisierte Zuckererbsencreme (warm)<br>Recipe #<br>Category	: Amuse Bouche<br>Chef	: Patrick Diethelm<br>Date	: 12.12.2005<br>Cost of goods	: CHF 0.37 / EUR 0.23<br><br>European Gourmet Cuisine<br>Ingredients for 8 servings at 100% (Net quantity)<br><br>#1 Pre-preparation:<br>Prepare light golden caramel sugar with crystal sugar add rosemary and pour on parchment paper and chill<br>Add small pieces into food prozessor until powdered.<br>Preparation:<br><br>Remove from heat, add egg and egg yolk<br>Strain and fill into prepared smaller special dishes.<br>Steam shortly before serving at 85°C with steam for about 20 minutes. Remove from oven and keep warm<br>Sprinkle rosemary sugar on   of wârm green peas creme and caramelize with torch.<br>Serve with carved royal fillet of pepper salmon and few stewed vegetable julienne Decorate with sprig of herbs</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">GREEN PEAS CRÈME BRÛLÉE (WARM)<br>Chef: Patrick Diethelm | 12.12.2005<br>Category: Amuse Bouche<br><br>PRE-PREPARATION<br>Prepare a light golden caramel with crystal sugar, add rosemary, and pour onto parchment paper to chill. Once set, process into powder.<br><br>PREPARATION<br>[Note: Original text is incomplete/damaged OCR. The following steps are reconstructed from context:]<br>Remove caramel from heat, add egg and egg yolk. Strain mixture and fill into prepared small serving dishes. Steam in combi at 85°C with steam for approximately 20 minutes. Remove and keep warm.<br><br>Sprinkle rosemary sugar over the warm green pea crème and caramelize with a culinary torch. Serve alongside carved royal fillet of pepper salmon and a small julienne of stewed vegetables. Garnish with herb sprigs.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

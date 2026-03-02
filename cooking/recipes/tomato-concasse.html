@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Zutaten für 1.000 Liter zu 100% (Nettomenge)<br><br>35 ml 33 g <br>30 g <br>75 g <br>1 kg<br>Olive oil<br>Shallots<br>Garlic<br>Tomato paste Tomatoes<br>Peeled<br><br>Dip tomatoes in boiling water for 15 seconds and chill immediately in ice water. Peel tomatoes, cut in half, remove seeds and chop into 7 x 7 mm dices.<br>1 x	Seasoning (salt)<br>- SWEAT FINE CHOPPED SHALLOTS AND GARLIC IN OLIVE OIL. - ADD TOMATO PUREE AND CONTINUE COOKING.<br>- ADD TOMATO CONCASSE AND STEW FOR ABOUT 2-3 MINUTES. - SEASON TO TASTE<br>DCT - Swiss Culinary School - Vitznau / Luzern<br>CALCMENU</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Zutaten für 1.000 Liter zu 100% (Nettomenge)<br><br>35 ml 33 g <br>30 g <br>75 g <br>1 kg<br>Olive oil<br>Shallots<br>Garlic<br>Tomato paste Tomatoes<br>Peeled<br><br>Dip tomatoes in boiling water for 15 seconds and chill immediately in ice water. Peel tomatoes, cut in half, remove seeds and chop into 7 x 7 mm dices.<br>1 x	Seasoning (salt)<br>- SWEAT FINE CHOPPED SHALLOTS AND GARLIC IN OLIVE OIL. - ADD TOMATO PUREE AND CONTINUE COOKING.<br>- ADD TOMATO CONCASSE AND STEW FOR ABOUT 2-3 MINUTES. - SEASON TO TASTE<br>DCT - Swiss Culinary School - Vitznau / Luzern<br>CALCMENU</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">TOMATO CONCASSE<br><br>Yield: 1000ml (net quantity)<br><br>INGREDIENTS<br>35ml Olive oil<br>33g Shallots, finely chopped<br>30g Garlic<br>75g Tomato paste<br>1kg Tomatoes, peeled<br>Salt to taste<br><br>METHOD<br>1. Blanch tomatoes in boiling water for 15 seconds, then chill immediately in ice water. Peel, halve, remove seeds, and chop into 7×7mm dice.<br>2. Sweat finely chopped shallots and garlic in olive oil.<br>3. Add tomato paste and continue cooking.<br>4. Add tomato concasse and stew for approximately 2–3 minutes.<br>5. Season to taste with salt.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

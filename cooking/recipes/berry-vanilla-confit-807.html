@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Berry - Vanilla confit<br>Beeren-Vanille Confit<br>Recipe #<br>Category	: ECA - Sauces Garde-manger<br>Chef	: Patrick Diethelm<br>Date	: 14.11.2005<br>Cost of goods	: CHF 0.43 / EUR 0.27 <br><br>Ingredients for 5 servings at 100% (Net quantity)<br>	20 g	Crystal sugar 40 ml Water<br>0.5 pc Vanilla bean<br>14 ml Sherry vinegar 	200. g	Blueberries, fresh 10 ml Kirsch<br>2 g Cornstarch<br>	1 x	Nutmeg (pinch) 100 mg Cinnamon, ground<br>1 x Ceyenne pepper<br>- SPLIT THE VANILLA BEAN IN HALF AND SCRAPE OUT THE FLESH WITH PARING KNIFE - ADD SUGAR, WATER, VANILLA BEAN, SHERRY VINEGAR AND REDUCE TO 1/3.<br>- ADD BLUEBERRIES AND SIMMER ON LOW HEAT FOR 5 MIN. !<br>- MAKE SLURY WITH KIRSCH AND CORN STARCH AND ADD TO BERRIES<br>- Bring to a boil and add into bowl<br>- Season with nutmeg cinnamon and cayenne pepper. - Fresh Mint chiffonade can be added extra flavour. - Chill down and serve</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Berry - Vanilla confit<br>Beeren-Vanille Confit<br>Recipe #<br>Category	: ECA - Sauces Garde-manger<br>Chef	: Patrick Diethelm<br>Date	: 14.11.2005<br>Cost of goods	: CHF 0.43 / EUR 0.27 <br><br>Ingredients for 5 servings at 100% (Net quantity)<br>	20 g	Crystal sugar 40 ml Water<br>0.5 pc Vanilla bean<br>14 ml Sherry vinegar 	200. g	Blueberries, fresh 10 ml Kirsch<br>2 g Cornstarch<br>	1 x	Nutmeg (pinch) 100 mg Cinnamon, ground<br>1 x Ceyenne pepper<br>- SPLIT THE VANILLA BEAN IN HALF AND SCRAPE OUT THE FLESH WITH PARING KNIFE - ADD SUGAR, WATER, VANILLA BEAN, SHERRY VINEGAR AND REDUCE TO 1/3.<br>- ADD BLUEBERRIES AND SIMMER ON LOW HEAT FOR 5 MIN. !<br>- MAKE SLURY WITH KIRSCH AND CORN STARCH AND ADD TO BERRIES<br>- Bring to a boil and add into bowl<br>- Season with nutmeg cinnamon and cayenne pepper. - Fresh Mint chiffonade can be added extra flavour. - Chill down and serve</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">BERRY-VANILLA CONFIT<br><br>Source: DCT | Station: Garde Manger<br>Chef: Patrick Diethelm | Date: 14.11.2005<br>Yield: 5 servings<br><br>Ingredients:<br>20 g crystal sugar<br>40 ml water<br>0.5 vanilla bean<br>14 ml sherry vinegar<br>200 g fresh blueberries<br>10 ml kirsch<br>2 g cornstarch<br>1 pinch nutmeg<br>100 mg ground cinnamon<br>1 pinch cayenne pepper<br>Fresh mint chiffonade (optional)<br><br>Method:<br>1. Split vanilla bean lengthwise and scrape out flesh with paring knife.<br>2. Combine sugar, water, vanilla bean, and sherry vinegar in saucepan. Reduce to one-third.<br>3. Add blueberries and simmer on low heat for 5 minutes.<br>4. Make slurry with kirsch and cornstarch; add to berries.<br>5. Bring to a boil and transfer to bowl.<br>6. Season with nutmeg, cinnamon, and cayenne pepper. Add fresh mint chiffonade if desired.<br>7. Chill and serve.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

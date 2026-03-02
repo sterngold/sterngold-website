@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Sauteed Green Beans<br>Sautierte grüne Bohnen Haricots verts sauté<br><br><br>Rezept Nr.	: 542<br>Kategorie	: Vegetables<br>Koch	: P.Diethelm<br>Datum	: 04.082005<br>Warenkosten	: CHF 0.42 / EUR 0.26<br><br>EUROPEAN CULINARY CENTER<br>Zutaten für 8 Personen zu 100% (Nettomenge)<br>1<br>kg<br>Green beans<br>Blanch green beans and refresh<br>16<br>g<br>Salt<br><br>100<br>g<br>Butter<br><br>10<br>g<br>Garlic<br><br>72<br>g<br>Onions<br>Peel and chop.<br>1<br>x<br>Seasoning (black pepper)<br><br>1<br>x<br>Seasoning (salt)<br><br>200<br>g<br>Vegetable stock<br><br><br>- SWEAT ONIONS AND GARLIC IN BUTTER.<br>- ADD GREEN BEANS, SEASON WITH SALT AND PEPPER.<br> - ADD STOCK AND HEAT UP<br>- REMOVE BEANS AND ARRANGE.<br>- SERVE IMMEDIATELY</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Sauteed Green Beans<br>Sautierte grüne Bohnen Haricots verts sauté<br><br><br>Rezept Nr.	: 542<br>Kategorie	: Vegetables<br>Koch	: P.Diethelm<br>Datum	: 04.082005<br>Warenkosten	: CHF 0.42 / EUR 0.26<br><br>EUROPEAN CULINARY CENTER<br>Zutaten für 8 Personen zu 100% (Nettomenge)<br>1<br>kg<br>Green beans<br>Blanch green beans and refresh<br>16<br>g<br>Salt<br><br>100<br>g<br>Butter<br><br>10<br>g<br>Garlic<br><br>72<br>g<br>Onions<br>Peel and chop.<br>1<br>x<br>Seasoning (black pepper)<br><br>1<br>x<br>Seasoning (salt)<br><br>200<br>g<br>Vegetable stock<br><br><br>- SWEAT ONIONS AND GARLIC IN BUTTER.<br>- ADD GREEN BEANS, SEASON WITH SALT AND PEPPER.<br> - ADD STOCK AND HEAT UP<br>- REMOVE BEANS AND ARRANGE.<br>- SERVE IMMEDIATELY</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SAUTÉED GREEN BEANS<br><br>Recipe by P. Diethelm | 8 servings<br><br>Ingredients:<br>1 kg green beans<br>100 g butter<br>72 g onions<br>10 g garlic<br>200 g vegetable stock<br>16 g salt<br>Black pepper to taste<br><br>Method:<br>1. Blanch green beans and refresh in ice water. Drain well.<br>2. Peel and chop onions and garlic.<br>3. Sweat onions and garlic in butter without color.<br>4. Add blanched green beans. Season with salt and pepper.<br>5. Add vegetable stock and heat through.<br>6. Remove beans, arrange, and serve immediately.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

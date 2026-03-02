@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Smoked salmon in orange dumpling<br>Rauchlachs im Orangen-Knode/mante/<br>Recipe #<br>Category	: ECA - Garde-manger fish<br>Chef	: Patrick Diethelm<br>Date	: 05.12,2005<br>Cost of goods	:CHF 1.83 / EUR 1.15 <br><br>Eurapean Gourmet Cuisine<br><br>Ingredients for 8 servings at 100% (Net quantity)<br>	300 g	Smoked salmon, trimmed, boneless #2<br>	250 g	Bread Bretzel and Weggli<br>	'125 g	Milk past.<br>	125 g	Egg<br>	1 g	Rosemary<br>3 pc Orange (juice and grated peel)<br>Seasoning (salt and pepper) Nutmeg (pinch)<br>Cut royale filet out of smoked salmon and split lenghtwise in half (see instructions) - Prepare Dumpling mixture (see course instruction) marinate for 1 hour Z<br>line out triangle terrine mold with swiss chard and with dumpling mixture. <br>place salmon into center and cover again with dumpling mixture.<br>- Steam terrine at 75° C for about 20 Minutes chill and press with some weigth. - Slice carefully into 8 -10 Port. and place for 10 Minutes in warm place.<br>- SERVE WITH HERB DIL AND MARINATED PIKE PERCH FILET AND SAUERKRAUT - RED CABBAGE SALAD WITH BACON BITS</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Smoked salmon in orange dumpling<br>Rauchlachs im Orangen-Knode/mante/<br>Recipe #<br>Category	: ECA - Garde-manger fish<br>Chef	: Patrick Diethelm<br>Date	: 05.12,2005<br>Cost of goods	:CHF 1.83 / EUR 1.15 <br><br>Eurapean Gourmet Cuisine<br><br>Ingredients for 8 servings at 100% (Net quantity)<br>	300 g	Smoked salmon, trimmed, boneless #2<br>	250 g	Bread Bretzel and Weggli<br>	'125 g	Milk past.<br>	125 g	Egg<br>	1 g	Rosemary<br>3 pc Orange (juice and grated peel)<br>Seasoning (salt and pepper) Nutmeg (pinch)<br>Cut royale filet out of smoked salmon and split lenghtwise in half (see instructions) - Prepare Dumpling mixture (see course instruction) marinate for 1 hour Z<br>line out triangle terrine mold with swiss chard and with dumpling mixture. <br>place salmon into center and cover again with dumpling mixture.<br>- Steam terrine at 75° C for about 20 Minutes chill and press with some weigth. - Slice carefully into 8 -10 Port. and place for 10 Minutes in warm place.<br>- SERVE WITH HERB DIL AND MARINATED PIKE PERCH FILET AND SAUERKRAUT - RED CABBAGE SALAD WITH BACON BITS</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SMOKED SALMON IN ORANGE DUMPLINGS<br>Chef: Patrick Diethelm | Station: Garde Manger | Date: 05.12.2005<br><br>Ingredients (8 servings):<br>300g smoked salmon, trimmed, boneless<br>250g bread (Bretzel and Weggli)<br>125g milk paste<br>125g egg<br>1g rosemary<br>3 oranges (juice and grated peel)<br>Salt, pepper, nutmeg to taste<br><br>Method:<br>- Cut royale fillets from smoked salmon and split lengthwise in half.<br>- Prepare dumpling mixture according to course instructions. Marinate 1 hour.<br>- Line a triangle terrine mold with Swiss chard, then dumpling mixture.<br>- Place salmon fillets in center and cover with remaining dumpling mixture.<br>- Steam terrine at 75°C for approximately 20 minutes.<br>- Chill and press with weight.<br>- Slice carefully into 8–10 portions and rest in warm place for 10 minutes.<br>- Serve with herb dill, marinated pike perch fillet, sauerkraut, and red cabbage salad with bacon bits.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

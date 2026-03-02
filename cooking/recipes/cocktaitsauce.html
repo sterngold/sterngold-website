@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Cocktaitsauce<br> Sauce cocktail <br><br>Rezept Nr. :39 <br><br> Kategorie : Sauces <br><br>Koch : Patrick Diethelm<br>Datum : 19.04.2005 <br><br>Warenkosten: CHF 6.52 LEUR 4.12 <br><br><br>EUROPEAN CULINARY CENTER <br>Zutaten fOr 0.500 Liter zu 100% [Nettomenge] <br>400 ml*Mayonnaise<br>200 ml Tomato Ketchup<br>100 ml Sour cream35, %<br>17 g Horseradish<br> 17 ml fresh Cognac <br>1 x Seasoning (Tabasco Sauce]<br>1 x Seasoning (lemon juice] <br><br>Peel and grate. <br>- COMBINE ALL INGREDIENTS. <br>- SERVE WITH TOBASCO SAUCE AND LEMON JUICE. <br>- ADO SPICES ACCORDING TO TASTE TO GIVE SAUCE A TANGY FLAVOR. <br>- arrange the hot egg on the salad. <br>- spoon the sauce to cover the poached egg. <br>- garnish with fresh sprig of chervil</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Cocktaitsauce<br> Sauce cocktail <br><br>Rezept Nr. :39 <br><br> Kategorie : Sauces <br><br>Koch : Patrick Diethelm<br>Datum : 19.04.2005 <br><br>Warenkosten: CHF 6.52 LEUR 4.12 <br><br><br>EUROPEAN CULINARY CENTER <br>Zutaten fOr 0.500 Liter zu 100% [Nettomenge] <br>400 ml*Mayonnaise<br>200 ml Tomato Ketchup<br>100 ml Sour cream35, %<br>17 g Horseradish<br> 17 ml fresh Cognac <br>1 x Seasoning (Tabasco Sauce]<br>1 x Seasoning (lemon juice] <br><br>Peel and grate. <br>- COMBINE ALL INGREDIENTS. <br>- SERVE WITH TOBASCO SAUCE AND LEMON JUICE. <br>- ADO SPICES ACCORDING TO TASTE TO GIVE SAUCE A TANGY FLAVOR. <br>- arrange the hot egg on the salad. <br>- spoon the sauce to cover the poached egg. <br>- garnish with fresh sprig of chervil</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">COCKTAIL SAUCE<br><br>Yield: 500ml | Chef: Patrick Diethelm | Recipe #39<br><br>INGREDIENTS<br>400ml mayonnaise<br>200ml tomato ketchup<br>100ml sour cream (35%)<br>17g horseradish, peeled and grated<br>17ml fresh cognac<br>Tabasco sauce, to taste<br>Fresh lemon juice, to taste<br><br>METHOD<br>1. Peel and grate the horseradish.<br>2. Combine all ingredients in a mixing bowl.<br>3. Season to taste with Tabasco sauce and lemon juice to achieve a tangy flavor.<br>4. Serve with poached eggs on salad, spooning sauce over the top.<br>5. Garnish with fresh sprig of chervil.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

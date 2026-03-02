@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">VITZNAU-LUCERNE SWITZERLAND<br>New Pauli recipe 2005 created by Chef Patrick Diethelm<br>Kartoffel-Clafoutis	<br>Kartoffel-Clafouti<br> Kartofel-Clafoutis Kartoffel-Clafoutis<br><br>Vorbereitung<br>Vier Rondellen aus einem Frühlingsrollenteigblatt<br>20x20cm ausstechen und<br>mit geschmolzener Butter zwei Rondellen zusammen kleben.<br>In Muffinform, Cocotte oder grössere Tartlettform auslegen, (je nach gewünschter form) und blind im Ofen bei 170°C backen.<br>Gewaschene neue Kartoffeln an der Röstiraffel oder Maschine grob reiben.<br>Tipps und Tricks<br>Frühlingsrollenteigblätter können auch geviertelt werden und als quadrat in Tartlettform blind backen.<br>Vorteil ist dass keine Teigabschnitte entstehen.<br>Zubereitung<br>– Gehackten Schalotten und Knoblauch in Butter dünsten<br>– Kartoffeln beigeben und zugedeckt unter sorgfältigem rühren 2/3 garen.<br>– Abschmecken und Auskühlen lassen<br>– Milch, Vollei, Vollrahm und Weissmehl gut verrühren und abschmecken.<br>– Kartoffel in gebackene Frühlingsrollenteig -Tartlett einfüllen, mit dem Guss auffüllen<br>– Im vorgeheizten Ofen bei 220° C ausbacken.<br>PD/ECA 05 ©</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">VITZNAU-LUCERNE SWITZERLAND<br>New Pauli recipe 2005 created by Chef Patrick Diethelm<br>Kartoffel-Clafoutis	<br>Kartoffel-Clafouti<br> Kartofel-Clafoutis Kartoffel-Clafoutis<br><br>Vorbereitung<br>Vier Rondellen aus einem Frühlingsrollenteigblatt<br>20x20cm ausstechen und<br>mit geschmolzener Butter zwei Rondellen zusammen kleben.<br>In Muffinform, Cocotte oder grössere Tartlettform auslegen, (je nach gewünschter form) und blind im Ofen bei 170°C backen.<br>Gewaschene neue Kartoffeln an der Röstiraffel oder Maschine grob reiben.<br>Tipps und Tricks<br>Frühlingsrollenteigblätter können auch geviertelt werden und als quadrat in Tartlettform blind backen.<br>Vorteil ist dass keine Teigabschnitte entstehen.<br>Zubereitung<br>– Gehackten Schalotten und Knoblauch in Butter dünsten<br>– Kartoffeln beigeben und zugedeckt unter sorgfältigem rühren 2/3 garen.<br>– Abschmecken und Auskühlen lassen<br>– Milch, Vollei, Vollrahm und Weissmehl gut verrühren und abschmecken.<br>– Kartoffel in gebackene Frühlingsrollenteig -Tartlett einfüllen, mit dem Guss auffüllen<br>– Im vorgeheizten Ofen bei 220° C ausbacken.<br>PD/ECA 05 ©</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**KARTOFFEL-CLAFOUTIS**<br><br>Chef: Patrick Diethelm | Created 2005<br><br>**PREPARATION:**<br>- Cut four rounds from spring roll sheets (20×20 cm each). Glue two rounds together with melted butter.<br>- Line muffin forms, cocottes, or tartlet molds and blind bake at 170°C.<br>- Wash new potatoes and grate coarsely on a mandoline or with a grater.<br><br>**COOKING:**<br>- Sweat chopped shallots and garlic in butter.<br>- Add potatoes and cook covered under careful stirring until two-thirds cooked.<br>- Season and cool.<br>- Whisk together milk, whole egg, heavy cream, and flour; season to taste.<br>- Fill baked spring roll pastry tartlets with potato mixture and top with custard.<br>- Bake in preheated oven at 220°C until set.<br><br>**TIPS:**<br>Quarter spring roll sheets and bake as squares in tartlet molds to eliminate pastry scraps.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

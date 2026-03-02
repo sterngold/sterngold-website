@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Sorbet cacao<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	:17.11.2005<br>Cost of goods	: CHF 0.29 / EUR 0.18<br>Ingredients for 8 servings at 100% (Net quantity)<br>450<br>g<br>Water<br>60<br>g<br>Glucose syrup<br>3<br>g<br>Orange zest<br>300<br>g<br>Chocolate chips Dark, bitter<br><br>- Heat up the water, glucose and orange zest and stir in remaining ingredients - melt the chocolat at max. 35°C.<br>Fill into beaker and freeze<br>Pacotice twice and keep in freezer until serving</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Sorbet cacao<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	:17.11.2005<br>Cost of goods	: CHF 0.29 / EUR 0.18<br>Ingredients for 8 servings at 100% (Net quantity)<br>450<br>g<br>Water<br>60<br>g<br>Glucose syrup<br>3<br>g<br>Orange zest<br>300<br>g<br>Chocolate chips Dark, bitter<br><br>- Heat up the water, glucose and orange zest and stir in remaining ingredients - melt the chocolat at max. 35°C.<br>Fill into beaker and freeze<br>Pacotice twice and keep in freezer until serving</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SORBET CACAO<br>Chef: Patrick Diethelm | Station: Garde Manger | Date: 17.11.2005<br><br>Ingredients (8 servings):<br>450g water<br>60g glucose syrup<br>3g orange zest<br>300g dark bitter chocolate chips<br><br>Method:<br>- Heat water, glucose syrup, and orange zest.<br>- Melt chocolate at maximum 35°C, then stir into hot liquid until combined.<br>- Pour into beaker and freeze.<br>- Process twice through Pacojet.<br>- Hold in freezer until service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

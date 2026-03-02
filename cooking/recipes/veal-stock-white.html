@@ -106,8 +106,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- add cold water to bones and bring to a boil <br>- add slat and skim frequently <br>- simmer for 2 to 3 hours<br>- add sachet bag and bouquet garni after 2 hours<br>- strain carefully through large hair sieve and again through sheesecloth</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- add cold water to bones and bring to a boil <br>- add slat and skim frequently <br>- simmer for 2 to 3 hours<br>- add sachet bag and bouquet garni after 2 hours<br>- strain carefully through large hair sieve and again through sheesecloth</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">VEAL STOCK, WHITE<br>Station: Saucier | DCT<br><br>METHOD<br>Add cold water to bones and bring to a boil. Add salt and skim frequently. Simmer for 2–3 hours. After 2 hours, add sachet bag and bouquet garni. Strain carefully through large hair sieve, then again through cheesecloth.</div>
+          
         </section>
         
 
@@ -141,5 +150,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

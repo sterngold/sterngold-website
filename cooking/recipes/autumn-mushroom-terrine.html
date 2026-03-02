@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">VITZNAU-LUCERNE SWITZERLAND<br>AUTUMNAL MUSHROOM TERRINE WITH HERBS<br><br>Yield: 8 servings<br>600 g seasonal mushrooms<br>100 g white wine<br>40 g cognac or brandy<br>250 g cream<br>6	leaves of gelatine		<br>6 g salt, pepper mill ,<br>20 g	mixture of basil, chervil, parsley, chives<br><br><br><br>Preparation:<br>- Trim and clean the mushrooms, cut into 10mm x 10mm dice<br>- Sauté in a non-stick frying pan over high heat<br>- Season to taste with salt and pepper<br>- Add cognac and white wine<br>- Drain now in a hair sieve, keep the stock in a sauteuse and reduce by two-thirds - Pour in the cream and reduce for 2 - 3 minutes<br>- Soak the gelatine in cold water until soft<br>- Chill the cream mixture until lukewarm, add the dry squeezed gelatine and stir to dissolve, add the chopped herbs<br>- Line small terrine dishes with plastic foil, allow a little to overhang<br>- Fill the dry cold mushrooms into the dish<br>- Add the warm cream mixture and cover the mushrooms, leave to rest in the refrigerator for 2 - 3 hours<br>- Unmold the chilled mushroom terrine<br>- To serve, cut carefully into 2.5 cm thick slices and arrange on a plate with fresh tomato-chives vinaigrette and young spinach leaves or seasonal salad bowl. - Garnish with sprigs of basil and a few short lengths of fresh chives.<br>Р. Diethelm 05 - EGC</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">VITZNAU-LUCERNE SWITZERLAND<br>AUTUMNAL MUSHROOM TERRINE WITH HERBS<br><br>Yield: 8 servings<br>600 g seasonal mushrooms<br>100 g white wine<br>40 g cognac or brandy<br>250 g cream<br>6	leaves of gelatine		<br>6 g salt, pepper mill ,<br>20 g	mixture of basil, chervil, parsley, chives<br><br><br><br>Preparation:<br>- Trim and clean the mushrooms, cut into 10mm x 10mm dice<br>- Sauté in a non-stick frying pan over high heat<br>- Season to taste with salt and pepper<br>- Add cognac and white wine<br>- Drain now in a hair sieve, keep the stock in a sauteuse and reduce by two-thirds - Pour in the cream and reduce for 2 - 3 minutes<br>- Soak the gelatine in cold water until soft<br>- Chill the cream mixture until lukewarm, add the dry squeezed gelatine and stir to dissolve, add the chopped herbs<br>- Line small terrine dishes with plastic foil, allow a little to overhang<br>- Fill the dry cold mushrooms into the dish<br>- Add the warm cream mixture and cover the mushrooms, leave to rest in the refrigerator for 2 - 3 hours<br>- Unmold the chilled mushroom terrine<br>- To serve, cut carefully into 2.5 cm thick slices and arrange on a plate with fresh tomato-chives vinaigrette and young spinach leaves or seasonal salad bowl. - Garnish with sprigs of basil and a few short lengths of fresh chives.<br>Р. Diethelm 05 - EGC</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">AUTUMN MUSHROOM TERRINE WITH HERBS | Vitznau-Lucerne, Switzerland<br>Yield: 8 servings | Chef P. Diethelm, EGC 05<br><br>600 g seasonal mushrooms | 100 g white wine | 40 g cognac or brandy | 250 g cream | 6 leaves gelatine | 6 g salt, pepper | 20 g mixed herbs (basil, chervil, parsley, chives)<br><br>Trim and clean mushrooms; cut into 10 mm dice. Sauté in non-stick pan over high heat. Season with salt and pepper. Add cognac and white wine. Drain in hair sieve; reserve stock in sauteuse and reduce by two-thirds. Pour in cream and reduce 2–3 minutes. Soak gelatine in cold water until soft. Chill cream mixture until lukewarm; add squeezed gelatine and stir to dissolve. Add chopped herbs. Line terrine dishes with plastic foil with slight overhang. Fill with cold mushrooms. Add warm cream mixture, cover mushrooms, and refrigerate 2–3 hours. Unmold chilled terrine. Cut into 2.5 cm slices and arrange on plate with fresh tomato-chives vinaigrette and young spinach or seasonal salad. Garnish with basil sprigs and fresh chives.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

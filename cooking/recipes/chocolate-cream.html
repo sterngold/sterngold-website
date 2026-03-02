@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1 	Англезе /виж basic ice cream/<br>2 	Ситно нарязан Лавендел се слага ва Англезе и се оставя да се изстуди в вода със лед. <br>3 	Шоколада се стопява на Bain Marie – но да не попада никакава вода <br>4 	Добавя се бита сметана във шоколада<br>5 	Добаяв се Англезе<br>6 	Бъркат се и се оставя да изстине.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1 	Англезе /виж basic ice cream/<br>2 	Ситно нарязан Лавендел се слага ва Англезе и се оставя да се изстуди в вода със лед. <br>3 	Шоколада се стопява на Bain Marie – но да не попада никакава вода <br>4 	Добавя се бита сметана във шоколада<br>5 	Добаяв се Англезе<br>6 	Бъркат се и се оставя да изстине.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Chocolate Cream<br>Source: Vijf | Pâtisserie<br><br>Method:<br>1. Prepare anglaise base (see basic ice cream recipe).<br>2. Finely chop lavender and fold into warm anglaise. Cool in ice water bath.<br>3. Melt chocolate over bain-marie, ensuring no water contacts it.<br>4. Fold whipped cream into melted chocolate.<br>5. Fold in cooled lavender anglaise.<br>6. Mix gently and allow to cool completely before service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

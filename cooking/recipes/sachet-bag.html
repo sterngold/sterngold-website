@@ -114,8 +114,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- crush the pepper corns and place wit all the remaining ingredients in coffee filter and tie to a small little bundle <br>- add 30 min before straining into the stock<br>- some ingredients change depending on the type of stock</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- crush the pepper corns and place wit all the remaining ingredients in coffee filter and tie to a small little bundle <br>- add 30 min before straining into the stock<br>- some ingredients change depending on the type of stock</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SACHET BAG<br><br>Crush peppercorns and place with all remaining ingredients in a coffee filter. Tie into a small bundle.<br><br>Add to stock 30 minutes before straining.<br><br>Note: Ingredient composition varies depending on the type of stock being prepared.</div>
+          
         </section>
         
 
@@ -149,5 +158,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

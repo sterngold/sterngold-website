@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Sesame seeds tuile<br>Sesamsamen - Mohntörtchen<br>Recipe #<br>Category	: ECA - Garnishes Decors Tuiles Chips et(<br>Chef	: Patrick Diethelm<br>Date	: 07.11.2005<br>Cost of goods 	: CHF 0.12 / EUR 0.07 	<br>Ingredients for 5 servings at 100% (Net quantity)<br>40<br>g<br>White wheat flour<br>15<br>g<br>Egg<br>25<br>g<br>Sesame seeds (peeled]<br>5<br>g<br>Poppy seed<br>10<br>g<br>Butter<br>3<br>g<br>Crystal sugar<br>0.1<br>pc<br>Lemon Juice<br>8<br>g<br>Honey<br><br>- Mix all the ingredients to a dough<br>Cool down and roll out between two plastic foil with little flour and freeze - Peel off top paper and cut into garnish<br>- Bake at 180°C until golden brown<br>- used for garnish and decor.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Sesame seeds tuile<br>Sesamsamen - Mohntörtchen<br>Recipe #<br>Category	: ECA - Garnishes Decors Tuiles Chips et(<br>Chef	: Patrick Diethelm<br>Date	: 07.11.2005<br>Cost of goods 	: CHF 0.12 / EUR 0.07 	<br>Ingredients for 5 servings at 100% (Net quantity)<br>40<br>g<br>White wheat flour<br>15<br>g<br>Egg<br>25<br>g<br>Sesame seeds (peeled]<br>5<br>g<br>Poppy seed<br>10<br>g<br>Butter<br>3<br>g<br>Crystal sugar<br>0.1<br>pc<br>Lemon Juice<br>8<br>g<br>Honey<br><br>- Mix all the ingredients to a dough<br>Cool down and roll out between two plastic foil with little flour and freeze - Peel off top paper and cut into garnish<br>- Bake at 180°C until golden brown<br>- used for garnish and decor.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SESAME SEEDS TUILES<br>Chef Patrick Diethelm | Cost: CHF 0.12 / EUR 0.07<br>Yield: 5 servings<br><br>INGREDIENTS<br>40 g White wheat flour<br>15 g Egg<br>25 g Peeled sesame seeds<br>5 g Poppy seed<br>10 g Butter<br>3 g Crystal sugar<br>0.1 pc Lemon juice<br>8 g Honey<br><br>METHOD<br>Mix all ingredients to a dough. Cool and roll out thin between two sheets of plastic film with minimal flour. Freeze. Peel off top film and cut into desired garnish shapes. Bake at 180°C until golden brown. Use for garnish and decoration.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

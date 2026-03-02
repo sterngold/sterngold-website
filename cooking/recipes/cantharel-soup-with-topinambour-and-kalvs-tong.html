@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- kipbouilolon opzetten met licht aangezette uien (ringen) cantharel, cantharel jus en cantharel olie. In blender doen en door puntzeef doordraien. Monteren met boter en op smaak brengen met pepper en zout. <br>- Topinamboer schoonborstellen en met shcil en al kleine stukjes snijden. Daarna gaar koken met beetje zout<br>- kalfswang eerst spoelen met water. Daarna opzetten met water, witte wijn, prei, knoolseldereij, wortel, ui, knoflook, zwarte peperkorrels, paar jeneverbessen, beetje zeezout en 1 a 2 kruidnagels. Op laag vuur garen todat de kalfswang zacht is (sucade mals)</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- kipbouilolon opzetten met licht aangezette uien (ringen) cantharel, cantharel jus en cantharel olie. In blender doen en door puntzeef doordraien. Monteren met boter en op smaak brengen met pepper en zout. <br>- Topinamboer schoonborstellen en met shcil en al kleine stukjes snijden. Daarna gaar koken met beetje zout<br>- kalfswang eerst spoelen met water. Daarna opzetten met water, witte wijn, prei, knoolseldereij, wortel, ui, knoflook, zwarte peperkorrels, paar jeneverbessen, beetje zeezout en 1 a 2 kruidnagels. Op laag vuur garen todat de kalfswang zacht is (sucade mals)</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">For the soup: Set up chicken bouillon with lightly sweated sliced onions, chanterelles, chanterelle jus, and chanterelle oil. Blend and pass through a fine sieve. Mount with butter and season with pepper and salt. For the topinambour: Clean and cut into small pieces with skin intact, then cook until tender with a little salt. For the calves cheek: Rinse with water. Set up in a pot with water, white wine, leek, celeriac, carrot, onion, garlic, black peppercorns, juniper berries, sea salt, and 1 to 2 cloves. Simmer on low heat until the calves cheek is very tender (suet-soft).</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Autumnal market vegetables<br>Hot Kitchen/ Main course vegetables 110 Pax. Herbst/fiches MarktgemOse<br>Rezept Nr.	: Hot kitchen 3<br>Kategorie	: Culinary Olympics, Erfurt 2004<br>Koch	: Swiss Junior Team<br>Datum	: 28.02.2005<br>Warenkosten	: CHF 0.32 / EUR 0.20 <br><br>Zutaten fur 10 Personen zu 100% (Nettomenge)<br>118 g	Kuttiger carrots Peeled<br>118 g	Black salsify Peeled<br>118 g 	Zucca - Pumkin Peeled<br>155 g	Patisson green, small<br>73 g 	Black eyed beans<br>52 g	 Butter<br>4 g 	Brown sugar <br>91 g 	Vegetable stock<br>7 g	Salt'<br>PRE - PREPARATION:<br>- Cut all the vegetables into even size shape<br>- Blanch the carrots, black salsify and pumkin and refresh <br>- Boil the black eyes beans until almost well done<br><br>PREPARATION:<br>- Add butter into suitable pan and add blanched carrots and black salsify<br> - Sprinkle with sugar and smother lightly<br>- Add vegetable stock, season, cover and stew until 2/3 done<br>- Add patisson, pumkin and black eye beans and cover again<br>- When 3/4 cooked, remove lid and reduce liquid rapidly to a syrupy consistency <br>- Toss all the vegetables in syrup to glaze, a la minute during the service</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Autumnal market vegetables<br>Hot Kitchen/ Main course vegetables 110 Pax. Herbst/fiches MarktgemOse<br>Rezept Nr.	: Hot kitchen 3<br>Kategorie	: Culinary Olympics, Erfurt 2004<br>Koch	: Swiss Junior Team<br>Datum	: 28.02.2005<br>Warenkosten	: CHF 0.32 / EUR 0.20 <br><br>Zutaten fur 10 Personen zu 100% (Nettomenge)<br>118 g	Kuttiger carrots Peeled<br>118 g	Black salsify Peeled<br>118 g 	Zucca - Pumkin Peeled<br>155 g	Patisson green, small<br>73 g 	Black eyed beans<br>52 g	 Butter<br>4 g 	Brown sugar <br>91 g 	Vegetable stock<br>7 g	Salt'<br>PRE - PREPARATION:<br>- Cut all the vegetables into even size shape<br>- Blanch the carrots, black salsify and pumkin and refresh <br>- Boil the black eyes beans until almost well done<br><br>PREPARATION:<br>- Add butter into suitable pan and add blanched carrots and black salsify<br> - Sprinkle with sugar and smother lightly<br>- Add vegetable stock, season, cover and stew until 2/3 done<br>- Add patisson, pumkin and black eye beans and cover again<br>- When 3/4 cooked, remove lid and reduce liquid rapidly to a syrupy consistency <br>- Toss all the vegetables in syrup to glaze, a la minute during the service</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">AUTUMNAL MARKET VEGETABLES<br>Culinary Olympics, Erfurt 2004 | Swiss Junior Team<br><br>For 10 portions:<br>118g Carrots, peeled<br>118g Black salsify, peeled<br>118g Pumpkin, peeled<br>155g Green patisson, small<br>73g Black-eyed beans<br>52g Butter<br>4g Brown sugar<br>91g Vegetable stock<br>7g Salt<br><br>PRE-PREPARATION:<br>Cut all vegetables to uniform size. Blanch carrots, black salsify, and pumpkin, then refresh. Boil black-eyed beans until nearly tender.<br><br>PREPARATION:<br>Heat butter in suitable pan, add blanched carrots and black salsify. Sprinkle with sugar and smother lightly. Add vegetable stock, season, cover and stew until two-thirds cooked. Add patisson, pumpkin, and black-eyed beans, cover again. When three-quarters cooked, remove lid and reduce liquid rapidly to a syrupy consistency. Toss all vegetables in syrup to glaze à la minute during service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

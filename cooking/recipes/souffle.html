@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Spinach Souffle<br>Spinataufiauf<br>Souffle aux epinards<br><br><br>Recipe #	: 299<br>Category	: Hot Appetizers<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 0.58/ EUR 0.37<br><br><br>Ingredients for 5 servings at 100% (Net quantity)<br>50<br>g<br>Butter<br>50<br>g<br>White wheat flour<br>200<br>ml<br>Milk<br>1<br>x<br>Seasoning (salt and pepper)<br>90<br>g<br>Egg yolk past.<br>0.5<br>pc<br>Garlic cloves chopped<br>125<br>g<br>Spinach, frozen, chopped<br>150<br>g<br>Egg whites<br>5<br>g<br>Cornstarch<br>10<br>g<br>Butter<br>10<br>g<br>White wheat flour<br><br>- MELT BUTTER IN SAUTEUSE AND ADD FLOUR.<br>- ADD HOT MILK. STIR WELL WITH WIRE WHISK. WHEN MIXTURE STARTS TO THICKEN, STIR WITH WOODEN PADDLE. LET COOL SLIGHTLY.<br>- BLEND IN EGG YOLKS ONE BY ONE. ADD GARLIC AND SPINACH.<br>- SEASON PASTE WITH SALT AND PEPPER.<br>- WHIP EGG WHITES AND FOLD IN CORNSTARCH.<br>- FOLD ABOUT 25% OF BEATEN EGG WHITES INTO THE PASTE.<br>- GRADUALLY FOLD IN THE REST OF THE BEATEN EGG WHITES.<br>- FILL PREPARED SOUFFLE MOLDS ABOUT THREE QUARTERS FULL.<br>- PLACE MOLDS IN WATER BATH AND FINISH AT 200°C.<br>- PLACE SOUFFLE ON A PAPER DOILY. SERVE AT ONCE.<br>Notes: Baking times for pre-warmed mixtures are as follows:<br>for large soufflé molds, about 20 to 25 minutes, for individual molds, about 10 to 12 minutes. Spinach soufflé can be served with a Madeira sauce.<br>The same proportions and method can be used for other vegetable purée souffles.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Spinach Souffle<br>Spinataufiauf<br>Souffle aux epinards<br><br><br>Recipe #	: 299<br>Category	: Hot Appetizers<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 0.58/ EUR 0.37<br><br><br>Ingredients for 5 servings at 100% (Net quantity)<br>50<br>g<br>Butter<br>50<br>g<br>White wheat flour<br>200<br>ml<br>Milk<br>1<br>x<br>Seasoning (salt and pepper)<br>90<br>g<br>Egg yolk past.<br>0.5<br>pc<br>Garlic cloves chopped<br>125<br>g<br>Spinach, frozen, chopped<br>150<br>g<br>Egg whites<br>5<br>g<br>Cornstarch<br>10<br>g<br>Butter<br>10<br>g<br>White wheat flour<br><br>- MELT BUTTER IN SAUTEUSE AND ADD FLOUR.<br>- ADD HOT MILK. STIR WELL WITH WIRE WHISK. WHEN MIXTURE STARTS TO THICKEN, STIR WITH WOODEN PADDLE. LET COOL SLIGHTLY.<br>- BLEND IN EGG YOLKS ONE BY ONE. ADD GARLIC AND SPINACH.<br>- SEASON PASTE WITH SALT AND PEPPER.<br>- WHIP EGG WHITES AND FOLD IN CORNSTARCH.<br>- FOLD ABOUT 25% OF BEATEN EGG WHITES INTO THE PASTE.<br>- GRADUALLY FOLD IN THE REST OF THE BEATEN EGG WHITES.<br>- FILL PREPARED SOUFFLE MOLDS ABOUT THREE QUARTERS FULL.<br>- PLACE MOLDS IN WATER BATH AND FINISH AT 200°C.<br>- PLACE SOUFFLE ON A PAPER DOILY. SERVE AT ONCE.<br>Notes: Baking times for pre-warmed mixtures are as follows:<br>for large soufflé molds, about 20 to 25 minutes, for individual molds, about 10 to 12 minutes. Spinach soufflé can be served with a Madeira sauce.<br>The same proportions and method can be used for other vegetable purée souffles.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SPINACH SOUFFLÉ<br>Chef: Patrick Diethelm | Station: Pâtisserie | Date: 25.10.2005 | Recipe #299<br><br>Ingredients (5 servings):<br>50g butter<br>50g white wheat flour<br>200ml milk<br>Salt and pepper to taste<br>90g egg yolk paste<br>0.5 clove garlic, chopped<br>125g frozen chopped spinach<br>150g egg whites<br>5g cornstarch<br>10g butter (for molds)<br>10g white wheat flour (for molds)<br><br>Method:<br>- Melt butter in sauteuse and add flour.<br>- Add hot milk and whisk well. When mixture begins to thicken, switch to wooden paddle.<br>- Cool slightly.<br>- Blend in egg yolks one by one. Add garlic and spinach.<br>- Season with salt and pepper.<br>- Whip egg whites and fold in cornstarch.<br>- Fold about 25% of beaten egg whites into the paste.<br>- Gradually fold in remaining egg whites.<br>- Fill prepared soufflé molds three-quarters full.<br>- Place in water bath and finish at 200°C.<br><br>Baking times: Large molds 20–25 minutes; individual molds 10–12 minutes.<br>- Serve on paper doily immediately. Pairs well with Madeira sauce.<br><br>Note: This method works for other vegetable purée soufflés using the same proportions.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

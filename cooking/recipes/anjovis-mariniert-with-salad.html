@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- snijdt zeer duun de schil van een gekonfijte citroen af en snij deze schil tot petit brunoise. Zet dit op met een klein beetje water. Wanneer dit kookt afgieten en koud spoelen en daarna droog deppen. <br>- pof rode paprika's op een open vuur zodat de schil zwart wordt. Paprika schoonmaken en julienne snijden. Wegzetten met scheutje aceto balsamico, half teentje knoflook, beetje olifolie en peper en zout<br>- piment de spellette (klein hoeveelheid) mengen met dressing naturel<br>- radichio<br>- anjovis klaarzetten - marin ieren met rode wijnazijn, plakjes knoflook, tijm, rozemarijn, laurier, geconfijte citroen, rode peper, peper, en zout en opvullen met olifolie - fresh fish<br>- serve met stengel pizza deeg die besmeerd is met ui compoteolijven en zoute anjovis</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- snijdt zeer duun de schil van een gekonfijte citroen af en snij deze schil tot petit brunoise. Zet dit op met een klein beetje water. Wanneer dit kookt afgieten en koud spoelen en daarna droog deppen. <br>- pof rode paprika's op een open vuur zodat de schil zwart wordt. Paprika schoonmaken en julienne snijden. Wegzetten met scheutje aceto balsamico, half teentje knoflook, beetje olifolie en peper en zout<br>- piment de spellette (klein hoeveelheid) mengen met dressing naturel<br>- radichio<br>- anjovis klaarzetten - marin ieren met rode wijnazijn, plakjes knoflook, tijm, rozemarijn, laurier, geconfijte citroen, rode peper, peper, en zout en opvullen met olifolie - fresh fish<br>- serve met stengel pizza deeg die besmeerd is met ui compoteolijven en zoute anjovis</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Thinly peel the preserved lemon skin and cut into petit brunoise. Blanch briefly in a small amount of water, then drain, rinse in cold water, and pat dry. Roast red peppers directly over an open flame until the skin is charred. Clean the peppers and cut into julienne. Season with a splash of balsamic vinegar, half a clove garlic, oil, pepper, and salt. Mix a small amount of piment d'Espelette with natural dressing. Prepare the anchovies by marinating in red wine vinegar with garlic slices, thyme, rosemary, bay leaf, preserved lemon, red pepper, pepper, salt, and top with oil—use fresh fish. Assemble with pizza dough sticks brushed with onion compote, olives, and salted anchovies. Serve with radicchio.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Pastry Cream (without eggs) <br>Fii//creme <br>Creme patissiere <br>Rezept Nr. :706 <br>Kategorie : Desserts <br>Koch : Patrick Diethelm<br>Datum : 28.07.2005 <br>Warenkosten : CHF 1.61 LEUR 1.02 <br><br><br>Zutaten fUr 0. 600 Liter zu 100% (Nettomenge) <br>500 ml Milk<br>0.5 st Vanilla bean<br>100 g Crystal sugar <br>50 g Vanilla cream powder <br><br>- SPLIT VANILLA BEAN. SCRAPE OUT MARROW. AND ADD MARROW AND BEAN TO <br>400 ml MILK. ADD SUGAR. BRING MILK TO A BOIL. AND REMOVE VANILLA BEAN. <br>- MIX VANILLA CREAM POWDER WITH REMAINING 100 ml MILK AND ADD TO HOT MILK. <br>- BRING TO A BOIL. WHILE STIRRING. <br>- CHILL CREAM IN ICE WATER. OR POUR INTO A SHALLOW PAN TO COOL.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Pastry Cream (without eggs) <br>Fii//creme <br>Creme patissiere <br>Rezept Nr. :706 <br>Kategorie : Desserts <br>Koch : Patrick Diethelm<br>Datum : 28.07.2005 <br>Warenkosten : CHF 1.61 LEUR 1.02 <br><br><br>Zutaten fUr 0. 600 Liter zu 100% (Nettomenge) <br>500 ml Milk<br>0.5 st Vanilla bean<br>100 g Crystal sugar <br>50 g Vanilla cream powder <br><br>- SPLIT VANILLA BEAN. SCRAPE OUT MARROW. AND ADD MARROW AND BEAN TO <br>400 ml MILK. ADD SUGAR. BRING MILK TO A BOIL. AND REMOVE VANILLA BEAN. <br>- MIX VANILLA CREAM POWDER WITH REMAINING 100 ml MILK AND ADD TO HOT MILK. <br>- BRING TO A BOIL. WHILE STIRRING. <br>- CHILL CREAM IN ICE WATER. OR POUR INTO A SHALLOW PAN TO COOL.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PASTRY CREAM (WITHOUT EGGS)<br>Source: DCT | Station: Saucier | Chef: Patrick Diethelm | Date: 28.07.2005<br>Yield: 0.600 liters<br><br>Ingredients:<br>- 500 ml whole milk<br>- 0.5 vanilla bean<br>- 100 g crystal sugar<br>- 50 g vanilla cream powder<br><br>Method:<br>Split the vanilla bean lengthwise and scrape out the marrow. Add the marrow and bean pod to 400 ml of milk along with the sugar. Bring to a boil, then remove and discard the vanilla bean.<br><br>Whisk the vanilla cream powder with the remaining 100 ml cold milk until smooth. Add this mixture to the hot milk, stirring constantly. Bring to a boil while stirring continuously.<br><br>Chill the cream in an ice water bath or transfer to a shallow pan to cool quickly.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

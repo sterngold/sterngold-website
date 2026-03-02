@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Summer Vegetables Tart<br>Sommerliche 0emüsewähe Tarte au légumes<br><br>Zutaten für 5 Personen zu 100% (Nettomenge)<br>400 g *Short Pastry [sugarless]	Line I tart molds with dough, poke some holes in dough.<br>25 g 300 g<br><br>100 ml 200 ml 120 g 100 g<br>10 g 40 g<br>1 x<br>1 x<br>Filling:<br>Butter<br>Vegetable mixture Custard:<br>Milk<br>Heavy cream (36%) Egg whole<br>Parmesan grated Basil, fresh<br>White wheat flour Nutmeg (pinch)<br>Seasoning (salt and pepper)<br>Leek, Carrot, Zucchini, Celery cut into julienne<br>Chopped<br><br>- SWEAT VEGETABLE JULIENNE IN BUTTER UNTIL CRUNCHY (NO COLOR) - LET VEGETABLES COOL AND PLACE EVENLY IN MOLDS.<br>- COMBINE CUSTARD INGREDIENTS WITHOUT BASIL AND STIR<br>- STRAIN THROUGH FINE CHINA CAP.<br>- ADD CHOPPED BASIL<br>- FILL MOLDS WITH CUSTARD.<br>- BAKE IN THE OVEN AT 200°C FOR APPROX.30 MINUTES.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Summer Vegetables Tart<br>Sommerliche 0emüsewähe Tarte au légumes<br><br>Zutaten für 5 Personen zu 100% (Nettomenge)<br>400 g *Short Pastry [sugarless]	Line I tart molds with dough, poke some holes in dough.<br>25 g 300 g<br><br>100 ml 200 ml 120 g 100 g<br>10 g 40 g<br>1 x<br>1 x<br>Filling:<br>Butter<br>Vegetable mixture Custard:<br>Milk<br>Heavy cream (36%) Egg whole<br>Parmesan grated Basil, fresh<br>White wheat flour Nutmeg (pinch)<br>Seasoning (salt and pepper)<br>Leek, Carrot, Zucchini, Celery cut into julienne<br>Chopped<br><br>- SWEAT VEGETABLE JULIENNE IN BUTTER UNTIL CRUNCHY (NO COLOR) - LET VEGETABLES COOL AND PLACE EVENLY IN MOLDS.<br>- COMBINE CUSTARD INGREDIENTS WITHOUT BASIL AND STIR<br>- STRAIN THROUGH FINE CHINA CAP.<br>- ADD CHOPPED BASIL<br>- FILL MOLDS WITH CUSTARD.<br>- BAKE IN THE OVEN AT 200°C FOR APPROX.30 MINUTES.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SUMMER VEGETABLES TART<br><br>Yield: 5 servings<br><br>Ingredients:<br>400 g short pastry (sugarless)<br>25 g butter<br>300 g vegetable mixture (leek, carrot, zucchini, celery cut into julienne)<br><br>Custard:<br>100 ml milk<br>200 ml heavy cream (36%)<br>120 g egg whole<br>100 g Parmesan, grated<br>10 g basil, fresh chopped<br>40 g white wheat flour<br>Nutmeg (pinch)<br>Salt and pepper to taste<br><br>Method:<br>1. Line tart molds with short pastry and poke holes in dough.<br>2. Sweat vegetable julienne in butter until tender but still crisp, with no color. Allow to cool completely.<br>3. Distribute cooled vegetables evenly in lined molds.<br>4. Combine all custard ingredients except basil. Stir until smooth.<br>5. Strain through fine sieve.<br>6. Add chopped basil to custard.<br>7. Fill molds with custard mixture.<br>8. Bake at 200°C for approximately 30 minutes until set.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

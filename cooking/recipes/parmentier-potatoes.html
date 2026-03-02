@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Zutaten für 6 720 g<br><br><br>12 g <br>60 ml<br>1 x 30 g<br>Personen zu 100% (Nettomenge) Potatoes<br><br><br>Salt<br>Peanut oil<br>Seasoning (salt and pepper) Butter<br>Wash and peel. Cut into, even parmentier dice, about 10 mm thick. Blanch in salted water. Drain and spread out to cool quickly and to prevent further cooking.<br><br>- HEAT PEANUT OIL IN ROASTING PAN, ADD POTATOES<br>- START ROASTING ON TOP OF STOVE AND CONTINUE IN A HOT OVEN AT 220°C. - ROAST POTATOES, TURNING FREQUENTLY, UNTIL THEY ARE GOLDEN BROWN. AND SEASON WITH SALT AND PEPPER.<br>- POUR OFF OIL, REPLACE WITH BUTTER, AND ROAST POTATOES BRIEFLY, TURNING TO COAT EVENLY.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Zutaten für 6 720 g<br><br><br>12 g <br>60 ml<br>1 x 30 g<br>Personen zu 100% (Nettomenge) Potatoes<br><br><br>Salt<br>Peanut oil<br>Seasoning (salt and pepper) Butter<br>Wash and peel. Cut into, even parmentier dice, about 10 mm thick. Blanch in salted water. Drain and spread out to cool quickly and to prevent further cooking.<br><br>- HEAT PEANUT OIL IN ROASTING PAN, ADD POTATOES<br>- START ROASTING ON TOP OF STOVE AND CONTINUE IN A HOT OVEN AT 220°C. - ROAST POTATOES, TURNING FREQUENTLY, UNTIL THEY ARE GOLDEN BROWN. AND SEASON WITH SALT AND PEPPER.<br>- POUR OFF OIL, REPLACE WITH BUTTER, AND ROAST POTATOES BRIEFLY, TURNING TO COAT EVENLY.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PARMENTIER POTATOES<br>Source: DCT | Station: Entremétier<br>Yield: 6 servings (720 g net)<br><br>Ingredients:<br>- 720 g potatoes<br>- 12 g salt<br>- 60 ml peanut oil<br>- 30 g butter<br>- Salt and pepper to taste<br><br>Method:<br>Wash and peel potatoes. Cut into even dice approximately 10 mm thick. Blanch in salted water until tender. Drain thoroughly and spread on a sheet pan to cool quickly and arrest cooking.<br><br>Heat peanut oil in a roasting pan and add potatoes. Begin roasting on the stovetop, then transfer to a hot oven at 220°C. Roast, turning frequently, until golden brown. Season with salt and pepper.<br><br>Drain off oil and replace with butter. Roast briefly, turning potatoes to coat evenly with the butter.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

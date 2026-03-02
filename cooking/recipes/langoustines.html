@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Делят се н адве – главата и опашката <br>Гльвите се поставят във фирна на 200 гр. Окло 20 мин. – после се натрошават и се прави супа <br>Супа – лук, чесън,<br>Лангустиниет – почиствата се като скариди – измиват се за секунда във вода със лед и са подреждат дъговидно – като се пържат от девете старин като се свиват на кръг със главата от горе.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Делят се н адве – главата и опашката <br>Гльвите се поставят във фирна на 200 гр. Окло 20 мин. – после се натрошават и се прави супа <br>Супа – лук, чесън,<br>Лангустиниет – почиствата се като скариди – измиват се за секунда във вода със лед и са подреждат дъговидно – като се пържат от девете старин като се свиват на кръг със главата от горе.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Split langoustines in half, separating head from tail. Roast heads in oven at 200°C for approximately 20 minutes, then crush and make into stock with onion and garlic.<br><br>Clean tail meat as you would prawns. Rinse briefly in ice water. Arrange tail meat in curved presentation. Sear from skin side; langoustines will curl naturally into a round shape with head positioned on top.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -154,8 +154,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text"># Dough<br>- verhit de oven voor op 200 graden<br>- Sla de eidooiers op samen met de 200 gram van de suiker en de cacaopoeder<br>- sla de eiwitten stijf door middel van een vetfrije kom en schriksuiker<br>- spatel beiden door elkar<br>- smeer deze uit op met vetfrijpapier beklede bakplaten en bak het ongeveer 5 minuten af. Laat afkoelen<br><br># Mousse<br>- smelt de chocolate au bain marie<br>- klop de slagroom op met gedeelte van de suiker en voeg de cointreu toe. <br>- sla de eiwitten op en voeg de chocolate toe en spatel tenslotte de slagroom erdoor<br><br>- bouw nu de tart op door gelijke delen chocomousse tussen de lagjes deeg te smeren<br>- zet deze tart een paar uur in de koeling voordat je hem aansnijdt<br><br>- meegeven met een quenel vanilije ijs en vanilije saus plus chocolate krullen</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original"># Dough<br>- verhit de oven voor op 200 graden<br>- Sla de eidooiers op samen met de 200 gram van de suiker en de cacaopoeder<br>- sla de eiwitten stijf door middel van een vetfrije kom en schriksuiker<br>- spatel beiden door elkar<br>- smeer deze uit op met vetfrijpapier beklede bakplaten en bak het ongeveer 5 minuten af. Laat afkoelen<br><br># Mousse<br>- smelt de chocolate au bain marie<br>- klop de slagroom op met gedeelte van de suiker en voeg de cointreu toe. <br>- sla de eiwitten op en voeg de chocolate toe en spatel tenslotte de slagroom erdoor<br><br>- bouw nu de tart op door gelijke delen chocomousse tussen de lagjes deeg te smeren<br>- zet deze tart een paar uur in de koeling voordat je hem aansnijdt<br><br>- meegeven met een quenel vanilije ijs en vanilije saus plus chocolate krullen</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">## DOUGH<br>Preheat oven to 200°C. Whisk egg yolks with 200g sugar and cocoa powder until combined. In a grease-free bowl, whip egg whites with superfine sugar to stiff peaks. Fold both mixtures together gently. Spread onto parchment-lined baking trays and bake approximately 5 minutes. Cool completely.<br><br>## MOUSSE<br>Melt chocolate over a bain-marie. Whip cream with part of the sugar, add Cointreau. Whip egg whites to soft peaks, fold in chocolate, then fold in whipped cream.<br><br>## ASSEMBLY<br>Layer choux dough sheets with equal portions of chocolate mousse between each layer. Refrigerate several hours before slicing.<br><br>## SERVICE<br>Serve with quenelle of vanilla ice cream, vanilla sauce, and chocolate curls.</div>
+          
         </section>
         
 
@@ -189,5 +198,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -154,8 +154,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- prepare ravioli dough and fill with oxx tail meat stuffing<br>- - combine cold stock with clarification; stir with frying spatula until mixture starts to boil<br>- do not stir any longer and simmer for 1 hour <br>- strain carefully through a napkin (2 china caps technique)<br>- remove all fat from surface with absorbent paper<br>- season to taste<br>- add sherry wine<br>- garnish with ravioli of calvestail meat and vegetables<br><br>Raviolo<br>- sweet shallots + stufiing (mushrooms, herbs, meat, glace de viand and sherry to cook)<br>- boil in broth or water with no FAT - add to soup</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- prepare ravioli dough and fill with oxx tail meat stuffing<br>- - combine cold stock with clarification; stir with frying spatula until mixture starts to boil<br>- do not stir any longer and simmer for 1 hour <br>- strain carefully through a napkin (2 china caps technique)<br>- remove all fat from surface with absorbent paper<br>- season to taste<br>- add sherry wine<br>- garnish with ravioli of calvestail meat and vegetables<br><br>Raviolo<br>- sweet shallots + stufiing (mushrooms, herbs, meat, glace de viand and sherry to cook)<br>- boil in broth or water with no FAT - add to soup</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Prepare ravioli dough and fill with oxtail meat stuffing.<br><br>Combine cold stock with clarification mixture. Stir with frying spatula until the mixture begins to boil, then stop stirring. Simmer for 1 hour without further disturbance.<br><br>Strain carefully through a napkin using the double china cap technique. Remove all fat from the surface using absorbent paper. Season to taste and add sherry wine.<br><br>For the ravioli: combine sweet shallots with filling made from mushrooms, herbs, meat, glace de viande, and sherry. Cook the ravioli in broth or water with no added fat.<br><br>Finish the soup by adding the ravioli and vegetable garnish just before service.</div>
+          
         </section>
         
 
@@ -189,5 +198,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

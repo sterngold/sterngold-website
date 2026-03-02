@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">zoek de mooie exemplaren uit en haal hiervan het buitenste schilletje af. Zet deze op met zo sonnenbloem olie en zorg ervoor dat deze zeer zachtjes gaard. De sjalloten zijjn klaar als ze van binnen boter zacht zijn (idem voor knoflook). Wanner je deze meegeeft insnijden en licht pepper en zout en aceto balsamico toevoegen.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">zoek de mooie exemplaren uit en haal hiervan het buitenste schilletje af. Zet deze op met zo sonnenbloem olie en zorg ervoor dat deze zeer zachtjes gaard. De sjalloten zijjn klaar als ze van binnen boter zacht zijn (idem voor knoflook). Wanner je deze meegeeft insnijden en licht pepper en zout en aceto balsamico toevoegen.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Select unblemished shallots and remove the outer skin layer. Cook gently in sunflower oil, ensuring they cook very slowly until butter-soft inside (same method for garlic if using).<br><br>When serving, halve the shallots and finish with a light seasoning of pepper, salt, and aged balsamic vinegar.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

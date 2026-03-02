@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">90 г. Sugar and 6 yolks – не се смесват <br>250 Мляко и 250 течна сметана се смесват<br>/плюс 1 ванила – само семената от стръкчето плюс stearn)<br>Готви се на бавен огън окло час и нещо<br>Захарта и yolks се смесват и се разбиват с миксер/ръчно и се смесват със Млякото<br>На Bain Marie или котлон се загрява сместа до 82 градуса /бърка се непрекъснато/ <br>Признаци че е готово – парата по тенджерата се увличава<br>През цедка във нова купа – и се слага във вода със лед.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">90 г. Sugar and 6 yolks – не се смесват <br>250 Мляко и 250 течна сметана се смесват<br>/плюс 1 ванила – само семената от стръкчето плюс stearn)<br>Готви се на бавен огън окло час и нещо<br>Захарта и yolks се смесват и се разбиват с миксер/ръчно и се смесват със Млякото<br>На Bain Marie или котлон се загрява сместа до 82 градуса /бърка се непрекъснато/ <br>Признаци че е готово – парата по тенджерата се увличава<br>През цедка във нова купа – и се слага във вода със лед.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Mix 250 ml milk with 250 ml liquid cream and vanilla (seeds scraped from the pod). Heat slowly for about one hour. Meanwhile, whisk 90 g sugar with 6 egg yolks in a mixer until pale. Combine the heated milk mixture with the sugar-yolk mixture. Set up a bain-marie or double boiler and heat the combined mixture to 82°C, stirring constantly. The custard is ready when condensation forms on the pot surface. Strain through a fine sieve into a clean bowl and cool immediately over an ice bath.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

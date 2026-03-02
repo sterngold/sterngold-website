@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Ingredients for 8 servings at 100% (Net quantity)<br><br><br>- Cut all the vegetables into 3x3mm brunoise.<br>- Prepare ratatouille with the vegetables and with thyme. - stew until dry consistency<br>- season to taste with salt and pepper<br>- add little aspic powder into ratatouille.<br>- chill and press out moist with etamine.<br><br>Slice Zucchini lenghtwise on meat slicer and blanch in salt water, refresh.<br> Line out terrine mold or plastic foil [see course instruction] <br>Prepare raw mousseline farce.<br>fill into terrine mold with ratatouille. <br>cover with farce and chill.<br>Poach at 75°C until center temp. of 55°C. <br> Chill and press terrine slightly</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Ingredients for 8 servings at 100% (Net quantity)<br><br><br>- Cut all the vegetables into 3x3mm brunoise.<br>- Prepare ratatouille with the vegetables and with thyme. - stew until dry consistency<br>- season to taste with salt and pepper<br>- add little aspic powder into ratatouille.<br>- chill and press out moist with etamine.<br><br>Slice Zucchini lenghtwise on meat slicer and blanch in salt water, refresh.<br> Line out terrine mold or plastic foil [see course instruction] <br>Prepare raw mousseline farce.<br>fill into terrine mold with ratatouille. <br>cover with farce and chill.<br>Poach at 75°C until center temp. of 55°C. <br> Chill and press terrine slightly</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PIKE PERCH TERRINE À LA NIÇOISE<br><br>Ratatouille: Cut all vegetables into 3×3 mm brunoise. Prepare ratatouille with vegetables and thyme, stewing until dry consistency. Season to taste with salt and pepper. Add a small amount of aspic powder. Chill and press out excess moisture through etamine.<br><br>Assembly: Slice zucchini lengthwise on meat slicer and blanch in salted water, then refresh. Line terrine mold or plastic foil (see course instruction). Prepare raw mousseline farce. Fill terrine mold with ratatouille, cover with farce, and chill.<br><br>Cooking: Poach at 75°C until center temperature reaches 55°C. Chill and press terrine slightly.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

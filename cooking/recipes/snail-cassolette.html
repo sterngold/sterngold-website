@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1T7NAU-LUCERNE SWITZERLAND<br>BAKED FRENCH SNAIL CASSOLETTE<br>	10 g	fine chopped shallot<br>	1	clove of garlic, fine chopped<br>	40 g	vegetable brunoise (leek, carrot, knob celery)<br>	20 g	fennel brunoise<br>	20 g	butter<br>	25	snails<br>	20 g	black truffle brunoise<br>	20 g	pernod<br>	250 g	white veal stock<br>	100g	cream<br>pinch of saffron<br>chopped fennel green salt and pepper mill white truffle oil<br>	200 g	puff pastry<br>	10 g	egg yolk<br>Preparation:<br>- Sweat the shallots, garlic and vegetable brunoise in butter<br>- Add the snails and the truffle, pour in the pernod<br>- Reduce in separate pan the and white veal stock by one third<br>- Add the cream and reduce to the desired consistency or add little roux.<br>- Stir in the snail mushroom mixture and season to taste<br>- Add the chopped fennel green and fill up the four prepared casseroles or cocottes - Roll out the puff pastry about 3 mm thick<br>- Stamp out rounds about 2 cm larger in diameter than the serving dish<br>- Brush the edge of the puff pastry with the eggyolk and use to cover the small cocottes, pressing the egg washed dough firmly to the sides of the dish<br>- Garnish with some puff pastry trimmings on the top<br>- Allow to rest for 20 min. in the refrigerator<br>- Bake at 220° C for about 10 -15 min. until the puff pastry is golden brown.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1T7NAU-LUCERNE SWITZERLAND<br>BAKED FRENCH SNAIL CASSOLETTE<br>	10 g	fine chopped shallot<br>	1	clove of garlic, fine chopped<br>	40 g	vegetable brunoise (leek, carrot, knob celery)<br>	20 g	fennel brunoise<br>	20 g	butter<br>	25	snails<br>	20 g	black truffle brunoise<br>	20 g	pernod<br>	250 g	white veal stock<br>	100g	cream<br>pinch of saffron<br>chopped fennel green salt and pepper mill white truffle oil<br>	200 g	puff pastry<br>	10 g	egg yolk<br>Preparation:<br>- Sweat the shallots, garlic and vegetable brunoise in butter<br>- Add the snails and the truffle, pour in the pernod<br>- Reduce in separate pan the and white veal stock by one third<br>- Add the cream and reduce to the desired consistency or add little roux.<br>- Stir in the snail mushroom mixture and season to taste<br>- Add the chopped fennel green and fill up the four prepared casseroles or cocottes - Roll out the puff pastry about 3 mm thick<br>- Stamp out rounds about 2 cm larger in diameter than the serving dish<br>- Brush the edge of the puff pastry with the eggyolk and use to cover the small cocottes, pressing the egg washed dough firmly to the sides of the dish<br>- Garnish with some puff pastry trimmings on the top<br>- Allow to rest for 20 min. in the refrigerator<br>- Bake at 220° C for about 10 -15 min. until the puff pastry is golden brown.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">BAKED FRENCH SNAIL CASSOLETTE<br>Station: Saucier | Source: Lucerne, Switzerland<br><br>Ingredients:<br>10g shallots, fine chopped<br>1 clove garlic, fine chopped<br>40g vegetable brunoise (leek, carrot, celery)<br>20g fennel brunoise<br>20g butter<br>25 snails<br>20g black truffle brunoise<br>20g Pernod<br>250g white veal stock<br>100g cream<br>Pinch of saffron<br>Chopped fennel greens<br>Salt and pepper to taste<br>White truffle oil<br>200g puff pastry<br>10g egg yolk<br><br>Method:<br>- Sweat shallots, garlic, and vegetable brunoise in butter.<br>- Add snails and truffle, deglaze with Pernod.<br>- In separate pan, reduce white veal stock by one third.<br>- Add cream and reduce to desired consistency; adjust with roux if needed.<br>- Stir in snail mixture and season to taste.<br>- Add chopped fennel greens and fill four prepared casseroles or cocottes.<br>- Roll puff pastry to 3mm thickness. Stamp out rounds 2cm larger than serving dishes.<br>- Brush pastry edges with egg yolk and cover cocottes, pressing firmly to sides.<br>- Garnish with pastry trimmings. Rest 20 minutes in refrigerator.<br>- Bake at 220°C for 10–15 minutes until golden brown.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

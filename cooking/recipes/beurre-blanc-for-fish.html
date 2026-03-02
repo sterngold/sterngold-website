@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Beurre Blanc (for fish) <br>Bt!urre-blanc-5auce <br>Beurre blanc {1ere methode} <br><br>Recipe 1# :35 <br><br>Category : Sauces <br><br>Chef : Patrick Diethelm<br>Date : 12.12.2005 <br><br>Cost of goods : CHF 11.55 LEUR 7.31 <br><br>Ingredients for 0.150 liters at 100% [Net quantity) <br><br>34g Shallots <br>38 ml Dry white wine<br>23 ml White wine vinegar<br>150 ml *FishFumet<br>100 g Butter Cold <br>1 x Seasoning [salt and pepper] <br><br>- PEEL SHALLOTS AND CHOP FINE <br>- COMBINE SHALLOTS WITH DRY WHITE WINE AND REDUCE <br>- ADD WHITE WINE VINEGAR AND REDUCE AGAIN <br>-ADD FISH FUMET AND REDUCE TO ABOUT 1/.2 <br>- SEASON WITH SALT AND FRESHLY GROUND WHITE PEPPER 	-- <br>- REMOVE FROM HEAT AND ADD THE COLD BUTTER IN SMALL AMOUNTS, WHIPPING VIGOROUSLY <br><br>- WHIP SAUCE ONCE MORE WITH A HAND HELD ELECTRIC MIXER [IF AVAILABLE). <br>	 <br>- BE SURE SAUCE DOES NOT RETURN TO A BOil <br><br>APPLICATIONS <br>Serve with grilled ocean fish and crustaceans. Serve with warm fish terrines. <br>Serve with poached fish.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Beurre Blanc (for fish) <br>Bt!urre-blanc-5auce <br>Beurre blanc {1ere methode} <br><br>Recipe 1# :35 <br><br>Category : Sauces <br><br>Chef : Patrick Diethelm<br>Date : 12.12.2005 <br><br>Cost of goods : CHF 11.55 LEUR 7.31 <br><br>Ingredients for 0.150 liters at 100% [Net quantity) <br><br>34g Shallots <br>38 ml Dry white wine<br>23 ml White wine vinegar<br>150 ml *FishFumet<br>100 g Butter Cold <br>1 x Seasoning [salt and pepper] <br><br>- PEEL SHALLOTS AND CHOP FINE <br>- COMBINE SHALLOTS WITH DRY WHITE WINE AND REDUCE <br>- ADD WHITE WINE VINEGAR AND REDUCE AGAIN <br>-ADD FISH FUMET AND REDUCE TO ABOUT 1/.2 <br>- SEASON WITH SALT AND FRESHLY GROUND WHITE PEPPER 	-- <br>- REMOVE FROM HEAT AND ADD THE COLD BUTTER IN SMALL AMOUNTS, WHIPPING VIGOROUSLY <br><br>- WHIP SAUCE ONCE MORE WITH A HAND HELD ELECTRIC MIXER [IF AVAILABLE). <br>	 <br>- BE SURE SAUCE DOES NOT RETURN TO A BOil <br><br>APPLICATIONS <br>Serve with grilled ocean fish and crustaceans. Serve with warm fish terrines. <br>Serve with poached fish.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">BEURRE BLANC (FOR FISH)<br><br>Source: DCT | Station: Saucier<br>Chef: Patrick Diethelm | Date: 12.12.2005<br>Yield: 150 ml<br><br>Ingredients:<br>34 g shallots<br>38 ml dry white wine<br>23 ml white wine vinegar<br>150 ml fish fumet<br>100 g cold butter<br>Salt and white pepper<br><br>Method:<br>1. Peel shallots and chop fine.<br>2. Combine shallots with dry white wine and reduce.<br>3. Add white wine vinegar and reduce again.<br>4. Add fish fumet and reduce to approximately one-half.<br>5. Season with salt and freshly ground white pepper.<br>6. Remove from heat and add cold butter in small amounts, whisking vigorously.<br>7. Finish by whisking once more with hand-held electric mixer if available.<br>8. Do not allow sauce to return to a boil.<br><br>Applications: Serve with grilled ocean fish, crustaceans, warm fish terrines, and poached fish.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

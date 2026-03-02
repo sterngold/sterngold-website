@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Duo de Saumon mi-cuit et croustillants d, saumon<br>Amuse bouche Lachsduett<br>Recipe #<br>Category	: Amuse Bouche<br>Chef	: Patrick Diethelm<br>Date	: 15.12.2005<br>Cost of goods	: CHF 1.91 / EUR 1.21<br>Ingredients for 6 servings at 100% (Net quantity)<br>300<br>g<br>Salmon trout fillet, skinless<br>4<br>g<br>Sea salt<br>3<br>g<br>Crystal sugar<br>5<br>g<br>Dill, fresh<br><br><br>#2<br>300<br>g<br>Salmon trout fillet, skinless<br>2<br>pc<br>Feuilles de brick<br>40<br>g<br>Clarified Butter .<br>1<br>g<br>Smoking salt<br><br>#1<br>- Cut Salmon in long thick sticks and marinate with salt and sugar - wrap in plastic foil and then tightly in alu foil and shape into roll<br>- Add into Ofen at 50°C for about 30 Minutes and then chill. - unwrap and slice carefully and dredge in chopped dill<br>#2<br>- Cut Salmon in long sticks and then season with smoking salt<br>- brush feuilles de brick with melted butter and then wrap the salmon in tightly. [See course Instruction)<br>- Saute quickly in clarified butter until brick dough crispy - Slice carefully (salmon is medium cooked)<br>- Serve with Granny smith reduction and shallot confit</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Duo de Saumon mi-cuit et croustillants d, saumon<br>Amuse bouche Lachsduett<br>Recipe #<br>Category	: Amuse Bouche<br>Chef	: Patrick Diethelm<br>Date	: 15.12.2005<br>Cost of goods	: CHF 1.91 / EUR 1.21<br>Ingredients for 6 servings at 100% (Net quantity)<br>300<br>g<br>Salmon trout fillet, skinless<br>4<br>g<br>Sea salt<br>3<br>g<br>Crystal sugar<br>5<br>g<br>Dill, fresh<br><br><br>#2<br>300<br>g<br>Salmon trout fillet, skinless<br>2<br>pc<br>Feuilles de brick<br>40<br>g<br>Clarified Butter .<br>1<br>g<br>Smoking salt<br><br>#1<br>- Cut Salmon in long thick sticks and marinate with salt and sugar - wrap in plastic foil and then tightly in alu foil and shape into roll<br>- Add into Ofen at 50°C for about 30 Minutes and then chill. - unwrap and slice carefully and dredge in chopped dill<br>#2<br>- Cut Salmon in long sticks and then season with smoking salt<br>- brush feuilles de brick with melted butter and then wrap the salmon in tightly. [See course Instruction)<br>- Saute quickly in clarified butter until brick dough crispy - Slice carefully (salmon is medium cooked)<br>- Serve with Granny smith reduction and shallot confit</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Duo de Saumon mi-cuit et croustillants de Saumon** | Chef Patrick Diethelm | December 15, 2005 | Cost: CHF 1.91<br><br>**Part One: Poached Salmon**<br>Cut 300 g salmon trout fillet into long thick sticks. Marinate with 4 g sea salt and 3 g crystal sugar. Wrap tightly in plastic foil, then aluminum foil, shaping into a roll.<br><br>Poach in a 50°C oven for approximately 30 minutes. Chill, unwrap carefully, and slice. Coat with chopped fresh dill.<br><br>**Part Two: Crispy Brick-wrapped Salmon**<br>Cut 300 g salmon trout fillet into long sticks and season with 1 g smoking salt.<br><br>Brush feuilles de brick with melted clarified butter and wrap salmon tightly within. Sauté quickly in 40 g clarified butter until the brick dough is crispy. Slice carefully; the salmon should be medium-cooked.<br><br>**Service:**<br>Arrange both preparations on the plate. Serve with Granny Smith apple reduction and shallot confit.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

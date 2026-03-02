@@ -114,8 +114,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">onions sweet<br>cauliflower – add <br>white wine - abloschen<br>milk<br>cream – add ½ / aufkochen / abschmeken / add restliche miclh und rahm<br>blat gelatin<br>Passieren</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">onions sweet<br>cauliflower – add <br>white wine - abloschen<br>milk<br>cream – add ½ / aufkochen / abschmeken / add restliche miclh und rahm<br>blat gelatin<br>Passieren</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sweat onions until sweet. Add cauliflower and deglaze with white wine. Add milk and bring to simmer. Stir in half the cream and bring to boil. Taste and adjust seasoning. Add remaining milk and cream. Strain through fine sieve. Bloom gelatin and whisk into hot mixture. Pass through fine sieve again before setting.</div>
+          
         </section>
         
 
@@ -155,5 +164,24 @@ Per liter 4 to 6 gelatin</p>
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

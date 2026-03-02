@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">500 жгр мадейра порт<br>3 /и малко/ листа желатин – във студена вода докато омекне, да се изситска много добре с ръка/<br>Порта се затопля на котлон  - запалва се <br>Добавя се желатина и се разбърква много добре <br>През цедка и в хладилника</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">500 жгр мадейра порт<br>3 /и малко/ листа желатин – във студена вода докато омекне, да се изситска много добре с ръка/<br>Порта се затопля на котлон  - запалва се <br>Добавя се желатина и се разбърква много добре <br>През цедка и в хладилника</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Soak 3 to 3.5 sheets of gelatin in cold water until softened. Squeeze out excess water very thoroughly by hand.<br><br>Warm 500 g Madeira wine in a pan and ignite to burn off alcohol. Remove from heat and stir in the prepared gelatin, mixing well to dissolve completely.<br><br>Pass through a fine sieve and transfer to the refrigerator to set.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

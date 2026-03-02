@@ -138,8 +138,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Bloem, rogge, eiern en zachte boter mengen. Melk licht verwarmen (37) gist toevoegen dit toevoegen aan mengsel en op warme plek laten rijzen. <br>Eiwitten opslaan, room met zout opslaan en beiden erdoor spateln</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Bloem, rogge, eiern en zachte boter mengen. Melk licht verwarmen (37) gist toevoegen dit toevoegen aan mengsel en op warme plek laten rijzen. <br>Eiwitten opslaan, room met zout opslaan en beiden erdoor spateln</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Blinis Vijf**<br><br>**Method:**<br>1. Combine flour (wheat and rye), eggs, and soft butter.<br>2. Gently warm milk to 37°C. Add yeast to warm milk, then incorporate into flour mixture.<br>3. Allow to rise in a warm location.<br>4. Whip egg whites to stiff peaks. Whip cream with salt to soft peaks.<br>5. Fold both into batter.<br>6. Bake and serve immediately.</div>
+          
         </section>
         
 
@@ -173,5 +182,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

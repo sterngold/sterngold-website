@@ -114,8 +114,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Cut and grill aubergine <br>Place baking papper in the terrine form <br>Place the Aubergine<br>Beat eggs very well <br>Add flour, salt, cayanne pepper<br>Add layer mixture, layer red beit (clean and long strips), layer mixture, layer mozzarella, layer grilled aubergine <br>Salt every biet<br>Bake 180 C - till is ready - around 30 - 35 min <br>20 min with lid on - 10 min without lid</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Cut and grill aubergine <br>Place baking papper in the terrine form <br>Place the Aubergine<br>Beat eggs very well <br>Add flour, salt, cayanne pepper<br>Add layer mixture, layer red beit (clean and long strips), layer mixture, layer mozzarella, layer grilled aubergine <br>Salt every biet<br>Bake 180 C - till is ready - around 30 - 35 min <br>20 min with lid on - 10 min without lid</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Cut and grill aubergine. Line terrine mold with baking paper. Beat eggs thoroughly with flour, salt, and cayenne pepper to create a binding mixture. Layer as follows in the mold: aubergine, egg mixture, red beet strips (cleaned and cut lengthwise, seasoned with salt), egg mixture, buffalo mozzarella, grilled aubergine. Bake at 180°C for 30–35 minutes total: 20 minutes covered with lid, then 10 minutes uncovered, until set.</div>
+          
         </section>
         
 
@@ -149,5 +158,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

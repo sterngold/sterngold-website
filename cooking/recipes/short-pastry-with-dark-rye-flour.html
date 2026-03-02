@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Short Pastry with dark rye flour<br>Geriebener Teig mit Buchmehl Pâte brisée<br><br>Recipe #	: 710<br>Category	: ECA - Dough<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 3.70 / EUR 2.34<br><br>Ingredients for 0.400 kilogram. at 100% (Net quantity)<br>150<br>g<br>White wheat flour<br>100<br>g<br>Dark rye flour 2<br>100<br>g<br>Butter<br>90<br>ml<br>Water<br>5<br>g<br>Salt<br><br>- ADD COLD BUTTER TO FLOUR IN SMALL NUGGETS. RUB BUTTER AND SIFTED FLOUR TOGETHER INTO SMALL GRANULES.<br>- ADD SALTED WATER AND WORK RAPIDLY INTO A SMOOTH DOUGH. DO NOT KNEAD THE DOUGH TOO LONG SO AS NOT TO DEVELOP THE GLUTEN, WHICH MAKES THE DOUGH TOUGH.<br>- REFRIGERATE DOUGH FOR AT LEAST 1 HOUR BEFORE USE.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Short Pastry with dark rye flour<br>Geriebener Teig mit Buchmehl Pâte brisée<br><br>Recipe #	: 710<br>Category	: ECA - Dough<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 3.70 / EUR 2.34<br><br>Ingredients for 0.400 kilogram. at 100% (Net quantity)<br>150<br>g<br>White wheat flour<br>100<br>g<br>Dark rye flour 2<br>100<br>g<br>Butter<br>90<br>ml<br>Water<br>5<br>g<br>Salt<br><br>- ADD COLD BUTTER TO FLOUR IN SMALL NUGGETS. RUB BUTTER AND SIFTED FLOUR TOGETHER INTO SMALL GRANULES.<br>- ADD SALTED WATER AND WORK RAPIDLY INTO A SMOOTH DOUGH. DO NOT KNEAD THE DOUGH TOO LONG SO AS NOT TO DEVELOP THE GLUTEN, WHICH MAKES THE DOUGH TOUGH.<br>- REFRIGERATE DOUGH FOR AT LEAST 1 HOUR BEFORE USE.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SHORT PASTRY WITH DARK RYE FLOUR<br>Chef Patrick Diethelm | Recipe #710 | Cost: CHF 3.70 / EUR 2.34<br>Yield: 400 g<br><br>INGREDIENTS<br>150 g White wheat flour<br>100 g Dark rye flour<br>100 g Butter (cold)<br>90 ml Water<br>5 g Salt<br><br>METHOD<br>Cut cold butter into small nuggets and add to sifted flour. Rub together until mixture resembles fine granules. Add salted water and work quickly into a smooth dough — do not overwork or knead excessively, as this develops gluten and toughens the dough. Refrigerate for at least 1 hour before use.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

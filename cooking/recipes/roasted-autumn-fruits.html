@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Choose a selection of the best seasonal fruits and turn them into a new fruit salad with style! Tossing the fruits first in icing sugar and than pan-roasting them in a stinking hot pan gives them a delicious caramelized flavour. Absolutely fabulous with thick cream. Serves 4-6<br>1 Dissolve the caster sugar in 100ml water, then boil for 3 minutes. Remove from the heat and add the Champagne or sparkling wine. Pour into a large bowl and set aside.<br>2 Peel and core the pears, then slice or chop. Halve the plums, stone and slice. Core and slice the apples.<br>3 Heat a large non-stick frying pan until really hot. Meanwhile, mix all the fruits together in a bowl and toss gently with the icing sugar.<br>4 Stir-fry the sugar-dusted fruits in the hot pan for about 1 minute, then add the eau-de-vie or other spirit and <br>cook for a minute or two until evaporated.<br>5 Slide the hot fruits into the Champagne syrup. Leave until cool, then chill lightly. Serve with whipped cream and thin crispy biscuits, such as Coconut Tuiles.<br><br>50g caster sugar<br>1 small glass Champagne or other <br>dry white sparkling wine<br>2 large red plums <br>2 Cox’s apples<br>a good handful of blackberries or fresh cranberries<br>25g icing sugar<br>2 tablespoons eau-de-vie<br>or brandy or whisky</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Choose a selection of the best seasonal fruits and turn them into a new fruit salad with style! Tossing the fruits first in icing sugar and than pan-roasting them in a stinking hot pan gives them a delicious caramelized flavour. Absolutely fabulous with thick cream. Serves 4-6<br>1 Dissolve the caster sugar in 100ml water, then boil for 3 minutes. Remove from the heat and add the Champagne or sparkling wine. Pour into a large bowl and set aside.<br>2 Peel and core the pears, then slice or chop. Halve the plums, stone and slice. Core and slice the apples.<br>3 Heat a large non-stick frying pan until really hot. Meanwhile, mix all the fruits together in a bowl and toss gently with the icing sugar.<br>4 Stir-fry the sugar-dusted fruits in the hot pan for about 1 minute, then add the eau-de-vie or other spirit and <br>cook for a minute or two until evaporated.<br>5 Slide the hot fruits into the Champagne syrup. Leave until cool, then chill lightly. Serve with whipped cream and thin crispy biscuits, such as Coconut Tuiles.<br><br>50g caster sugar<br>1 small glass Champagne or other <br>dry white sparkling wine<br>2 large red plums <br>2 Cox’s apples<br>a good handful of blackberries or fresh cranberries<br>25g icing sugar<br>2 tablespoons eau-de-vie<br>or brandy or whisky</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Dissolve caster sugar in 100ml water and boil for 3 minutes. Remove from heat, add Champagne or sparkling wine, and set aside in a large bowl. Peel and core pears, then slice or chop. Halve plums, remove stones, and slice. Core and slice apples. Heat a large non-stick frying pan until very hot. Toss mixed fruits gently with icing sugar. Stir-fry in hot pan for approximately 1 minute, add eau-de-vie or spirit, and cook 1-2 minutes until evaporated. Transfer hot fruits to Champagne syrup. Cool completely, then chill lightly. Serve with whipped cream and thin crispy biscuits such as Coconut Tuiles.<br><br>Ingredients (serves 4-6): 50g caster sugar, 100ml Champagne or sparkling wine, 2 large red plums, 2 Cox's apples, handful of blackberries or fresh cranberries, 25g icing sugar, 2 tbsp eau-de-vie or brandy.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

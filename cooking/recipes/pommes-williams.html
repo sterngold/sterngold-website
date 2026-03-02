@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Pommes Williams<br>Birnenkartoffeln PommesWilliams<br><br>Recipe #	: 576<br>Category	: Potato Dishes<br>Chef	: Patrick Diethelm<br>Date	: 18.10.2005<br>Cost of goods	: CHF 0.18 / EUR 0.11<br><br>European Gourmet Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>	450 g	Potatoes Bintje, peeled<br>	3 g	Salt (optional)<br>	20 g	Egg yolk<br>	4 g	Salt<br>	1 x	Nutmeg (pinch) <br>20 g White wheat flour 1 pc Eggs<br>	50 g	Bread crumbs, fine<br>	6 g	Almond slivers or Spaghetti 45 ml Oil for frying (10% oil loss)<br>- Cut peeled potatoes and cut into even sized chunks.<br>- Steam and drain well.<br>- When cooked, dry potatoes briefly in the oven at 150°C.with open steam escape - Pass potatoes through a food mill.<br>- ADD EGG YOLKS TO POTATOES AND SEASON TO TASTE WITH SALT AND NUTMEG.<br>- MOLD THE POTATO MIXTURE INTO SMALL, PEAR SHAPED CROQUE I I ES.<br>- BREAK WHOLE EGGS AND MIX WITH SMALL AMOUNT OF WATER.<br>- DREDGE CROQUE I I ES FIRST IN FLOUR, THEN IN EGG MIXTURE, AND THEN IN BREAD CRUMBS. SHAKE OFF EXCESS CRUMBS AND PAT CRUMBS TO CROQUE I I ES. REMOLD CROQUE I I ES INTO PEAR SHAPES, IF NECESSARY.<br>- INSERT AN ALMOND SLIVER, OR SMALL SPAGHETTI PIECE, INTO TOPS OF CROQUETTES TO IMITATE THE PEAR STEM.<br>- DEEP FRY AT 180°C UNTIL GOLDEN BROWN.<br>- DRAIN ON ABSORBENT PAPER AND SERVE ON A PAPER DOILY, OR USE AS A GARNISH WITH MEAT.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Pommes Williams<br>Birnenkartoffeln PommesWilliams<br><br>Recipe #	: 576<br>Category	: Potato Dishes<br>Chef	: Patrick Diethelm<br>Date	: 18.10.2005<br>Cost of goods	: CHF 0.18 / EUR 0.11<br><br>European Gourmet Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>	450 g	Potatoes Bintje, peeled<br>	3 g	Salt (optional)<br>	20 g	Egg yolk<br>	4 g	Salt<br>	1 x	Nutmeg (pinch) <br>20 g White wheat flour 1 pc Eggs<br>	50 g	Bread crumbs, fine<br>	6 g	Almond slivers or Spaghetti 45 ml Oil for frying (10% oil loss)<br>- Cut peeled potatoes and cut into even sized chunks.<br>- Steam and drain well.<br>- When cooked, dry potatoes briefly in the oven at 150°C.with open steam escape - Pass potatoes through a food mill.<br>- ADD EGG YOLKS TO POTATOES AND SEASON TO TASTE WITH SALT AND NUTMEG.<br>- MOLD THE POTATO MIXTURE INTO SMALL, PEAR SHAPED CROQUE I I ES.<br>- BREAK WHOLE EGGS AND MIX WITH SMALL AMOUNT OF WATER.<br>- DREDGE CROQUE I I ES FIRST IN FLOUR, THEN IN EGG MIXTURE, AND THEN IN BREAD CRUMBS. SHAKE OFF EXCESS CRUMBS AND PAT CRUMBS TO CROQUE I I ES. REMOLD CROQUE I I ES INTO PEAR SHAPES, IF NECESSARY.<br>- INSERT AN ALMOND SLIVER, OR SMALL SPAGHETTI PIECE, INTO TOPS OF CROQUETTES TO IMITATE THE PEAR STEM.<br>- DEEP FRY AT 180°C UNTIL GOLDEN BROWN.<br>- DRAIN ON ABSORBENT PAPER AND SERVE ON A PAPER DOILY, OR USE AS A GARNISH WITH MEAT.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Cut peeled potatoes into even chunks. Steam and drain well. Dry briefly in oven at 150°C with steam escape open. Pass through food mill. Add egg yolks to potatoes and season with salt and nutmeg to taste. Mold into small, pear-shaped croquettes. Whisk whole eggs with small amount of water. Dredge croquettes in flour, then egg mixture, then breadcrumbs. Shake off excess and pat crumbs to croquettes. Remold into pear shapes if needed. Insert almond sliver or small spaghetti piece into top of each croquette to imitate pear stem. Deep-fry at 180°C until golden brown. Drain on absorbent paper and serve on paper doily, or use as garnish with meat.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

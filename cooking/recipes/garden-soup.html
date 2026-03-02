@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Zadusete 1 sitno narjazana glava luk <br>s 3 lazici olio ili maslo.Porasete zaprazkata s 1 <br>lazicka cerven piper i ja razredete s 7-8 casi goresta <br>voda, Stom zavri vodata,pribavete sol,narjazanite na <br>kupceta 1/2 glava celina,1-2 morkova,1-2 magdanozeni <br>korena i narjazanata na ivicki 1/4 malka zelka. Kogato <br>zelencuka omekne,pribavete 2-3 kartofa,narjazani na <br>kubceta.Dovarete supata i ja zastrojte s natroseno <br>sirene,razmito na kasica s vrjasto prjasno mljako. <br>Podnesete ja porasena s ceren piper. <br>Po zelanie 4-5 minuti predi svaljaneto na supata ot <br>oganja mozete da pribavite 1 casa grach ot konserva. <br>Oste edin variant na zimna zelencukova supa: V <br>kilogram i polovina vrjasta podsolena voda ili buljon <br>pusnete edna glava nakalcan luk i narjazani na drebni <br>kupceta parce celina,magdanozeni koreni,3-4 <br>morkova,3-4 kartofa,7-8 zarna ceren piper. Ako imate <br>konserviran grach,pribavete i 3-4 lazici ot nego. <br>Kogato zelencucite omeknat(okolo polovin cas) <br>pribavete 4-5 narjazani obeleni konservirani domati 1 <br>parce (kolkoto goljama jabalka) nastargano cerveno <br>cveklo,dafinov list i parce maslo. Sled 10 minuti <br>supata e gotova. Tja ste stane oste po vkusna ,ako pri <br>serviraneto slozite vav vsjaka cinija malko smetana ( <br>1 lazicka) i sitno narjazan magdanoz.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Zadusete 1 sitno narjazana glava luk <br>s 3 lazici olio ili maslo.Porasete zaprazkata s 1 <br>lazicka cerven piper i ja razredete s 7-8 casi goresta <br>voda, Stom zavri vodata,pribavete sol,narjazanite na <br>kupceta 1/2 glava celina,1-2 morkova,1-2 magdanozeni <br>korena i narjazanata na ivicki 1/4 malka zelka. Kogato <br>zelencuka omekne,pribavete 2-3 kartofa,narjazani na <br>kubceta.Dovarete supata i ja zastrojte s natroseno <br>sirene,razmito na kasica s vrjasto prjasno mljako. <br>Podnesete ja porasena s ceren piper. <br>Po zelanie 4-5 minuti predi svaljaneto na supata ot <br>oganja mozete da pribavite 1 casa grach ot konserva. <br>Oste edin variant na zimna zelencukova supa: V <br>kilogram i polovina vrjasta podsolena voda ili buljon <br>pusnete edna glava nakalcan luk i narjazani na drebni <br>kupceta parce celina,magdanozeni koreni,3-4 <br>morkova,3-4 kartofa,7-8 zarna ceren piper. Ako imate <br>konserviran grach,pribavete i 3-4 lazici ot nego. <br>Kogato zelencucite omeknat(okolo polovin cas) <br>pribavete 4-5 narjazani obeleni konservirani domati 1 <br>parce (kolkoto goljama jabalka) nastargano cerveno <br>cveklo,dafinov list i parce maslo. Sled 10 minuti <br>supata e gotova. Tja ste stane oste po vkusna ,ako pri <br>serviraneto slozite vav vsjaka cinija malko smetana ( <br>1 lazicka) i sitno narjazan magdanoz.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sweat 1 finely sliced onion in 3 tablespoons oil or butter. Season with 1 teaspoon paprika and deglaze with 7–8 cups hot water. Once boiling, add salt and diced vegetables: ½ head celery, 1–2 carrots, 1–2 parsnips, and ¼ small cabbage, sliced thin.<br><br>When vegetables soften, add 2–3 diced potatoes. Simmer until tender. Finish with grated cheese mixed with sour cream to a thin consistency. Serve garnished with paprika.<br><br>Optional: Add 1 cup canned beans 4–5 minutes before service.<br><br>Alternative winter version: In 1.5 liters salted stock or water, cook diced onion, celery, parsnips, 3–4 carrots, 3–4 potatoes, and 7–8 peppercorns until vegetables are tender (30 minutes). Add 3–4 tablespoons canned beans if available. Add 4–5 peeled canned tomatoes, grated raw beets (apple-sized piece), bay leaf, and butter. Simmer 10 minutes. Service: dollop sour cream and chopped parsley into each bowl.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

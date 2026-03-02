@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Ingredients for 10 servings at 100% [Net quantity)<br><br>100 ml Milk<br>250 g White wheat flour <br>20 gYeast, fresh<br><br>50 g Egg whol<br><br>30 g Egg yolk <br>15 g Honey <br>2g	Salt <br>60 g Butter<br> 1 g	Dill, fresh</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Ingredients for 10 servings at 100% [Net quantity)<br><br>100 ml Milk<br>250 g White wheat flour <br>20 gYeast, fresh<br><br>50 g Egg whol<br><br>30 g Egg yolk <br>15 g Honey <br>2g	Salt <br>60 g Butter<br> 1 g	Dill, fresh</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">INGREDIENTS FOR 10 SERVINGS<br><br>100 ml Milk<br>250 g White wheat flour<br>20 g Fresh yeast<br>50 g Whole egg<br>30 g Egg yolk<br>15 g Honey<br>2 g Salt<br>60 g Butter<br>1 g Fresh dill<br><br>No method provided — ingredient list only. Standard procedure: warm milk, dissolve yeast, combine with flour, eggs, honey, and salt to form dough. Incorporate softened butter and dill. Prove until doubled. Portion and bake as appropriate for Scandinavian buchteln (sweet yeast rolls).</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

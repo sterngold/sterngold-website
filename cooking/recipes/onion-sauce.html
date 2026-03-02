@@ -122,8 +122,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- onions peel cut in half and slice emince <br>- saute onions in butter until about three qurters cooked <br>- add wine and vineagr and boil until almost evaporated<br>- add brown veal stock and simmer for 5 minutes<br>- season to taste and add parsley</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- onions peel cut in half and slice emince <br>- saute onions in butter until about three qurters cooked <br>- add wine and vineagr and boil until almost evaporated<br>- add brown veal stock and simmer for 5 minutes<br>- season to taste and add parsley</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Onion Sauce<br><br>1. Peel onions, cut in half, and slice into fine emincé.<br>2. Sauté onions in butter until approximately three-quarters cooked.<br>3. Deglaze with wine and vinegar; reduce until almost completely evaporated.<br>4. Add brown veal stock and simmer for 5 minutes.<br>5. Season to taste and finish with fresh parsley.</div>
+          
         </section>
         
 
@@ -163,5 +172,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

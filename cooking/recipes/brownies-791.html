@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">60 g couverture - black <br>125 g butter - melt and mix together - let cool down little <br>250 g suggar + 2 eggs - mix togther very well<br>60 g flour <br>Salt, 1 tl. Vanilla sugar<br>60 g crème fraiche <br>100 g walnoten - small pieces<br>Mix sugar/egg wit chocolate, add walnoten, add rest <br>160 C for 25 min, 130 C for 10 min</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">60 g couverture - black <br>125 g butter - melt and mix together - let cool down little <br>250 g suggar + 2 eggs - mix togther very well<br>60 g flour <br>Salt, 1 tl. Vanilla sugar<br>60 g crème fraiche <br>100 g walnoten - small pieces<br>Mix sugar/egg wit chocolate, add walnoten, add rest <br>160 C for 25 min, 130 C for 10 min</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">BROWNIES | VandeMarkt Pâtisserie<br><br>Melt 60 g dark couverture with 125 g butter together. Cool slightly.<br><br>Whisk 250 g sugar with 2 eggs until very well combined.<br><br>Fold chocolate-butter mixture into sugar-egg mixture.<br><br>Add 100 g walnuts (cut into small pieces).<br><br>Fold in 60 g flour, salt, and 1 teaspoon vanilla sugar. Fold in 60 g crème fraîche.<br><br>Bake at 160°C for 25 minutes, then reduce to 130°C for 10 minutes.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

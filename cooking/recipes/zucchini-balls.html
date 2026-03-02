@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1-2 тиквички /предполагам в Холандия има, най-вече в италианските магазини, о сигурно и в супермаркетите/, за предпочитане а онези с тъмна кора, а не като нашите със светла. Тъмните нямат семе.Обелва се кората, настъргват се с ренде. Посоляват се и се оставят 30 минути – да си пуснат сока, който е хубаво да се отцеди. Добавя се едно яйце /зависи колко тиквички имаш и колко кюфтета искаш да направиш/, може и две.Разбива се добре. Добавя се брашно и се бърка докато се получи сравнително гъста смес, която да може да се вземе с лъжицата и да се пусне в силно сгорещеното олио.Хубаво е да се добавя накълцан копър, чесън на прах, ким, ако искаш парчета бяло сирене, /не кашкавал/, или малко извара.Сгряваш олиото в тигана и с лъжицата пускаш по едно кюфте, обръщаш и изваждаш. Гъстата постепенно се уцелва и е въпрос на опит.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1-2 тиквички /предполагам в Холандия има, най-вече в италианските магазини, о сигурно и в супермаркетите/, за предпочитане а онези с тъмна кора, а не като нашите със светла. Тъмните нямат семе.Обелва се кората, настъргват се с ренде. Посоляват се и се оставят 30 минути – да си пуснат сока, който е хубаво да се отцеди. Добавя се едно яйце /зависи колко тиквички имаш и колко кюфтета искаш да направиш/, може и две.Разбива се добре. Добавя се брашно и се бърка докато се получи сравнително гъста смес, която да може да се вземе с лъжицата и да се пусне в силно сгорещеното олио.Хубаво е да се добавя накълцан копър, чесън на прах, ким, ако искаш парчета бяло сирене, /не кашкавал/, или малко извара.Сгряваш олиото в тигана и с лъжицата пускаш по едно кюфте, обръщаш и изваждаш. Гъстата постепенно се уцелва и е въпрос на опит.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Select 1–2 zucchini, preferably with dark skin (preferred for being seedless). Peel and grate. Salt and let rest 30 minutes to release liquid; drain well. Add 1–2 beaten eggs, depending on quantity. Mix in flour until the batter is thick enough to be scooped with a spoon. Season with chopped dill, garlic powder, caraway, and optionally white cheese or whey.<br><br>Heat oil in pan until very hot. Drop spoonfuls of batter into oil, turning once. The batter sets gradually during frying—mastering the timing comes with practice. Drain and serve.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

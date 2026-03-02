@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">SEA BASS IN SALT DOUGH ON CUCUMBER TOMATO SALAD<br><br>Yield: 5 servings<br><br>300 g salt <br>300 g flour <br>90 g eggs <br>110 g water<br>1	fresh sea bass<br>salt<br>blanched head lettuce leaves or swiss chard <br>10 g fresh herbs<br>egg wash<br><br>Salad: <br>1	cucumber<br>2	tomatoes<br>20 g sherry vinegar<br>40 g olive oil<br>salt, pepper mill<br><br>Sauce<br>50 g sour cream<br>15 g honey<br>2g chopped dill<br>2g lemon juice<br>salt, pepper <br>pinch of saffron<br><br>Preparation: <br>For the salt dough, mix all the ingredients and knead a dough roll out to 5mm and rest for one hour in the refrigerator.<br>Scale the sea bass and see further course instruction.<br>Blanch some head lettuce leaves or Swiss chard and wrap up sea bass with the herbs or stewed vegetable julienne and wrap up with salt dough.<br>Place some marks on the dough and coat with the egg. (CHILL FOR 30 MIN]<br>Bake in a pre-heated oven for about 5 min at 240 C then 10 – 15 min at 200 C<br><br>Salad:<br>Peel the cucumber and slice thinly and shingle with tomato slices into small ring mold (see instruction)<br>Mix all the ingredients for the vinaigrette and pour over the slices<br>to marinate.<br><br>Sauce: <br>Stir the sour cream with the honey, dill and season to taste.<br>Take the sea bass out of the oven and serve in crust.<br>Cut it open at the table, and slice the fish into portion with the electric knife.<br>Serve on the cucumber salad, add some sauce on the side and garnish with sprigs of herbs. Drizzle with some reduced dark aceto di balsamico</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">SEA BASS IN SALT DOUGH ON CUCUMBER TOMATO SALAD<br><br>Yield: 5 servings<br><br>300 g salt <br>300 g flour <br>90 g eggs <br>110 g water<br>1	fresh sea bass<br>salt<br>blanched head lettuce leaves or swiss chard <br>10 g fresh herbs<br>egg wash<br><br>Salad: <br>1	cucumber<br>2	tomatoes<br>20 g sherry vinegar<br>40 g olive oil<br>salt, pepper mill<br><br>Sauce<br>50 g sour cream<br>15 g honey<br>2g chopped dill<br>2g lemon juice<br>salt, pepper <br>pinch of saffron<br><br>Preparation: <br>For the salt dough, mix all the ingredients and knead a dough roll out to 5mm and rest for one hour in the refrigerator.<br>Scale the sea bass and see further course instruction.<br>Blanch some head lettuce leaves or Swiss chard and wrap up sea bass with the herbs or stewed vegetable julienne and wrap up with salt dough.<br>Place some marks on the dough and coat with the egg. (CHILL FOR 30 MIN]<br>Bake in a pre-heated oven for about 5 min at 240 C then 10 – 15 min at 200 C<br><br>Salad:<br>Peel the cucumber and slice thinly and shingle with tomato slices into small ring mold (see instruction)<br>Mix all the ingredients for the vinaigrette and pour over the slices<br>to marinate.<br><br>Sauce: <br>Stir the sour cream with the honey, dill and season to taste.<br>Take the sea bass out of the oven and serve in crust.<br>Cut it open at the table, and slice the fish into portion with the electric knife.<br>Serve on the cucumber salad, add some sauce on the side and garnish with sprigs of herbs. Drizzle with some reduced dark aceto di balsamico</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SALT DOUGH: Mix flour, salt, eggs, and water; knead into a dough. Roll to 5mm thickness and refrigerate for 1 hour.<br><br>SEA BASS PREPARATION: Scale the fish. Blanch lettuce leaves or Swiss chard. Wrap the fish with fresh herbs and/or stewed vegetable julienne, then encase in the salt dough. Mark the dough decoratively, brush with egg wash, and chill for 30 minutes.<br><br>BAKING: Bake in preheated oven at 240°C for 5 minutes, then at 200°C for 10–15 minutes until golden.<br><br>CUCUMBER TOMATO SALAD: Peel cucumber and slice thinly. Shingle cucumber and tomato slices into a small ring mold. Whisk together sherry vinegar, olive oil, salt, and pepper. Pour vinaigrette over sliced vegetables and marinate.<br><br>SAUCE: Stir together sour cream, honey, chopped dill, and lemon juice. Season with salt, pepper, and a pinch of saffron.<br><br>SERVING: Remove sea bass from oven. Cut open at the table and slice with an electric knife into portions. Plate on cucumber salad, spoon sauce to the side, garnish with fresh herbs, and drizzle with reduced balsamic vinegar.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

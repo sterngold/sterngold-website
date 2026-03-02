@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Parmesan - Sablés<br>Parmesan - Sablés<br>Recipe #<br>Category	: ECA - Mediterranean cuisine<br>Chef	: Patrick Diethelm<br>Date	:07.112005<br>Cost of goods	: CHF 0.14 / EUR 0.09 <br><br>European Gourmet Cuisine<br><br>Ingredients for 10 servings at 100% (Net quantity)<br>20 g	Butter Soft 15 ml Olive oil<br>40 g	Parmesan grated<br>65 g	White wheat flour<br>1 mg Baking powder Pinch<br>35 g Egg<br>- KNEAD ALL INGREDIENTS TO A DOUGH.<br>LET REST FOR 1 HOUR IN REFRIGERATOR - ROLL OUT DOUGH 5 MM AND LET REST CUT OR STAMP OUT DOUGH AND PLACE ON SHEET PAN.<br>BAKE AT 1 BO°C UNTIL GOLDEN BROWN.<br>- OR ROLL OUT DOUGH 3 mm AND CUT INTO MODERN SHAPES BRUSH WITH EGG WASH AND BAKE<br>SERVING IDEAS<br>- SERVE FOR AMUSE BOUCHE WITH PARMA HAM, TOMATO AND OLIVE OIL OR GRILLED FISH MIGNON</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Parmesan - Sablés<br>Parmesan - Sablés<br>Recipe #<br>Category	: ECA - Mediterranean cuisine<br>Chef	: Patrick Diethelm<br>Date	:07.112005<br>Cost of goods	: CHF 0.14 / EUR 0.09 <br><br>European Gourmet Cuisine<br><br>Ingredients for 10 servings at 100% (Net quantity)<br>20 g	Butter Soft 15 ml Olive oil<br>40 g	Parmesan grated<br>65 g	White wheat flour<br>1 mg Baking powder Pinch<br>35 g Egg<br>- KNEAD ALL INGREDIENTS TO A DOUGH.<br>LET REST FOR 1 HOUR IN REFRIGERATOR - ROLL OUT DOUGH 5 MM AND LET REST CUT OR STAMP OUT DOUGH AND PLACE ON SHEET PAN.<br>BAKE AT 1 BO°C UNTIL GOLDEN BROWN.<br>- OR ROLL OUT DOUGH 3 mm AND CUT INTO MODERN SHAPES BRUSH WITH EGG WASH AND BAKE<br>SERVING IDEAS<br>- SERVE FOR AMUSE BOUCHE WITH PARMA HAM, TOMATO AND OLIVE OIL OR GRILLED FISH MIGNON</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PARMESAN SABLÉS<br><br>Combine soft butter, olive oil, grated Parmesan, white wheat flour, baking powder, and egg. Knead until a dough forms.<br><br>Rest dough for 1 hour in the refrigerator.<br><br>Roll out to 5 mm thickness and rest again. Cut or stamp into desired shapes and place on sheet pan. Bake at 180°C until golden brown.<br><br>Alternatively: Roll dough to 3 mm thickness, cut into modern shapes, brush with egg wash, and bake.<br><br>Serving suggestions: Serve as amuse-bouche with Parma ham, tomato, and olive oil, or alongside grilled fish mignon.<br><br>Yield: 10 servings</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

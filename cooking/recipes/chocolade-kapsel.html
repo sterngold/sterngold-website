@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1 	105 gr. Poedersuiker<br>2 	105 gr. Hazelnootpasta (warm)<br>3 	15 gr. Cacao<br>4 	60 gr. Eiwit<br>5 	60 gr. Bloem<br>	Meringue<br>1 	180 gr. Eiwit<br>2 	75 gr. Suiker</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1 	105 gr. Poedersuiker<br>2 	105 gr. Hazelnootpasta (warm)<br>3 	15 gr. Cacao<br>4 	60 gr. Eiwit<br>5 	60 gr. Bloem<br>	Meringue<br>1 	180 gr. Eiwit<br>2 	75 gr. Suiker</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHOCOLADE KAPSEL<br>Source: Vijf | Pâtisserie Station<br><br>Base:<br>1. Combine 105 gr. powdered sugar, 105 gr. warm hazelnut paste, and 15 gr. cocoa.<br>2. Whisk 60 gr. egg white to soft peaks.<br>3. Fold egg white into the chocolate-hazelnut mixture with 60 gr. flour.<br><br>Meringue:<br>1. Whisk 180 gr. egg white with 75 gr. sugar to stiff peaks.<br>2. Fold meringue into base mixture until combined.<br>3. Mold and bake as directed for service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Sabsago " Glarner Zigerbrutli "<br>Zgerbrda<br><br>Ingredients for 15 servings at 100% [Net quantity)<br>100 g	Sabsago Ziger<br>100 g	Raw Ziger<br>50 g Heavy cream	Whipped cream<br>- GRATE ZIGER ON FINE BIRCHER GRATER<br>- STRAIN RAW ZIGER THROUGH DRUM SIEVE<br>- WHIP TOGETHER UNTIL FOAMY AND LIGHT CONSISTENCY - FOLD IN WHIPPED CREAM<br>- PIPE ON PREPARED BREAD SLICES<br>- GARNISH WITH ANY SEASONAL FRUITS AND WALNUTS USE MINT LEAVES OR CHERVIL TO DECORATE<br>- CAN BE SERVED AS SWISS AMUSE BOUCHE OR FOR COCKTAIL PARTYS, FINGERFOOD</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Sabsago " Glarner Zigerbrutli "<br>Zgerbrda<br><br>Ingredients for 15 servings at 100% [Net quantity)<br>100 g	Sabsago Ziger<br>100 g	Raw Ziger<br>50 g Heavy cream	Whipped cream<br>- GRATE ZIGER ON FINE BIRCHER GRATER<br>- STRAIN RAW ZIGER THROUGH DRUM SIEVE<br>- WHIP TOGETHER UNTIL FOAMY AND LIGHT CONSISTENCY - FOLD IN WHIPPED CREAM<br>- PIPE ON PREPARED BREAD SLICES<br>- GARNISH WITH ANY SEASONAL FRUITS AND WALNUTS USE MINT LEAVES OR CHERVIL TO DECORATE<br>- CAN BE SERVED AS SWISS AMUSE BOUCHE OR FOR COCKTAIL PARTYS, FINGERFOOD</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sabsago Glarner Zigerbrutli<br>Serves 15<br><br>INGREDIENTS<br>100 g Sabsago Ziger<br>100 g raw Ziger<br>50 g heavy cream, whipped<br>Prepared bread slices<br>Seasonal fruits and walnuts for garnish<br>Mint leaves or chervil for decoration<br><br>METHOD<br>Grate Ziger on fine Bircher grater. Strain raw Ziger through drum sieve. Whip together until foamy and light in consistency. Fold in whipped cream. Pipe mixture onto prepared bread slices. Garnish with seasonal fruits and walnuts. Decorate with mint leaves or chervil.<br><br>Serve as Swiss amuse-bouche or fingerfood for cocktail parties.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1	Два силно загряти метални тигана<br>2	Предварително изваздено масло и нарязна на кубчета <br>3	Масло изчистено <br>4	Chicken liver 300 г.– първо се елиминра ако има зелени части<br>	– трябва да се запържи но леко от двете страни <br>5	Meat Salt – 1 лъжица<br>6	tijm/Rozemarin – втория нарязан леко<br>7	Garlic – или паста / или нормален 2 – 3 нарязани<br>8	2 малки шалот лук ситон нарязан<br>9	Малко Порт/Коняк<br>10	Duck Liver 300 г.– на парчета добавя се малко преди края<br>11	Във миксер – работи се бързо защото трябва да се направи докато е всичко още топло <br>12	Добавя се цяло яйце – на второто миксиране<br>13	Сместа се минава през цедка<br>14	Изсипва се в терийн форма – ред смес – ред черен пипер - прах<br>15	На водна баня формата – малко вода <br>16	Във фурна подготвена 160 градуса <br>17	Около 20 мин. Докато се загрее до към 52 – 58 – 60 градуса максимално. <br>18	Вади се и се сотавя да изситне <br>19	Във лед и във хладилника за 24 часа</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1	Два силно загряти метални тигана<br>2	Предварително изваздено масло и нарязна на кубчета <br>3	Масло изчистено <br>4	Chicken liver 300 г.– първо се елиминра ако има зелени части<br>	– трябва да се запържи но леко от двете страни <br>5	Meat Salt – 1 лъжица<br>6	tijm/Rozemarin – втория нарязан леко<br>7	Garlic – или паста / или нормален 2 – 3 нарязани<br>8	2 малки шалот лук ситон нарязан<br>9	Малко Порт/Коняк<br>10	Duck Liver 300 г.– на парчета добавя се малко преди края<br>11	Във миксер – работи се бързо защото трябва да се направи докато е всичко още топло <br>12	Добавя се цяло яйце – на второто миксиране<br>13	Сместа се минава през цедка<br>14	Изсипва се в терийн форма – ред смес – ред черен пипер - прах<br>15	На водна баня формата – малко вода <br>16	Във фурна подготвена 160 градуса <br>17	Около 20 мин. Докато се загрее до към 52 – 58 – 60 градуса максимално. <br>18	Вади се и се сотавя да изситне <br>19	Във лед и във хладилника за 24 часа</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Station: Garde Manger | Vijf<br><br>Heat two metal pans. Cut cold butter into cubes and clarify. Sear 300g chicken livers (trim any green spots) lightly on both sides. Season with 1 tbsp meat salt, thyme, rosemary, 2–3 minced garlic cloves, and 2 finely minced shallots. Deglaze with a splash of port or cognac. Add 300g duck liver pieces near the end. Working quickly while hot, blend in mixer, add 1 whole egg on second blending, and pass through fine sieve. Layer mixture and cracked black pepper into terrine mold. Set in water bath at 160°C for approximately 20 minutes until internal temperature reaches 52–60°C maximum. Cool, ice, and refrigerate for 24 hours before service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

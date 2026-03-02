@@ -122,8 +122,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- Scoop out balls from the Foie gras terrine and place on wire rack and chill<br><br>- prepare aspic from water and aspic powder and add wine at the end<br>- chill and cut into dice <br><br>- prepare chaud froid with heavy cream, chicken base and gelatin season to taste with salt<br>- when 40 C warm chaud fraud pour over the cold foie gras <br>- chill again<br>- carefully remove praline from wire rack with warm spatula and place on parchment paper<br>- arange with aspic and décor</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- Scoop out balls from the Foie gras terrine and place on wire rack and chill<br><br>- prepare aspic from water and aspic powder and add wine at the end<br>- chill and cut into dice <br><br>- prepare chaud froid with heavy cream, chicken base and gelatin season to taste with salt<br>- when 40 C warm chaud fraud pour over the cold foie gras <br>- chill again<br>- carefully remove praline from wire rack with warm spatula and place on parchment paper<br>- arange with aspic and décor</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Scoop balls from foie gras terrine and place on wire rack to chill. Prepare aspic from water and aspic powder; add wine at the end, chill, and cut into dice. Prepare chaud-froid with heavy cream, chicken base, and gelatin; season to taste with salt.<br><br>When chaud-froid reaches 40°C, pour over cold foie gras balls and chill again. Carefully remove pralines from wire rack using a warm spatula and place on parchment paper. Arrange with aspic dice and décor elements.</div>
+          
         </section>
         
 
@@ -164,5 +173,24 @@ Coating - can be made with white or braun sauce with gelatine plus cream</p>
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

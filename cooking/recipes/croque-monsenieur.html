@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Two breads <br>Toast one side <br>Place cheese – appenzelelr / ham / appnezeler<br>Close with the toast side <br>Under salamander <br>Cut sides / cut triangles <br>Salad<br>Italian vegetables <br>Baby corn</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Two breads <br>Toast one side <br>Place cheese – appenzelelr / ham / appnezeler<br>Close with the toast side <br>Under salamander <br>Cut sides / cut triangles <br>Salad<br>Italian vegetables <br>Baby corn</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Toast one side of two bread slices. On untoasted side, layer Appenzeller cheese, ham, and another slice of Appenzeller. Close with toasted side facing outward. Place under salamander until golden and cheese melts. Trim sides and cut into triangles. Plate with salad and Italian vegetables. Garnish with baby corn.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

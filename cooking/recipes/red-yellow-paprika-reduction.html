@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Clean, cut in half, remove the seeds <br>In the juice maker – juice pass through china cap <br>Reduce slowly – piano reduction – 2 – 3 hour – till really nice and strong color<br>Add honey and when still hot pass through china cap but carefully (has to be hot) <br>Cool – add the oil <br>Or..<br>Cut the paprika<br>Cook in water / blender / reduce / add one spoon honing / pass thru sieve</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Clean, cut in half, remove the seeds <br>In the juice maker – juice pass through china cap <br>Reduce slowly – piano reduction – 2 – 3 hour – till really nice and strong color<br>Add honey and when still hot pass through china cap but carefully (has to be hot) <br>Cool – add the oil <br>Or..<br>Cut the paprika<br>Cook in water / blender / reduce / add one spoon honing / pass thru sieve</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Clean the peppers, cut in half, and remove the seeds. Pass through a juice maker and strain through a china cap. Reduce slowly—a gentle reduction over 2–3 hours—until the colour is deep and concentrated. Add honey, then while still hot pass carefully through a china cap (must be hot). Cool, then add oil. Alternative method: cut the paprika, cook in water, blend, reduce, add one spoon of honey, and pass through a sieve.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -170,8 +170,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Mise and place <br>- peel and core apple and cut into quarters. Dice the apples and blend with lemon juice to prevent oxydation <br>- peel carrots and grate coarsley<br>- blanch sulatanas, drain and let cool <br>- prepare smal sald leaves for decorations<br>- roast sunflower seeds under the salamander until golden brown <br>- whip heavy cream <br>- peel and grate horseradish and fold into shipped cream<br>- peel and grate ginger and fold into whipped cream<br><br>-COMBINE APPLES, CARROTS AND ORANGE JUICE. ADD SULTANAS<br>- SEASON HORSERADISH CREAM WITH SALT AND PEPPER, SUGAR AND CAYENNE<br>- ARRANGE BELGIAN ENDIVE LEAVES ON PLATES AND PLACE SALAD IN CENTRE<br>- TOP WITH HORSERADISH/GINGER CREAM, USING PASTRU BAG OR SPOON<br>- SPRINKLE WITH SUNFLOWER SEEDS</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Mise and place <br>- peel and core apple and cut into quarters. Dice the apples and blend with lemon juice to prevent oxydation <br>- peel carrots and grate coarsley<br>- blanch sulatanas, drain and let cool <br>- prepare smal sald leaves for decorations<br>- roast sunflower seeds under the salamander until golden brown <br>- whip heavy cream <br>- peel and grate horseradish and fold into shipped cream<br>- peel and grate ginger and fold into whipped cream<br><br>-COMBINE APPLES, CARROTS AND ORANGE JUICE. ADD SULTANAS<br>- SEASON HORSERADISH CREAM WITH SALT AND PEPPER, SUGAR AND CAYENNE<br>- ARRANGE BELGIAN ENDIVE LEAVES ON PLATES AND PLACE SALAD IN CENTRE<br>- TOP WITH HORSERADISH/GINGER CREAM, USING PASTRU BAG OR SPOON<br>- SPRINKLE WITH SUNFLOWER SEEDS</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">MISE EN PLACE: Peel, core, and quarter apples; dice and toss with lemon juice to prevent oxidation. Peel carrots and grate coarsely. Blanch sultanas, drain, and cool. Prepare small salad leaves for garnish. Toast sunflower seeds under the salamander until golden. Whip heavy cream. Fold peeled, grated horseradish into whipped cream. Fold peeled, grated ginger into whipped cream.<br><br>COMBINE apples, carrots, and orange juice with sultanas. Season horseradish cream with salt, pepper, sugar, and cayenne. Arrange Belgian endive leaves on plates and place salad in center. Pipe or spoon horseradish-ginger cream on top. Sprinkle with sunflower seeds.</div>
+          
         </section>
         
 
@@ -205,5 +214,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

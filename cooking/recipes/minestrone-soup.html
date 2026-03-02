@@ -218,8 +218,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- sautee onions and bacon in olive oil<br>- add leeks and cabbage, then remaining knob celery and carrots and continue cooking<br>- add tomato paste and bouillon<br>- bring to boil, skim and simmer until vegetables are almost tender<br>- add potaotes and spaghetti; boil for 10 min longer<br>- add cooked beans, tomaotes, pesto. Bring to boil <br>- season to taste<br>- serve with grated cheese on the side</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- sautee onions and bacon in olive oil<br>- add leeks and cabbage, then remaining knob celery and carrots and continue cooking<br>- add tomato paste and bouillon<br>- bring to boil, skim and simmer until vegetables are almost tender<br>- add potaotes and spaghetti; boil for 10 min longer<br>- add cooked beans, tomaotes, pesto. Bring to boil <br>- season to taste<br>- serve with grated cheese on the side</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sauté onions and bacon in olive oil. Add leeks and cabbage, then remaining celery and carrots; continue cooking. Stir in tomato paste and bouillon. Bring to a boil, skim, and simmer until vegetables are almost tender. Add potatoes and spaghetti; boil for 10 minutes longer. Add cooked beans and tomatoes, then pesto. Bring to a boil. Season to taste. Serve with grated cheese on the side.</div>
+          
         </section>
         
 
@@ -258,5 +267,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

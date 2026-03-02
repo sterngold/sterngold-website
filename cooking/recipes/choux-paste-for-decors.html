@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Choux Paste<br>Brandteig (gesalzen) Pâte à choux [sal )<br><br><br>Recipe #:678<br><br>Category: ECA - Dough<br><br>Chef : Patrick Diethelm<br>Date: 18.10.2005<br><br>Cost of goods: CHF 3.66 / EUR 2.31<br><br><br><br>Ingredients for 0.350 kilogram. at 100% (Net quantity)<br>70 ml Milk<br><br>70 ml Water<br><br>35 g Butter<br><br>1 x Seasoning (salt and pepper)<br>1 x Nutmeg (pinch)<br><br> 90 g White wheat flour<br><br>100 g Egg Past.<br><br><br>- COMBINE MILK, WATER, BUTTER, AND SALT AND PEPPER - BRING TO A BOIL.L-<br> ADD FLOUR AT ONCE, STIRRING VIGOROUSLY OVER HEAT WITH A PLASTIC  SPATULA UNTIL THE MIXTURE IS SMOOTH AND NO LONGER CLINGS TO THE SIDES OF THE SAUTEUSE.<br>- REMOVE FROM HEAT, LET COOL BRIEFLY, AND INCORPORATE THE EGGS IN SMALL INCREMENTS.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Choux Paste<br>Brandteig (gesalzen) Pâte à choux [sal )<br><br><br>Recipe #:678<br><br>Category: ECA - Dough<br><br>Chef : Patrick Diethelm<br>Date: 18.10.2005<br><br>Cost of goods: CHF 3.66 / EUR 2.31<br><br><br><br>Ingredients for 0.350 kilogram. at 100% (Net quantity)<br>70 ml Milk<br><br>70 ml Water<br><br>35 g Butter<br><br>1 x Seasoning (salt and pepper)<br>1 x Nutmeg (pinch)<br><br> 90 g White wheat flour<br><br>100 g Egg Past.<br><br><br>- COMBINE MILK, WATER, BUTTER, AND SALT AND PEPPER - BRING TO A BOIL.L-<br> ADD FLOUR AT ONCE, STIRRING VIGOROUSLY OVER HEAT WITH A PLASTIC  SPATULA UNTIL THE MIXTURE IS SMOOTH AND NO LONGER CLINGS TO THE SIDES OF THE SAUTEUSE.<br>- REMOVE FROM HEAT, LET COOL BRIEFLY, AND INCORPORATE THE EGGS IN SMALL INCREMENTS.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Combine milk, water, butter, salt, and pepper in a sauteuse and bring to a boil. Add flour all at once, stirring vigorously over heat with a plastic spatula until the mixture is smooth and no longer clings to the sides of the pan. Remove from heat, cool briefly, then incorporate egg paste in small increments until fully incorporated.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

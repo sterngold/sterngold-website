@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Rice Pilaf	<br>Pilaw-Reis	<br>Riz pilau<br><br><br>Rezept Nr.	: 646<br>Kategorie	: Rice and Grain Dishes<br>Koch	: Patrick Diethelm<br>Datum	: 11.08.2005<br>Warenkosten	: CHF 0.11 / EUR 0.07<br><br>EUROPEAN CULINARY CENTER<br><br>Zutaten für 2 Personen zu 100% (Nettomenge)<br>12 g Butter<br>15 g Onions<br>180 g Siam Patna rice<br>280 ml Water <br>0.5 st Bay leaves <br>12 g Butter cold<br><br><br>Peel and fine chopped.<br><br>- SWEAT ONIONS LIGHTLY IN BUTTER, WITHOUT GETTING COLOR.<br>- ADD RICE, AND SAUTÉ BRIEFLY WITH ONIONS.<br>- ADD WATER AND BAY LEAF AND BRING TO A BOIL.<br>- SEASON WITH SALT<br>- COVER AND COOK IN THE OVEN AT 200°C FOR ABOUT 10 MINUTES.<br>- REMOVE FROM THE OVEN AND KEEP COVERED FOR ABOUT 5 MINUTES.<br>- REMOVE BAY LEAF. CAREFULLY STIR RICE WITH A FORK TO LOOSEN THE KERNELS. - ADD THE COLD BUTTER IN SMALL NUGGETS.<br>Notes: The amount of liquid varies depending on rice variety. Generally, larger amounts require less liquid.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Rice Pilaf	<br>Pilaw-Reis	<br>Riz pilau<br><br><br>Rezept Nr.	: 646<br>Kategorie	: Rice and Grain Dishes<br>Koch	: Patrick Diethelm<br>Datum	: 11.08.2005<br>Warenkosten	: CHF 0.11 / EUR 0.07<br><br>EUROPEAN CULINARY CENTER<br><br>Zutaten für 2 Personen zu 100% (Nettomenge)<br>12 g Butter<br>15 g Onions<br>180 g Siam Patna rice<br>280 ml Water <br>0.5 st Bay leaves <br>12 g Butter cold<br><br><br>Peel and fine chopped.<br><br>- SWEAT ONIONS LIGHTLY IN BUTTER, WITHOUT GETTING COLOR.<br>- ADD RICE, AND SAUTÉ BRIEFLY WITH ONIONS.<br>- ADD WATER AND BAY LEAF AND BRING TO A BOIL.<br>- SEASON WITH SALT<br>- COVER AND COOK IN THE OVEN AT 200°C FOR ABOUT 10 MINUTES.<br>- REMOVE FROM THE OVEN AND KEEP COVERED FOR ABOUT 5 MINUTES.<br>- REMOVE BAY LEAF. CAREFULLY STIR RICE WITH A FORK TO LOOSEN THE KERNELS. - ADD THE COLD BUTTER IN SMALL NUGGETS.<br>Notes: The amount of liquid varies depending on rice variety. Generally, larger amounts require less liquid.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Rice Pilaf** | Recipe 646 | Chef Patrick Diethelm<br><br>**Ingredients (2 servings):**<br>- 12 g butter<br>- 15 g onions, peeled and finely chopped<br>- 180 g Siam Patna rice<br>- 280 ml water<br>- 0.5 bay leaf<br>- 12 g cold butter<br><br>**Method:**<br>1. Sweat onions lightly in butter without allowing them to color.<br>2. Add rice and sauté briefly with the onions.<br>3. Add water and bay leaf, bring to a boil.<br>4. Season with salt.<br>5. Cover and cook in the oven at 200°C for approximately 10 minutes.<br>6. Remove from oven and keep covered for about 5 minutes.<br>7. Remove bay leaf. Using a fork, carefully stir the rice to loosen the kernels.<br>8. Add cold butter in small nuggets.<br><br>**Note:** Liquid requirements vary by rice variety; larger quantities require proportionally less liquid.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

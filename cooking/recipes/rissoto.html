@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1 	Ситно нарязан лук се запържва <br>2 	Добавя се ризото<br>3 	Бърка се съвсем леко докато стане топло /ризото/<br>4 	Бяло вино<br>5 	Булъон/Вода – 2/3 от всичко<br>6 	Готви се в началото на по силен огън после на слаб / медиум<br>7 	Добавя се Пармезан <br>8 	Още бюльон ако е небоходимо <br>9 	Сол / Пипер<br>Съвети:  <br>	Не се бърка много за да не стане кашкаво<br>	Внимание със огъня<br>	Ориза се проверява дали е готов като се извади едно зърно и се размаже; ако не оставя бяла следа е наплъно готов <br>	Това е ризото ; Може да се добави сметана и вече зеленчуци, гъби, маскарпоне.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1 	Ситно нарязан лук се запържва <br>2 	Добавя се ризото<br>3 	Бърка се съвсем леко докато стане топло /ризото/<br>4 	Бяло вино<br>5 	Булъон/Вода – 2/3 от всичко<br>6 	Готви се в началото на по силен огън после на слаб / медиум<br>7 	Добавя се Пармезан <br>8 	Още бюльон ако е небоходимо <br>9 	Сол / Пипер<br>Съвети:  <br>	Не се бърка много за да не стане кашкаво<br>	Внимание със огъня<br>	Ориза се проверява дали е готов като се извади едно зърно и се размаже; ако не оставя бяла следа е наплъно готов <br>	Това е ризото ; Може да се добави сметана и вече зеленчуци, гъби, маскарпоне.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Risotto<br>Source: Vijf | Entremétier<br><br>Method:<br>1. Sweat finely diced onion in fat.<br>2. Add risotto rice and stir gently until heated through.<br>3. Deglaze with white wine.<br>4. Add 2/3 of combined stock/water.<br>5. Cook over high heat initially, then reduce to medium-low and maintain at gentle simmer.<br>6. Fold in Parmesan cheese.<br>7. Add additional stock as needed to reach desired consistency.<br>8. Season with salt and pepper.<br><br>Notes:<br>- Do not over-stir to avoid gumminess.<br>- Monitor heat carefully.<br>- Test doneness by extracting and crushing a grain—fully cooked rice will not leave a white line.<br>- Optional additions: cream, seasonal vegetables, mushrooms, mascarpone.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

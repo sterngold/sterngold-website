@@ -114,8 +114,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Dressing voor 25 porties<br>Paprika - 500 gr. <br>Spanse peper - 140 gr. <br>Knof  -20 gr. <br>Suiker - 80 gr<br>Tomaat - 2 <br>Koriander - halve bos<br>Vissaus - 100 ml.<br>Limoen - 2</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Dressing voor 25 porties<br>Paprika - 500 gr. <br>Spanse peper - 140 gr. <br>Knof  -20 gr. <br>Suiker - 80 gr<br>Tomaat - 2 <br>Koriander - halve bos<br>Vissaus - 100 ml.<br>Limoen - 2</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Thai Beef Salad Dressing (25 portions)<br><br>Ingredients:<br>- Paprika: 500 g<br>- Spanish pepper: 140 g<br>- Garlic: 20 g<br>- Sugar: 80 g<br>- Tomato: 2<br>- Coriander: ½ bunch<br>- Fish sauce: 100 ml<br>- Lime: 2<br><br>Note: These are component ingredients for the dressing. Combine as directed for service with dressed beef salad.</div>
+          
         </section>
         
 
@@ -149,5 +158,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

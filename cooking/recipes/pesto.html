@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Cote et noisettes d' agneau en bordure<br>Lammcarre mit Olivenkruste und Pesto Cote et noisettes d'agneau en bordure<br><br><br>Recipe #<br>Category	: ECA - Saucier meat<br>Chef	: Patrick Diethelm<br>Date	: 13.12.2005<br>Cost of goods	: CHF 4.53 / EUR 2.86<br><br>European Gourmet Cuisine<br>Ingredients for 3 servings at 100% (Net quantity)<br>	500 g	Rack of lamb with loin 150 g Baby carrots<br>100 g Green beans<br>	60 g	Knob celery (celeriac) 60 g Snow peas, fresh 15 g Rosemary<br>40 ml Olive oil<br>Tapenade Pesto<br>Mise en place;<br>- Prepare Tapenade and Pesto (see recipes)<br>- Clean and trim vegetables and cut into modern shape, blanch and refresh. - Season and prepare to glaze a la minute in sauteuse<br>Preparation:<br>- Roast the rack of lamb and let rest	<br>- Place Tapenade on top and sprinkle with mie de pain.<br>- Gratinate under Salamander<br>- Serve on top of glazed vegtables with suitable starch dish - Arrange with strong red wine sauce and pesto</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Cote et noisettes d' agneau en bordure<br>Lammcarre mit Olivenkruste und Pesto Cote et noisettes d'agneau en bordure<br><br><br>Recipe #<br>Category	: ECA - Saucier meat<br>Chef	: Patrick Diethelm<br>Date	: 13.12.2005<br>Cost of goods	: CHF 4.53 / EUR 2.86<br><br>European Gourmet Cuisine<br>Ingredients for 3 servings at 100% (Net quantity)<br>	500 g	Rack of lamb with loin 150 g Baby carrots<br>100 g Green beans<br>	60 g	Knob celery (celeriac) 60 g Snow peas, fresh 15 g Rosemary<br>40 ml Olive oil<br>Tapenade Pesto<br>Mise en place;<br>- Prepare Tapenade and Pesto (see recipes)<br>- Clean and trim vegetables and cut into modern shape, blanch and refresh. - Season and prepare to glaze a la minute in sauteuse<br>Preparation:<br>- Roast the rack of lamb and let rest	<br>- Place Tapenade on top and sprinkle with mie de pain.<br>- Gratinate under Salamander<br>- Serve on top of glazed vegtables with suitable starch dish - Arrange with strong red wine sauce and pesto</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">RACK OF LAMB WITH OLIVE CRUST AND PESTO (DCT | Saucier)<br>Chef: Patrick Diethelm | Date: 13.12.2005<br>Yield: 3 servings<br><br>MISE EN PLACE:<br>Prepare tapenade and pesto (see separate recipes). Clean, trim, and cut vegetables into modern shape. Blanch and refresh. Season and prepare for glazing à la minute.<br><br>PREPARATION:<br>Roast rack of lamb (500 g) and let rest. Spread tapenade on top and sprinkle with breadcrumbs. Gratinate under salamander.<br><br>Glaze blanched vegetables (baby carrots 150 g, green beans 100 g, celeriac 60 g, snow peas 60 g, rosemary 15 g) à la minute in sauteuse with 40 ml olive oil.<br><br>Plate lamb on glazed vegetables with suitable starch. Arrange with strong red wine sauce and pesto.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">VITZNAU-LUCERNE SWITZERLAND<br>AUSTRIAN NAPKIN DUMPLING WITH HERBS<br>Yield: 4 servings<br>	150 g	white roll bread without crust, cut into small 3mm dices<br>	20 g	white wheat flour 70 ml cold milk<br>	30 g	fine chopped shallots<br>	6 g	fresh plugged marjoram leaves<br>	8 g	fine chopped parsley<br>	110g	butter<br>	2 g	salt<br>pinch of nutmeg<br>	60 g	egg<br>Preparation:<br>- Dry the white bread cubes at 190° C until golden brown<br>- Mix the '150 g croutons with the flour - Pour in the cold milk and stir carefully - Allow to rest for 15 min.<br>- Sweat the chopped shallots with 10 g butter on low heat, add the marjoram and<br>fine chopped parsley and mix with the bread<br>- Whip the remaining butter foamy, add the egg, salt, nutmeg and keep on whipping<br>- Add in the bread mixture and mix carefully - Knead lightly and allow to rest for 1 hour<br>- Form a roll 6 cm diameter and roll into a napkin or cheese cloth<br>- Tight up the ends with butchers twine<br>- Poach for about 20 min. in lightly salted water<br>- Remove from the water and cool down, but keep warm<br>- Remove the napkin and slice into 1,5 cm thick slices	<br>Served with braised or glazed meat dishes<br>P. Diethelm 05 - EGC</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">VITZNAU-LUCERNE SWITZERLAND<br>AUSTRIAN NAPKIN DUMPLING WITH HERBS<br>Yield: 4 servings<br>	150 g	white roll bread without crust, cut into small 3mm dices<br>	20 g	white wheat flour 70 ml cold milk<br>	30 g	fine chopped shallots<br>	6 g	fresh plugged marjoram leaves<br>	8 g	fine chopped parsley<br>	110g	butter<br>	2 g	salt<br>pinch of nutmeg<br>	60 g	egg<br>Preparation:<br>- Dry the white bread cubes at 190° C until golden brown<br>- Mix the '150 g croutons with the flour - Pour in the cold milk and stir carefully - Allow to rest for 15 min.<br>- Sweat the chopped shallots with 10 g butter on low heat, add the marjoram and<br>fine chopped parsley and mix with the bread<br>- Whip the remaining butter foamy, add the egg, salt, nutmeg and keep on whipping<br>- Add in the bread mixture and mix carefully - Knead lightly and allow to rest for 1 hour<br>- Form a roll 6 cm diameter and roll into a napkin or cheese cloth<br>- Tight up the ends with butchers twine<br>- Poach for about 20 min. in lightly salted water<br>- Remove from the water and cool down, but keep warm<br>- Remove the napkin and slice into 1,5 cm thick slices	<br>Served with braised or glazed meat dishes<br>P. Diethelm 05 - EGC</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Toast bread cubes at 190°C until golden brown. Mix 150 g croutons with flour, pour in cold milk, and rest 15 minutes. Sweat chopped shallots in 10 g butter on low heat; add marjoram and parsley, combine with bread mixture. Whip remaining butter to foam, add egg, salt, and nutmeg; continue whipping. Add bread mixture and fold carefully. Knead lightly and rest 1 hour. Form a 6 cm diameter roll, wrap in napkin or cheesecloth, and tie ends with butcher's twine. Poach in lightly salted water for approximately 20 minutes. Remove and cool while keeping warm. Unwrap and slice into 1.5 cm thick slices. Serve with braised or glazed meat dishes.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

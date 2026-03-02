@@ -146,8 +146,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Alle Zuteten zu einem Teig verkneten. 10 – 15 min kneten. <br>2-3 Stunden ruhen lassen.<br>110g schwere Bälle formen und ausrollen, ergibt ca 20 cm Durchmesser. Auf einer Grillplatte oder Pfanne ohne Fett ausbacken und unter dem Salamander fertig backen. Zum füllen oder als Unterlage für Räucherlachs usw. Sauce: Sauerrahm, Balsamicoessig, Salz Pfeffer, Zitronensaft, Basilikum.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Alle Zuteten zu einem Teig verkneten. 10 – 15 min kneten. <br>2-3 Stunden ruhen lassen.<br>110g schwere Bälle formen und ausrollen, ergibt ca 20 cm Durchmesser. Auf einer Grillplatte oder Pfanne ohne Fett ausbacken und unter dem Salamander fertig backen. Zum füllen oder als Unterlage für Räucherlachs usw. Sauce: Sauerrahm, Balsamicoessig, Salz Pfeffer, Zitronensaft, Basilikum.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Mix all ingredients into a dough and knead for 10–15 minutes. Rest for 2–3 hours.<br><br>Form into 110g balls and roll to approximately 20 cm diameter. Cook on a griddle or pan without fat, then finish under the salamander.<br><br>Serve as a base for smoked salmon or for filling.<br><br>Sauce: Combine sour cream, balsamic vinegar, salt, pepper, lemon juice, and basil.</div>
+          
         </section>
         
 
@@ -186,5 +195,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

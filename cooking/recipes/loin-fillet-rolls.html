@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text"> – cut as a big piece and from that piece is made a flat rectangular – which is filled with herb farce and rolled. – Form veal meat – around is rolled a thinly layer of a bread and this I rolled in folly. Chiller. Fried on each side.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original"> – cut as a big piece and from that piece is made a flat rectangular – which is filled with herb farce and rolled. – Form veal meat – around is rolled a thinly layer of a bread and this I rolled in folly. Chiller. Fried on each side.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Cut veal loin into a large piece and pound flat into a rectangle. Fill with herb farce and roll tightly. Wrap the rolled meat thinly with bread layer, then wrap in plastic film. Chill thoroughly. Pan-fry on each side until cooked.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

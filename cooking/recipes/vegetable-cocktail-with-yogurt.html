@@ -218,8 +218,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- cauliflower - clean and trim. Cut into florets. Steam until cooked but still frim<br>- fennel bulb - clean and trim. Cut into wedges. Steam until cooked but still firm <br>- tomatoes - peel, remove seeds and cube<br>- mushrooms - cut into quarters. Braise briefly with lemon jucie <br>- avocados - peel, remove pit, cut into small wedges and drizzle with lemon juice <br>- artichoke - boil, cut bottom into 10 slices<br><br># Dressing <br>- peel oranges and cut into smal cubes. Blend with yogurt, olive oil, ketchup, grated horseradish, tabasco, salt and pepper. <br><br>Presentation<br>- fill large cocktail glasses about halfway with dressing<br>- add marinated vegetables and top with remaining dressing<br>- garnish with avocado wedges and atrichoke slices</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- cauliflower - clean and trim. Cut into florets. Steam until cooked but still frim<br>- fennel bulb - clean and trim. Cut into wedges. Steam until cooked but still firm <br>- tomatoes - peel, remove seeds and cube<br>- mushrooms - cut into quarters. Braise briefly with lemon jucie <br>- avocados - peel, remove pit, cut into small wedges and drizzle with lemon juice <br>- artichoke - boil, cut bottom into 10 slices<br><br># Dressing <br>- peel oranges and cut into smal cubes. Blend with yogurt, olive oil, ketchup, grated horseradish, tabasco, salt and pepper. <br><br>Presentation<br>- fill large cocktail glasses about halfway with dressing<br>- add marinated vegetables and top with remaining dressing<br>- garnish with avocado wedges and atrichoke slices</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">VEGETABLES<br>Cauliflower: Clean, trim, cut into florets. Steam until cooked but still firm.<br><br>Fennel bulb: Clean, trim, cut into wedges. Steam until cooked but still firm.<br><br>Tomatoes: Peel, remove seeds, cut into cubes.<br><br>Mushrooms: Cut into quarters. Braise briefly with lemon juice.<br><br>Avocados: Peel, remove pit, cut into small wedges, drizzle with lemon juice.<br><br>Artichoke: Boil, then cut bottom into 10 slices.<br><br>DRESSING<br>Peel oranges and cut into small cubes. Blend with yogurt, olive oil, ketchup, grated horseradish, Tabasco, salt, and pepper.<br><br>PRESENTATION<br>Fill large cocktail glasses halfway with dressing. Add marinated vegetables and top with remaining dressing. Garnish with avocado wedges and artichoke slices.</div>
+          
         </section>
         
 
@@ -253,5 +262,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

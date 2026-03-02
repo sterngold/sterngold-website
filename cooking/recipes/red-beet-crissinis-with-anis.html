@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Recipe #<br>Category	: ECA - Dough<br>Chef	: Patrick Diethelm<br>Date	: 12.12.2005<br>Cost of goods	: CHF 0.04 / EUR 0.02<br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br>5 g Yeast, fresh<br>10 ml Milk<br>80 g White wheat flour 	1 g	Malt [powdered)<br>1 g Anis seeds<br>5 ml Grape seed oil<br>	30 g	Red beet juice<br>	2 g	Sea salt<br>- Prepare with all the ingredients a crissini dough and knead until smooth and dense. - Further instruction see basic bake lesson recipes and tips & tricks<br>- Bake at 180° C.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Recipe #<br>Category	: ECA - Dough<br>Chef	: Patrick Diethelm<br>Date	: 12.12.2005<br>Cost of goods	: CHF 0.04 / EUR 0.02<br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br>5 g Yeast, fresh<br>10 ml Milk<br>80 g White wheat flour 	1 g	Malt [powdered)<br>1 g Anis seeds<br>5 ml Grape seed oil<br>	30 g	Red beet juice<br>	2 g	Sea salt<br>- Prepare with all the ingredients a crissini dough and knead until smooth and dense. - Further instruction see basic bake lesson recipes and tips & tricks<br>- Bake at 180° C.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">RED BEET CRISSINIS WITH ANIS<br>Chef: Patrick Diethelm | Date: 12.12.2005<br>Yield: 10 servings<br>Cost of goods: CHF 0.04 / EUR 0.02<br><br>Ingredients:<br>5 g fresh yeast<br>10 ml milk<br>80 g white wheat flour<br>1 g powdered malt<br>1 g anis seeds<br>5 ml grape seed oil<br>30 g red beet juice<br>2 g sea salt<br><br>Method:<br>Prepare crissini dough with all ingredients and knead until smooth and dense. Follow basic bake lesson recipes and tips & tricks for further instruction. Bake at 180°C.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

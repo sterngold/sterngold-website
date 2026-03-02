@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Месото се маринова няколко часа. В гърдите се поставя къче синъо сирене, магданоз-копър, затваря се и се затваря с помоща на клечки. Месото се овалва в сместа за паниране /може и сусам за порсъване/. Запържва се леко в тиган от всички страни /може и малко лук да се добави/. Карфиола, гъбите, броколите се сварява . Поставят се в тигана и се залива с бяло вино. Задушава се на бавен огън. Към края може да се добави кореандър.<br><br>Пилешки или пуешки гърди <br>Синьо сирене<br>Бяло вино<br>Яйце <br>Брашно<br>Олио/газирана вода или бира<br>Джинджифил на прах<br>Карфиол</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Месото се маринова няколко часа. В гърдите се поставя къче синъо сирене, магданоз-копър, затваря се и се затваря с помоща на клечки. Месото се овалва в сместа за паниране /може и сусам за порсъване/. Запържва се леко в тиган от всички страни /може и малко лук да се добави/. Карфиола, гъбите, броколите се сварява . Поставят се в тигана и се залива с бяло вино. Задушава се на бавен огън. Към края може да се добави кореандър.<br><br>Пилешки или пуешки гърди <br>Синьо сирене<br>Бяло вино<br>Яйце <br>Брашно<br>Олио/газирана вода или бира<br>Джинджифил на прах<br>Карфиол</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">POULTRY BREAST<br><br>Marinate poultry breasts (chicken or turkey) for several hours. Butterfly each breast and stuff with blue cheese, parsley, and dill. Close the opening and secure with toothpicks.<br><br>Coat breasts in breadcrumb mixture (sesame seeds optional). Shallow-fry in pan on all sides until golden; optional addition of onion during frying.<br><br>Boil cauliflower, mushrooms, and broccoli separately until tender. Transfer to pan with the poultry and deglaze with white wine. Braise gently over low heat. Finish with ground coriander if desired.<br><br>Breading: flour, egg, oil mixed with sparkling water or beer. Season with ginger powder.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

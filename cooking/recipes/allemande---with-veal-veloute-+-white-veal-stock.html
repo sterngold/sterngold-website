@@ -122,8 +122,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- reduce veal stock quickly to a syrupy consistency, but do not brown <br>- add veloute veau; bring to boiling point<br>- combine egg yolks with cream and mix into sauce. Do not alow to boil <br>- season to taste and strain through fine china cap <br>- add cold butter in small nuggets <br><br>APPLICATIONS<br>- use as an ingridient in white meat suace variations<br>- use as sauce with pasta <br>- use with veal fillings for patty shells</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- reduce veal stock quickly to a syrupy consistency, but do not brown <br>- add veloute veau; bring to boiling point<br>- combine egg yolks with cream and mix into sauce. Do not alow to boil <br>- season to taste and strain through fine china cap <br>- add cold butter in small nuggets <br><br>APPLICATIONS<br>- use as an ingridient in white meat suace variations<br>- use as sauce with pasta <br>- use with veal fillings for patty shells</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">ALLEMANDE SAUCE<br><br>Reduce veal stock quickly to a syrupy consistency without browning. Add veal velouté and bring to boiling point. Combine egg yolks with cream, then temper into the sauce off heat—do not allow to boil. Season to taste and pass through fine china cap. Mount with cold butter in small pieces.<br><br>Applications: Use as a base for white meat sauce variations, as a sauce for pasta, or with veal fillings for patty shells.</div>
+          
         </section>
         
 
@@ -157,5 +166,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

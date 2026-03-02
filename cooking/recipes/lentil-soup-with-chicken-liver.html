@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Knolsederij<br>Wortel<br>ui<br>prej<br>Anijszaad<br>sternanijs<br>sea salt<br>tijm/rozemarijn<br>garlic<br>запържва се леко<br>Linzen<br>Kip boulion<br>botter/cream</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Knolsederij<br>Wortel<br>ui<br>prej<br>Anijszaad<br>sternanijs<br>sea salt<br>tijm/rozemarijn<br>garlic<br>запържва се леко<br>Linzen<br>Kip boulion<br>botter/cream</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Ingredients list only (preparation method not provided):<br>- Celery root<br>- Carrot<br>- Onion<br>- Leek<br>- Anise seed<br>- Star anise<br>- Sea salt<br>- Thyme and rosemary<br>- Garlic<br>- Lentils<br>- Chicken bouillon<br>- Butter and cream<br><br>Note: Original includes partial text in Cyrillic (appears to reference light sweating technique).</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Carrot - Orange sherbet<br>Sorbet von Orangen und Karotten<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	:1711.2005<br>Cost of goods	: CHF 0.10 / EUR  0.07<br>European Gourmet Gulsine<br><br>Ingredients for 12 servings at 100% (Net quantity)<br>320<br>g<br>Carrot<br>300<br>g<br>Orange juice 1<br>2<br>g<br>Orange zest<br>130<br>g<br>Crystal sugar<br>40<br>g<br>Glucose syrup<br>1<br>pc<br>Gelatin, leaves<br><br>- DISSOLVE THE GELATIN WITH 50 ML ORANGE JUICE AND ADD TO WARM CARROT. 4	- ADD ALL THE REMAINING INGREDIENTS INTO BOWL WITH CARROTS<br> - FREEZE AT -24°C FOR AT LEAST 12 HOURS.<br>- PACOTISE TWICE AND SERVE WITH SWEET AND SOUR CARROT CHIPS AND ORANGE SALAD<br>- serviert mit Mohnmeriguesstangen und Orangenrahm aus Pacojet</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Carrot - Orange sherbet<br>Sorbet von Orangen und Karotten<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	:1711.2005<br>Cost of goods	: CHF 0.10 / EUR  0.07<br>European Gourmet Gulsine<br><br>Ingredients for 12 servings at 100% (Net quantity)<br>320<br>g<br>Carrot<br>300<br>g<br>Orange juice 1<br>2<br>g<br>Orange zest<br>130<br>g<br>Crystal sugar<br>40<br>g<br>Glucose syrup<br>1<br>pc<br>Gelatin, leaves<br><br>- DISSOLVE THE GELATIN WITH 50 ML ORANGE JUICE AND ADD TO WARM CARROT. 4	- ADD ALL THE REMAINING INGREDIENTS INTO BOWL WITH CARROTS<br> - FREEZE AT -24°C FOR AT LEAST 12 HOURS.<br>- PACOTISE TWICE AND SERVE WITH SWEET AND SOUR CARROT CHIPS AND ORANGE SALAD<br>- serviert mit Mohnmeriguesstangen und Orangenrahm aus Pacojet</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Dissolve the gelatin leaf with 50 ml orange juice and add to warm carrot purée. Add all remaining ingredients (carrot, orange juice, orange zest, crystal sugar, glucose syrup) to the bowl with carrots and mix well. Freeze at –24°C for at least 12 hours. Pacojet twice and serve with sweet and sour carrot chips and orange salad. Garnish with poppy seed meringue sticks and orange cream from the Pacojet.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

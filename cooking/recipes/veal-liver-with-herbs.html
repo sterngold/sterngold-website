@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Veal Liver with herbs<br>Geschnetzelte Kalbsleber mit Krautern Emince de Foie de veau aux fines herbes<br>Recipe #	: 387<br>Category	: Hot Meat Dishes<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 3.98 / EUR 2.52<br>Ingredients for 3 servings at 100% (Net quantity)<br>450<br>g<br>Calves' liver<br>24<br>g<br>Clarified butter<br>1<br>x<br>Seasoning [salt and pepper)<br>60<br>g<br>Butter<br>60<br>g<br>Shallots<br>9<br>g<br>Parsley, fresh<br>6<br>g<br>Herbs fresh Thyme, Rosemary<br>48<br>g<br>Butter<br><br>- SAUTE LIVER IN CLARIFIED BUTTER OVER HIGH HEAT UNTIL STILL RARE. DO NOT OVERCOOK.<br>- AND PUT THE LIVER IN A COLANDER OR HAIR SIEVE TO DRAIN. - SEASON WITH SALT AND PEPPER<br>- ADD BUTTER TO THE PAN AND SWEAT SHALLOTS<br>- ADD FRESH CHOPPED HERBS AND EXTRA BUTTER<br>- REMOVE FROM HEAT, ADD LIVER JUST TO WARM IT, AND COMBINE<br>- SERVE IMMEDIATELY</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Veal Liver with herbs<br>Geschnetzelte Kalbsleber mit Krautern Emince de Foie de veau aux fines herbes<br>Recipe #	: 387<br>Category	: Hot Meat Dishes<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 3.98 / EUR 2.52<br>Ingredients for 3 servings at 100% (Net quantity)<br>450<br>g<br>Calves' liver<br>24<br>g<br>Clarified butter<br>1<br>x<br>Seasoning [salt and pepper)<br>60<br>g<br>Butter<br>60<br>g<br>Shallots<br>9<br>g<br>Parsley, fresh<br>6<br>g<br>Herbs fresh Thyme, Rosemary<br>48<br>g<br>Butter<br><br>- SAUTE LIVER IN CLARIFIED BUTTER OVER HIGH HEAT UNTIL STILL RARE. DO NOT OVERCOOK.<br>- AND PUT THE LIVER IN A COLANDER OR HAIR SIEVE TO DRAIN. - SEASON WITH SALT AND PEPPER<br>- ADD BUTTER TO THE PAN AND SWEAT SHALLOTS<br>- ADD FRESH CHOPPED HERBS AND EXTRA BUTTER<br>- REMOVE FROM HEAT, ADD LIVER JUST TO WARM IT, AND COMBINE<br>- SERVE IMMEDIATELY</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sauté sliced calves' liver in clarified butter over high heat until still rare; do not overcook. Drain liver in a colander or hair sieve and season with salt and pepper. Add butter to the pan and sweat shallots. Stir in fresh chopped herbs (thyme, rosemary, parsley) and additional butter. Remove from heat, add liver to warm it through, and combine gently. Serve immediately. For 3 servings.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

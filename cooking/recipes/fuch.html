@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">В приличен съд маслото и захарта се бъркат докато се омешат добре /солидно/. Яйцата се добавят едно по едно и се бъркат до пълно омешване. Готовата смес се бърка с какаото и се добавя брашното на части докато се получи хомогенна смес.  В малка тавичка /плоска/ намазана предварително с масло и поръсена с брашно се изсипва сместа и се разстила равномерно. Поръсва се с орехите. Пече се до 40 мин. Първо се слага в затоплена фурна и около 15 мин. Се пече на силен огън, а после се продължава на умерен огън /времето според фурната/. Готов – когато краищата се отлепят от стените на тавичката и с клечка за зъби – бодва се и ако нищо не залепне по нея сме готови.<br><br>/половин доза/<br>1 пакетче масло – 125 гр. <br>1 чаша захар – 200 гр. <br>3 яйца<br>какао – 2 супени лъжици<br>брашно – 200 гр. <br>Изчистени и нарязани орехи</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">В приличен съд маслото и захарта се бъркат докато се омешат добре /солидно/. Яйцата се добавят едно по едно и се бъркат до пълно омешване. Готовата смес се бърка с какаото и се добавя брашното на части докато се получи хомогенна смес.  В малка тавичка /плоска/ намазана предварително с масло и поръсена с брашно се изсипва сместа и се разстила равномерно. Поръсва се с орехите. Пече се до 40 мин. Първо се слага в затоплена фурна и около 15 мин. Се пече на силен огън, а после се продължава на умерен огън /времето според фурната/. Готов – когато краищата се отлепят от стените на тавичката и с клечка за зъби – бодва се и ако нищо не залепне по нея сме готови.<br><br>/половин доза/<br>1 пакетче масло – 125 гр. <br>1 чаша захар – 200 гр. <br>3 яйца<br>какао – 2 супени лъжици<br>брашно – 200 гр. <br>Изчистени и нарязани орехи</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Cream butter and sugar together thoroughly until well combined. Add eggs one at a time, beating well after each addition. Mix in cocoa, then add flour in stages until homogeneous. Pour into a greased and floured shallow baking pan and spread evenly. Sprinkle with chopped nuts. Bake in preheated oven at high temperature for approximately 15 minutes, then reduce to moderate heat and continue for about 25 minutes (adjust timing to oven). Test doneness: edges should pull away from pan sides, and a toothpick inserted should come out clean.<br><br>Ingredients (half batch): 125g butter, 200g sugar, 3 eggs, 2 tbsp cocoa, 200g flour, chopped nuts.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

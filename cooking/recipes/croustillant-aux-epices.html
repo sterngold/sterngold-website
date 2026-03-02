@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Croustillant aux épices<br>Gewürz knusperstucke<br>Recipe #	:<br>Category	: ECA - Garnishes Decors Tuiles Chips ets<br>Chef	: Patrick Diethelm<br>Date	: 07.11.2005<br>Cost of goods	: CHF 0.14 / EUR 0.09 <br>Ingredients for 3 servings at 100% (Net quantity)<br>30 g Water<br>	10 g	Butter<br>	1 g	Salt<br>	30 g	White wheat flour<br>40 g Egg<br>	3 g	Thyme Ground, dry	Powder<br>- Prepare choux paste with water, butter, salt and flour. Add Egg<br>- spread on silpat and sprinkle with thyme powder. - use decor scrapper to shape the paste.<br>- bake at 180°C until light golden brown.<br>- chill and break into pieces and serve in glasses for fingerfood.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Croustillant aux épices<br>Gewürz knusperstucke<br>Recipe #	:<br>Category	: ECA - Garnishes Decors Tuiles Chips ets<br>Chef	: Patrick Diethelm<br>Date	: 07.11.2005<br>Cost of goods	: CHF 0.14 / EUR 0.09 <br>Ingredients for 3 servings at 100% (Net quantity)<br>30 g Water<br>	10 g	Butter<br>	1 g	Salt<br>	30 g	White wheat flour<br>40 g Egg<br>	3 g	Thyme Ground, dry	Powder<br>- Prepare choux paste with water, butter, salt and flour. Add Egg<br>- spread on silpat and sprinkle with thyme powder. - use decor scrapper to shape the paste.<br>- bake at 180°C until light golden brown.<br>- chill and break into pieces and serve in glasses for fingerfood.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Spiced Crisps** | Chef: Patrick Diethelm | 07.11.2005<br><br>Prepare choux paste: combine water, butter, and salt in saucepan, bring to boil. Add flour and mix to combine. Remove from heat and incorporate egg until smooth.<br><br>Spread choux paste thinly on silpat mat and sprinkle with ground thyme powder. Use a decor scraper to shape and spread paste as needed.<br><br>Bake at 180°C until light golden brown. Chill completely, then break into irregular pieces. Serve in glasses for finger food.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Mussel vegetable Quiche<br>Muschel - Gemüsekuchen mit Safran Quiche marseillaise<br><br>Zutaten für 10 Personen zu 100% (Nettomenge)</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Mussel vegetable Quiche<br>Muschel - Gemüsekuchen mit Safran Quiche marseillaise<br><br>Zutaten für 10 Personen zu 100% (Nettomenge)</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Mussel Vegetable Quiche (Muschel-Gemüsekuchen mit Safran / Quiche marseillaise)<br><br>No method provided — ingredient list only. Source indicates this is an entremetier station preparation for 10 servings at 100% net quantity.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Deeg x 2<br>370 bloem<br>salt<br>180 butter<br>5 spoons fet<br>cold watter - 8 spoon<br><br>Fulling <br>6 eggs <br>4 spoons botter - melt <br>4 spoons flour <br>1 tee spoon vanille <br>salt <br>250 sugar<br>8 dl maisstroop - honing - marple syroop<br>370 gehaakt nooten<br>120 whoole nooten<br><br>200 C for 10 min - 40 - 160 C</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Deeg x 2<br>370 bloem<br>salt<br>180 butter<br>5 spoons fet<br>cold watter - 8 spoon<br><br>Fulling <br>6 eggs <br>4 spoons botter - melt <br>4 spoons flour <br>1 tee spoon vanille <br>salt <br>250 sugar<br>8 dl maisstroop - honing - marple syroop<br>370 gehaakt nooten<br>120 whoole nooten<br><br>200 C for 10 min - 40 - 160 C</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PECANS TART | VandeMarkt Pâtisserie<br><br>Dough (x2):<br>Mix 370 g flour with salt. Cut in 180 g butter and 5 spoons fat. Bind with 8 spoons cold water.<br><br>Filling:<br>Melt 4 spoons butter. Whisk together 6 eggs, melted butter, 4 spoons flour, 1 teaspoon vanilla, salt, and 250 g sugar.<br><br>Add 800 ml (8 dl) of a mixture of corn syrup, honey, and maple syrup. Fold in 370 g chopped pecans and 120 g whole pecans.<br><br>Bake at 200°C for 10 minutes, then 40 minutes at 160°C.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

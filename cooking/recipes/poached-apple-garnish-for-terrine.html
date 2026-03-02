@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Poached Apple garnish for terrine<br>Pochierte Äpfelgarnitur for Terrine<br>Recipe #<br>Category	: ECA - Garde-manger special<br>Chef	: Patrick Diethelm<br>Date	: 14.11.2005<br>Cost of goods	: CHF 0.18 / EUR 0.12 <br><br><br>Ingredients for 20 servings at 100% [Net quantity)<br>800 g Apples<br>320 ml White wine (Sylvaner or Riesling)<br>1 I	Water<br>32 ml Lemon juice<br>130 g Crystal sugar<br>1 pc Saffron, pinch<br>- PEEL APPLES AND KEEP IN LEMON WATER CUT APPPLES, SEE COURSE INSTRUCTION<br>- COMBINE ALL INGREDIENTS, EXCEPT APPLES AND BRING TO A BOIL - ADD APPLES AND POACH UNTIL WELL DONE<br>- COOL DOWN IN STOCK IN ICE WATER<br>- Take out, place on wire rack and garnish with medallion of hot smoked poultry medallion [see course instruction) and vegetables.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Poached Apple garnish for terrine<br>Pochierte Äpfelgarnitur for Terrine<br>Recipe #<br>Category	: ECA - Garde-manger special<br>Chef	: Patrick Diethelm<br>Date	: 14.11.2005<br>Cost of goods	: CHF 0.18 / EUR 0.12 <br><br><br>Ingredients for 20 servings at 100% [Net quantity)<br>800 g Apples<br>320 ml White wine (Sylvaner or Riesling)<br>1 I	Water<br>32 ml Lemon juice<br>130 g Crystal sugar<br>1 pc Saffron, pinch<br>- PEEL APPLES AND KEEP IN LEMON WATER CUT APPPLES, SEE COURSE INSTRUCTION<br>- COMBINE ALL INGREDIENTS, EXCEPT APPLES AND BRING TO A BOIL - ADD APPLES AND POACH UNTIL WELL DONE<br>- COOL DOWN IN STOCK IN ICE WATER<br>- Take out, place on wire rack and garnish with medallion of hot smoked poultry medallion [see course instruction) and vegetables.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">POACHED APPLE GARNISH FOR TERRINE<br>Chef Patrick Diethelm | DCT | 14.11.2005<br><br>Prepare: Peel apples and keep in lemon water. Cut apples as per course instruction.<br><br>Poaching liquid: Combine white wine (Sylvaner or Riesling), water, lemon juice, crystal sugar, and a pinch of saffron. Bring to boil.<br><br>Cooking: Add apples and poach until well done. Cool down in stock in ice water.<br><br>Finish: Remove apples and place on wire rack. Garnish with medallion of hot smoked poultry medallion (see course instruction) and vegetables.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

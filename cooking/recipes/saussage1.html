@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">EUROPEAN CULINARY ARTS CENTER European Gourmet Course with Chef P. Diethelm<br>J Г'	Traditional Sausage categories of Switzerland<br>from Swiss butcher association<br><br>VI] NАU-LUCERNE SWITZERLAND<br>Brühwurst geräuchert<br>Saucisses échaudées fumées<br><br><br><br>Cervelas / Cervelas<br><br>Frankfurterli / Saucisse de Francfort<br><br>Bassersdorfer Schüblig<br>Schüblig de Bassersdorf<br><br>Engadiner / Engadine<br><br>0 Kümmelwurst / Saucisse au cumin<br><br>Emmentaler / Emmentaler<br><br>Schützeпwuгst / Boules de Bâle<br>Schweinswurst / Saucisse de porc<br><br>Wienerli / Wienerli<br><br>10 Knacker / Knacker<br><br>Frauenfelder Salzissen Saucisse de Frauenfeld<br><br>1z St. Galler Schüblig / Schüblig de St-Gall 13 St. Galler Stumpen / «Stump de St-Gall<br><br>EUROPEAN CULINARY ARTS CENTER European Gourmet Course with Chef P. Diethelm<br>Traditional Sausage categories of Switzerland<br>from Swiss butcher association<br><br><br>VITZNАU-LULL NE SWITZERLAND<br>Brühwurst ungeräuchert<br>Saucisses échaudées non fumées<br><br><br>Fleischkäse / Fromage d'Italie<br>Glarner Kalberwurst / Saucisse de veau de Glaris<br>Waadtländer Bratwurst Saucisse à rôtir vaudoise<br>Appenzeller Siedwurst Saucisse à bouillir d'Appenzell<br>Mortadella / Mortadella<br>St. Galler Kalbsbratwurst Saucisse à rôtir de St-Gall</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">EUROPEAN CULINARY ARTS CENTER European Gourmet Course with Chef P. Diethelm<br>J Г'	Traditional Sausage categories of Switzerland<br>from Swiss butcher association<br><br>VI] NАU-LUCERNE SWITZERLAND<br>Brühwurst geräuchert<br>Saucisses échaudées fumées<br><br><br><br>Cervelas / Cervelas<br><br>Frankfurterli / Saucisse de Francfort<br><br>Bassersdorfer Schüblig<br>Schüblig de Bassersdorf<br><br>Engadiner / Engadine<br><br>0 Kümmelwurst / Saucisse au cumin<br><br>Emmentaler / Emmentaler<br><br>Schützeпwuгst / Boules de Bâle<br>Schweinswurst / Saucisse de porc<br><br>Wienerli / Wienerli<br><br>10 Knacker / Knacker<br><br>Frauenfelder Salzissen Saucisse de Frauenfeld<br><br>1z St. Galler Schüblig / Schüblig de St-Gall 13 St. Galler Stumpen / «Stump de St-Gall<br><br>EUROPEAN CULINARY ARTS CENTER European Gourmet Course with Chef P. Diethelm<br>Traditional Sausage categories of Switzerland<br>from Swiss butcher association<br><br><br>VITZNАU-LULL NE SWITZERLAND<br>Brühwurst ungeräuchert<br>Saucisses échaudées non fumées<br><br><br>Fleischkäse / Fromage d'Italie<br>Glarner Kalberwurst / Saucisse de veau de Glaris<br>Waadtländer Bratwurst Saucisse à rôtir vaudoise<br>Appenzeller Siedwurst Saucisse à bouillir d'Appenzell<br>Mortadella / Mortadella<br>St. Galler Kalbsbratwurst Saucisse à rôtir de St-Gall</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">TRADITIONAL SWISS SAUSAGE CATEGORIES<br><br>This is a reference document from the Swiss Butcher Association listing traditional Swiss sausage types, not a recipe with preparation instructions.<br><br>Smoked varieties (Brühwurst geräuchert): Cervelas, Frankfurterli, Bassersdorfer Schüblig, Engadiner, Kümmelwurst, Emmentaler, Schützenwurst, Schweinswurst, Wienerli, Knacker, Frauenfelder Salzissen, St. Galler Schüblig, St. Galler Stumpen.<br><br>Unsmoked varieties (Brühwurst ungeräuchert): Fleischkäse, Glarner Kalberwurst, Waadtländer Bratwurst, Appenzeller Siedwurst, Mortadella, St. Galler Kalbsbratwurst.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

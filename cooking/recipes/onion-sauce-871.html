@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Onion Sauce <br>Zwiebe/sauce <br>Sauce aux oignons (/yonnaisej . <br>Rezept Nr. : 108 <br> Kategorie : Sauces <br>Koch : Patrick Diethelm<br>Datum : 26.05.2005 <br>Warenkosten : CHF 16.13/ EUR 1 0.20 <br><br><br>Zutaten fUr 1.000 Liter zu 100% [Nettomenge) <br>405 g	Onions Peel, cut in half and slice emince <br>80 g 	Butter <br>100 ml Dry white wine <br>50 ml White wine vinegar <br>	800 g 	Fond de veau brun lie <br>	10 g 	Parsley. Italian, fresh <br>	1 x 	Seasoning (salt) <br>Chop. <br>- SAUTE ONIONS IN BUDER UNTIL ABOUT THREE-QUARTERS COOKED. <br>- ADD WINE AND VINEGAR AND BOIL DOWN UNTIL ALMOST REDUCED. <br>- ADD BROWN VEAL STOCK AND SIMMER FOR 5 MINUTES. <br>- SEASON TO TASTE AND ADD PARSLEY. <br>APPLICATION <br>Serve with grilled sausages [bratwurst) or boiled beef gretine [miroton de boeuf)</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Onion Sauce <br>Zwiebe/sauce <br>Sauce aux oignons (/yonnaisej . <br>Rezept Nr. : 108 <br> Kategorie : Sauces <br>Koch : Patrick Diethelm<br>Datum : 26.05.2005 <br>Warenkosten : CHF 16.13/ EUR 1 0.20 <br><br><br>Zutaten fUr 1.000 Liter zu 100% [Nettomenge) <br>405 g	Onions Peel, cut in half and slice emince <br>80 g 	Butter <br>100 ml Dry white wine <br>50 ml White wine vinegar <br>	800 g 	Fond de veau brun lie <br>	10 g 	Parsley. Italian, fresh <br>	1 x 	Seasoning (salt) <br>Chop. <br>- SAUTE ONIONS IN BUDER UNTIL ABOUT THREE-QUARTERS COOKED. <br>- ADD WINE AND VINEGAR AND BOIL DOWN UNTIL ALMOST REDUCED. <br>- ADD BROWN VEAL STOCK AND SIMMER FOR 5 MINUTES. <br>- SEASON TO TASTE AND ADD PARSLEY. <br>APPLICATION <br>Serve with grilled sausages [bratwurst) or boiled beef gretine [miroton de boeuf)</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">ONION SAUCE<br>Recipe #108 | Chef: Patrick Diethelm | Date: 26.05.2005<br><br>Ingredients (1000 ml):<br>- 405 g onions, peeled, halved and sliced fine<br>- 80 g butter<br>- 100 ml dry white wine<br>- 50 ml white wine vinegar<br>- 800 g brown veal stock, thickened<br>- 10 g fresh Italian parsley<br>- Salt to taste<br><br>Method:<br>1. Sauté onions in butter until approximately three-quarters cooked.<br>2. Deglaze with wine and vinegar; reduce almost completely.<br>3. Add brown veal stock and simmer 5 minutes.<br>4. Season to taste and finish with fresh parsley.<br><br>Service: Accompany grilled bratwurst or boiled beef miroton.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

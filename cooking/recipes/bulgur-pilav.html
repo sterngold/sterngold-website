@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Bulgur Pilav (Bulgur pilavi)<br>Rezept Nr.<br>Kategorie	: ECA - Entremetier/ side dishes<br>Koch	: Patrick Diethelm<br>Datum	: 04.08.2005<br>Warenkosten	: CHF 0.59 / EUR 0.37 <br><br>EUROPEAN CULINARY CENTER<br>Zutaten für 10 Personen zu 100% (Nettomenge)<br>400<br>g<br>Bulgur<br><br>80<br>ml<br>Olive oil<br><br>20<br>g<br>Garlic<br>Fine chopped<br>60<br>g<br>Shallots<br>Fine chopped<br>120<br>g<br>Bell peppers<br>Jardiniere<br>1<br>kg<br>Vegetable stock<br><br>1<br>st<br>Bay leaf<br><br>10<br>g<br>Italian Parsley<br>Chopped<br>100<br>g<br>Tomatoes peeled seedless<br>Concasse<br><br>- Wash Bulgur and add into hair sieve and dry<br>- SWEAT THE SHALLOTS GARLIC IN OLIVE OIL<br>- ADD BELL PEPPERS<br>- ADD BULGUR AND STIR<br>- POUR IN VEGETABLE STOCK AND BRING TO A BOIL WITH BAY LEAF - SEASON WITH SALT AND PEPPER<br>- COVER AND ADD PLACE INTO OVEN AT 170°C FOR 20 MINUTES - ADD TOMATOES AND PARSLEY AND LET REST FOR 5 MINUTES - STIR CAREFULLY AND SERVE<br>Bulgur wird in der Türkei als Beilage oder als Zwischengericht mit Tursu, sauer eingelegtem Gemüse serviert.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Bulgur Pilav (Bulgur pilavi)<br>Rezept Nr.<br>Kategorie	: ECA - Entremetier/ side dishes<br>Koch	: Patrick Diethelm<br>Datum	: 04.08.2005<br>Warenkosten	: CHF 0.59 / EUR 0.37 <br><br>EUROPEAN CULINARY CENTER<br>Zutaten für 10 Personen zu 100% (Nettomenge)<br>400<br>g<br>Bulgur<br><br>80<br>ml<br>Olive oil<br><br>20<br>g<br>Garlic<br>Fine chopped<br>60<br>g<br>Shallots<br>Fine chopped<br>120<br>g<br>Bell peppers<br>Jardiniere<br>1<br>kg<br>Vegetable stock<br><br>1<br>st<br>Bay leaf<br><br>10<br>g<br>Italian Parsley<br>Chopped<br>100<br>g<br>Tomatoes peeled seedless<br>Concasse<br><br>- Wash Bulgur and add into hair sieve and dry<br>- SWEAT THE SHALLOTS GARLIC IN OLIVE OIL<br>- ADD BELL PEPPERS<br>- ADD BULGUR AND STIR<br>- POUR IN VEGETABLE STOCK AND BRING TO A BOIL WITH BAY LEAF - SEASON WITH SALT AND PEPPER<br>- COVER AND ADD PLACE INTO OVEN AT 170°C FOR 20 MINUTES - ADD TOMATOES AND PARSLEY AND LET REST FOR 5 MINUTES - STIR CAREFULLY AND SERVE<br>Bulgur wird in der Türkei als Beilage oder als Zwischengericht mit Tursu, sauer eingelegtem Gemüse serviert.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Bulgur Pilav**<br><br>Prepare: Wash bulgur, pass through a hair sieve, and dry thoroughly.<br><br>Method: Sweat finely chopped shallots and garlic in olive oil. Add bell pepper jardinière and stir. Add bulgur and stir well. Pour in vegetable stock, bring to a boil with bay leaf, and season with salt and pepper. Cover and cook in oven at 170°C for 20 minutes. Remove from oven, add tomato concassé and chopped Italian parsley, and let rest 5 minutes. Stir carefully and serve.<br><br>Note: In Turkey, bulgur is traditionally served as a side dish or intermediate course with turşu (pickled vegetables).<br><br>*Yield: 10 servings | Cost CHF 0.59*</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

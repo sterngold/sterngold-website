@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">GNOCCHI MALFATTI ( ITALIAN SPINACH DUMPLINGS I<br>Yield: 5 servings<br>	200 g	fresh spinach or 70 g frozen blanched<br>	30 g	fine chopped shallots<br>1	clove of garlic, fine crushed<br>	20 g	unsalted butter<br>	75 g	ricotta cheese<br>	50 g	past. eggs<br>	70 g	white wheat flour<br>	15 g	buck wheat flour<br>	60 g	freshly grated parmesan salt, pepper mill, nutmeg<br>	2 g	chopped basil and marjoram<br>Garnish: <br>	25 g	butter<br>	15 g	chopped basil<br>freshly grated parmesan 	150 g	tomato coulis<br>Preparation:<br>Wash and drain the spinach carefully in cold deep water for several times. Remove the stalks of the spinach. Blanche the leaves very quickly and refresh. Squeeze out all the water. Chop the spinach very fine or blend in food processor with the eggs<br>Sweat the chopped shallots and garlic in butter for about 1-2 min. and cool down. Now mix all the ingredients for the dumplings.<br>Season the dough with salt, pepper and nutmeg. Let the dough rest for about 20 min. Scoop out dumplings from the dough like quenelles shape.<br>Simmer the gnocchi in a large amount of lightly salted boiling water. As soon as they float to the top, simmer them for 2 - 4 min. Remove and drain the cooked gnocchis carefully. Sweat fresh roughly chopped sage in hazelnut butter and pour over the hot dumplings and arrange on plate or serving dish.<br>Serve on tomato coulis.<br>Sprinkle with fresh parmesan cheese, grated or fine sliced.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">GNOCCHI MALFATTI ( ITALIAN SPINACH DUMPLINGS I<br>Yield: 5 servings<br>	200 g	fresh spinach or 70 g frozen blanched<br>	30 g	fine chopped shallots<br>1	clove of garlic, fine crushed<br>	20 g	unsalted butter<br>	75 g	ricotta cheese<br>	50 g	past. eggs<br>	70 g	white wheat flour<br>	15 g	buck wheat flour<br>	60 g	freshly grated parmesan salt, pepper mill, nutmeg<br>	2 g	chopped basil and marjoram<br>Garnish: <br>	25 g	butter<br>	15 g	chopped basil<br>freshly grated parmesan 	150 g	tomato coulis<br>Preparation:<br>Wash and drain the spinach carefully in cold deep water for several times. Remove the stalks of the spinach. Blanche the leaves very quickly and refresh. Squeeze out all the water. Chop the spinach very fine or blend in food processor with the eggs<br>Sweat the chopped shallots and garlic in butter for about 1-2 min. and cool down. Now mix all the ingredients for the dumplings.<br>Season the dough with salt, pepper and nutmeg. Let the dough rest for about 20 min. Scoop out dumplings from the dough like quenelles shape.<br>Simmer the gnocchi in a large amount of lightly salted boiling water. As soon as they float to the top, simmer them for 2 - 4 min. Remove and drain the cooked gnocchis carefully. Sweat fresh roughly chopped sage in hazelnut butter and pour over the hot dumplings and arrange on plate or serving dish.<br>Serve on tomato coulis.<br>Sprinkle with fresh parmesan cheese, grated or fine sliced.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**GNOCCHI MALFATTI—ITALIAN SPINACH DUMPLINGS**<br><br>Yield: 5 servings<br><br>**Ingredients:**<br>- 200 g fresh spinach (or 70 g frozen blanched)<br>- 30 g shallots, finely chopped<br>- 1 clove garlic, crushed<br>- 20 g unsalted butter<br>- 75 g ricotta cheese<br>- 50 g pasteurized eggs<br>- 70 g white wheat flour<br>- 15 g buckwheat flour<br>- 60 g freshly grated parmesan<br>- Salt, pepper, nutmeg to taste<br>- 2 g chopped basil and marjoram<br><br>**Garnish:** 25 g butter, 15 g chopped basil, grated parmesan, 150 g tomato coulis<br><br>**Method:**<br>1. Wash spinach thoroughly in cold water. Remove stalks. Blanch briefly and refresh. Squeeze completely dry. Chop finely or blend with eggs.<br>2. Sweat shallots and garlic in butter 1-2 minutes. Cool.<br>3. Combine all ingredients. Season with salt, pepper, and nutmeg. Rest 20 minutes.<br>4. Shape into quenelle-form dumplings using two spoons.<br>5. Simmer in large pot of lightly salted boiling water. Cook 2-4 minutes after dumplings float to surface. Drain carefully.<br>6. Heat fresh sage roughly chopped in hazelnut butter. Pour over hot gnocchi.<br>7. Plate on tomato coulis. Finish with freshly grated parmesan.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

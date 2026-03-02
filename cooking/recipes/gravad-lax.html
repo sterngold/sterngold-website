@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Gravad Lax (Scandinavian)<br>Roh marinierter Lachs<br>Saumon mariné suédoise [Graved Lax)<br><br>Recipe #	: 252<br>Category	: ECA - Garde-manger fish<br>Chef	: Patrick Diethelm<br>Date	: 10.11.2005<br>Cost of goods	: CHF 22.56 / EUR 14.27<br><br>European Gourmet Cuisine<br>Ingredients for 1.600 kilogram. at 100% [Net quantity)<br>1.5 kg Salmon fillets 1, with skin<br>50 g	Dill, fresh<br>40 g	Sea salt, coarse<br>60 g	Crystal sugar<br>2 g White peppercorns<br>640 g *Mustard Sauce for Gravad Lax<br>Trim salmon and remove any remaining bones. (<br>Dry fish fillets with absorbent paper.<br>Remove dill leaves from stems and chop coarsely. <br>Crush peppercorns and blend with salt and sugar.<br> Sprinkle some seasoning mixture in a shallow stainless steel pan.<br>Place one salmon fillet, skin side down, in pan. <br>Sprinkle some seasoning mixture and dill.<br> Put second fillet on top, skin side up.<br>Sprinkle with remaining seasoning mixture and dill. <br>Cover with transparent wrap.<br>Place light weight on top.<br>Marinate for 1- 2 days. (depense on size fillet<br>) - Turn fish fillet, to switch top fillet to bottom. - When ready to serve, dry fillets.<br>- Wash if necessary<br>PRESENTATION<br>- Carve salmon and serve on lettuce leaves.<br>- Garnish with lemon wedge and dill leaves and blossoms. - Serve mustard sauce on the side.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Gravad Lax (Scandinavian)<br>Roh marinierter Lachs<br>Saumon mariné suédoise [Graved Lax)<br><br>Recipe #	: 252<br>Category	: ECA - Garde-manger fish<br>Chef	: Patrick Diethelm<br>Date	: 10.11.2005<br>Cost of goods	: CHF 22.56 / EUR 14.27<br><br>European Gourmet Cuisine<br>Ingredients for 1.600 kilogram. at 100% [Net quantity)<br>1.5 kg Salmon fillets 1, with skin<br>50 g	Dill, fresh<br>40 g	Sea salt, coarse<br>60 g	Crystal sugar<br>2 g White peppercorns<br>640 g *Mustard Sauce for Gravad Lax<br>Trim salmon and remove any remaining bones. (<br>Dry fish fillets with absorbent paper.<br>Remove dill leaves from stems and chop coarsely. <br>Crush peppercorns and blend with salt and sugar.<br> Sprinkle some seasoning mixture in a shallow stainless steel pan.<br>Place one salmon fillet, skin side down, in pan. <br>Sprinkle some seasoning mixture and dill.<br> Put second fillet on top, skin side up.<br>Sprinkle with remaining seasoning mixture and dill. <br>Cover with transparent wrap.<br>Place light weight on top.<br>Marinate for 1- 2 days. (depense on size fillet<br>) - Turn fish fillet, to switch top fillet to bottom. - When ready to serve, dry fillets.<br>- Wash if necessary<br>PRESENTATION<br>- Carve salmon and serve on lettuce leaves.<br>- Garnish with lemon wedge and dill leaves and blossoms. - Serve mustard sauce on the side.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PREPARATION: Trim salmon fillets and remove any remaining bones. Dry fillets thoroughly with absorbent paper. Remove dill leaves from stems and chop coarsely. Crush white peppercorns and blend with coarse sea salt and crystal sugar.<br><br>CURING: Sprinkle some seasoning mixture in a shallow stainless steel pan. Place one salmon fillet skin side down in the pan. Sprinkle with additional seasoning mixture and dill. Place the second fillet on top, skin side up. Sprinkle with remaining seasoning mixture and dill. Cover tightly with plastic wrap and place a light weight on top. Marinate for 1–2 days, depending on fillet size. Turn fillets halfway through to switch the top fillet to the bottom.<br><br>FINISHING: When ready to serve, dry fillets with paper towels. Wash if necessary. Carve salmon and serve on lettuce leaves. Garnish with lemon wedges, fresh dill leaves, and dill blossoms. Serve mustard sauce on the side.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Beef Consomme<br>Kraftbrtjhe Consomme nature<br><br><br>Recipe 4#	: 161<br>Category	: Soups<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	CHF 4.08 / EUR 2.58<br><br><br>Ingredients for 1.200 liters at 100% (Net quantity)<br>	1,8 l	*Beef Broth 360 g Lean Beef 120 ml Water<br>	31 g	Carrot<br>	35 g	Onions<br>	20 g	Knob celery (celeriac)<br>	35 g	Leeks<br>23 g Tomatoes<br>	120 g	Egg whites<br>'I pc Bay leaves<br>5 pc White peppercorns 	1 x	Seasoning (salt)<br>- Grind meat through coarse plate of meat grinder.<br>- Cut carrots and knob celery into matignon.<br>- Wash and trim leeks; be sure sand is cleaned from layers. Cut into matignon.<br>- dice tomatoes.<br>- Make clarification mixture by combining meat, carrots, knob celery, leeks, tomatoes, egg<br>whites, bay leaf, and white peppercorns with water, mix thoroughly, and refrigerate for at least 1/2 hour.<br>- THOROUGHLY COMBINE MEAT MIXTURE WITH COLD BOUILLON.<br>- STIRRING CAREFULLY WITH FRYING SPATULA UNTIL 97°C, ONCE CONSOMME STARTS TO BOIL, DO NOT STIR ANY LONGER. AND ADD 3-4 ICE CUBES TO COOL.<br>- LOWER THE HEAT<br>SIMMER FOR AT LEAST '1/2 HOUR.<br>- SEASON TO TASTE.<br>- STRAIN CAREFULLY THROUGH NAPKIN.<br>- REMOVE ALL FAT WITH ABSORBENT PAPER.<br>- ADD LITTLE SHERRY WINE TO PARFUME<br><br>1 liter broth - 300 - 400 g clarification<br>If not said - always beef consomme'</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Beef Consomme<br>Kraftbrtjhe Consomme nature<br><br><br>Recipe 4#	: 161<br>Category	: Soups<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	CHF 4.08 / EUR 2.58<br><br><br>Ingredients for 1.200 liters at 100% (Net quantity)<br>	1,8 l	*Beef Broth 360 g Lean Beef 120 ml Water<br>	31 g	Carrot<br>	35 g	Onions<br>	20 g	Knob celery (celeriac)<br>	35 g	Leeks<br>23 g Tomatoes<br>	120 g	Egg whites<br>'I pc Bay leaves<br>5 pc White peppercorns 	1 x	Seasoning (salt)<br>- Grind meat through coarse plate of meat grinder.<br>- Cut carrots and knob celery into matignon.<br>- Wash and trim leeks; be sure sand is cleaned from layers. Cut into matignon.<br>- dice tomatoes.<br>- Make clarification mixture by combining meat, carrots, knob celery, leeks, tomatoes, egg<br>whites, bay leaf, and white peppercorns with water, mix thoroughly, and refrigerate for at least 1/2 hour.<br>- THOROUGHLY COMBINE MEAT MIXTURE WITH COLD BOUILLON.<br>- STIRRING CAREFULLY WITH FRYING SPATULA UNTIL 97°C, ONCE CONSOMME STARTS TO BOIL, DO NOT STIR ANY LONGER. AND ADD 3-4 ICE CUBES TO COOL.<br>- LOWER THE HEAT<br>SIMMER FOR AT LEAST '1/2 HOUR.<br>- SEASON TO TASTE.<br>- STRAIN CAREFULLY THROUGH NAPKIN.<br>- REMOVE ALL FAT WITH ABSORBENT PAPER.<br>- ADD LITTLE SHERRY WINE TO PARFUME<br><br>1 liter broth - 300 - 400 g clarification<br>If not said - always beef consomme'</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">BEEF CONSOMMÉ<br>Recipe #161 | Chef: Patrick Diethelm | Date: 25.10.2005<br>Yield: 1,200 liters<br><br>INGREDIENTS<br>1.8 l Beef broth<br>360 g Lean beef<br>120 ml Water<br>31 g Carrot<br>35 g Onions<br>20 g Knob celery (celeriac)<br>35 g Leeks<br>23 g Tomatoes<br>120 g Egg whites<br>1 Bay leaf<br>5 White peppercorns<br>Salt to taste<br>Sherry wine for finishing<br><br>METHOD<br>Grind meat through coarse plate of meat grinder. Cut carrots and knob celery into matignon. Wash, trim, and carefully clean leeks of sand; cut into matignon. Dice tomatoes.<br><br>Make clarification mixture by combining meat, carrots, knob celery, leeks, tomatoes, egg whites, bay leaf, and white peppercorns with water. Mix thoroughly and refrigerate at least 30 minutes.<br><br>Thoroughly combine meat mixture with cold beef bouillon. Place over heat and stir carefully with frying spatula until 97°C is reached. Once consommé begins to boil, stop stirring immediately and add 3–4 ice cubes to cool. Lower heat and simmer at least 30 minutes.<br><br>Season to taste. Strain carefully through napkin. Remove all fat with absorbent paper. Add a little sherry wine to perfume before service.<br><br>Note: Standard ratio is 1 liter broth to 300–400 g clarification mixture.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

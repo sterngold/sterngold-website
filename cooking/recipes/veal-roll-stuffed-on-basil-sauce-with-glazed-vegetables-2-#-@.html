@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Glazed Vegetables<br>Glasierte Gemüse Légumes glacées<br>Recipe #	: 547<br>Category	: ECA - Vegetables<br>Chef	: P.Diethelm<br>Date	: 05.12.2005<br>Cost of goods	: CHF 0.19 / EUR 0.12</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Glazed Vegetables<br>Glasierte Gemüse Légumes glacées<br>Recipe #	: 547<br>Category	: ECA - Vegetables<br>Chef	: P.Diethelm<br>Date	: 05.12.2005<br>Cost of goods	: CHF 0.19 / EUR 0.12</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Recipe notes provided are ingredient list only with no method instructions. Components include veal roll, basil sauce, and glazed vegetables (complete method not included in source material).</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

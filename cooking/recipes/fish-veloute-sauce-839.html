@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Fish Veloute Sauce<br>Fisch-Ve/oute Ve/oute de poisson <br><br>Rezept Nr. :53 <br><br>Kategorie : Sauces <br><br>Koch : P.oiethelm <br><br>Datum : 11.08.2005 <br><br>Warenkosten: CHF 2.33 LEUR 1.47 <br><br>Zutaten fOr 1.000 Liter zu 100% (NettomengeJ <br>	50 g 	Butter <br>	60 9 	White wheat flour <br>	1.2 / 	*Fish Stock <br>	1 x 	Seasoning (salt, ceyenn~ pepper) <br>- ADO FLOUR INTO MELTED BUTTER TO MAKE A ROUX. <br>-COOL ROUX. <br>- BRING FISH STOCK TO A BOIL AND ADO ROUX, WHILE STIRRING. <br>- BRING TO A BOIL. <br>SIMMER FOR ABOUT 30 MINUTES. <br>SEASON TO TASTE. <br>STRAIN THROUGH FINE CHINA CAP. <br>APPLICATIONS <br>Use as an ingredient in white wine sauce.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Fish Veloute Sauce<br>Fisch-Ve/oute Ve/oute de poisson <br><br>Rezept Nr. :53 <br><br>Kategorie : Sauces <br><br>Koch : P.oiethelm <br><br>Datum : 11.08.2005 <br><br>Warenkosten: CHF 2.33 LEUR 1.47 <br><br>Zutaten fOr 1.000 Liter zu 100% (NettomengeJ <br>	50 g 	Butter <br>	60 9 	White wheat flour <br>	1.2 / 	*Fish Stock <br>	1 x 	Seasoning (salt, ceyenn~ pepper) <br>- ADO FLOUR INTO MELTED BUTTER TO MAKE A ROUX. <br>-COOL ROUX. <br>- BRING FISH STOCK TO A BOIL AND ADO ROUX, WHILE STIRRING. <br>- BRING TO A BOIL. <br>SIMMER FOR ABOUT 30 MINUTES. <br>SEASON TO TASTE. <br>STRAIN THROUGH FINE CHINA CAP. <br>APPLICATIONS <br>Use as an ingredient in white wine sauce.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Fish Velouté Sauce** | Chef P. Diethelm | August 11, 2005 | Cost: CHF 2.33 | Yield: 1,000 ml<br><br>**Mise en place:**<br>50 g butter, 60 g white wheat flour, 1.2 l fish stock, salt and cayenne pepper.<br><br>**Method:**<br>Melt butter and whisk in flour to create a roux. Cool the roux slightly.<br><br>Bring fish stock to a boil. Add the cooled roux while stirring continuously to avoid lumps. Return to a boil, then reduce to a simmer.<br><br>Simmer for approximately 30 minutes, stirring occasionally. Season to taste with salt and cayenne pepper.<br><br>Strain through a fine china cap.<br><br>**Application:**<br>Use as an ingredient in white wine sauce or other fish-based preparations.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

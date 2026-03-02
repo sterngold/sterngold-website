@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">измиваш спанака, откъсваш дръжките – в Холандия сигурно го продават и мит, и чистен, и само на листа. <br>Поставяш подсолена вода да заври, когато заври пускаш вътре спанака. <br>Ври не повече от 2 минути. <br>Изваждаш спанака и го измиваш със студена вода.<br> После го нарязваш ситно и извършваш същата процедура като с тиквичката: яйце /яйца/, брашно, копър, ким, чесън, евентуално извара и ги пържиш.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">измиваш спанака, откъсваш дръжките – в Холандия сигурно го продават и мит, и чистен, и само на листа. <br>Поставяш подсолена вода да заври, когато заври пускаш вътре спанака. <br>Ври не повече от 2 минути. <br>Изваждаш спанака и го измиваш със студена вода.<br> После го нарязваш ситно и извършваш същата процедура като с тиквичката: яйце /яйца/, брашно, копър, ким, чесън, евентуално извара и ги пържиш.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Wash spinach and remove stems. Bring salted water to boil, add spinach, and cook 2 minutes maximum. Cool in ice water. Chop finely.<br><br>Proceed as with zucchini: combine with beaten egg(s), flour, dill, caraway, garlic, and optionally whey. Drop by spoon into very hot oil and fry until set, turning once.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">STUFFED VEAL ROLL ON ON BASIL SAUCE WITH GLAZED VEGETABLES<br><br>Yield: 5 servings<br>5	veal escalope, 100g each <br>salt, pepper<br>clarified butter<br>50 ml Port wine<br>150 ml reduced fond de veau brun<br><br>Raw mousseline farce:<br>150 g veal meat trimmings <br>20 g egg white<br>100 g cream<br>salt, pepper<br>5g fine chopped herbs<br>chervil, basil, thyme<br>60 g brunoise (blanched)<br>carrot, leek green<br><br>VE#GETABLES<br>400 g seasonal vegetables<br><br>Sauce: <br>2 dl Fond de veau blanc<br>little white roux<br>1 dl cream <br>30 g butter<br>60 g bacon brunoise crispy <br>10 g chopped chervil<br>lemon juice<br><br>Preparation:<br>- Cut veal into thin escalope<br>- Flatten between plastic foil<br>- Prepare the farce in food processor and place on ice<br>- Add the herbs, blanched brunoise and season to taste<br>- Spread the farce on the escalope and roll up tightly<br>- Wrap the roll into pork caul or tie with kitchen twine (see instruction) <br> - Prepare all the vegetables and glaze each with vegetable stock<br>- Reduce the fond de veau blanc, add the cream and reduce to desired consistency add the chervil a la minute.<br>- Sauté the veal roll on medium heat in clarified butter in the oven, basting frequently 220 200 C<br>- Place on wire rack and let rest at 150°C. for another 10-15 minutes	<br> - Arrange the vegetable with the starch dish<br>- Carve the veal roll in a angle to show and present the cutaway<br>- Arrange the veal rolls and brush a la minute with the reduced Port wine and brown veal stock glaze</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">STUFFED VEAL ROLL ON ON BASIL SAUCE WITH GLAZED VEGETABLES<br><br>Yield: 5 servings<br>5	veal escalope, 100g each <br>salt, pepper<br>clarified butter<br>50 ml Port wine<br>150 ml reduced fond de veau brun<br><br>Raw mousseline farce:<br>150 g veal meat trimmings <br>20 g egg white<br>100 g cream<br>salt, pepper<br>5g fine chopped herbs<br>chervil, basil, thyme<br>60 g brunoise (blanched)<br>carrot, leek green<br><br>VE#GETABLES<br>400 g seasonal vegetables<br><br>Sauce: <br>2 dl Fond de veau blanc<br>little white roux<br>1 dl cream <br>30 g butter<br>60 g bacon brunoise crispy <br>10 g chopped chervil<br>lemon juice<br><br>Preparation:<br>- Cut veal into thin escalope<br>- Flatten between plastic foil<br>- Prepare the farce in food processor and place on ice<br>- Add the herbs, blanched brunoise and season to taste<br>- Spread the farce on the escalope and roll up tightly<br>- Wrap the roll into pork caul or tie with kitchen twine (see instruction) <br> - Prepare all the vegetables and glaze each with vegetable stock<br>- Reduce the fond de veau blanc, add the cream and reduce to desired consistency add the chervil a la minute.<br>- Sauté the veal roll on medium heat in clarified butter in the oven, basting frequently 220 200 C<br>- Place on wire rack and let rest at 150°C. for another 10-15 minutes	<br> - Arrange the vegetable with the starch dish<br>- Carve the veal roll in a angle to show and present the cutaway<br>- Arrange the veal rolls and brush a la minute with the reduced Port wine and brown veal stock glaze</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">STUFFED VEAL ROLL ON BASIL SAUCE WITH GLAZED VEGETABLES<br>Yield: 5 servings<br><br>Raw Mousseline Farce:<br>1. Process veal trimmings with egg white, cream, and salt until fine. Cool on ice.<br>2. Fold in finely chopped herbs (chervil, basil, thyme) and blanched vegetable brunoise (carrot, leek green). Season to taste.<br><br>Veal Preparation:<br>1. Cut veal into thin escalopes.<br>2. Flatten between plastic foil.<br>3. Spread farce evenly on escalope and roll tightly.<br>4. Wrap roll in pork caul or tie with kitchen twine.<br><br>Sauce:<br>1. Reduce fond de veau blanc, add cream, and reduce to desired consistency.<br>2. Finish with chopped chervil à la minute and season with lemon juice.<br><br>Cooking:<br>1. Prepare and glaze seasonal vegetables with vegetable stock.<br>2. Sauté veal rolls in clarified butter over medium heat. Transfer to oven at 220–200°C, basting frequently.<br>3. Place on wire rack and rest at 150°C for 10–15 minutes.<br>4. Arrange vegetables with starch dish.<br>5. Carve rolls at an angle to display farce.<br>6. Brush à la minute with reduced Port wine and brown veal stock glaze. Arrange and serve.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

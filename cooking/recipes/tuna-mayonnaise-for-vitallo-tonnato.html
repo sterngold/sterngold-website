@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Mayonnaise <br><br>Mayonnaise-Sauce Sauce mayonnaise <br><br>Rezept Nr. : 71 <br><br> Kategorie : Sauces <br><br>Koch : Patrick Diethelm<br>Datum : 01.03.2004 <br><br>Warenkosten: CHF 5.63 / EUR 3.56 <br><br><br>Zutaten fOr 0.500 Liter zu 100'1. (Nettomenge) <br><br>Egg yolk past. 100 g<br>Prepared mustard, mild 25 g<br>Sunflower oil 400 ml<br>White wine vinegar 15 ml<br>Seasoning (salt and pepper) 1 x <br><br> Seasoning (lemon juice) 1 x <br>Water 30 g<br><br>- COMBINE EGG YOLKS AND MUSTARD; WHISK UNTIL FOAMY. <br>- ADD OIL IN A FINE AND STEADY STREAM, WHILE WHIPPING VIGOROUSLY. <br>- ADD VINEGAR WHEN ALL OIL IS INCORPORATED. <br>- SEASON WITH SALT AND PEPPER AND LEMON JUICE.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Mayonnaise <br><br>Mayonnaise-Sauce Sauce mayonnaise <br><br>Rezept Nr. : 71 <br><br> Kategorie : Sauces <br><br>Koch : Patrick Diethelm<br>Datum : 01.03.2004 <br><br>Warenkosten: CHF 5.63 / EUR 3.56 <br><br><br>Zutaten fOr 0.500 Liter zu 100'1. (Nettomenge) <br><br>Egg yolk past. 100 g<br>Prepared mustard, mild 25 g<br>Sunflower oil 400 ml<br>White wine vinegar 15 ml<br>Seasoning (salt and pepper) 1 x <br><br> Seasoning (lemon juice) 1 x <br>Water 30 g<br><br>- COMBINE EGG YOLKS AND MUSTARD; WHISK UNTIL FOAMY. <br>- ADD OIL IN A FINE AND STEADY STREAM, WHILE WHIPPING VIGOROUSLY. <br>- ADD VINEGAR WHEN ALL OIL IS INCORPORATED. <br>- SEASON WITH SALT AND PEPPER AND LEMON JUICE.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Combine egg yolk paste and mild prepared mustard; whisk until foamy. Add sunflower oil in a fine, steady stream while whipping vigorously. Once all oil is incorporated, add white wine vinegar. Season with salt, pepper, and lemon juice. Adjust consistency with water as needed. Yields 500 ml.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

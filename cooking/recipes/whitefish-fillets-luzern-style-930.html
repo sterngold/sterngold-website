@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- SALT FISH, DREDGE LIGHTLY IN FLOUR, AND SAUTÉ IN CLARIFIED BUTTER. KEEP FISH FILLETS WARM. - IN ANOTHER PAN , SAUTÉ CHOPPED ONIONS IN BUTTER, ADD TOMATOES AND CAPERS, AND COOK BRIEFLY.<br><br>- TOP FISH FILLETS WITH SAUTEED ONIONS, TOMATO CONCASSE, AND CAPERS.<br><br>#2<br><br>- PREPARE FRESH BEURRE NOISETTE ADD GLAZE DE VIANDE AND DRIZZLE HOT OVER DISH<br>- SPRINKLE WITH CHOPPED PARSLEY</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- SALT FISH, DREDGE LIGHTLY IN FLOUR, AND SAUTÉ IN CLARIFIED BUTTER. KEEP FISH FILLETS WARM. - IN ANOTHER PAN , SAUTÉ CHOPPED ONIONS IN BUTTER, ADD TOMATOES AND CAPERS, AND COOK BRIEFLY.<br><br>- TOP FISH FILLETS WITH SAUTEED ONIONS, TOMATO CONCASSE, AND CAPERS.<br><br>#2<br><br>- PREPARE FRESH BEURRE NOISETTE ADD GLAZE DE VIANDE AND DRIZZLE HOT OVER DISH<br>- SPRINKLE WITH CHOPPED PARSLEY</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">WHITEFISH FILLETS LUZERN STYLE<br>Chef: DCT Poissonnier Station<br><br>METHOD<br>1. Salt fish fillets, dredge lightly in flour, and sauté in clarified butter. Keep warm.<br>2. In separate pan, sauté chopped onions in butter. Add tomatoes and capers, cook briefly.<br>3. Top fish fillets with sautéed onions, tomato concassé, and capers.<br>4. Prepare fresh beurre noisette, add glace de viande, and drizzle hot over dish.<br>5. Sprinkle with chopped parsley and serve.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

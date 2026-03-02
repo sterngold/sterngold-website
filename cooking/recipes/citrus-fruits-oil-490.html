@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">5 dl olive oil warm presses<br>5 st oranges zest<br>6 st lime zest<br>3 st stern anise<br>4 st Glove<br>3 st. Lorbeerblaat<br>3 st korianderspitze<br>3 x Estragon Zweig<br>3 g Ginger fresh</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">5 dl olive oil warm presses<br>5 st oranges zest<br>6 st lime zest<br>3 st stern anise<br>4 st Glove<br>3 st. Lorbeerblaat<br>3 st korianderspitze<br>3 x Estragon Zweig<br>3 g Ginger fresh</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Citrus Fruits Oil<br><br>Ingredients:<br>5 dl warm-pressed olive oil<br>5 orange zests<br>6 lime zests<br>3 star anise<br>4 cloves<br>3 bay leaves<br>3 coriander seeds<br>3 tarragon sprigs<br>3 g fresh ginger<br><br>Method:<br>Warm the olive oil gently. Add all spices and aromatics: crushed star anise, cloves, bay leaves, and coriander seeds. Add tarragon sprigs and thinly sliced fresh ginger. Infuse over low heat for 20–30 minutes without boiling. Add the citrus zests in the final minutes of infusion. Cool completely, then strain through fine sieve. Bottle and store in a cool, dark place.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

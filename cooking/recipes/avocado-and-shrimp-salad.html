@@ -138,8 +138,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- avocados - cut in half, remove pits and sprinkle with lemon juice to prevent oxydation<br>- Shrimps -- marinate in cognac and mix with coctail sauce <br>- sesame seeds - toast (without adding any fat) in black cast iron pan<br>- lemon - cut into 10 very thin slices <br><br>- FILL AVOCADO HALVES WITH SHRIMP SALAD<br>- SPRINKLE WHIT SEASAME SEEDS<br>- GARNISH WITH A LEMON SLICE, BLACK OLIVE AND DILL TWIG</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- avocados - cut in half, remove pits and sprinkle with lemon juice to prevent oxydation<br>- Shrimps -- marinate in cognac and mix with coctail sauce <br>- sesame seeds - toast (without adding any fat) in black cast iron pan<br>- lemon - cut into 10 very thin slices <br><br>- FILL AVOCADO HALVES WITH SHRIMP SALAD<br>- SPRINKLE WHIT SEASAME SEEDS<br>- GARNISH WITH A LEMON SLICE, BLACK OLIVE AND DILL TWIG</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">AVOCADO AND SHRIMP SALAD<br><br>Cut avocados in half and remove pits. Sprinkle with lemon juice to prevent oxidation.<br><br>Marinate shrimps in cognac and mix with cocktail sauce.<br><br>Toast sesame seeds in a dry cast-iron pan without added fat.<br><br>Slice lemon into 10 very thin slices.<br><br>FILL avocado halves with shrimp salad. Sprinkle with sesame seeds. Garnish each with a lemon slice, black olive, and dill twig.</div>
+          
         </section>
         
 
@@ -173,5 +182,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

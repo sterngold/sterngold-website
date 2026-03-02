@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Fish terrine with prawns with Pacojet<br>Fischteгrine mit Riesencгevetten PACOJET<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	:1711.2005<br>Cost of goods	: CHF 1.94 / EUR 1.22<br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br>	400 g	Pike perch fillet <br>250 ml Heavy cream (36%)<br>	15 g	Egg whites<br>	10 g	Salt<br>Garnish:<br>	200 g	Shrimp (prawns), large, raw Poached,cleaned<br>	30 g	Chives, fresh<br>	12 g	Chervil, fresh<br>	20 g	Black truffles<br><br><br>- CUT RAW FISH IN DICES<br>- CUT CHIVES AND CHOP DILL<br>MIX CREAM, EGG WHITE, SALT, FISH AND ADD INTO PACOJET BOWL <br> BLEND TWICE THROUGH WITH 4-BLADES FRESH PACOJET KNIFE<br>-REMOVE FROM BOWL AND PLACE ON ICE <br><br>ADD SHE POACHED PRAWNS CHIVES AND CHERVIL AND SEASON WITH SALT, LEMON JUICE AND NOUILLY PRAT, ADD BLACK TRUFFLE BRUNOISE.<br><br>LINE OUT TERRINE MOLD WITH THIN STRIPES OF CARROT<br><br>FILL IN THE MOUSSELINE FARCE AND COVER WITH VEGETABLE <br><br>COVER UP WITH PLASTIC FOIL.<br><br>POACH AT 75°C IN STEAMER FOR APPROX. 20 MIN. UNTIL CENTER TEMP. OF 55°C. <br>COOL THE TERRINE IN THE REFRIGERATOR FOR 1 HOUR.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Fish terrine with prawns with Pacojet<br>Fischteгrine mit Riesencгevetten PACOJET<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	:1711.2005<br>Cost of goods	: CHF 1.94 / EUR 1.22<br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br>	400 g	Pike perch fillet <br>250 ml Heavy cream (36%)<br>	15 g	Egg whites<br>	10 g	Salt<br>Garnish:<br>	200 g	Shrimp (prawns), large, raw Poached,cleaned<br>	30 g	Chives, fresh<br>	12 g	Chervil, fresh<br>	20 g	Black truffles<br><br><br>- CUT RAW FISH IN DICES<br>- CUT CHIVES AND CHOP DILL<br>MIX CREAM, EGG WHITE, SALT, FISH AND ADD INTO PACOJET BOWL <br> BLEND TWICE THROUGH WITH 4-BLADES FRESH PACOJET KNIFE<br>-REMOVE FROM BOWL AND PLACE ON ICE <br><br>ADD SHE POACHED PRAWNS CHIVES AND CHERVIL AND SEASON WITH SALT, LEMON JUICE AND NOUILLY PRAT, ADD BLACK TRUFFLE BRUNOISE.<br><br>LINE OUT TERRINE MOLD WITH THIN STRIPES OF CARROT<br><br>FILL IN THE MOUSSELINE FARCE AND COVER WITH VEGETABLE <br><br>COVER UP WITH PLASTIC FOIL.<br><br>POACH AT 75°C IN STEAMER FOR APPROX. 20 MIN. UNTIL CENTER TEMP. OF 55°C. <br>COOL THE TERRINE IN THE REFRIGERATOR FOR 1 HOUR.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Fish Terrine with Prawns** (Pacojet) | Chef Patrick Diethelm | November 17, 2005 | Cost: CHF 1.94<br><br>**Mise en place:**<br>400 g pike perch fillet (raw, diced), 250 ml heavy cream (36%), 15 g egg whites, 10 g salt. Garnish: 200 g large raw prawns (poached and cleaned), 30 g fresh chives (chopped), 12 g fresh chervil, 20 g black truffles (brunoise), carrot strips for lining.<br><br>**Method:**<br>Cut raw fish into dice. Combine cream, egg whites, salt, and diced fish in Pacojet bowl. Blend twice using the 4-blade fresh Pacojet knife. Transfer to ice.<br><br>Fold in the poached prawns, chives, chervil, and black truffle brunoise. Season with salt, lemon juice, and Noilly Prat.<br><br>Line a terrine mold with thin carrot strips. Fill with the mousseline farce and cover with remaining vegetables. Seal with plastic wrap.<br><br>Poach in a 75°C steamer for approximately 20 minutes until the center reaches 55°C. Cool in the refrigerator for 1 hour before service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

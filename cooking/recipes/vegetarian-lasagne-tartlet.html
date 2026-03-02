@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Vegetarian Lasagne Tartlet<br>Vegetarisches Lasagnetarte/e to<br>Recipe #<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	: 03.11.2005<br>Cost of goods	: CHF 1.75 / EUR 1.11 <br><br>Ingredients for 4 servings at 100% (Net quantity)<br>320 g Noddle dough<br>	120 g	Zucchinis<br>	120 g	Eggplants<br>200 g Mushroom, fresh<br>	48 g	Parmesan cheese fine slices 40 g Butter<br>48 ml Olive oil<br>40 g White wheat flour<br>	1 x	Seasoning (salt and pepper)<br>160 ml *Cream Sauce [with cream] 160 ml *Tomato Concassé<br>- PREPARE NOODLE DOUGH ( SEE RECIPE )<br>- CUT ZUCCHINI AND EGGPLANT INTO THIN SLICES AND SEASON WITH SALT AND PEPPER - DREGDE IN WHITE WHEAT FLOUR AND PAN FRY QUICKLY IN OLIVE OIL UNTIL GOLDEN. - PLACE SHEET PAN WITH PAPER AND COOL DOWN<br>- SAUTE SLICED CEPES OR OTHER SEASONAL MUSHROOMS IN OLIVE OIL AND SEASON TO TASTE. COOL DOWN<br>- PREPARE TOMATO CONCASSÉ AND CREAM SAUCE ( SEE RECIPES j - Lasagne tartelette preparation see course instruction<br>- BAKE AT 180°C FOR 10-30 MINUTES, DEFENSE ON SIZE OF TARTLET MOLD</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Vegetarian Lasagne Tartlet<br>Vegetarisches Lasagnetarte/e to<br>Recipe #<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	: 03.11.2005<br>Cost of goods	: CHF 1.75 / EUR 1.11 <br><br>Ingredients for 4 servings at 100% (Net quantity)<br>320 g Noddle dough<br>	120 g	Zucchinis<br>	120 g	Eggplants<br>200 g Mushroom, fresh<br>	48 g	Parmesan cheese fine slices 40 g Butter<br>48 ml Olive oil<br>40 g White wheat flour<br>	1 x	Seasoning (salt and pepper)<br>160 ml *Cream Sauce [with cream] 160 ml *Tomato Concassé<br>- PREPARE NOODLE DOUGH ( SEE RECIPE )<br>- CUT ZUCCHINI AND EGGPLANT INTO THIN SLICES AND SEASON WITH SALT AND PEPPER - DREGDE IN WHITE WHEAT FLOUR AND PAN FRY QUICKLY IN OLIVE OIL UNTIL GOLDEN. - PLACE SHEET PAN WITH PAPER AND COOL DOWN<br>- SAUTE SLICED CEPES OR OTHER SEASONAL MUSHROOMS IN OLIVE OIL AND SEASON TO TASTE. COOL DOWN<br>- PREPARE TOMATO CONCASSÉ AND CREAM SAUCE ( SEE RECIPES j - Lasagne tartelette preparation see course instruction<br>- BAKE AT 180°C FOR 10-30 MINUTES, DEFENSE ON SIZE OF TARTLET MOLD</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">VEGETARIAN LASAGNE TARTLET<br>Chef: Patrick Diethelm | DCT Saucier Station | 03.11.2005<br>Yield: 4 servings | Cost: CHF 1.75<br><br>INGREDIENTS<br>320 g noodle dough<br>120 g zucchini<br>120 g eggplant<br>200 g fresh mushrooms<br>48 g Parmesan cheese, fine slices<br>40 g butter<br>48 ml olive oil<br>40 g white wheat flour<br>Salt and pepper to taste<br>160 ml cream sauce<br>160 ml tomato concassé<br><br>METHOD<br>1. Prepare noodle dough according to recipe.<br>2. Slice zucchini and eggplant thinly. Season with salt and pepper, dredge in white wheat flour, and pan-fry quickly in olive oil until golden. Transfer to parchment-lined sheet pan to cool.<br>3. Sauté sliced mushrooms in olive oil, season to taste, and cool.<br>4. Prepare tomato concassé and cream sauce according to recipes.<br>5. Assemble tartlets following course instruction.<br>6. Bake at 180°C for 10–30 minutes, depending on tartlet mold size.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

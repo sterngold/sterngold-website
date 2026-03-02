@@ -162,8 +162,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- lettuce - clean <br>- tomatoes - peel, remove seeds and cut into 5 mm concasse<br><br>#Dressing<br>- mix olive oil, balsamic vinegar, salt and pepper<br>- chop shallots and basil. Add to mixture. Blend throughly<br><br>-SAUTEE CHICKEN MEAT WITH OLIVE OIL AND GARLIC. SEASON AND CUT THEN INTO BIGGER SIZE JULLIENNE <br>- BLEND TOMATOES AND ONIONS WITH SOME DRESSING<br>- PLACE SMALL LETTUCE LEAVES INTO GLASS<br>- PLACE BOUQUETS OF TOMATO SALAD AND CHICKEN SALAD ON LEAVES<br>DRIZZLE WITH DRESSING. SPRINKLE WITH CHOPPED PARSLEY <br>- GARNISH EACH GLAS WITH FRESH BASIL</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- lettuce - clean <br>- tomatoes - peel, remove seeds and cut into 5 mm concasse<br><br>#Dressing<br>- mix olive oil, balsamic vinegar, salt and pepper<br>- chop shallots and basil. Add to mixture. Blend throughly<br><br>-SAUTEE CHICKEN MEAT WITH OLIVE OIL AND GARLIC. SEASON AND CUT THEN INTO BIGGER SIZE JULLIENNE <br>- BLEND TOMATOES AND ONIONS WITH SOME DRESSING<br>- PLACE SMALL LETTUCE LEAVES INTO GLASS<br>- PLACE BOUQUETS OF TOMATO SALAD AND CHICKEN SALAD ON LEAVES<br>DRIZZLE WITH DRESSING. SPRINKLE WITH CHOPPED PARSLEY <br>- GARNISH EACH GLAS WITH FRESH BASIL</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHICKEN COCKTAIL WITH BALSAMIC VINAIGRETTE<br><br>Prepare garnish:<br>1. Clean lettuce; select small leaves for plating.<br>2. Peel tomatoes, remove seeds, and cut into 5 mm concassé.<br><br>Make dressing:<br>1. Mix olive oil, balsamic vinegar, salt, and pepper.<br>2. Chop shallots and basil, add to dressing, and blend thoroughly.<br><br>Assemble:<br>1. Sauté chicken meat with olive oil and garlic, season, and cut into large julienne.<br>2. Toss tomatoes and onions with a portion of dressing.<br>3. Place small lettuce leaves into each glass.<br>4. Arrange bouquets of tomato salad and chicken salad on the lettuce.<br>5. Drizzle with remaining dressing and sprinkle with chopped parsley.<br>6. Garnish each glass with fresh basil.</div>
+          
         </section>
         
 
@@ -197,5 +206,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

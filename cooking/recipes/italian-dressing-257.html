@@ -194,8 +194,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">#1<br>- blend all ingridients<br>#2<br>- bring all ingridients to a boil and use bar blender to mix with #1<br><br>- strain through china cap and chill<br>- season to taste <br><br>- fill into bottles and label with date and name</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">#1<br>- blend all ingridients<br>#2<br>- bring all ingridients to a boil and use bar blender to mix with #1<br><br>- strain through china cap and chill<br>- season to taste <br><br>- fill into bottles and label with date and name</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Blend all ingredients for component #1.<br><br>Bring all ingredients for component #2 to a boil and mix with #1 using a bar blender.<br><br>Strain through china cap and chill. Season to taste.<br><br>Fill into bottles and label with date and name.</div>
+          
         </section>
         
 
@@ -229,5 +238,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

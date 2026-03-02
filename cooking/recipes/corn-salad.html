@@ -138,8 +138,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- RINSE CORN WITH COLD WATER AND DRAIN WELL<br>- CUT PEPPERS IN HALF, REMOVE SEEDS, AND CUT INTO SMALL DICE <br>- PEEL AND CORE APPLES AND CUT INTO SMALL DICE <br>- COMBINE DRESSING INGREDIENTS AND MIX WITH SALAD. LET SALAD MARINATE</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- RINSE CORN WITH COLD WATER AND DRAIN WELL<br>- CUT PEPPERS IN HALF, REMOVE SEEDS, AND CUT INTO SMALL DICE <br>- PEEL AND CORE APPLES AND CUT INTO SMALL DICE <br>- COMBINE DRESSING INGREDIENTS AND MIX WITH SALAD. LET SALAD MARINATE</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Rinse corn with cold water and drain well. Cut peppers in half, remove seeds, and dice small. Peel and core apples, then dice small. Combine dressing ingredients and mix with salad. Allow to marinate.</div>
+          
         </section>
         
 
@@ -178,5 +187,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Приспива се – във хладилника със мокър вестник<br>Вряща вода със морска сол – най добре морска вода <br>Пуска се като вниматлено се държи – като заври <br>точно 4 мин. <br>Разделя се по слредата <br>опашката – се се стиска – като скарида, като ес чисти и вътрешноста<br>Тялото – може да се изплзавт вътрешностите но не задължтиелно<br>Щипките – на две части – малката част със дигонелне разрез <br>Глямата се разрязва кръгвидно – най-вагжното е да се махне бялата кост<br>чисти се със клечка<br>Чурупки – изсушават се във фирната много бавно<br>със домат олио и подправки</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Приспива се – във хладилника със мокър вестник<br>Вряща вода със морска сол – най добре морска вода <br>Пуска се като вниматлено се държи – като заври <br>точно 4 мин. <br>Разделя се по слредата <br>опашката – се се стиска – като скарида, като ес чисти и вътрешноста<br>Тялото – може да се изплзавт вътрешностите но не задължтиелно<br>Щипките – на две части – малката част със дигонелне разрез <br>Глямата се разрязва кръгвидно – най-вагжното е да се махне бялата кост<br>чисти се със клечка<br>Чурупки – изсушават се във фирната много бавно<br>със домат олио и подправки</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Note: Original text is in Cyrillic script with significant OCR degradation. Translation below is best interpretation.<br><br>Store lobster in refrigerator wrapped in damp newspaper. Bring seawater or salted water to a rolling boil. Add lobster carefully. Once water returns to boil, cook for exactly 4 minutes.<br><br>Split lobster lengthwise. Tail: extract meat as for langoustines; clean and remove intestine. Body: may use internal organs but not required. Claws: split into two portions — smaller claw with diagonal cut. Head: slice horizontally; most importantly, remove white bone cartilage. Clean out with a pick. Shell: dry slowly in oven. Finish with tomato oil and seasonings.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

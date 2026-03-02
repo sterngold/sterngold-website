@@ -154,8 +154,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- cabbage - trim and cut into thin slices <br>- bacon - cut into small dice <br>- onions - peel and chop <br><br>- PUT CABBAGE IN A LARGE BOWL <br>- SAUTE BACON, ADD ONIONS AND SAUTE LIGHTLY. ADD TO CABBAGE<br>- SEASON CABBAGE WITH SALT, NUTMEG, CARAWAY SEEDS AND PEPPER<br>- BRING BOUILLON TO A BOIL AND POUR OVER CABBAGE. LET VABBAGE MARINATE UNTIL COOL <br>- MIX ALL DRESSING INGREDIENTS AND ADD TO CABBAGE. TOSS TO MIX WELL</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- cabbage - trim and cut into thin slices <br>- bacon - cut into small dice <br>- onions - peel and chop <br><br>- PUT CABBAGE IN A LARGE BOWL <br>- SAUTE BACON, ADD ONIONS AND SAUTE LIGHTLY. ADD TO CABBAGE<br>- SEASON CABBAGE WITH SALT, NUTMEG, CARAWAY SEEDS AND PEPPER<br>- BRING BOUILLON TO A BOIL AND POUR OVER CABBAGE. LET VABBAGE MARINATE UNTIL COOL <br>- MIX ALL DRESSING INGREDIENTS AND ADD TO CABBAGE. TOSS TO MIX WELL</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CABBAGE SALAD<br><br>Prepare ingredients: trim cabbage and cut into thin slices; cut bacon into small dice; peel and chop onions.<br><br>Place cabbage in a large bowl. Sauté bacon until crisp, add onions and sauté lightly. Add to cabbage.<br><br>Season cabbage with salt, nutmeg, caraway seeds, and pepper. Bring bouillon to a boil and pour over cabbage. Let marinate until cool.<br><br>Mix all dressing ingredients together and add to cabbage. Toss thoroughly to combine.</div>
+          
         </section>
         
 
@@ -194,5 +203,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

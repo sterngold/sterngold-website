@@ -146,8 +146,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- clarifiy butter (best taste when is made a beurre noisset) - strain <br><br>- boil vinegar, wine, 1/3 of the water, shallots, peppercorns, and salt until almost completely reduced <br>- add remaining water to dilute reduction<br>- strain through hair sieve<br>- add egg yolk to reduction and beat over 80 C water until thick and foamy<br>- add freshly clarified butter in a thin stream, whipping vigorously<br>- season with salt, cayenne and lemon juice<br><br>- keep sauce in covered conatiner in a warm place. For sanitary reasons, the sauce should not be kept longer than 1 hour</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- clarifiy butter (best taste when is made a beurre noisset) - strain <br><br>- boil vinegar, wine, 1/3 of the water, shallots, peppercorns, and salt until almost completely reduced <br>- add remaining water to dilute reduction<br>- strain through hair sieve<br>- add egg yolk to reduction and beat over 80 C water until thick and foamy<br>- add freshly clarified butter in a thin stream, whipping vigorously<br>- season with salt, cayenne and lemon juice<br><br>- keep sauce in covered conatiner in a warm place. For sanitary reasons, the sauce should not be kept longer than 1 hour</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Clarify butter, preferably making beurre noisette for best flavor, then strain.<br><br>Reduce vinegar, wine, one-third of the water, shallots, peppercorns, and salt until nearly completely reduced. Add remaining water to dilute the reduction and strain through a hair sieve.<br><br>Whisk egg yolk into the reduction over 80°C water until thick and foamy. Add freshly clarified butter in a thin stream while whipping vigorously.<br><br>Season with salt, cayenne, and lemon juice. Keep sauce in a covered container in a warm place. Do not hold longer than 1 hour for sanitary reasons.</div>
+          
         </section>
         
 
@@ -186,5 +195,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

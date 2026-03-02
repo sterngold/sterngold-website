@@ -98,8 +98,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Apples wassen en met schil en al maar zonder klokhuis in blokjes snijden. Op plateu in de vriezer leggen. Suiker water maken van de rest van de ingredients. Wanner appel is bevroren heel snel in spacentrefuge met koude uiker water doordraien en gelijk daarna opdraaien in sorbetiere.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Apples wassen en met schil en al maar zonder klokhuis in blokjes snijden. Op plateu in de vriezer leggen. Suiker water maken van de rest van de ingredients. Wanner appel is bevroren heel snel in spacentrefuge met koude uiker water doordraien en gelijk daarna opdraaien in sorbetiere.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">APPLE SORBET<br><br>Wash apples and cut into dice with skin intact, removing core. Spread on sheet pan and freeze solid. Prepare sugar syrup from remaining ingredients. Once apples are frozen, process quickly through a centrifuge with cold sugar syrup, then immediately churn in sorbet machine.</div>
+          
         </section>
         
 
@@ -133,5 +142,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

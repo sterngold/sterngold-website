@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">SALMON CUTLETS WITH MUSTARD CREAM SAUCE<br>Lachsschnitze! mit Senfsauce Aiguillettes de saumon à la moutarde<br>Rezept Nr.	: 335<br>Kategorie	: Fish Dishes<br>Koch	: P.Diethelm<br>Datum	: 11.08.2005<br>Warenkosten	: CHF 3.03 / EUR 1.92<br>Zutaten für 5 Personen zu 100% (Nettomenge)<br>600 g	Salmon trout fillets, skinless	Cut into 20 cutlets.<br>1 x	Seasoning (salt and pepper)<br>0.25 st Lemon juice<br>5 g Butter melted<br>75 ml Dry white wine<br>75 ml *Fish Stock<br>75 ml *Chicken Stock<br>25 g Butter Cold<br>1 x	Seasoning [salt and pepper)<br>1 x	Seasoning (lemon juice)<br>100 m l	Heavy cream (36%)	Whip to a soft foam. <br>30 g	Prepared mustard, mild<br>Garnish :<br>150 g	Cucumbers	Peel, remove seeds, and slice.<br>13 g	Butter<br>150 g	Tomatoes	Peel, remove seeds, and cut into concasse<br>1 x	Seasoning (salt and pepper)<br>5 g	Dill, fresh chopped<br>Combine white wine, Fish stock and chicken stock, bring to a boil and reduce about half . Remove<br>mixture from stove and add cold butter in small nuggets. <br>- Do not allow the sauce to return to a boil.<br>- SEASON THE SALMON CUTLETS WITH SALT AND PEPPER AND LEMON JUICE.<br>- BRUSH FISH WITH MELTED BUTTER, PLACE IN A 1/1 GASTRO NORM INSERT ,<br>AND STEAM. KEEP WARM.<br>- FINISH GARNISH: SAUTÉ CUCUMBERS IN BUTTER; ADD DICED TOMATOES AND DILL. SEASON TO TASTE.<br>FINISH SAUCE: SEASON THE SAUCE WITH SALT AND PEPPER AND LEMON JUICE.<br>FOLD IN LIGHTLY WHIPPED CREAM AND PREPARED MUSTARD. - Pour Sauce over the salmon<br>GARNISH WITH CUCUMBER/TOMATO MIXTURE.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">SALMON CUTLETS WITH MUSTARD CREAM SAUCE<br>Lachsschnitze! mit Senfsauce Aiguillettes de saumon à la moutarde<br>Rezept Nr.	: 335<br>Kategorie	: Fish Dishes<br>Koch	: P.Diethelm<br>Datum	: 11.08.2005<br>Warenkosten	: CHF 3.03 / EUR 1.92<br>Zutaten für 5 Personen zu 100% (Nettomenge)<br>600 g	Salmon trout fillets, skinless	Cut into 20 cutlets.<br>1 x	Seasoning (salt and pepper)<br>0.25 st Lemon juice<br>5 g Butter melted<br>75 ml Dry white wine<br>75 ml *Fish Stock<br>75 ml *Chicken Stock<br>25 g Butter Cold<br>1 x	Seasoning [salt and pepper)<br>1 x	Seasoning (lemon juice)<br>100 m l	Heavy cream (36%)	Whip to a soft foam. <br>30 g	Prepared mustard, mild<br>Garnish :<br>150 g	Cucumbers	Peel, remove seeds, and slice.<br>13 g	Butter<br>150 g	Tomatoes	Peel, remove seeds, and cut into concasse<br>1 x	Seasoning (salt and pepper)<br>5 g	Dill, fresh chopped<br>Combine white wine, Fish stock and chicken stock, bring to a boil and reduce about half . Remove<br>mixture from stove and add cold butter in small nuggets. <br>- Do not allow the sauce to return to a boil.<br>- SEASON THE SALMON CUTLETS WITH SALT AND PEPPER AND LEMON JUICE.<br>- BRUSH FISH WITH MELTED BUTTER, PLACE IN A 1/1 GASTRO NORM INSERT ,<br>AND STEAM. KEEP WARM.<br>- FINISH GARNISH: SAUTÉ CUCUMBERS IN BUTTER; ADD DICED TOMATOES AND DILL. SEASON TO TASTE.<br>FINISH SAUCE: SEASON THE SAUCE WITH SALT AND PEPPER AND LEMON JUICE.<br>FOLD IN LIGHTLY WHIPPED CREAM AND PREPARED MUSTARD. - Pour Sauce over the salmon<br>GARNISH WITH CUCUMBER/TOMATO MIXTURE.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SALMON CUTLETS WITH MUSTARD CREAM SAUCE<br><br>Preparation: Cut salmon trout fillets (skinless) into 20 cutlets. Season with salt, pepper, and lemon juice. Brush with melted butter, place in a 1/1 gastro norm insert, and steam. Keep warm.<br><br>Sauce: Combine white wine, fish stock, and chicken stock. Bring to a boil and reduce by half. Remove from heat and whisk in cold butter in small nuggets—do not allow sauce to return to a boil. Season with salt, pepper, and lemon juice. Fold in lightly whipped heavy cream and mild prepared mustard.<br><br>Garnish: Peel cucumbers, remove seeds, and slice. Sauté in butter. Peel tomatoes, remove seeds, cut into concasse. Add to cucumbers with fresh chopped dill. Season to taste.<br><br>Plating: Pour sauce over salmon cutlets and garnish with cucumber-tomato mixture.<br><br>Yield: 5 servings</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

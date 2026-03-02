@@ -138,8 +138,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- clean the chilled duck liver <br>- suate the pieces in hot pan and place in hair sieve <br>- chill quickly <br><br>- prepare as[ic with water, port wine, aspic powder<br>- crush green peppercorns<br>- cut chives into very fine slivers<br>- add into aspic<br>- line out terrine mold with plastic foil and fill terrine with liver and aspic<br>- chill ot for 1 hour before serving<br>- slice carefully the marbre<br>- serve with liver truffel (trimmings with butter) breaded in pumpernickel bread crumbs.<br>- with cognac marinated sultans and orange sections</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- clean the chilled duck liver <br>- suate the pieces in hot pan and place in hair sieve <br>- chill quickly <br><br>- prepare as[ic with water, port wine, aspic powder<br>- crush green peppercorns<br>- cut chives into very fine slivers<br>- add into aspic<br>- line out terrine mold with plastic foil and fill terrine with liver and aspic<br>- chill ot for 1 hour before serving<br>- slice carefully the marbre<br>- serve with liver truffel (trimmings with butter) breaded in pumpernickel bread crumbs.<br>- with cognac marinated sultans and orange sections</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Clean the chilled duck liver. Sauté the pieces in a hot pan, then transfer to a hair sieve and chill quickly.<br><br>Prepare aspic with water, port wine, and aspic powder. Crush the green peppercorns and cut chives into fine slivers, then add both to the aspic.<br><br>Line a terrine mold with plastic film. Fill with alternating layers of liver and aspic. Chill for 1 hour before serving.<br><br>Slice the marbre carefully. Serve with liver truffles (trimmings mixed with butter) breaded in pumpernickel crumbs, cognac-marinated sultanas, and orange sections.</div>
+          
         </section>
         
 
@@ -173,5 +182,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

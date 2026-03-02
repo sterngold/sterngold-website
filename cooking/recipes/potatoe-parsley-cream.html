@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Potato parsley - cream<br>Kartoffel- Petersilièncrème<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	: 13.12.2005<br>Cost of goods	: CHF 0.42 / EUR 0.27<br><br>European Gourmet Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>350 g Bintje potatoes Steamed<br>50 g Green peas (frozen) blanched 120 ml Heavy cream (36%)<br>	50 g	Parsley, fresh<br>	50 g	Italian Parsley<br>	6 g	Salt<br>- STEAM THE POTATOES<br>- BLANCH THE GREEN PEAS IN SALTED WATER AND REFRESH - HEAT UP CREAM AND ADD PARSLEY<br>- COMBINE ALL THE INGREDIENTS AND SEASON WITH SALT AND PEPPER AND FILL INTO PACOJET BEAKER AND FREEZE AT 20°C FOR 24 HOURS<br>	- PACOTISE AND HEAT UP A LA MINUTE IN SAUTEUSE AND SERVE</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Potato parsley - cream<br>Kartoffel- Petersilièncrème<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	: 13.12.2005<br>Cost of goods	: CHF 0.42 / EUR 0.27<br><br>European Gourmet Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>350 g Bintje potatoes Steamed<br>50 g Green peas (frozen) blanched 120 ml Heavy cream (36%)<br>	50 g	Parsley, fresh<br>	50 g	Italian Parsley<br>	6 g	Salt<br>- STEAM THE POTATOES<br>- BLANCH THE GREEN PEAS IN SALTED WATER AND REFRESH - HEAT UP CREAM AND ADD PARSLEY<br>- COMBINE ALL THE INGREDIENTS AND SEASON WITH SALT AND PEPPER AND FILL INTO PACOJET BEAKER AND FREEZE AT 20°C FOR 24 HOURS<br>	- PACOTISE AND HEAT UP A LA MINUTE IN SAUTEUSE AND SERVE</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">POTATO PARSLEY CREAM<br>Yield: 6 servings | Chef: Patrick Diethelm<br><br>Ingredients:<br>350 g Bintje potatoes, steamed<br>50 g frozen green peas<br>120 ml heavy cream (36%)<br>50 g fresh parsley<br>50 g Italian parsley<br>6 g salt<br>Pepper to taste<br><br>Method:<br>Steam potatoes. Blanch frozen peas in salted water and refresh immediately. Heat cream gently and add both parsleys. Combine all ingredients with the heated cream. Season with salt and pepper. Transfer to Pacojet beaker and freeze at -20°C for 24 hours. Pacotise and heat à la minute in sauteuse before service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

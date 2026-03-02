@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Pommes Lorette<br>Fritirte Kartoffelkrapfen mit Käse Pommes Lorette<br><br><br>Recipe #	: 584<br>Category	: Potato Dishes<br>Chef	: Patrick Diethelm<br>Date	: 18,10,2005<br>Cost of goods	: CHF 0.22 / EUR 0.14<br><br>European Gourme t Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>420 g 	Potatoes Bintje, peeled<br>4 g	 Salt (optional) <br>760 g *Choux Paste <br>50 g Sbrinz Grated<br><br>1 x	Seasoning (salt, nutmeg)<br><br>20 ml Peanut oil<br>- Cut peeled potatoes into even sized chunks.<br>- Steam potatoes and drain well.<br>- When cooked, dry potatoes briefly in the oven at 150°C. on parchment paper with open steam escape - Pass potatoes through a food mill.<br>- Blend hot puréed potatoes with puff paste and cheese and season to taste with salt and nutmeg. - Cut parchment paper into 50 mm wide strips and oil strips lightly.<br>- Dress into lorette shape or<br>- Dress portion size rings onto paper strips, using a pastry bag with a star tube.<br>- AT SERVICE TIME, HEAT OIL IN DEEP FRYER TO 180°C.<br>- DIP PAPER STRIPS IN THE HOT OIL; THE POTATO ROSE	I I ES WILL SLIDE OFF.<br>- FRY POTATOES UNTIL GOLDEN BROWN AND DRAIN ON ABSORBENT PAPER. - SERVE ON PAPER DOILIES, AS A GARNISH OR A SIDE DISH.<br>Note: The paper strips should be long enough for one or two portions. Fry portions to order.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Pommes Lorette<br>Fritirte Kartoffelkrapfen mit Käse Pommes Lorette<br><br><br>Recipe #	: 584<br>Category	: Potato Dishes<br>Chef	: Patrick Diethelm<br>Date	: 18,10,2005<br>Cost of goods	: CHF 0.22 / EUR 0.14<br><br>European Gourme t Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>420 g 	Potatoes Bintje, peeled<br>4 g	 Salt (optional) <br>760 g *Choux Paste <br>50 g Sbrinz Grated<br><br>1 x	Seasoning (salt, nutmeg)<br><br>20 ml Peanut oil<br>- Cut peeled potatoes into even sized chunks.<br>- Steam potatoes and drain well.<br>- When cooked, dry potatoes briefly in the oven at 150°C. on parchment paper with open steam escape - Pass potatoes through a food mill.<br>- Blend hot puréed potatoes with puff paste and cheese and season to taste with salt and nutmeg. - Cut parchment paper into 50 mm wide strips and oil strips lightly.<br>- Dress into lorette shape or<br>- Dress portion size rings onto paper strips, using a pastry bag with a star tube.<br>- AT SERVICE TIME, HEAT OIL IN DEEP FRYER TO 180°C.<br>- DIP PAPER STRIPS IN THE HOT OIL; THE POTATO ROSE	I I ES WILL SLIDE OFF.<br>- FRY POTATOES UNTIL GOLDEN BROWN AND DRAIN ON ABSORBENT PAPER. - SERVE ON PAPER DOILIES, AS A GARNISH OR A SIDE DISH.<br>Note: The paper strips should be long enough for one or two portions. Fry portions to order.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">POMMES LORETTE (Fried Potato Croquettes with Cheese)<br>Chef Patrick Diethelm | DCT | 18.10.2005<br><br>Potato base: Cut peeled potatoes into even-sized chunks. Steam potatoes and drain well. When cooked, dry briefly in oven at 150°C on parchment paper with open steam escape. Pass potatoes through food mill.<br><br>Dough: Blend hot puréed potatoes with choux paste and grated Sbrinz. Season to taste with salt and nutmeg.<br><br>Shaping: Cut parchment paper into 50 mm wide strips and oil lightly. Using a pastry bag with star tube, dress portion-size rings onto paper strips in lorette shape.<br><br>Frying: At service time, heat peanut oil in deep fryer to 180°C. Dip paper strips into hot oil; potato rosettes will slide off. Fry until golden brown and drain on absorbent paper.<br><br>Service: Serve on paper doilies as garnish or side dish. Paper strips should be long enough for one or two portions; fry to order.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

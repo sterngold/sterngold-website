@@ -146,8 +146,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- eidooier warm slaan met de suiker en honing (ongeveer 68 grad) en weer koud slaan en cointreau toevoegen.<br>- Ondertussen slagroom lobbig slaan en de citrusvruchten erin toevoegen<br>- zuurtjes hakken en ook deze toevoegen (let op dat deze niet te fijn of te grof zijn gehakt)<br>- eidooier erdoot spatelen en storten grote bak die al gekoeld is<br><br>- meegeven met een weckpotje dat gevuld is met mooi uitgesneden citrusvruchten</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- eidooier warm slaan met de suiker en honing (ongeveer 68 grad) en weer koud slaan en cointreau toevoegen.<br>- Ondertussen slagroom lobbig slaan en de citrusvruchten erin toevoegen<br>- zuurtjes hakken en ook deze toevoegen (let op dat deze niet te fijn of te grof zijn gehakt)<br>- eidooier erdoot spatelen en storten grote bak die al gekoeld is<br><br>- meegeven met een weckpotje dat gevuld is met mooi uitgesneden citrusvruchten</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PARFAIT ZUURTJES (Vijf | Pâtisserie)<br><br>Whisk egg yolks with sugar and honey over heat to approximately 68°C, then chill completely and whisk again. Fold in Cointreau.<br><br>Whip cream to soft peaks. Fold in citrus fruits and finely chopped sour candies (ensure pieces are neither too fine nor too coarse).<br><br>Spatula in the cold egg yolk mixture and pour into a chilled hotel pan.<br><br>Serve with a small preserving jar filled with neatly cut citrus fruits.</div>
+          
         </section>
         
 
@@ -181,5 +190,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

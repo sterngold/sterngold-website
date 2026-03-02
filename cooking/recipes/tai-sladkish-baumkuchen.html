@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">300 gr. Bloem<br>20 egs – 30 gr. Whites / 30 gr. Yolks<br>650 gr. Gesmolten botter<br>4,5 lepels kaneelpowder<br>3 leepels anijspowder<br>1 leepel kruidnagel powder<br>2 leepel nootmuskat<br>2 leepel kardamon<br>1 zaad vanilie stokje<br>600 gr. Sugar<br>1. 20 x 30 gr egg whites + 150 gr sugar<br>2. 20 x 30 gr yolks +150 gr sugar<br>3. 650 gr. Botter + 300 gr. Suger + 1 vanillie zaad + 300 gr bloem + salt <br>4. divide in two pieces – one with the kruiden</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">300 gr. Bloem<br>20 egs – 30 gr. Whites / 30 gr. Yolks<br>650 gr. Gesmolten botter<br>4,5 lepels kaneelpowder<br>3 leepels anijspowder<br>1 leepel kruidnagel powder<br>2 leepel nootmuskat<br>2 leepel kardamon<br>1 zaad vanilie stokje<br>600 gr. Sugar<br>1. 20 x 30 gr egg whites + 150 gr sugar<br>2. 20 x 30 gr yolks +150 gr sugar<br>3. 650 gr. Botter + 300 gr. Suger + 1 vanillie zaad + 300 gr bloem + salt <br>4. divide in two pieces – one with the kruiden</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Tai Sladkish (Baumkuchen)** | Vijf, Pâtisserie<br><br>**Ingredients:**<br>- 300 g flour<br>- 20 egg whites (30 g each) + 150 g sugar<br>- 20 egg yolks (30 g each) + 150 g sugar<br>- 650 g melted butter<br>- 300 g sugar<br>- 4.5 tsp cinnamon powder<br>- 3 tsp anise powder<br>- 1 tsp clove powder<br>- 2 tsp nutmeg<br>- 2 tsp cardamom<br>- 1 vanilla pod<br>- Salt<br><br>**Method:**<br>1. Whip egg whites with 150 g sugar to soft peaks.<br>2. Whip egg yolks with 150 g sugar until pale.<br>3. Cream melted butter with 300 g sugar, split vanilla pod, 300 g flour, and salt.<br>4. Divide butter mixture into two portions—add spice blend (cinnamon, anise, clove, nutmeg, cardamom) to one portion only.<br>5. Fold whipped whites and yolks into respective butter mixtures.<br>6. Proceed with baumkuchen assembly.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

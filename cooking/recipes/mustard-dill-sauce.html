@@ -114,8 +114,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Mix together – egg yolk, mustard add honing, water and than combine with oil slowly<br>Can add white balsamic and more water <br>Dill fine cut<br>Lemon</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Mix together – egg yolk, mustard add honing, water and than combine with oil slowly<br>Can add white balsamic and more water <br>Dill fine cut<br>Lemon</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Whisk together egg yolk and mustard. Add honey and water. Slowly emulsify in oil, whisking constantly. Adjust with white balsamic and additional water as needed. Finely chop fresh dill and fold in. Finish with fresh lemon juice.</div>
+          
         </section>
         
 
@@ -149,5 +158,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

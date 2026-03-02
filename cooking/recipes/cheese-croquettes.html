@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Cheese Croquettes<br>Käsekroketten Croquettes de fromages<br><br><br>European Gourmet Cuisine<br><br>Recipe #<br>Category: Amuse Bouche<br><br>Chef\: Patrick Diethelm<br><br>Date: 05.12.2005<br><br>Cost of goods: CHF 0.50 / EUR 0.32<br><br>Ingredients for 10 servings at 100% [Net quantity)<br><br>20 g butter<br>200 ml milk<br>120 g White wheat flour<br>40 g egg yolk<br>160 g Gruyere cheese spicy<br>1 x Seasoning (salt, nutmeg)<br>1 x Seasoning (pepper)<br>1 g Thyme twig, fresh<br><br>75 g White wheat flour<br>2.5 pc Eggs<br>250 g Mie de pain<br><br>Preparation:<br>- Bring milk, butter and seasoning to a boil.<br>- Prepare like a choux paste<br>- Bring milk and butter to a boil, add all the flour at once and stir with plastic spatula.<br>- Remove from the heat and stir in the egg yolks and grated cheese<br>- Season to taste with salt, pepper mill, nutmeg and fine chopped thyme<br>- Spread croquettes mixture about 2 cm thick on sheet pan prepared with parchment paper and cool  down for at least one hour in refrigerator. <br>- Peel of the ba ng paper and place onto floured table<br>- Cut croquette mixture into rectangles or any fancy shapes.<br>- Dredge them in flour dip, in eggs and coat with mie de pain <br> - Deep fry at 170° C <br>- Drain on kitchen paper and serve hot with vegtable coulis as hot appetizer.<br>or as amuse bouche</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Cheese Croquettes<br>Käsekroketten Croquettes de fromages<br><br><br>European Gourmet Cuisine<br><br>Recipe #<br>Category: Amuse Bouche<br><br>Chef\: Patrick Diethelm<br><br>Date: 05.12.2005<br><br>Cost of goods: CHF 0.50 / EUR 0.32<br><br>Ingredients for 10 servings at 100% [Net quantity)<br><br>20 g butter<br>200 ml milk<br>120 g White wheat flour<br>40 g egg yolk<br>160 g Gruyere cheese spicy<br>1 x Seasoning (salt, nutmeg)<br>1 x Seasoning (pepper)<br>1 g Thyme twig, fresh<br><br>75 g White wheat flour<br>2.5 pc Eggs<br>250 g Mie de pain<br><br>Preparation:<br>- Bring milk, butter and seasoning to a boil.<br>- Prepare like a choux paste<br>- Bring milk and butter to a boil, add all the flour at once and stir with plastic spatula.<br>- Remove from the heat and stir in the egg yolks and grated cheese<br>- Season to taste with salt, pepper mill, nutmeg and fine chopped thyme<br>- Spread croquettes mixture about 2 cm thick on sheet pan prepared with parchment paper and cool  down for at least one hour in refrigerator. <br>- Peel of the ba ng paper and place onto floured table<br>- Cut croquette mixture into rectangles or any fancy shapes.<br>- Dredge them in flour dip, in eggs and coat with mie de pain <br> - Deep fry at 170° C <br>- Drain on kitchen paper and serve hot with vegtable coulis as hot appetizer.<br>or as amuse bouche</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHEESE CROQUETTES<br><br>Bring milk, butter, salt, nutmeg, and pepper to a boil. Add flour all at once, stirring constantly with a plastic spatula until the mixture forms a ball. Remove from heat and stir in egg yolks and grated Gruyère cheese. Season to taste with salt, pepper mill, nutmeg, and finely chopped fresh thyme.<br><br>Spread croquette mixture approximately 2 cm thick on parchment-lined sheet pan and refrigerate for at least one hour. Peel off parchment and transfer to floured work surface. Cut into rectangles or fancy shapes. Standard breading procedure: dredge in flour, dip in beaten egg, coat with panko.<br><br>Deep fry at 170°C until golden. Drain on kitchen paper and serve hot with vegetable coulis as an appetizer or amuse bouche.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Финни кори – 400 – 600 гр. <br>Сода за хляб 1 лъжичка <br>4 яйца /3 + 1/<br>Сирене – 250 – 300 гр. <br>Кисело мляко –една кофичка <br>Масло – разтопено + кафе чаша олио <br>Вода 1 кафе чаша + 1 яйце  <br>Смесват се – 3 яйца, сирене, киселото мляко и содата<br>Пласт кори + намазани с масло <br>Сирене на всеки два пласта – ръси се а не се маже <br>Накрая се залива с яйце вода <br>Пече се на силна фурна</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Финни кори – 400 – 600 гр. <br>Сода за хляб 1 лъжичка <br>4 яйца /3 + 1/<br>Сирене – 250 – 300 гр. <br>Кисело мляко –една кофичка <br>Масло – разтопено + кафе чаша олио <br>Вода 1 кафе чаша + 1 яйце  <br>Смесват се – 3 яйца, сирене, киселото мляко и содата<br>Пласт кори + намазани с масло <br>Сирене на всеки два пласта – ръси се а не се маже <br>Накрая се залива с яйце вода <br>Пече се на силна фурна</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Combine 3 eggs, cheese (250–300 g), sour milk (1 small cup), and baking soda. Mix together. Layer phyllo dough sheets (400–600 g total), brushing each with melted butter and oil. Sprinkle cheese mixture between every two layers — do not brush. Mix remaining egg with water (1 coffee cup) and pour over the assembled pastry as final layer. Bake at high temperature.</div>
+          
         </section>
         
 
@@ -103,5 +112,24 @@ Pirog
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

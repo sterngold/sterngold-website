@@ -114,8 +114,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- reduce veal stock to desired consistency <br>- use instant brown roux powder or mix cornstarch with wine and add to boiling stock to thicken<br>- bring to a boil <br>- simmer 15 minutes <br>- season to taste <br>- strain through fine china cap<br>- remove from heat and add cold butter in small nuggets</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- reduce veal stock to desired consistency <br>- use instant brown roux powder or mix cornstarch with wine and add to boiling stock to thicken<br>- bring to a boil <br>- simmer 15 minutes <br>- season to taste <br>- strain through fine china cap<br>- remove from heat and add cold butter in small nuggets</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Reduce veal stock to desired consistency. Thicken using instant brown roux powder or by mixing cornstarch with wine and adding to boiling stock. Bring to a boil and simmer for 15 minutes. Season to taste. Strain through fine china cap. Remove from heat and finish with cold butter added in small nuggets.</div>
+          
         </section>
         
 
@@ -156,5 +165,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

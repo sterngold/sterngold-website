@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">0.300 l oranges juice – passiert<br>8 g Cardamom kerns – 4 stuck - zerdrucken<br>1 st Garlic – scheiben schneiden<br>Reduzieren bis dickflussig ist<br>0.5 st vanilla  geben<br>250 g Olive oil cold pressed montieren</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">0.300 l oranges juice – passiert<br>8 g Cardamom kerns – 4 stuck - zerdrucken<br>1 st Garlic – scheiben schneiden<br>Reduzieren bis dickflussig ist<br>0.5 st vanilla  geben<br>250 g Olive oil cold pressed montieren</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Orange Oil with Vanilla and Cardamom (0.3 L)<br><br>Ingredients:<br>300 ml fresh orange juice, strained<br>8 g cardamom seeds (4 pods), crushed<br>1 garlic clove, sliced<br>½ vanilla pod<br>250 g cold-pressed olive oil<br><br>Method:<br>Combine strained orange juice with crushed cardamom and garlic slices. Reduce over heat until the mixture becomes thick and syrupy. Split the vanilla pod and scrape the seeds into the reduction; steep briefly. Remove from heat and cool slightly. Slowly mount the cold-pressed olive oil into the reduction, emulsifying gently. Strain through fine sieve if desired, and store in a clean bottle.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

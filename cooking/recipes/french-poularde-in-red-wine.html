@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">French Poularde in red wine<br>Huhn im Rotwein Coq au vin rouge<br><br><br>Rezept Nr.<br>Kategorie	: Main dishes<br>Koch	: Patrick Diethelm<br>Datum	: 10.05.2005<br>Warenkosten	: CHF 6.54 / EUR 4.14<br><br>EUROPEAN CULINARY CENTER<br>Zutaten für 10 Personen zu 100% (Nettomenge)<br>2.4 kg Bresse poularde<br>	1 x	Seasoning (salt+pepper)<br>	50 g	Butter, clarified<br>200 g *Mirepoix [cut vegetables for flavoring)<br>20 g Tomato paste 5/1<br>500 ml Wine, red<br>200 ml *Meat glaze<br>10 g Thyme, fresh<br>- CUT CHICKEN IN SAUTE SIZE PIECES [see course instruction)<br>- MARINATE CHICKEN AND MIREPOIX IN RED WINE<br>- HEAT CLARIFIED BUTTER IN SAUTOIR<br>- SEAL CHICKEN AND GIVE NICE GOLDEN BROWN COLOR, REMOVE FROM PAN - ADD MIREPOIX AND TOMATOE PASTE, CONTINUE SAUTEEING<br>- DEGLAZE WITH RED WINE MARINADE<br>- BRING TO BOIL ADD CHICKEN PIECES AND SIMMER UNTIL CHICKEN IS TENDER - REMOVE CHICKEN AND KEEP HOT<br>- REDUCE SAUCE TO DESIRED CONSISTENCY AND ADD MEAT GLAZE - BLEND AND STRAIN TROUGH A CHINA CAP<br>- ADJUST SEASONING<br>- PUT CHICKEN BACK INTO THE SAUCE AND BRING TO BOIL<br>- SERVE IN GRATIN DISH</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">French Poularde in red wine<br>Huhn im Rotwein Coq au vin rouge<br><br><br>Rezept Nr.<br>Kategorie	: Main dishes<br>Koch	: Patrick Diethelm<br>Datum	: 10.05.2005<br>Warenkosten	: CHF 6.54 / EUR 4.14<br><br>EUROPEAN CULINARY CENTER<br>Zutaten für 10 Personen zu 100% (Nettomenge)<br>2.4 kg Bresse poularde<br>	1 x	Seasoning (salt+pepper)<br>	50 g	Butter, clarified<br>200 g *Mirepoix [cut vegetables for flavoring)<br>20 g Tomato paste 5/1<br>500 ml Wine, red<br>200 ml *Meat glaze<br>10 g Thyme, fresh<br>- CUT CHICKEN IN SAUTE SIZE PIECES [see course instruction)<br>- MARINATE CHICKEN AND MIREPOIX IN RED WINE<br>- HEAT CLARIFIED BUTTER IN SAUTOIR<br>- SEAL CHICKEN AND GIVE NICE GOLDEN BROWN COLOR, REMOVE FROM PAN - ADD MIREPOIX AND TOMATOE PASTE, CONTINUE SAUTEEING<br>- DEGLAZE WITH RED WINE MARINADE<br>- BRING TO BOIL ADD CHICKEN PIECES AND SIMMER UNTIL CHICKEN IS TENDER - REMOVE CHICKEN AND KEEP HOT<br>- REDUCE SAUCE TO DESIRED CONSISTENCY AND ADD MEAT GLAZE - BLEND AND STRAIN TROUGH A CHINA CAP<br>- ADJUST SEASONING<br>- PUT CHICKEN BACK INTO THE SAUCE AND BRING TO BOIL<br>- SERVE IN GRATIN DISH</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">FRENCH POULARDE IN RED WINE (Coq au vin rouge)<br>Yield: 10 servings<br><br>Ingredients:<br>2.4 kg Bresse poularde<br>Salt and pepper<br>50 g clarified butter<br>200 g mirepoix (diced vegetables)<br>20 g tomato paste (5/1 concentrate)<br>500 ml red wine<br>200 ml meat glaze<br>10 g fresh thyme<br><br>Method:<br>1. Cut chicken into sauté-sized pieces and season with salt and pepper.<br>2. Marinate chicken and mirepoix in red wine for 30 minutes.<br>3. Heat clarified butter in sautoir until hot.<br>4. Seal chicken pieces until golden brown on all sides; remove and set aside.<br>5. Add mirepoix to pan and sauté; stir in tomato paste and continue cooking.<br>6. Deglaze pan with reserved red wine marinade, scraping up fond.<br>7. Return chicken to pan, add thyme, bring to boil and simmer until chicken is tender.<br>8. Remove chicken and keep warm.<br>9. Reduce sauce to desired consistency; add meat glaze and blend well.<br>10. Strain through china cap and adjust seasoning.<br>11. Return chicken to sauce, bring to boil.<br>12. Serve in gratin dish.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

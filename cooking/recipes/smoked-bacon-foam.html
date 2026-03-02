@@ -90,8 +90,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- sweat the bacon, add the cream and consomme and bring to boil<br>- for serving strain through china cap and blend with pole blender to produce foam and spoon only foam on dish</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- sweat the bacon, add the cream and consomme and bring to boil<br>- for serving strain through china cap and blend with pole blender to produce foam and spoon only foam on dish</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SMOKED BACON FOAM<br><br>SWEAT the bacon in a pan. Add cream and consommé, bring to a boil. Strain through a chinois into a clean container. Using an immersion blender, blend to produce foam. Spoon foam only onto the plate for service.</div>
+          
         </section>
         
 
@@ -130,5 +139,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

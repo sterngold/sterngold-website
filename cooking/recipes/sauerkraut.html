@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">European Gourmet Cuisine<br><br>Zutaten für 5<br> 1 kg<br><br>100 g<br> 10 g<br>1 x <br>50 ml<br> 900 g<br>50 ml<br>150 ml<br>1 x<br>500 g 200 g 5 g 5 g 30 g<br>Personen zu 100% (Nettomenge) Pheasant Oven-ready,<br><br>Fatback<br>Salt<br>Seasoning (pepper)<br> Peanut oil<br>*Flavoring Vegetables for Meat<br> Madeira wine<br>*Brown Game Stock<br> Seasoning (salt)<br>*Braised Sauerkraut <br>Smoked bacon not sliced<br> Salt<br>Parsley, fresh<br>Butter<br>Truss to retain its shape and cover breast with fatback. Tie fatback to birds with butcher's twine.<br>Cut on meat slicer, into thin slices.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">European Gourmet Cuisine<br><br>Zutaten für 5<br> 1 kg<br><br>100 g<br> 10 g<br>1 x <br>50 ml<br> 900 g<br>50 ml<br>150 ml<br>1 x<br>500 g 200 g 5 g 5 g 30 g<br>Personen zu 100% (Nettomenge) Pheasant Oven-ready,<br><br>Fatback<br>Salt<br>Seasoning (pepper)<br> Peanut oil<br>*Flavoring Vegetables for Meat<br> Madeira wine<br>*Brown Game Stock<br> Seasoning (salt)<br>*Braised Sauerkraut <br>Smoked bacon not sliced<br> Salt<br>Parsley, fresh<br>Butter<br>Truss to retain its shape and cover breast with fatback. Tie fatback to birds with butcher's twine.<br>Cut on meat slicer, into thin slices.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SAUERKRAUT<br><br>Source notes appear to be a partially formatted ingredient list for pheasant preparation rather than a sauerkraut recipe. The legible components include:<br><br>Pheasant (1 kg, oven-ready): Truss to retain shape and cover breast with fatback. Tie fatback to bird with butcher's twine.<br><br>Accompaniments: Fatback (100 g), salt (10 g), pepper, peanut oil (50 ml), flavoring vegetables for meat (900 g), Madeira wine (150 ml), brown game stock (900 ml)<br><br>Braised sauerkraut (500 g), smoked bacon—not sliced (200 g), salt (5 g), fresh parsley (5 g), butter (30 g)<br><br>Note: Original documentation is incomplete and difficult to parse. Appears to conflate pheasant and sauerkraut preparations.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

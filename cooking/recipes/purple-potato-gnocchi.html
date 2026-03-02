@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Purple potato gnocchi<br>Violette Truffe/kartoffe/gnocchis<br>Recipe #<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	: 12.12.2005<br>Cost of goods	: CHF 0.55 / EUR 0.35 <br><br>European Gourmet Cuisine<br>Ingredients for 5 servings at 100% (Net quantity)<br>500 g Purple potatoes peeled 140 g White wheat flour 40 g Egg<br>	10 g	Egg yolk past.<br>	4 g	Salt<br>	1 x	Nutmeg (pinch) 30 g Ruccola</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Purple potato gnocchi<br>Violette Truffe/kartoffe/gnocchis<br>Recipe #<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	: 12.12.2005<br>Cost of goods	: CHF 0.55 / EUR 0.35 <br><br>European Gourmet Cuisine<br>Ingredients for 5 servings at 100% (Net quantity)<br>500 g Purple potatoes peeled 140 g White wheat flour 40 g Egg<br>	10 g	Egg yolk past.<br>	4 g	Salt<br>	1 x	Nutmeg (pinch) 30 g Ruccola</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PURPLE POTATO GNOCCHI<br>Yield: 5 servings | Chef: Patrick Diethelm<br><br>Ingredients:<br>500 g purple potatoes, peeled<br>140 g white wheat flour<br>40 g egg<br>10 g pasteurized egg yolk<br>4 g salt<br>Nutmeg (pinch)<br>30 g ruccola<br><br>Method:<br>Cook peeled purple potatoes in salted water until tender; drain well and dry briefly. Pass through ricer or sieve while hot. Cool slightly. Fold in egg and pasteurized egg yolk. Combine sifted flour with salt and nutmeg, then fold into potato mixture. Chill dough. Form into small quenelles using two spoons and poach in boiling salted water until they rise and cook through, approximately 3–4 minutes. Finish with fresh ruccola.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

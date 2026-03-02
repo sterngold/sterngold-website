@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Ovo - lacto vegetable mousse<br>Ovolасto vegetabile Gemüsemousse Mousse de légumes<br>Rezept Nr.<br>Kategorie	: FPP - Vegetarian Cooking<br>Koch	: Patrick Diethelm<br>Datum	: 10.05.2005<br>Warenkosten 	: CHF 0.28 / EUR 0.18 <br>Zutaten für 6 Personen zu 100% (Nettomenge)<br>150<br>g<br>Gemüsepüree<br>3<br>g<br>Salz<br>1<br>x<br>Seasoning (pepper]<br>30<br>g<br>Eigelb<br>80<br>ml<br>Vollrahm<br><br>- Gemüse ím Dampf garen, und purieren, anschliessend<br>(Puree gut abrühren über Hitze um Feuchtigkeit zu reduzieren)<br>- Eigelb dazu und nochmals abrühren, würzen - Schlagrahm darunter ziehen und kühl stellen.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Ovo - lacto vegetable mousse<br>Ovolасto vegetabile Gemüsemousse Mousse de légumes<br>Rezept Nr.<br>Kategorie	: FPP - Vegetarian Cooking<br>Koch	: Patrick Diethelm<br>Datum	: 10.05.2005<br>Warenkosten 	: CHF 0.28 / EUR 0.18 <br>Zutaten für 6 Personen zu 100% (Nettomenge)<br>150<br>g<br>Gemüsepüree<br>3<br>g<br>Salz<br>1<br>x<br>Seasoning (pepper]<br>30<br>g<br>Eigelb<br>80<br>ml<br>Vollrahm<br><br>- Gemüse ím Dampf garen, und purieren, anschliessend<br>(Puree gut abrühren über Hitze um Feuchtigkeit zu reduzieren)<br>- Eigelb dazu und nochmals abrühren, würzen - Schlagrahm darunter ziehen und kühl stellen.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">OVO-LACTO VEGETABLE MOUSSE<br>Category: FPP - Vegetarian Cooking | Chef: Patrick Diethelm | Date: 10.05.2005<br><br>Ingredients (6 servings):<br>- 150 g vegetable purée<br>- 3 g salt<br>- Pepper to taste<br>- 30 g egg yolk<br>- 80 ml heavy cream<br><br>Method:<br>1. Steam vegetables until tender; purée finely.<br>2. Reduce purée over heat, stirring constantly to remove excess moisture.<br>3. Fold in egg yolk; whisk and season with salt and pepper.<br>4. Fold in whipped cream.<br>5. Chill before service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -210,8 +210,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- artichokes - clean and trim. Save 10 leaves for garnish. Blanch all. Set leaves aside. Remove centre fuzz from bottoms and cut into 20 wedges <br>- celery - clean and trim. Cut into attractive pieces of equal size.  Blanch<br>-cauliflower - clean and trim. Cut into attractive pieces of equal size. Blanch<br>- carrot - clean and trim. Cut into attractive pieces of equal size. Blanch<br>- Peppers - clean and trim. Cut into attractive pieces of equal size. <br>- Mushrooms - clean and trim. Cut into attractive pieces of equal size. <br>- Zucchini - clean and trim. Cut into attractive pieces of equal size. <br><br>-SAUTE ALL VEGETABLES IN OLIVE OIL <br>- ADD LEMON JUICE AND WATER<br>- SEASON WITH BAY LEAVES, FENNEL LEAVES, THYME, SAFFRON AND SALT/PEPPER<br>- COOK VEGETABLES UNTIL TENDER BUT STILL FIRM. LET COOL IN THEIR OWN JUICE<br>- PLATE SALAD. GARNISH EACH PLATE WITH ONE ARTICHOKE LEAF AND BLACK AND GREEN OLIVES</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- artichokes - clean and trim. Save 10 leaves for garnish. Blanch all. Set leaves aside. Remove centre fuzz from bottoms and cut into 20 wedges <br>- celery - clean and trim. Cut into attractive pieces of equal size.  Blanch<br>-cauliflower - clean and trim. Cut into attractive pieces of equal size. Blanch<br>- carrot - clean and trim. Cut into attractive pieces of equal size. Blanch<br>- Peppers - clean and trim. Cut into attractive pieces of equal size. <br>- Mushrooms - clean and trim. Cut into attractive pieces of equal size. <br>- Zucchini - clean and trim. Cut into attractive pieces of equal size. <br><br>-SAUTE ALL VEGETABLES IN OLIVE OIL <br>- ADD LEMON JUICE AND WATER<br>- SEASON WITH BAY LEAVES, FENNEL LEAVES, THYME, SAFFRON AND SALT/PEPPER<br>- COOK VEGETABLES UNTIL TENDER BUT STILL FIRM. LET COOL IN THEIR OWN JUICE<br>- PLATE SALAD. GARNISH EACH PLATE WITH ONE ARTICHOKE LEAF AND BLACK AND GREEN OLIVES</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Artichokes: clean and trim, reserving 10 leaves for garnish. Blanch all. Remove centre fuzz from bottoms and cut into 20 wedges.<br><br>Celery, cauliflower, and carrot: clean, trim, cut into attractive equal-sized pieces, and blanch.<br><br>Peppers and mushrooms: clean, trim, and cut into attractive equal-sized pieces (do not blanch).<br><br>Zucchini: clean, trim, and cut into attractive equal-sized pieces.<br><br>Sauté all vegetables in olive oil. Add lemon juice and water. Season with bay leaves, fennel leaves, thyme, saffron, salt, and pepper. Cook until tender but still firm. Cool in their own juice.<br><br>Plate the salad and garnish each plate with one artichoke leaf and black and green olives.</div>
+          
         </section>
         
 
@@ -245,5 +254,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

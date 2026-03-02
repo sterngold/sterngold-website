@@ -98,8 +98,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- water with salt boil <br>- add rice and boil vigarously for 10 to 12 min <br>- remove water, cool down in cold water, remove and dry well<br>- add to buttered <br>- palce butter cubes on top<br>- place buttered paper <br>- warm in oven, or steamer, with fork mix</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- water with salt boil <br>- add rice and boil vigarously for 10 to 12 min <br>- remove water, cool down in cold water, remove and dry well<br>- add to buttered <br>- palce butter cubes on top<br>- place buttered paper <br>- warm in oven, or steamer, with fork mix</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Bring salted water to boil. Add rice and boil vigorously for 10 to 12 minutes.<br><br>Drain rice and cool in cold water. Drain thoroughly and dry well.<br><br>Transfer to buttered pan. Place butter cubes on top and cover with buttered paper.<br><br>Warm in oven or steamer. Fluff with fork before service.</div>
+          
         </section>
         
 
@@ -133,5 +142,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

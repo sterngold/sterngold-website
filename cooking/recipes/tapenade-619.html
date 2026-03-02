@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">VITZNAU-LUCERNE SWITZERLAND<br>TAPENADE / Olive paste<br>Olive dip or paste from the Provence for cold and hot dishes.<br>250 g black olives [TOP quality olives)<br>20 g anchovies<br>6 g dryed tomatoes blanched<br>40 g capers 20 g garlic 50 g olive oil<br>5 g chopped basil<br>pepper mill<br>Preparation:<br>- Add olives, anchovies, capers, garlic, tomatoes into in food processor and purée with olive oil<br>- Season with chopped basil and pepper mill</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">VITZNAU-LUCERNE SWITZERLAND<br>TAPENADE / Olive paste<br>Olive dip or paste from the Provence for cold and hot dishes.<br>250 g black olives [TOP quality olives)<br>20 g anchovies<br>6 g dryed tomatoes blanched<br>40 g capers 20 g garlic 50 g olive oil<br>5 g chopped basil<br>pepper mill<br>Preparation:<br>- Add olives, anchovies, capers, garlic, tomatoes into in food processor and purée with olive oil<br>- Season with chopped basil and pepper mill</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">TAPENADE (OLIVE PASTE)<br><br>Provençal olive dip or paste for cold and hot dishes.<br><br>INGREDIENTS<br>250g Black olives (top quality)<br>20g Anchovies<br>6g Dried tomatoes, blanched<br>40g Capers<br>20g Garlic<br>50g Olive oil<br>5g Basil, chopped<br>Pepper mill<br><br>METHOD<br>1. Add olives, anchovies, capers, garlic, and tomatoes to food processor and purée with olive oil.<br>2. Season with chopped basil and pepper mill to taste.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

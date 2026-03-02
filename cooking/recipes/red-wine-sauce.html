@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">snij schoongemaakte sjalotten in plakjes en zet deze aan met een beetje boter zodat ze zacht en glazig worden. Voeg afsnijsel van rund toe en twee takjes tijm. Doe nu je rode kookwijn in de pan en laat zachtjes reducieren totdat je een derde overhaudt (blijf af en toe roeren). Voeg nu  je jus de veau toe en reduceer totdat je de juiste dikte hebt verkregen. Daarna eventueel een scheutje rode port toevoegen en passeren door een fijne puntzeef.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">snij schoongemaakte sjalotten in plakjes en zet deze aan met een beetje boter zodat ze zacht en glazig worden. Voeg afsnijsel van rund toe en twee takjes tijm. Doe nu je rode kookwijn in de pan en laat zachtjes reducieren totdat je een derde overhaudt (blijf af en toe roeren). Voeg nu  je jus de veau toe en reduceer totdat je de juiste dikte hebt verkregen. Daarna eventueel een scheutje rode port toevoegen en passeren door een fijne puntzeef.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Red Wine Sauce** | Station: Saucier<br><br>**Method:**<br>1. Slice cleaned shallots and sweat in a small amount of butter until soft and translucent.<br>2. Add beef trimmings and two sprigs of thyme.<br>3. Pour in red cooking wine and reduce slowly over gentle heat until one-third of the original volume remains, stirring occasionally.<br>4. Add veal stock (jus de veau) and reduce until the desired consistency is achieved.<br>5. Optionally, add a splash of red port wine.<br>6. Pass through a fine pointed strainer.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

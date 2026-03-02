@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Pindakass - 2 kg<br>Melk - 3 lt. <br>Sambal - 2 eetlepel<br>Ketjap manis - 80 ml.<br>Kaneel - 20 gr. <br>Limoen blad - handje<br>Limoen - 2</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Pindakass - 2 kg<br>Melk - 3 lt. <br>Sambal - 2 eetlepel<br>Ketjap manis - 80 ml.<br>Kaneel - 20 gr. <br>Limoen blad - handje<br>Limoen - 2</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Peanut Sauce<br><br>Ingredients:<br>- Peanut butter: 2 kg<br>- Milk: 3 L<br>- Sambal: 2 tablespoons<br>- Sweet soy sauce: 80 ml<br>- Cinnamon: 20 g<br>- Lime leaves: handful<br>- Lime: 2<br><br>Method:<br>Whisk peanut butter with milk to combine smoothly. Season with sambal, sweet soy sauce, and cinnamon. Add lime leaves. Finish with lime juice to taste. Adjust consistency as needed for service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

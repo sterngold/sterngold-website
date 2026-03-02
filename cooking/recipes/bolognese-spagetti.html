@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Нагорещява се олио, запържва се каймата с лук и чесън /слагат се накрая за да не почернеят/, добавя се доматите, доматеното пюре, вино, босилек, захар, сол и черен пипер. Оставя се да къкри на бавен огън за около час и половина. <br>Спагети – в тенджера с вряща вода и сол се оставят да врят около 10 –12 мин. Мият се със студена вода и се връщат в тенджерата. /масло, сметана по избор/<br>На соса се махат босилековите листа.<br>Спагетите се заливат със соса и настърган пармезан, магданоз.<br><br>Кайма<br>чаени лъжици олио<br>глави лук<br>скалидка чесън - настърган<br>Домати<br>чаша червено вино<br>2 листа босилек <br>чаена лъжица захар<br>чаена лъжица сол<br>лъжици доматено пюре<br>Спагети – тънки, дълги<br>магданоз<br><br>500<br>2<br>2<br>1<br>250<br>1/2<br>2<br>2<br>1<br>1<br>250</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Нагорещява се олио, запържва се каймата с лук и чесън /слагат се накрая за да не почернеят/, добавя се доматите, доматеното пюре, вино, босилек, захар, сол и черен пипер. Оставя се да къкри на бавен огън за около час и половина. <br>Спагети – в тенджера с вряща вода и сол се оставят да врят около 10 –12 мин. Мият се със студена вода и се връщат в тенджерата. /масло, сметана по избор/<br>На соса се махат босилековите листа.<br>Спагетите се заливат със соса и настърган пармезан, магданоз.<br><br>Кайма<br>чаени лъжици олио<br>глави лук<br>скалидка чесън - настърган<br>Домати<br>чаша червено вино<br>2 листа босилек <br>чаена лъжица захар<br>чаена лъжица сол<br>лъжици доматено пюре<br>Спагети – тънки, дълги<br>магданоз<br><br>500<br>2<br>2<br>1<br>250<br>1/2<br>2<br>2<br>1<br>1<br>250</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">BOLOGNESE SPAGHETTI<br><br>Heat oil and brown ground meat with 2 heads sliced onion and 1 grated garlic clove (add these near the end to prevent browning). Add 250g tomatoes, 250ml tomato purée, 1/2 cup red wine, 2 basil leaves, 2 teaspoons sugar, 2 teaspoons salt, and cracked black pepper.<br><br>Simmer on low heat for approximately 1.5 hours, stirring occasionally.<br><br>Cook thin spaghetti in salted boiling water for 10–12 minutes. Rinse with cold water and return to pot (optional: toss with butter or sour cream).<br><br>Remove basil leaves from sauce. Plate spaghetti, cover with sauce, finish with grated Parmesan and fresh parsley.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

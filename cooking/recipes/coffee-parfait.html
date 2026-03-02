@@ -130,8 +130,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">-mix egg yolk and eggs and 1/2 sugar on bain marrie <br>- coffee and rest of the sugar reduce to 100 ml<br>- mix egg mixture, coffee reduction, couverture and alchohol<br>- add cream</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">-mix egg yolk and eggs and 1/2 sugar on bain marrie <br>- coffee and rest of the sugar reduce to 100 ml<br>- mix egg mixture, coffee reduction, couverture and alchohol<br>- add cream</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Whisk egg yolks and whole eggs with half the sugar over bain-marie until ribbon stage. Reduce coffee and remaining sugar to 100 ml. Fold coffee reduction into egg mixture along with couverture and alcohol. Fold in whipped cream.</div>
+          
         </section>
         
 
@@ -165,5 +174,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Philadelphija - 1/2 bak + Gaite kaas 1 pak 500 g + pepper mill + with light W dough hook <br>Bresaola - cut thin 6 - place row of three by three <br>Spread kass mixture - on top side leave some space free <br>Add thin sliced slavia (sage)<br>Place two rows of three in the middle <br>Spread again and roll<br>Tide with folie and chill</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Philadelphija - 1/2 bak + Gaite kaas 1 pak 500 g + pepper mill + with light W dough hook <br>Bresaola - cut thin 6 - place row of three by three <br>Spread kass mixture - on top side leave some space free <br>Add thin sliced slavia (sage)<br>Place two rows of three in the middle <br>Spread again and roll<br>Tide with folie and chill</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Combine Philadelphia cream cheese (1/2 package) with goat cheese (500g package). Season with pepper mill. Mix with light dough hook until combined.<br><br>Slice bresaola thin and arrange in three rows of three slices each. Spread cheese mixture over bresaola, leaving edges clear. Layer thin sage slices on top. Arrange another three rows of three bresaola slices over sage. Spread remaining cheese mixture and roll tightly. Wrap in plastic film and chill.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

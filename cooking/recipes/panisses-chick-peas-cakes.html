@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">"Panisses" chick-peas cakes<br>Provenzalischer Kichererbsenkuchen Panisses<br>Rezept Nr.<br>Kategorie	: ECA - Entremetier/ side dishes<br>Koch	: Patrick Diethelm<br>Datum	: 30.052005<br>Warenkosten	: CHF 0.45 / EUR 0.28</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">"Panisses" chick-peas cakes<br>Provenzalischer Kichererbsenkuchen Panisses<br>Rezept Nr.<br>Kategorie	: ECA - Entremetier/ side dishes<br>Koch	: Patrick Diethelm<br>Datum	: 30.052005<br>Warenkosten	: CHF 0.45 / EUR 0.28</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Ingredient list only. No preparation method provided in source document.<br><br>PANISSES (CHICK-PEA CAKES)<br>Category: ECA - Entremetier/Side Dishes | Chef: Patrick Diethelm | Date: 30.05.2005<br><br>Source document contains incomplete production notes with only header information and recipe number. Full ingredients and cooking instructions are missing.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

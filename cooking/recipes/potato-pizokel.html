@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Potato pizokel<br>Hardepfel Pookel vom Prattigau Swiss regional dishes<br>Recipe #<br>Category	: Potato Dishes<br>Chef	: Patrick Diethelm<br>Date	: 19.10.2005<br>Cost of goods	: CHF 1.08 / EUR 0.69<br>Ingredients for 10 servings at 100% (Net quantity)<br>1<br>kg<br>Potatoes Bintje, peeled<br>380<br>g<br>White wheat flour<br>180<br>g<br>Curd cheese<br>3<br>g<br>Baking powder<br>13<br>g<br>Salt<br>1<br>x<br>Seasoning (pepper)<br>1<br>x<br>Nutmeg (pinch)<br>220<br>g<br>Egg whole<br>300<br>g<br>Alp cheese<br>100<br>g<br>Butter<br>150<br>g<br>Bacon slices<br>400<br>g<br>Onions<br>10<br>g<br>Parsley, fresh<br><br>- GRATE THE POTATOES WITH BIRCHER GRATER	, —<br>- SQUEEZE OUT ALL THE JUICE AND ADD WHITE WHEAT FLOUR EGGS,CURD CHEESE BAKING POWDER AND SEASON TO TASTE<br>- BRING WATER TO A BOIL<br>- FORM DUMPLINGS WITH TEA SPOON AND POACH IN SALTED WATER<br>- REMOVE THE DUMPLINGS WITH A SPIDER AS SOON AS THEY RISE TO THE TOP AND PUT INTO COLD WATER.<br>DRAIN IMMEDIATELY.<br>- REHEAT AS NEEDED BY STEAMING IN CONVECTION OVEN OR PLACING INTO 90°C SALTED WATER FOR 5 MIN.<br>- DRAIN FOR SERVING AND PLACE INTO OVENPROOF DISH OR GASTRO NORM SPRINKLE WITH GRATED CHEESE AND BAKE FOR 10 MINUTES AT 200°C.<br>- ADD BUTTER INTO FRYING PAN ADD BACON AND SAUTE GOLDEN BROWN WITH ONION EMINCE AND SPRINKLE OVER THE PIZOKEL AND SERVE.<br>- SPRINKLE WITH CHOPPED PARSLEY<br>- SERVE WITH STEWED SWEET AND SOUR PRUNES OR CRANBERRY COMPOT ON THE SIDE</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Potato pizokel<br>Hardepfel Pookel vom Prattigau Swiss regional dishes<br>Recipe #<br>Category	: Potato Dishes<br>Chef	: Patrick Diethelm<br>Date	: 19.10.2005<br>Cost of goods	: CHF 1.08 / EUR 0.69<br>Ingredients for 10 servings at 100% (Net quantity)<br>1<br>kg<br>Potatoes Bintje, peeled<br>380<br>g<br>White wheat flour<br>180<br>g<br>Curd cheese<br>3<br>g<br>Baking powder<br>13<br>g<br>Salt<br>1<br>x<br>Seasoning (pepper)<br>1<br>x<br>Nutmeg (pinch)<br>220<br>g<br>Egg whole<br>300<br>g<br>Alp cheese<br>100<br>g<br>Butter<br>150<br>g<br>Bacon slices<br>400<br>g<br>Onions<br>10<br>g<br>Parsley, fresh<br><br>- GRATE THE POTATOES WITH BIRCHER GRATER	, —<br>- SQUEEZE OUT ALL THE JUICE AND ADD WHITE WHEAT FLOUR EGGS,CURD CHEESE BAKING POWDER AND SEASON TO TASTE<br>- BRING WATER TO A BOIL<br>- FORM DUMPLINGS WITH TEA SPOON AND POACH IN SALTED WATER<br>- REMOVE THE DUMPLINGS WITH A SPIDER AS SOON AS THEY RISE TO THE TOP AND PUT INTO COLD WATER.<br>DRAIN IMMEDIATELY.<br>- REHEAT AS NEEDED BY STEAMING IN CONVECTION OVEN OR PLACING INTO 90°C SALTED WATER FOR 5 MIN.<br>- DRAIN FOR SERVING AND PLACE INTO OVENPROOF DISH OR GASTRO NORM SPRINKLE WITH GRATED CHEESE AND BAKE FOR 10 MINUTES AT 200°C.<br>- ADD BUTTER INTO FRYING PAN ADD BACON AND SAUTE GOLDEN BROWN WITH ONION EMINCE AND SPRINKLE OVER THE PIZOKEL AND SERVE.<br>- SPRINKLE WITH CHOPPED PARSLEY<br>- SERVE WITH STEWED SWEET AND SOUR PRUNES OR CRANBERRY COMPOT ON THE SIDE</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Grate potatoes with Bircher grater and squeeze out all juice. Add white wheat flour, eggs, curd cheese, baking powder, and season with salt, pepper, and nutmeg to taste. Bring salted water to boil. Form dumplings with teaspoon and poach in boiling water. Remove with spider as soon as they rise to surface and transfer to cold water; drain immediately. To reheat as needed, steam in convection oven or place in 90°C salted water for 5 minutes. Drain for serving and place in ovenproof dish. Sprinkle with grated cheese and bake at 200°C for 10 minutes. Sauté bacon in butter until golden brown with minced onion; sprinkle over pizokel. Garnish with chopped parsley and serve with stewed sweet and sour prunes or cranberry compote on the side.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

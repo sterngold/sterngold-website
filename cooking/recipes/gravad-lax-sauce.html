@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Gravad Lax sauce<br>Dillsenfsauce far Graved Lax Sauce moutarde à l'aneth<br><br>Recipe #	: 47<br>Category	: ECA - Sauces Garde-manger<br>Chef	: Patrick Diethelm<br>Date	: 10.11.2005<br>Cost of goods	: CHF 5.92 / EUR 3.75 <br><br>European Gourmet Cuisine<br><br>Ingredients for 0.350 liters at 100% [Net quantity)<br>100<br>g<br>Prepared mustard, mild<br><br>30<br>g<br>Crystal sugar<br><br>80<br>g<br>Egg yolk past.<br><br>250<br>ml<br>Sunflower oil<br><br>15<br>g<br>Dill, fresh<br><br>50<br>g<br>Honey<br>Melted in bain marie<br>1<br>x<br>Seasoning (lemon juice)<br><br>1<br>x<br>Seasoning (salt and pepper)<br><br>40<br>ml<br>Water<br><br><br>- MIX MUSTARDS WITH EGG YOLK AND SUGAR.<br>- ADD OIL IN THIN STREAM WHILE STIRRING VIGOROUSLY.<br>- REMOVE STEMS FROM DILL; CHOP LEAVES; AND ADD TO SAUCE. <br>- SEASON WITH HONEY, LEMON JUICE, SALT AND PEPPER<br>.- ADD WATER TO GET THE CONSISTENCY<br>APPLICATION<br>served with Gravad Lax.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Gravad Lax sauce<br>Dillsenfsauce far Graved Lax Sauce moutarde à l'aneth<br><br>Recipe #	: 47<br>Category	: ECA - Sauces Garde-manger<br>Chef	: Patrick Diethelm<br>Date	: 10.11.2005<br>Cost of goods	: CHF 5.92 / EUR 3.75 <br><br>European Gourmet Cuisine<br><br>Ingredients for 0.350 liters at 100% [Net quantity)<br>100<br>g<br>Prepared mustard, mild<br><br>30<br>g<br>Crystal sugar<br><br>80<br>g<br>Egg yolk past.<br><br>250<br>ml<br>Sunflower oil<br><br>15<br>g<br>Dill, fresh<br><br>50<br>g<br>Honey<br>Melted in bain marie<br>1<br>x<br>Seasoning (lemon juice)<br><br>1<br>x<br>Seasoning (salt and pepper)<br><br>40<br>ml<br>Water<br><br><br>- MIX MUSTARDS WITH EGG YOLK AND SUGAR.<br>- ADD OIL IN THIN STREAM WHILE STIRRING VIGOROUSLY.<br>- REMOVE STEMS FROM DILL; CHOP LEAVES; AND ADD TO SAUCE. <br>- SEASON WITH HONEY, LEMON JUICE, SALT AND PEPPER<br>.- ADD WATER TO GET THE CONSISTENCY<br>APPLICATION<br>served with Gravad Lax.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Mix prepared mild mustard, egg yolk paste, and crystal sugar together. Add sunflower oil in a thin stream while stirring vigorously. Remove stems from fresh dill, chop leaves finely, and add to sauce. Season with honey, lemon juice, salt, and pepper. Add water to adjust consistency to desired thickness. Serve with gravad lax.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

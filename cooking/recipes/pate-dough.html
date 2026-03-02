@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Раtê Dough ECA<br>Pastetenteig Pâte à pâté<br><br><br>Recipe #247<br>Category ECA - Dough<br>Chef Patrick Diethelm <br>Date28.11.2005<br>Cost of goods CHF 2.97 / EUR 1.88<br><br>Ingredients for 0.900 kilogram. at 100% (Net quantity) <br><br><br>504 g white wheat flour<br>174 g Butter fresh 140 g water<br>11 g Salt<br>60 g Egg Past<br>12 g Malt powdered<br>IN A PASTRY BOWL, COMBINE FLOUR AND BUTTER (RUB TOGETHER).<br>MAKE HOLE IN CENTER.<br>- DISSOLVE SALT AND MALT IN WATER.<br>- ADD EGG AND COLD WATER IN CENTER.<br>- COMBINE (KNEAD) QUICKLY INTO DOUGH.<br>- SHAPE INTO A RECTANGLE. COVER AND REFRIGERATE FOR 1 TO 2 HOURS.<br><br>Notes: The addition of malt will brown the dough evenly during baking.<br>All ingredients should be worked together rapidly; otherwise the dough can become crumbly, which is know in the trade as "burnt".</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Раtê Dough ECA<br>Pastetenteig Pâte à pâté<br><br><br>Recipe #247<br>Category ECA - Dough<br>Chef Patrick Diethelm <br>Date28.11.2005<br>Cost of goods CHF 2.97 / EUR 1.88<br><br>Ingredients for 0.900 kilogram. at 100% (Net quantity) <br><br><br>504 g white wheat flour<br>174 g Butter fresh 140 g water<br>11 g Salt<br>60 g Egg Past<br>12 g Malt powdered<br>IN A PASTRY BOWL, COMBINE FLOUR AND BUTTER (RUB TOGETHER).<br>MAKE HOLE IN CENTER.<br>- DISSOLVE SALT AND MALT IN WATER.<br>- ADD EGG AND COLD WATER IN CENTER.<br>- COMBINE (KNEAD) QUICKLY INTO DOUGH.<br>- SHAPE INTO A RECTANGLE. COVER AND REFRIGERATE FOR 1 TO 2 HOURS.<br><br>Notes: The addition of malt will brown the dough evenly during baking.<br>All ingredients should be worked together rapidly; otherwise the dough can become crumbly, which is know in the trade as "burnt".</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PÂTÉ DOUGH<br>Source: DCT | Station: Garde Manger | Chef: Patrick Diethelm | Date: 28.11.2005<br>Yield: 0.900 kg<br><br>Ingredients:<br>- 504 g white wheat flour<br>- 174 g fresh butter<br>- 140 g water<br>- 11 g salt<br>- 60 g egg paste<br>- 12 g malt powder<br><br>Method:<br>In a pastry bowl, combine flour and cold butter, rubbing them together until the mixture resembles breadcrumbs. Make a well in the center.<br><br>Dissolve salt and malt powder in the water. Add egg paste and cold water to the well.<br><br>Combine ingredients and knead quickly into a dough. Do not overwork. Shape into a rectangle, cover, and refrigerate for 1 to 2 hours before use.<br><br>Note: The malt powder promotes even browning during baking. Work all ingredients together rapidly to prevent the dough from becoming crumbly or "burnt" as known in the trade.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

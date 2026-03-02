@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Quatity<br>Unit<br>Ingredients<br>1<br>whole<br>Poularde<br><br><br>Pepper mill<br>1<br>twig(s)<br>Rosemary<br>1<br>leaf/leaves<br>Bay leaf<br>500<br>g<br>Sea salt, with herb trimmings blended<br>200<br>g<br>Flour<br>100<br>g<br>Eggs<br>20<br>g<br>Sherry wine<br><br>as required<br>Prepared Salad with hazelnut oil vinaigrette<br><br>Preparation<br>Mix coarse sea salt with flour, whole eggs and a little water roll out and chill.<br>Prepare one poularde<br>Season insides with salt and pepper, insert one twig of rosemary, one bay leaf.<br>Tie appropriately with string.<br>Unroll salt dough, line out the bottom of a cocotte. Place poularde on it, cover with remaining salt dough. Place a cover over to close.<br>Bake in a hot oven at 170 °C for about 50 – 60 minutes<br>Smash salt-crust, remove poularde. Carve and serve with prepared autumnal salad, artichokes and hazelnut oil vinaigrette<br>ECA/cuisine 05</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Quatity<br>Unit<br>Ingredients<br>1<br>whole<br>Poularde<br><br><br>Pepper mill<br>1<br>twig(s)<br>Rosemary<br>1<br>leaf/leaves<br>Bay leaf<br>500<br>g<br>Sea salt, with herb trimmings blended<br>200<br>g<br>Flour<br>100<br>g<br>Eggs<br>20<br>g<br>Sherry wine<br><br>as required<br>Prepared Salad with hazelnut oil vinaigrette<br><br>Preparation<br>Mix coarse sea salt with flour, whole eggs and a little water roll out and chill.<br>Prepare one poularde<br>Season insides with salt and pepper, insert one twig of rosemary, one bay leaf.<br>Tie appropriately with string.<br>Unroll salt dough, line out the bottom of a cocotte. Place poularde on it, cover with remaining salt dough. Place a cover over to close.<br>Bake in a hot oven at 170 °C for about 50 – 60 minutes<br>Smash salt-crust, remove poularde. Carve and serve with prepared autumnal salad, artichokes and hazelnut oil vinaigrette<br>ECA/cuisine 05</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SWISS POULARDE IN SALT CRUST<br><br>Ingredients:<br>1 whole poularde<br>Pepper (from mill)<br>1 twig rosemary<br>1 bay leaf<br>500 g sea salt with herb trimmings blended<br>200 g flour<br>100 g eggs (whole)<br>20 g Sherry wine<br>Prepared salad with hazelnut oil vinaigrette (as required)<br><br>Method:<br>1. Mix coarse sea salt with flour, whole eggs, and a little water. Roll out and chill.<br>2. Prepare poularde: season cavity with salt and pepper. Insert one sprig rosemary and one bay leaf.<br>3. Tie poularde appropriately with string.<br>4. Unroll salt dough and line bottom of cocotte.<br>5. Place poularde on dough and cover with remaining salt dough. Cover cocotte with lid to seal.<br>6. Bake in hot oven at 170°C for 50–60 minutes.<br>7. Break open salt crust and remove poularde.<br>8. Carve and serve with prepared autumnal salad, artichokes, and hazelnut oil vinaigrette.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

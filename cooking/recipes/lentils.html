@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Ситно нарязан лук се запържва /много ситно/<br>Мороков – ситно нарязян /кубчета/<br>Ряпа – кубчета ситно<br>Бекон - .................................. кубчета ситно<br>Лещата се добавя – първо да се измие <br>Бяло вино<br>Булъон – пилешки или вода <br>Връзка Tijm&Rozemarijn<br>Готви се на бавен огън окло 20 – 35 мин според огъня – към края може да се добави още булъон.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Ситно нарязан лук се запържва /много ситно/<br>Мороков – ситно нарязян /кубчета/<br>Ряпа – кубчета ситно<br>Бекон - .................................. кубчета ситно<br>Лещата се добавя – първо да се измие <br>Бяло вино<br>Булъон – пилешки или вода <br>Връзка Tijm&Rozemarijn<br>Готви се на бавен огън окло 20 – 35 мин според огъня – към края може да се добави още булъон.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Station: Entremétier | Vijf<br><br>Sweat finely minced onion. Add finely diced carrot, turnip, and bacon. Rinse lentils and add to pan. Deglaze with white wine, then add stock (chicken or water). Tie together thyme and rosemary and add to pot. Cook on low heat for 20–35 minutes, depending on heat intensity. Adjust liquid toward the end if needed.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

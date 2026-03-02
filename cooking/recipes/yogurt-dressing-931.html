@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Yogurt Dressing <br>Joghurtsalatsauce <br>Sauce a salade au yogourt <br>Rezept Nr. : 494 <br>Kategorie : Salads <br>Koch : Patrick Diethelm<br>Datum : 16.02.2004 <br>Warenkosten: CHF 5.26/ EUR 3.33 <br><br><br>Zutaten fOr 1.000 Liter zu 100% (Nettomenge) <br>750 g Yogurt, plain <br><br>60 g Herbs, fresh (dill, fennel leaves and tarragon)<br>10 g Salt<br>1 g White pepper ground<br>100 ml Orange juice <br>50 ml Lemon juice<br>1 x Seasoning (salt) <br><br>- WASH AND CHOP HERBS SUCH AS PARSLEY, CHIVES, AND CHERVIL. <br>- COMBINE ALL INGREDIENTS INTO A SMOOTH DRESSING.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Yogurt Dressing <br>Joghurtsalatsauce <br>Sauce a salade au yogourt <br>Rezept Nr. : 494 <br>Kategorie : Salads <br>Koch : Patrick Diethelm<br>Datum : 16.02.2004 <br>Warenkosten: CHF 5.26/ EUR 3.33 <br><br><br>Zutaten fOr 1.000 Liter zu 100% (Nettomenge) <br>750 g Yogurt, plain <br><br>60 g Herbs, fresh (dill, fennel leaves and tarragon)<br>10 g Salt<br>1 g White pepper ground<br>100 ml Orange juice <br>50 ml Lemon juice<br>1 x Seasoning (salt) <br><br>- WASH AND CHOP HERBS SUCH AS PARSLEY, CHIVES, AND CHERVIL. <br>- COMBINE ALL INGREDIENTS INTO A SMOOTH DRESSING.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">YOGURT DRESSING | Recipe No. 494 | Chef: Patrick Diethelm (16.02.2004)<br><br>Yield: 1,000 ml | Cost: CHF 5.26 / EUR 3.33<br><br>INGREDIENTS:<br>750 g plain yogurt<br>60 g fresh herbs (dill, fennel leaves, tarragon)<br>10 g salt<br>1 g ground white pepper<br>100 ml orange juice<br>50 ml lemon juice<br><br>METHOD:<br>Wash and chop the fresh herbs finely. Combine all ingredients and whisk to a smooth dressing. Season with salt as needed.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

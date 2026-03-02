@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Вземат се обелките от аспержите и отрязаните долни краища, наричат ги “дървени” <br>варят се в подсолена вода с малко сок от лимон, захар и бучка масло.<br>След което се пасират и се оставят да изстинат.<br>Топи се масло в тенджера, добавя се брашно, което се пържи докато пожълтее, <br> Добавят се пасираните аспержи и водата, в която са вряли, като се бърка непрекъснато. <br>Добре трябва да кипне за да изчезне вкуса на брашното. <br>Във врящата  супа се добавя един жълтък със сметана.<br>Налива се в чаши като се гарнира с тънко нарязан пресен лук,  сметана, ивици от шунка или скариди.<br>Ако супата има горчив вкус се добавя портвайн, който е кипнат или просто бяло сладко вино</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Вземат се обелките от аспержите и отрязаните долни краища, наричат ги “дървени” <br>варят се в подсолена вода с малко сок от лимон, захар и бучка масло.<br>След което се пасират и се оставят да изстинат.<br>Топи се масло в тенджера, добавя се брашно, което се пържи докато пожълтее, <br> Добавят се пасираните аспержи и водата, в която са вряли, като се бърка непрекъснато. <br>Добре трябва да кипне за да изчезне вкуса на брашното. <br>Във врящата  супа се добавя един жълтък със сметана.<br>Налива се в чаши като се гарнира с тънко нарязан пресен лук,  сметана, ивици от шунка или скариди.<br>Ако супата има горчив вкус се добавя портвайн, който е кипнат или просто бяло сладко вино</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">ASPARAGUS CREAM SOUP<br><br>Use asparagus peelings and woody bottom ends. Boil in salted water with lemon juice, sugar, and butter until tender. Pass through sieve and cool.<br><br>In a pot, melt butter, add flour, and cook until pale golden. Whisk in passed asparagus and its cooking water, stirring constantly. Bring to full boil to eliminate flour taste.<br><br>Finish with 1 egg yolk whisked with sour cream, stirring in slowly.<br><br>Serve in bowls garnished with thinly sliced fresh onion, sour cream, and strips of ham or shrimp.<br><br>If soup tastes bitter, balance with port wine (boiled) or sweet white wine to taste.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">VITZNAU-LUCERNE SWITZERLAND<br>MILLE FEUILLE OF HOUSE SMOKED SALMON WITH HERB SAUCE<br>Yield: 6 -10 servings<br>	300 g	puff pastry<br>	450 g	smoked salmon diced 2x2mm<br>	50 g	sour cream<br>	30 g	fine chopped herbs<br>pepper mill<br>lemon juice, coriander mill<br>Garnish:<br>Sprigs of herbs Herb sauce</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">VITZNAU-LUCERNE SWITZERLAND<br>MILLE FEUILLE OF HOUSE SMOKED SALMON WITH HERB SAUCE<br>Yield: 6 -10 servings<br>	300 g	puff pastry<br>	450 g	smoked salmon diced 2x2mm<br>	50 g	sour cream<br>	30 g	fine chopped herbs<br>pepper mill<br>lemon juice, coriander mill<br>Garnish:<br>Sprigs of herbs Herb sauce</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">MILLE FEUILLE OF HOUSE SMOKED SALMON WITH HERB SAUCE<br>Vitznau-Lucerne, Switzerland | 6-10 servings<br><br>Ingredients:<br>300 g puff pastry<br>450 g smoked salmon, diced 2×2 mm<br>50 g sour cream<br>30 g fine chopped herbs<br>Fresh pepper, lemon juice, coriander<br><br>Garnish:<br>Herb sprigs, herb sauce<br><br>Method:<br>Bake puff pastry until golden and crisp. Layer with smoked salmon and sour cream mixture. Finish with chopped herbs, fresh pepper, and lemon juice. Garnish with herb sprigs and herb sauce.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

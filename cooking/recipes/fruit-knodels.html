@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Брашното се смесва с малко сол и заливаме със кипяшто мляко в което е стопено наслото. Бърка се. Добавя се яйцето. Да се получу еластично тесто. <br>Плодове - тестото се разточва със дебелина 3-4 см. И с енарязва на квдратчета. Или се образува цилиндър и се резат подходящи парченца и се овиват окло полодовете. <br>Варяат се в кипяща солена вода - 7 - 8 мин. Готови се мазат със масло.<br><br>50 гр. масло <br>1 - 2 жълтъка или 1 яйце<br>250 брашно<br>1/2 лт. Мляко<br>Плодове</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Брашното се смесва с малко сол и заливаме със кипяшто мляко в което е стопено наслото. Бърка се. Добавя се яйцето. Да се получу еластично тесто. <br>Плодове - тестото се разточва със дебелина 3-4 см. И с енарязва на квдратчета. Или се образува цилиндър и се резат подходящи парченца и се овиват окло полодовете. <br>Варяат се в кипяща солена вода - 7 - 8 мин. Готови се мазат със масло.<br><br>50 гр. масло <br>1 - 2 жълтъка или 1 яйце<br>250 брашно<br>1/2 лт. Мляко<br>Плодове</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Mix flour with a pinch of salt. Pour hot milk (in which butter has been melted) over the flour and stir well. Add egg yolks or whole egg and work to an elastic dough.<br><br>Shape: Roll dough to 3–4 cm thickness and cut into squares, or form into a cylinder and cut appropriate-sized pieces. Wrap each piece around fruit.<br><br>Cook: Poach in boiling salted water for 7–8 minutes until they float and are cooked through. Finish by tossing with melted butter.<br><br>Ingredients: 50g butter, 1–2 egg yolks or 1 whole egg, 250g flour, 500ml milk, fruit.</div>
+          
         </section>
         
 
@@ -97,5 +106,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Chateau Potatoes<br>Schlosskartoffeln Pommes chateau<br><br>Recipe #	: 621<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 0.22 / EUR 0.14<br>Ingredients for 3 servings at 100% (Net quantity)<br><br>500 g	Potatoes- Type A Charllote<br><br><br>15 g	Salt<br>30 ml Peanut oil<br>1 x	Seasoning (salt and pepper)<br>15 g	Butter<br>Wash and peel potatoes.<br>TURN INTO CHATEAU SIZE Blanch in salted water, drain, and spread out to cool quickly and to prevent further cooking.<br><br>- HEAT UP OVEN TO 210°C AND ADD ROTISSOIRE FOR 10 MIN. - ADD OIL AND POTATOES<br>- CONTINUE ROASTING IN THE OVEN AT 200°C, TURNING THE POTATOES UNTIL GOLDEN BROWN AND COOKED.<br>- BE CAREFUL NOT TO BREAK POTATOES.<br>- POUR OFF EXCESS OIL, ADD BUTTER, AND CONTINUE ROASTING BRIEFLY, TURNING LIGHTLY IN THE BUTTER TO COAT EVENLY.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Chateau Potatoes<br>Schlosskartoffeln Pommes chateau<br><br>Recipe #	: 621<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 0.22 / EUR 0.14<br>Ingredients for 3 servings at 100% (Net quantity)<br><br>500 g	Potatoes- Type A Charllote<br><br><br>15 g	Salt<br>30 ml Peanut oil<br>1 x	Seasoning (salt and pepper)<br>15 g	Butter<br>Wash and peel potatoes.<br>TURN INTO CHATEAU SIZE Blanch in salted water, drain, and spread out to cool quickly and to prevent further cooking.<br><br>- HEAT UP OVEN TO 210°C AND ADD ROTISSOIRE FOR 10 MIN. - ADD OIL AND POTATOES<br>- CONTINUE ROASTING IN THE OVEN AT 200°C, TURNING THE POTATOES UNTIL GOLDEN BROWN AND COOKED.<br>- BE CAREFUL NOT TO BREAK POTATOES.<br>- POUR OFF EXCESS OIL, ADD BUTTER, AND CONTINUE ROASTING BRIEFLY, TURNING LIGHTLY IN THE BUTTER TO COAT EVENLY.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHATEAU POTATOES<br>Chef: Patrick Diethelm | Recipe #621 | Cost: CHF 0.22<br><br>Ingredients (3 servings):<br>500 g Charlotte potatoes<br>30 ml peanut oil<br>15 g butter<br>15 g salt<br>Salt and pepper to season<br><br>Method:<br>Wash and peel potatoes. Turn into château size (turned potatoes, approximately 5 cm).<br><br>Blanch in salted water until nearly cooked. Drain and spread on sheet pan to cool quickly and stop cooking.<br><br>Heat oven to 210°C. Add oil to roasting pan and heat 10 minutes until smoking.<br><br>Add potatoes and roast in oven at 200°C, turning occasionally until golden brown and fully cooked. Handle carefully to avoid breaking.<br><br>Pour off excess oil. Add butter and continue roasting briefly, turning potatoes gently to coat evenly with butter.<br><br>Season with salt and pepper. Serve immediately.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

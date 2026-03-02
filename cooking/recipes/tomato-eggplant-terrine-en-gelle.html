@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Yield: 8 servings<br>	1	eggplant, 20 cm long<br>	10	tasty, ripe tomatoes 40 g sugar<br>20 g fine chopped garlic<br>10 g fine chopped rosemary<br>chicken broth in gastro norm<br>raspberry vinegar bottle balsamic vinegar bottle<br>	3	sheet gelatine for 110 gram of bouillon salt, pepper mill<br>Terrine form 30cm x 5cm, 5 dl volume Olive oil for vinaigгette<br>Garnish:<br>green and black olives basil<br>seasonal salad<br>Preparation:<br>Slice eggplant 3 mm thick lenthwise on meat slicer and deep fry until light golden (soft, not crispy)<br>Peel tomatoes, cut into quarter and remove seeds with paring knife<br>Prepare remaining rise en place!!<br>See extra handout and practical details in lesson.<br>non-stick pan — 2<br>add sugar with crushed garlic / chopped rosemary to star melting<br>add tomatoes<br>deglaze with raspberry vinegar<br>deglaze with balsamic vinegar<br>add beef consommй cover and braise quickly strain the juice — keep put tomatoes on a tray<br>reduce the juice — base for vinaigrette</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Yield: 8 servings<br>	1	eggplant, 20 cm long<br>	10	tasty, ripe tomatoes 40 g sugar<br>20 g fine chopped garlic<br>10 g fine chopped rosemary<br>chicken broth in gastro norm<br>raspberry vinegar bottle balsamic vinegar bottle<br>	3	sheet gelatine for 110 gram of bouillon salt, pepper mill<br>Terrine form 30cm x 5cm, 5 dl volume Olive oil for vinaigгette<br>Garnish:<br>green and black olives basil<br>seasonal salad<br>Preparation:<br>Slice eggplant 3 mm thick lenthwise on meat slicer and deep fry until light golden (soft, not crispy)<br>Peel tomatoes, cut into quarter and remove seeds with paring knife<br>Prepare remaining rise en place!!<br>See extra handout and practical details in lesson.<br>non-stick pan — 2<br>add sugar with crushed garlic / chopped rosemary to star melting<br>add tomatoes<br>deglaze with raspberry vinegar<br>deglaze with balsamic vinegar<br>add beef consommй cover and braise quickly strain the juice — keep put tomatoes on a tray<br>reduce the juice — base for vinaigrette</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">TOMATO EGGPLANT TERRINE EN GELLE<br><br>Yield: 8 servings<br><br>Ingredients:<br>1 eggplant (20 cm long)<br>10 ripe, tasty tomatoes<br>40 g sugar<br>20 g finely chopped garlic<br>10 g finely chopped rosemary<br>Chicken broth<br>Raspberry vinegar<br>Balsamic vinegar<br>3 sheets gelatine (for 110 g bouillon)<br>Salt and pepper<br>Olive oil<br>Green and black olives, basil, seasonal salad for garnish<br><br>Method:<br>Slice eggplant lengthwise into 3 mm slices on meat slicer. Deep fry until light golden (soft, not crispy). Peel tomatoes, quarter them, and remove seeds with paring knife. In non-stick pan, combine sugar with crushed garlic and chopped rosemary, allow to melt. Add tomatoes. Deglaze with raspberry vinegar, then balsamic vinegar. Add beef consommé, cover, and braise quickly. Strain juice and reserve; place tomatoes on a tray. Reduce juice for vinaigrette base. Layer eggplant and tomato mixture in terrine form (30 cm × 5 cm, 5 dl volume). Bloomed gelatine dissolved in reduced juice binds the terrine. Set for at least 4 hours. Serve with olives, basil, and seasonal salad.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

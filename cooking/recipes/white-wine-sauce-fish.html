@@ -106,8 +106,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- reduce fish stock to glaze<br>- add glaze and cream to fish veloute, boil for 5 minutes<br>- strain through cheesecloth<br>- season with salt, cayenne and lemon juice</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- reduce fish stock to glaze<br>- add glaze and cream to fish veloute, boil for 5 minutes<br>- strain through cheesecloth<br>- season with salt, cayenne and lemon juice</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">WHITE WINE SAUCE (FISH)<br>Station: Saucier | DCT<br><br>METHOD<br>Reduce fish stock to glaze. Add glaze and cream to fish velouté and boil for 5 minutes. Strain through cheesecloth. Season with salt, cayenne, and lemon juice.</div>
+          
         </section>
         
 
@@ -147,5 +156,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

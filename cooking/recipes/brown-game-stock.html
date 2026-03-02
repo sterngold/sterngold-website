@@ -130,8 +130,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- roast bones and trimmings slowly in rotisoir at 200 C<br>- add mirepoix and continue roasting <br>- pour off excess fat<br>- add tomato paste and carefully continue roasting<br>- add a small amount of water two or three times and boil down each time, until almost evaporated<br>- if bones are roasted in oven transfer bones and pan drippings to a suitable marmite<br>- add remaining water and wine<br>- bring to boil add slat and skim<br>- simmer for 3 to 4 hours<br>- add sachet bag for final hour<br>- carefully strain through double layer of cheesecloth</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- roast bones and trimmings slowly in rotisoir at 200 C<br>- add mirepoix and continue roasting <br>- pour off excess fat<br>- add tomato paste and carefully continue roasting<br>- add a small amount of water two or three times and boil down each time, until almost evaporated<br>- if bones are roasted in oven transfer bones and pan drippings to a suitable marmite<br>- add remaining water and wine<br>- bring to boil add slat and skim<br>- simmer for 3 to 4 hours<br>- add sachet bag for final hour<br>- carefully strain through double layer of cheesecloth</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Roast bones and trimmings slowly in rotisserie at 200°C. Add mirepoix and continue roasting. Pour off excess fat. Add tomato paste and carefully continue roasting. Add small amounts of water two or three times, boiling down each time until almost evaporated. Transfer bones and pan drippings to a suitable marmite. Add remaining water and wine. Bring to boil, add salt, and skim. Simmer for 3 to 4 hours. Add sachet bag for the final hour. Carefully strain through double layer of cheesecloth.</div>
+          
         </section>
         
 
@@ -170,5 +179,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

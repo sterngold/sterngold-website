@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">U<br>`~ '<br>a$	r	Sç $$i<br><br><br><br><br><br><br><br><br><br><br><br><br>Recipe <br>Veal slice Zurich Style / Kalbsgeschnetzeltes Zurcher Art<br>'Address<br>DCT - European Culinary Center<br><br><br>Seestrasse<br>ßf0..<br><br>CH - 6354 Vitznau - Lucerne<br><br><br>Switzerland<br><br><br>www.culinaryschool.ch<br><br><br>Tel. 0041 - 41 - 399 00 00<br>эΡ<br>Chef<br>Swiss Chef Instructor Patrick Diethelm`<br><br>Yield<br>3 servings<br><br>infos<br><br>Measure<br>ingredients<br><br>20 g<br>Clarified butter<br><br>250 g<br>Veal, top round (emincé)<br><br>20 g<br>120 g<br>Fine chopped shallots<br>Button mushrooms<br><br><br>Salt, pepper mill<br><br>60 g<br>100 <br>White wine<br>Brown veal stock, lié<br><br>100 g<br>White instant roux<br><br>Cream<br><br><br>Chopped parsley and lemon juice<br><br>80 g<br>Whipped cream<br><br>Preparation<br><br>- Slice the veal round top into emincé<br><br>- Cleaned button mushrooms cut into emincé<br><br>- Heat a medium size Sauteuse and add clarified butter<br><br>- Brown first the meat on all sides and remove quickly into hэir sieve.<br><br>- Season with salt and pepper mill and keep warm	~— .<br><br>- Add fresh butter and sauté the button mushrooms, add the<br><br>chopped shallots<br><br>- Deglaze with the white wine and reduce to syrupy consistency<br><br>- Add the thickened brown veal stock, reduce again, add cream<br><br>and reduce to desired consistency or thicken with little white instant roux.<br><br>- Add the meat and heat again (do not boil)<br><br>- Season to taste with salt, pepper mill and lemon juice<br><br>- Fold in the whipped cream<br><br>- Sprinkle with fresh chopped parsley and serve immediately<br><br>Served with golden brown Swiss Rösti as starch dish</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">U<br>`~ '<br>a$	r	Sç $$i<br><br><br><br><br><br><br><br><br><br><br><br><br>Recipe <br>Veal slice Zurich Style / Kalbsgeschnetzeltes Zurcher Art<br>'Address<br>DCT - European Culinary Center<br><br><br>Seestrasse<br>ßf0..<br><br>CH - 6354 Vitznau - Lucerne<br><br><br>Switzerland<br><br><br>www.culinaryschool.ch<br><br><br>Tel. 0041 - 41 - 399 00 00<br>эΡ<br>Chef<br>Swiss Chef Instructor Patrick Diethelm`<br><br>Yield<br>3 servings<br><br>infos<br><br>Measure<br>ingredients<br><br>20 g<br>Clarified butter<br><br>250 g<br>Veal, top round (emincé)<br><br>20 g<br>120 g<br>Fine chopped shallots<br>Button mushrooms<br><br><br>Salt, pepper mill<br><br>60 g<br>100 <br>White wine<br>Brown veal stock, lié<br><br>100 g<br>White instant roux<br><br>Cream<br><br><br>Chopped parsley and lemon juice<br><br>80 g<br>Whipped cream<br><br>Preparation<br><br>- Slice the veal round top into emincé<br><br>- Cleaned button mushrooms cut into emincé<br><br>- Heat a medium size Sauteuse and add clarified butter<br><br>- Brown first the meat on all sides and remove quickly into hэir sieve.<br><br>- Season with salt and pepper mill and keep warm	~— .<br><br>- Add fresh butter and sauté the button mushrooms, add the<br><br>chopped shallots<br><br>- Deglaze with the white wine and reduce to syrupy consistency<br><br>- Add the thickened brown veal stock, reduce again, add cream<br><br>and reduce to desired consistency or thicken with little white instant roux.<br><br>- Add the meat and heat again (do not boil)<br><br>- Season to taste with salt, pepper mill and lemon juice<br><br>- Fold in the whipped cream<br><br>- Sprinkle with fresh chopped parsley and serve immediately<br><br>Served with golden brown Swiss Rösti as starch dish</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">VEAL SLICE ZURICH STYLE (Kalbsgeschnetzeltes Zurcher Art) | Chef Patrick Diethelm | DCT, European Culinary Center | Yield: 3 servings<br><br>Ingredients:<br>20 g clarified butter<br>250 g veal top round, sliced thin (emincé)<br>20 g shallots, finely chopped<br>120 g button mushrooms<br>60 g white wine<br>100 g brown veal stock, thickened<br>100 g white instant roux (as needed)<br>80 g whipped cream<br>Salt and pepper mill<br>Fresh chopped parsley and lemon juice<br>Additional butter for sautéing<br><br>Method:<br>1. Slice veal and clean mushrooms, cutting both into emincé.<br>2. Heat a medium sauteuse, add clarified butter. Brown meat on all sides and remove to a sieve; season with salt and pepper, keep warm.<br>3. Add fresh butter to pan, sauté mushrooms with shallots.<br>4. Deglaze with white wine, reduce to syrupy consistency.<br>5. Add thickened brown veal stock, reduce again. Add cream and reduce to desired consistency; thicken further with white instant roux if needed.<br>6. Return meat to pan and reheat gently without boiling.<br>7. Season to taste with salt, pepper mill, and lemon juice. Fold in whipped cream.<br>8. Sprinkle with fresh parsley and serve immediately with golden brown Swiss Rösti.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

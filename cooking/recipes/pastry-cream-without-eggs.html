@@ -98,8 +98,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- split vanilla bean, scrape out marrow and add bean and marrow to a 400 ml milk<br>- add sugar<br>- bring milk to boil and remove vanilla bean <br>- mix vanilla cream powder with remaining 100 ml milk and add to hot milk<br>- bring to a boil, while stirring<br>- chill cream in ice water, or pour into shallow pan to cool</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- split vanilla bean, scrape out marrow and add bean and marrow to a 400 ml milk<br>- add sugar<br>- bring milk to boil and remove vanilla bean <br>- mix vanilla cream powder with remaining 100 ml milk and add to hot milk<br>- bring to a boil, while stirring<br>- chill cream in ice water, or pour into shallow pan to cool</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PASTRY CREAM (WITHOUT EGGS) (DCT | Pâtisserie)<br><br>Split vanilla bean lengthwise, scrape out marrow, and add both bean and marrow to 400 ml milk.<br><br>Add sugar and bring milk to a boil. Remove vanilla bean.<br><br>Whisk vanilla cream powder with remaining 100 ml cold milk to form smooth paste. Slowly add to hot milk while stirring.<br><br>Return to a boil, stirring constantly. Chill in ice water bath or pour into shallow pan to cool.</div>
+          
         </section>
         
 
@@ -133,5 +142,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

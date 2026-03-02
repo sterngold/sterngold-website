@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Italian Raspberry Ricotta ice cream<br>Him beer Ricottaglace<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	:17112005<br><br>European Gourmet Cuisine<br>Cost of goods 	: CHF 0.64 / EUR 0,40 <br>Ingredients for 10 servings at 100% (Net quantity)<br>400<br>g<br>Raspberrys frozen<br>150<br>g<br>Ricotta cheese<br>5<br>g<br>Lime zest<br>40<br>g<br>Vanilla sugar<br>20<br>g<br>Glucose syrup<br>10<br>g<br>Egg whites<br>40<br>g<br>Lime juice<br><br><br>#2<br>20<br>g<br>Vanilla sugar<br>30<br>ml<br>Water<br>6<br>pc<br>Basil leaves, fresh<br><br>#1<br>- Raspberrys and Ricotta with vanilla sugar, Glucose and lime zest and 1/2 of lime juice and past,egg whites into bar blender.<br>- Fill into beaker and freeze over night<br>#2<br>Sauce;<br>- Remaining lime juice and 30 ml Water and 20 g Sugar bring to a boil, chill and add basil chiffonade into mixture<br>- pacotise ice cream twice and serve with basil lime sauce</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Italian Raspberry Ricotta ice cream<br>Him beer Ricottaglace<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	:17112005<br><br>European Gourmet Cuisine<br>Cost of goods 	: CHF 0.64 / EUR 0,40 <br>Ingredients for 10 servings at 100% (Net quantity)<br>400<br>g<br>Raspberrys frozen<br>150<br>g<br>Ricotta cheese<br>5<br>g<br>Lime zest<br>40<br>g<br>Vanilla sugar<br>20<br>g<br>Glucose syrup<br>10<br>g<br>Egg whites<br>40<br>g<br>Lime juice<br><br><br>#2<br>20<br>g<br>Vanilla sugar<br>30<br>ml<br>Water<br>6<br>pc<br>Basil leaves, fresh<br><br>#1<br>- Raspberrys and Ricotta with vanilla sugar, Glucose and lime zest and 1/2 of lime juice and past,egg whites into bar blender.<br>- Fill into beaker and freeze over night<br>#2<br>Sauce;<br>- Remaining lime juice and 30 ml Water and 20 g Sugar bring to a boil, chill and add basil chiffonade into mixture<br>- pacotise ice cream twice and serve with basil lime sauce</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">ITALIAN RASPBERRY RICOTTA ICE CREAM<br>Recipe #609 | Chef Patrick Diethelm | 17.11.2005<br>Yield: 10 servings | Cost: CHF 0.64<br><br>INGREDIENTS<br>400 g Frozen raspberries<br>150 g Ricotta cheese<br>5 g Lime zest<br>40 g Vanilla sugar<br>20 g Glucose syrup<br>10 g Egg whites<br>40 g Lime juice<br>20 g Vanilla sugar (for sauce)<br>30 ml Water (for sauce)<br>6 Basil leaves, fresh<br><br>METHOD<br>Combine raspberries, ricotta, vanilla sugar, glucose syrup, lime zest, half the lime juice, and egg whites in a bar blender. Mix until smooth. Transfer to a container and freeze overnight.<br><br>Prepare basil-lime sauce: Bring remaining lime juice, water, and 20g vanilla sugar to a boil. Chill completely, then add basil chiffonade.<br><br>Pacotise frozen ice cream twice using a Pacojet. Serve with basil-lime sauce.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">VITZNAU-LUCERNE SWITZERLAND<br>BAKED DEER LOIN IN POPPY SEED DOUGH<br>Yield: 4 - 6 servings<br>	500 g	deer loin, center piece, trimmed salt, pepper<br>	25 g	clarified butter<br>Filling: <br>	10 g	dry tomatoes, jardiniere<br>	150 g	chestnuts, cooked in salt water<br>	150 g	button mushroom duxelles [dry)<br>	30 g	cream<br>	80g	fresh mie de pain<br>1	sprig of thyme fine chopped<br>	15 g	Calvados<br>salt, pepper, coriander mill 	30 g	egg yolk<br>	6 - 8	blanched swiss chard or head lettuce leaves puff pastry<br>poppy seed<br>Mise en place:<br>Roll out the puff pastry trimmings with poppy seeds 1.5 - 2 mm thick Marinate the dry tomatoes with the Calvados.<br>Chop the cold chestnuts roughly and add all the rest of the filling ingredients. Season to taste with salt, pepper<br><br><br>Preparation:<br>Pan fry deer loin quickly in clarified butter and season.<br>Place on wire rack and let cool.<br>Cut prepared puff pastry into a rectangle, large enough to cover the loin. Brush dough with some egg yolk mixture.<br>Place the dry head lettuce leaves without mid ribs and spread the filling on it.<br>Add the cold loin in middle and roll in the lettuce leaves.<br>Place the loin now carefully in center of puff pastry and wrap completely. <br>Place seam side down on baking sheet.<br>Decorate the top with dough trimmings.<br>Poke small holes in pastry to let steam escape.<br>Refrigerate package for 1 hour<br>Brush with egg wash mixture<br>Bake at 220° C for 20 - 25 min. with parchment paper on wire rack.<br>Check inside temperature 55 C<br>Let rest for 5 min <br><br>P. Diethelm 05 - EGC</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">VITZNAU-LUCERNE SWITZERLAND<br>BAKED DEER LOIN IN POPPY SEED DOUGH<br>Yield: 4 - 6 servings<br>	500 g	deer loin, center piece, trimmed salt, pepper<br>	25 g	clarified butter<br>Filling: <br>	10 g	dry tomatoes, jardiniere<br>	150 g	chestnuts, cooked in salt water<br>	150 g	button mushroom duxelles [dry)<br>	30 g	cream<br>	80g	fresh mie de pain<br>1	sprig of thyme fine chopped<br>	15 g	Calvados<br>salt, pepper, coriander mill 	30 g	egg yolk<br>	6 - 8	blanched swiss chard or head lettuce leaves puff pastry<br>poppy seed<br>Mise en place:<br>Roll out the puff pastry trimmings with poppy seeds 1.5 - 2 mm thick Marinate the dry tomatoes with the Calvados.<br>Chop the cold chestnuts roughly and add all the rest of the filling ingredients. Season to taste with salt, pepper<br><br><br>Preparation:<br>Pan fry deer loin quickly in clarified butter and season.<br>Place on wire rack and let cool.<br>Cut prepared puff pastry into a rectangle, large enough to cover the loin. Brush dough with some egg yolk mixture.<br>Place the dry head lettuce leaves without mid ribs and spread the filling on it.<br>Add the cold loin in middle and roll in the lettuce leaves.<br>Place the loin now carefully in center of puff pastry and wrap completely. <br>Place seam side down on baking sheet.<br>Decorate the top with dough trimmings.<br>Poke small holes in pastry to let steam escape.<br>Refrigerate package for 1 hour<br>Brush with egg wash mixture<br>Bake at 220° C for 20 - 25 min. with parchment paper on wire rack.<br>Check inside temperature 55 C<br>Let rest for 5 min <br><br>P. Diethelm 05 - EGC</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">BAKED DEER LOIN IN POPPY SEED DOUGH<br>Chef: P. Diethelm | Yield: 4–6 servings<br><br>INGREDIENTS<br>500 g Deer loin, center piece, trimmed<br>25 g Clarified butter<br>10 g Dry tomatoes, jardinière<br>150 g Chestnuts, cooked in salt water<br>150 g Button mushroom duxelles, dry<br>30 g Cream<br>80 g Fresh mie de pain<br>1 sprig Fresh thyme, finely chopped<br>15 g Calvados<br>30 g Egg yolk<br>6–8 Blanched Swiss chard or head lettuce leaves<br>Puff pastry trimmings<br>Poppy seeds<br>Salt, pepper, coriander to taste<br><br>MISE EN PLACE<br>Roll puff pastry trimmings to 1.5–2 mm thick and coat with poppy seeds. Marinate dry tomatoes in Calvados. Roughly chop cold chestnuts and combine with remaining filling ingredients; season to taste.<br><br>METHOD<br>Pan-fry deer loin quickly in clarified butter; season. Cool on wire rack.<br><br>Cut puff pastry into a rectangle large enough to cover loin. Brush with egg yolk mixture. Layer lettuce leaves (without mid ribs) and spread filling on top. Place cooled loin in center and roll in lettuce. Transfer to center of pastry rectangle and wrap completely. Place seam-side down on baking sheet and decorate with pastry trimmings. Poke steam vents in surface.<br><br>Refrigerate 1 hour. Brush with egg wash. Bake at 220°C for 20–25 minutes on parchment-lined wire rack. Check internal temperature reaches 55°C. Rest 5 minutes before service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

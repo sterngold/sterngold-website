@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- Fijngeraspte schil van 2 citronen, 3 limoene, 2 grapefruits en 3 sinasappels - dit mengsel op de zalm smeren, <br>- 1 kruidnagel<br>- 2 eetlepels koriander<br>- 1 eetlepel suiker<br>- 1 eetlepel anijszaad<br>- 1 eetleepl zwarte peper<br>- halve eetlepel chinese peper<br>- zeezout<br>- dit mengsel in klein molentje fijn malen<br>- alles over de zalm strooien en de zalm 24 uur onder druk wegzeten in de koeling</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- Fijngeraspte schil van 2 citronen, 3 limoene, 2 grapefruits en 3 sinasappels - dit mengsel op de zalm smeren, <br>- 1 kruidnagel<br>- 2 eetlepels koriander<br>- 1 eetlepel suiker<br>- 1 eetlepel anijszaad<br>- 1 eetleepl zwarte peper<br>- halve eetlepel chinese peper<br>- zeezout<br>- dit mengsel in klein molentje fijn malen<br>- alles over de zalm strooien en de zalm 24 uur onder druk wegzeten in de koeling</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Finely zest 2 lemons, 3 limes, 2 grapefruits, and 3 oranges. Spread this zest mixture over the salmon.<br><br>In a spice grinder, finely mill: 1 clove, 2 tablespoons coriander seed, 1 tablespoon sugar, 1 tablespoon aniseed, 1 tablespoon black pepper, 1/2 tablespoon Sichuan pepper, and sea salt to taste.<br><br>Evenly distribute the spice mixture over the salmon. Place under press in the cooler for 24 hours.</div>
+          
         </section>
         
 
@@ -97,5 +106,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

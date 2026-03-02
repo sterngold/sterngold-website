@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Black olives - one can - 1.8 killo <br>Pijn kerne with garlic cloves - sautee in black pan - mix alone (so mixture not to get white)<br>Cappers - two big t. spoons<br>Dry tomatoes - 200 g (use some of the oil)</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Black olives - one can - 1.8 killo <br>Pijn kerne with garlic cloves - sautee in black pan - mix alone (so mixture not to get white)<br>Cappers - two big t. spoons<br>Dry tomatoes - 200 g (use some of the oil)</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Pit and kernel black olives (1 can, 1.8 kg) with garlic cloves in a black pan without sautéing—mix alone to prevent the mixture from turning white. Add capers (2 large tablespoons) and dry tomatoes (200 g, using some of their oil). Combine until integrated.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

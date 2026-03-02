@@ -114,8 +114,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- Add the broken up goose liver for 1 hour into ice water<br>- Clean the liver and remove all the senew and blood parts<br>- spread the liver out and place on parchment papper<br>- mariante with all the ingrdients and place into vaccum bag <br>- vaccum pack and marinate for 1 hour<br>- poach in combi steamer at 65 C for 10 minutes in Bain Marie <br>- Center should not be higher than 42 C<br>- Place vacuum bag into ice water and refresh until cold<br><br>- Slice the clean truffel into lam de de truffle <br>- Take liver out of bag and place thin sliced truffles on it <br>(place on plasitc folio and spread out)<br>- Roll tightly up and form sausage<br>- wrap the roll into plasric foil and alufoil and chill for 1 day <br><br>- For servingunwrap from alu and lsice 5 mm thick<br>- Sprinkle with fleur de sle and fresh crushed pink pepper corn and serve with brioche</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- Add the broken up goose liver for 1 hour into ice water<br>- Clean the liver and remove all the senew and blood parts<br>- spread the liver out and place on parchment papper<br>- mariante with all the ingrdients and place into vaccum bag <br>- vaccum pack and marinate for 1 hour<br>- poach in combi steamer at 65 C for 10 minutes in Bain Marie <br>- Center should not be higher than 42 C<br>- Place vacuum bag into ice water and refresh until cold<br><br>- Slice the clean truffel into lam de de truffle <br>- Take liver out of bag and place thin sliced truffles on it <br>(place on plasitc folio and spread out)<br>- Roll tightly up and form sausage<br>- wrap the roll into plasric foil and alufoil and chill for 1 day <br><br>- For servingunwrap from alu and lsice 5 mm thick<br>- Sprinkle with fleur de sle and fresh crushed pink pepper corn and serve with brioche</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Soak broken goose liver in ice water for 1 hour. Clean liver thoroughly, removing all sinew and blood. Spread liver on parchment paper. Marinate with all ingredients, place in vacuum bag, and seal. Marinate for 1 hour. Poach in combi steamer at 65°C for 10 minutes in bain-marie, ensuring center does not exceed 42°C. Chill in ice water until cold.<br><br>Slice truffle into thin sheets. Remove liver from bag and layer thin truffle slices over it (on plastic film). Roll tightly into a sausage shape. Wrap in plastic foil and aluminum foil, chill for 1 day.<br><br>For service: Unwrap from aluminum foil and slice 5 mm thick. Sprinkle with fleur de sel and freshly crushed pink peppercorn. Serve with brioche.</div>
+          
         </section>
         
 
@@ -149,5 +158,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

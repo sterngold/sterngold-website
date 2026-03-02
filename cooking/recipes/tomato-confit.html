@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Tomato confit<br>Tomaten confit<br>Recipe #<br>Category	: ECA - Mediterranean cuisine<br>Chef	: Patrick Diethelm<br>Date	: 07.11.2005<br>Cost of goods	: CHF 0.24 / EUR 0.15 <br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br>500<br>g<br>Italian tomatoes<br>2<br>pc<br>Garlic cloves<br>2<br>pc<br>Thyme sprig, fresh<br>1<br>pc<br>Bay leaves<br>50<br>ml<br>Olive oil<br><br>- PEEL TOMATOES AND CUT IN HALF REMOVE ALL THE SEEDS AND PLACE INTO OVENPROOF DISH<br>- ADD ALL THE REMAINING INGREDIENTS ON THE TOMATOES AND PLACE FOR 1 HOUR INTO 80° C HOT OVEN<br>- SEASON WITH ROCK SALT</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Tomato confit<br>Tomaten confit<br>Recipe #<br>Category	: ECA - Mediterranean cuisine<br>Chef	: Patrick Diethelm<br>Date	: 07.11.2005<br>Cost of goods	: CHF 0.24 / EUR 0.15 <br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br>500<br>g<br>Italian tomatoes<br>2<br>pc<br>Garlic cloves<br>2<br>pc<br>Thyme sprig, fresh<br>1<br>pc<br>Bay leaves<br>50<br>ml<br>Olive oil<br><br>- PEEL TOMATOES AND CUT IN HALF REMOVE ALL THE SEEDS AND PLACE INTO OVENPROOF DISH<br>- ADD ALL THE REMAINING INGREDIENTS ON THE TOMATOES AND PLACE FOR 1 HOUR INTO 80° C HOT OVEN<br>- SEASON WITH ROCK SALT</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">TOMATO CONFIT<br><br>Chef: Patrick Diethelm | Date: 07.11.2005<br>Yield: 10 servings<br><br>Ingredients:<br>500 g Italian tomatoes<br>2 garlic cloves<br>2 sprigs fresh thyme<br>1 bay leaf<br>50 ml olive oil<br>Rock salt<br><br>Method:<br>Peel tomatoes and halve them. Remove all seeds and place into an ovenproof dish. Add garlic cloves, thyme, and bay leaf directly onto the tomatoes. Pour olive oil over. Place in a 80°C oven for 1 hour. Season with rock salt to taste.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

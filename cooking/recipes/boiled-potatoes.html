@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Boiled Potatoes<br>Salzkartoffeln Pommes nature<br><br><br>Rezept Nr.	: 619<br>Kategorie	: Potato Dishes<br>Koch	: Patrick Diethelm<br>Datum	: 11.08.2005<br>Warenkosten	: CHF 0.09 / EUR 0.06<br><br>EUROPEAN CULINARY CENTER<br><br>Zutaten für 3 Personen zu 100% (Nettomenge) 405 g Potatoes<br>6 g Salt<br>Wash and peel potatoes. Cut into even-shaped, even-sized pieces.<br><br>- START COOKING POTATOES IN HOT SALTED WATER.<br>- BRING TO A BOIL AND SKIM. COVER, AND SIMMER UNTIL COOKED. - DRAIN CAREFULLY.<br>- brush with melted butter and serve<br>- Or use high compression steamer.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Boiled Potatoes<br>Salzkartoffeln Pommes nature<br><br><br>Rezept Nr.	: 619<br>Kategorie	: Potato Dishes<br>Koch	: Patrick Diethelm<br>Datum	: 11.08.2005<br>Warenkosten	: CHF 0.09 / EUR 0.06<br><br>EUROPEAN CULINARY CENTER<br><br>Zutaten für 3 Personen zu 100% (Nettomenge) 405 g Potatoes<br>6 g Salt<br>Wash and peel potatoes. Cut into even-shaped, even-sized pieces.<br><br>- START COOKING POTATOES IN HOT SALTED WATER.<br>- BRING TO A BOIL AND SKIM. COVER, AND SIMMER UNTIL COOKED. - DRAIN CAREFULLY.<br>- brush with melted butter and serve<br>- Or use high compression steamer.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">BOILED POTATOES<br><br>Source: DCT | Station: Entremétier<br>Chef: Patrick Diethelm | Date: 11.08.2005<br>Yield: 3 servings<br><br>Ingredients:<br>405 g potatoes<br>6 g salt<br>Melted butter for finishing<br><br>Method:<br>1. Wash and peel potatoes. Cut into even-shaped, even-sized pieces.<br>2. Start cooking potatoes in hot salted water.<br>3. Bring to a boil and skim. Cover and simmer until cooked through.<br>4. Drain carefully.<br>5. Brush with melted butter and serve.<br><br>Alternative: Use high-pressure steamer for cooking.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

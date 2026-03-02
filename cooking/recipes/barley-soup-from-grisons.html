@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Ingredients for 2.000 liters at 100% (Net quantity)<br>21	Butter<br><br>38<br><br>Onions<br>Peel and chop fine.<br>34<br><br>Carrot<br>Clean and cut into brunoise.<br>43<br>g<br>Leeks<br>Wash, trim and cut into brunoise.<br>19<br>g<br>Knob celery (celeriac)<br>Clean and cut into brunoise.<br>40<br>g<br>Air dried ham (Rohschinken) or<br>Cut brunoise<br><br><br>Bundnerfleisch<br><br>90<br>g<br>Pearl barley<br><br>16<br><br>White wheat flour<br><br>2<br>1<br>*White Veal Stock<br>Heat.<br>350<br>ml<br>Heavy cream (36%)<br><br>1<br>x<br>Seasoning (salt)<br><br>3<br>g<br>Chives, fresh<br>Cut into small slivers.<br><br>- SWEAT LEEKS, ONIONS, CARROTS, AND KNOB CELERY IN BUTTER. - ADD MEAT BRUNOISE<br>- ADD BARLEY AND CONTINUE COOKING.<br>- DUST WITH FLOUR.<br>- ADD HOT VEAL STOCK; SIMMER FOR ABOUT 20 MIN. UNTIL BARLEY IS TENDER. - ADD EXTRA STOCK, CREAM AND SEASON TO TASTE.<br>- SPRINKLE WITH CHIVES. -   - 40 to 1 hour</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Ingredients for 2.000 liters at 100% (Net quantity)<br>21	Butter<br><br>38<br><br>Onions<br>Peel and chop fine.<br>34<br><br>Carrot<br>Clean and cut into brunoise.<br>43<br>g<br>Leeks<br>Wash, trim and cut into brunoise.<br>19<br>g<br>Knob celery (celeriac)<br>Clean and cut into brunoise.<br>40<br>g<br>Air dried ham (Rohschinken) or<br>Cut brunoise<br><br><br>Bundnerfleisch<br><br>90<br>g<br>Pearl barley<br><br>16<br><br>White wheat flour<br><br>2<br>1<br>*White Veal Stock<br>Heat.<br>350<br>ml<br>Heavy cream (36%)<br><br>1<br>x<br>Seasoning (salt)<br><br>3<br>g<br>Chives, fresh<br>Cut into small slivers.<br><br>- SWEAT LEEKS, ONIONS, CARROTS, AND KNOB CELERY IN BUTTER. - ADD MEAT BRUNOISE<br>- ADD BARLEY AND CONTINUE COOKING.<br>- DUST WITH FLOUR.<br>- ADD HOT VEAL STOCK; SIMMER FOR ABOUT 20 MIN. UNTIL BARLEY IS TENDER. - ADD EXTRA STOCK, CREAM AND SEASON TO TASTE.<br>- SPRINKLE WITH CHIVES. -   - 40 to 1 hour</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">BARLEY SOUP FROM GRISONS<br>Station: Entremétier | Yield: 2,000 liters<br><br>INGREDIENTS<br>21 g Butter<br>38 g Onions<br>34 g Carrot<br>43 g Leeks<br>19 g Knob celery (celeriac)<br>40 g Air-dried ham (Rohschinken) or Bündnerfleisch<br>90 g Pearl barley<br>16 g White wheat flour<br>2 l White veal stock<br>350 ml Heavy cream (36%)<br>3 g Fresh chives<br>Salt to taste<br><br>METHOD<br>Peel and chop onions fine. Clean carrot, leeks, and knob celery; cut all into brunoise. Cut air-dried ham into brunoise. Chop fresh chives into small slivers. Heat veal stock.<br><br>Sweat leeks, onions, carrots, and knob celery in butter. Add ham brunoise and continue cooking. Add pearl barley and cook further. Dust with flour. Pour in hot veal stock and simmer approximately 20 minutes until barley is tender.<br><br>Add additional stock if needed and stir in cream. Season to taste with salt.<br><br>Garnish with fresh chives before service. Total cooking time 40 minutes to 1 hour.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

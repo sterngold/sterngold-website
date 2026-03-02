@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">2 кг. Кайма <br>глава бял лук <br>половин буркан печени чушки <br>смесват се и се пасират <br>половин бутилка Sweet Chile souse<br>Sambal olek  - 1 лъжица но не пълна <br>Ketjup media  - кетчуп със соев сос <br>3 - 4 сурови яйца <br>сол <br>пипер <br>червен пипер - 3 – 4 лъжици <br>кимион <br>Галета  - Paneermeel <br>3 – 4 филийки хляб – маха се кората и се накисва <br>Запичат се във фурна във тава намазана със масло</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">2 кг. Кайма <br>глава бял лук <br>половин буркан печени чушки <br>смесват се и се пасират <br>половин бутилка Sweet Chile souse<br>Sambal olek  - 1 лъжица но не пълна <br>Ketjup media  - кетчуп със соев сос <br>3 - 4 сурови яйца <br>сол <br>пипер <br>червен пипер - 3 – 4 лъжици <br>кимион <br>Галета  - Paneermeel <br>3 – 4 филийки хляб – маха се кората и се накисва <br>Запичат се във фурна във тава намазана със масло</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Combine 2 kg ground meat, 1 head diced white onion, and half a jar of roasted peppers. Mix and pass through food mill. Add half a bottle of sweet chili sauce, 1 tablespoon Sambal Olek (not heaping), Ketjup media (ketchup with soy sauce), 3–4 raw eggs, salt, pepper, 3–4 tablespoons red pepper, and cumin. Mix thoroughly. Soak 3–4 bread slices (crusts removed) in water, then incorporate into mixture along with breadcrumb panko. Form into balls and place on an oil-brushed sheet tray. Bake in oven until cooked through.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

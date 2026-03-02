@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">per portie<br>Gemalen Gember - 1 thee lepel<br>Soyasaus - 1 thee lep. <br>Asperges - 2<br>Glasnoodels - 15 gr. <br>Spaanse peper - 1/4<br>Wontons - 3<br>Bosui<br>Selderie/Koreander<br><br>Kipboullion - 75 gr. <br>Ui - 1 kg<br>Knof - 50 gr. <br>Gember - 50 gr <br>Sereh - 4<br>Soepkip 1</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">per portie<br>Gemalen Gember - 1 thee lepel<br>Soyasaus - 1 thee lep. <br>Asperges - 2<br>Glasnoodels - 15 gr. <br>Spaanse peper - 1/4<br>Wontons - 3<br>Bosui<br>Selderie/Koreander<br><br>Kipboullion - 75 gr. <br>Ui - 1 kg<br>Knof - 50 gr. <br>Gember - 50 gr <br>Sereh - 4<br>Soepkip 1</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Stock preparation: sweat sliced onions with ginger, garlic, and lemongrass. Add chicken bouillon and simmer. Strain.<br><br>Per portion: Bring stock to boil. Add ground ginger, soy sauce, and sliced asparagus. Add glass noodles and diced Spanish pepper. Place 3 wontons in bowl and pour over hot soup. Garnish with sliced scallion and cilantro or celery.<br><br>Stock ingredients:<br>- 1 kg onions<br>- 50 g ginger<br>- 50 g garlic<br>- 4 lemongrass stalks<br>- 1 chicken (for stock)</div>
+          
         </section>
         
 
@@ -97,5 +106,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

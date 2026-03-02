@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Sautéed Brussels Sprouts<br>SautierterRosenkohl Choux de Bruxelles sautés<br><br><br>Recipe ii	: 567<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	:07.11.2005<br>Cost of goods	: CHF 0.82 / EUR 0.52 <br><br><br>Ingredients for 4 servings at 100% (Net quantity) 400 g Brussel sprouts<br>3 g	Salt<br>24 g Butter<br>15 g	Shallots<br>30 g Air dried deer<br>1 x	Seasoning (salt and pepper)<br>25 g Pine seeds<br>Wash, trim. Boil in salted water (or steam) until almost done. Drain and refresh.<br><br><br>Peel and chop.<br><br>- REMOVE FIRST THE NICE LEAFS. BLANCH AND REFRESH	<br>- KEEP ON THE SIDE<br>- SAUTE SHALLOTS AND AIR DRIED DEER BRUNOISE IN BUTTER.<br>- ADD BRUSSELS SPROUTS . SEASON WITH SALT AND PEPPER AND SAUTÉ UNTIL HOT WITH ADDING A LITTLE VEGETABLE STOCK .<br>- ROAST THE PINE SEEDS AND SPRINKLE OVER THE BRUSSEL SPROUTS</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Sautéed Brussels Sprouts<br>SautierterRosenkohl Choux de Bruxelles sautés<br><br><br>Recipe ii	: 567<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	:07.11.2005<br>Cost of goods	: CHF 0.82 / EUR 0.52 <br><br><br>Ingredients for 4 servings at 100% (Net quantity) 400 g Brussel sprouts<br>3 g	Salt<br>24 g Butter<br>15 g	Shallots<br>30 g Air dried deer<br>1 x	Seasoning (salt and pepper)<br>25 g Pine seeds<br>Wash, trim. Boil in salted water (or steam) until almost done. Drain and refresh.<br><br><br>Peel and chop.<br><br>- REMOVE FIRST THE NICE LEAFS. BLANCH AND REFRESH	<br>- KEEP ON THE SIDE<br>- SAUTE SHALLOTS AND AIR DRIED DEER BRUNOISE IN BUTTER.<br>- ADD BRUSSELS SPROUTS . SEASON WITH SALT AND PEPPER AND SAUTÉ UNTIL HOT WITH ADDING A LITTLE VEGETABLE STOCK .<br>- ROAST THE PINE SEEDS AND SPRINKLE OVER THE BRUSSEL SPROUTS</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SAUTÉED BRUSSELS SPROUTS<br><br>Yield: 4 servings<br><br>Ingredients:<br>400 g Brussels sprouts<br>3 g salt<br>24 g butter<br>15 g shallots<br>30 g air-dried venison<br>25 g pine seeds<br>Salt and pepper to taste<br><br>Method:<br>Wash and trim Brussels sprouts. Boil in salted water (or steam) until almost done. Drain and refresh. Remove the nice outer leaves, blanch, refresh, and reserve.<br><br>Peel and chop shallots. Cut air-dried venison into brunoise.<br><br>Sauté shallots and venison brunoise in butter. Add Brussels sprouts, season with salt and pepper, and sauté until hot, adding a little vegetable stock as needed.<br><br>Toast pine seeds lightly and sprinkle over the Brussels sprouts before service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

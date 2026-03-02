@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Sour Cream Sauce with herbs<br>Sauerrahmsauce mit Kräutern Sauce LI la crème acidulée [sm/tone)<br><br>Recipe #	: 90<br>Category	ECA - Sauces Garde-manger<br>Chef	: Patrick Diethelm<br>Date	: 10.11.2005<br>Cost of goods	: CHF 5.92 / EUR 3.75 <br><br>ur6pean G ourtytet Cune<br>Ingredients for 0.200 liters at 100% (Net quantity)<br>150 ml Sour cream 35%<br>	30 g	Honey	Melt Honey over Bain marie<br>	10 g	Lemon juice *<br>	5 g	Dijon mustard<br>	3 g	Dill	Chopped<br>	1 g	Chervil fresh	Chopped<br>	5 g	Horseradish, fresh	Freshly grated<br>	5 g	Chives, fresh	Cut into fine slivers<br>	1 x	Seasoning (salt, cayenne pepper)<br>- Combine all the ingredients and season to taste - Serve chilled with fish terrine</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Sour Cream Sauce with herbs<br>Sauerrahmsauce mit Kräutern Sauce LI la crème acidulée [sm/tone)<br><br>Recipe #	: 90<br>Category	ECA - Sauces Garde-manger<br>Chef	: Patrick Diethelm<br>Date	: 10.11.2005<br>Cost of goods	: CHF 5.92 / EUR 3.75 <br><br>ur6pean G ourtytet Cune<br>Ingredients for 0.200 liters at 100% (Net quantity)<br>150 ml Sour cream 35%<br>	30 g	Honey	Melt Honey over Bain marie<br>	10 g	Lemon juice *<br>	5 g	Dijon mustard<br>	3 g	Dill	Chopped<br>	1 g	Chervil fresh	Chopped<br>	5 g	Horseradish, fresh	Freshly grated<br>	5 g	Chives, fresh	Cut into fine slivers<br>	1 x	Seasoning (salt, cayenne pepper)<br>- Combine all the ingredients and season to taste - Serve chilled with fish terrine</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SOUR CREAM SAUCE WITH HERBS | Chef: Patrick Diethelm | Yield: 200 ml<br><br>Ingredients:<br>150 ml sour cream (35%)<br>30 g honey<br>10 g lemon juice<br>5 g Dijon mustard<br>3 g dill, chopped<br>1 g chervil, chopped fresh<br>5 g horseradish, freshly grated<br>5 g chives, cut into fine slivers<br>Salt and cayenne pepper to taste<br><br>Method:<br>Melt honey over a bain-marie. Combine all ingredients and season to taste. Serve chilled with fish terrine.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

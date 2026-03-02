@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Italian mashed Potatoes with olive oil<br>Kartoffelpüree mit Olivenoel Pommes mousseline et huile d 'olive<br><br>Recipe #	: 609<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	: 15.12.2005<br>Cost of goods	: CHF 0.27 / EUR 0.17 <br><br>European Gourrrtet cuisine<br><br>Ingredients for 9 servings at 100% [Net quantity)<br><br>960 g	Potatoes Bintje<br>9 g	Salt<br>140 ml Olive oil<br>50 ml Heavy cream (36%)<br> 1 x	Nutmeg (pinch)<br><br><br>Wash, peel and cut into large chunks.<br><br>- STEAM POTATO CHUNKS<br>- WHILE POTATOES ARE STILL HOT, PASS THEM THROUGH A FOOD MILL. - BRING CREAM TO A BOIL ADD HOT CREAM TO POTATOES.<br>- ADD OLIVE OIL AND STIR TO MAKE A SMOOTH PURÉE.<br>SEASON TO TASTE WITH NUTMEG AND SALT AND WHITE GROUND PEPPER.<br>Note: The amount of Cream and Olive oil varies, depending on the type of potatoes used and the moisture content.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Italian mashed Potatoes with olive oil<br>Kartoffelpüree mit Olivenoel Pommes mousseline et huile d 'olive<br><br>Recipe #	: 609<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	: 15.12.2005<br>Cost of goods	: CHF 0.27 / EUR 0.17 <br><br>European Gourrrtet cuisine<br><br>Ingredients for 9 servings at 100% [Net quantity)<br><br>960 g	Potatoes Bintje<br>9 g	Salt<br>140 ml Olive oil<br>50 ml Heavy cream (36%)<br> 1 x	Nutmeg (pinch)<br><br><br>Wash, peel and cut into large chunks.<br><br>- STEAM POTATO CHUNKS<br>- WHILE POTATOES ARE STILL HOT, PASS THEM THROUGH A FOOD MILL. - BRING CREAM TO A BOIL ADD HOT CREAM TO POTATOES.<br>- ADD OLIVE OIL AND STIR TO MAKE A SMOOTH PURÉE.<br>SEASON TO TASTE WITH NUTMEG AND SALT AND WHITE GROUND PEPPER.<br>Note: The amount of Cream and Olive oil varies, depending on the type of potatoes used and the moisture content.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">ITALIAN MASHED POTATOES WITH OLIVE OIL<br>Recipe #609 | Chef Patrick Diethelm | 15.12.2005<br>Yield: 9 servings (100g each) | Cost: CHF 0.27<br><br>INGREDIENTS<br>960 g Bintje potatoes<br>9 g Salt<br>140 ml Olive oil<br>50 ml Heavy cream (36%)<br>1 pinch Nutmeg<br>White ground pepper to taste<br><br>METHOD<br>Wash, peel, and cut potatoes into large chunks. Steam until tender.<br><br>While potatoes are still hot, pass through a food mill. Bring cream to a boil and add to the hot potatoes immediately.<br><br>Stir in olive oil to create a smooth purée. Season to taste with nutmeg, salt, and white pepper.<br><br>NOTE: Adjust cream and olive oil ratios according to potato moisture content and variety.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

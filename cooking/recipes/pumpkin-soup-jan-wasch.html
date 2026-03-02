@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Тиквата се обелва, почиства и нарязва на големи парчета<br>Лимонена обвивка <br>Канеел – едно <br>Лаурил блад<br>Чесън<br>Лук<br>Бяло вино<br>Пилешки булъон<br>морска сол<br>Пипер</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Тиквата се обелва, почиства и нарязва на големи парчета<br>Лимонена обвивка <br>Канеел – едно <br>Лаурил блад<br>Чесън<br>Лук<br>Бяло вино<br>Пилешки булъон<br>морска сол<br>Пипер</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Peel, clean, and cut pumpkin into large chunks.<br><br>In a pot, combine pumpkin with lemon zest, one cinnamon stick, bay leaf, garlic, onion, white wine, and chicken stock. Season with sea salt and pepper.<br><br>Simmer until pumpkin is completely tender. Finish according to desired consistency and flavor balance.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Ricotta spinach Tortellini with Pesto<br>Torte/lini mit Pesto Tortellini al pesto<br><br>Recipe #	: 644<br>Category	: Pasta Dishes<br>Chef	: P.Diethelm<br>Date	: 03.11.2005<br>Cost of goods	: CHF 0.36 / EUR 0.23<br><br>Ingredients for 10 servings at 100% (Net quantity)<br>500 g *Ravioli Dough<br>	180 g	Spinach, fresh or frozen 200 g Ricotta cheese<br>50 g Parmesan cheese grated 50 g Egg yolk<br>	1 x	Seasoning (salt and pepper)<br>	1 x	Nutmeg [pinch)<br>For Filling<br>- Blanch spinach, drain in cold water, and drain again. Squeeze out most moisture and purée in food processor.<br>- Purée or strain ricotta cheese to obtain a smooth paste.<br>- Blend all filling ingredients.<br>- ROLL OUT RAVIOLI DOUGH ABOUT 1 MM THICK<br>- CUT SQUARES OR CIRCLES WITH CUTTER, ABOUT 30 TO 40 mm IN DIAMETTER.<br>- PUT SMALL AMOUNT OF FILLING IN CENTERS, USING A PASTRY BAG.<br>- MOISTEN THE CIRCLE EDGES WITH WATER AND FOLD OVER DOUGH TO MAKE HALF-MOONS. BE SURE EDGES ARE WELL SEALED.<br>- PULL TOGETHER THE POINTED COMERS OF THE HALF-MOONS AND PRESS THE TWO COMERS TOGETHER, OVERLAPPING THEM SLIGHTLY; PRESS TO SEAL THE RESULT	SHOULD BE A CLOSED CIRCLE, WITH FILLING ON ONE SIDE.<br>- PUT TORTELLINI ON A FLOURED BOARD UNTIL USE.<br>- SIMMER TORTELLINI FOR 2-3 MINUTES IN SALTED WATER, DRAIN AND SAVE SMALL AMOUNT OF BOILING WATER.<br>- TUSS PASTA IN OLIVE OIL OR LITTLE PESTO<br>- SERVE PESTO WITH TORTELLINI A PART.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Ricotta spinach Tortellini with Pesto<br>Torte/lini mit Pesto Tortellini al pesto<br><br>Recipe #	: 644<br>Category	: Pasta Dishes<br>Chef	: P.Diethelm<br>Date	: 03.11.2005<br>Cost of goods	: CHF 0.36 / EUR 0.23<br><br>Ingredients for 10 servings at 100% (Net quantity)<br>500 g *Ravioli Dough<br>	180 g	Spinach, fresh or frozen 200 g Ricotta cheese<br>50 g Parmesan cheese grated 50 g Egg yolk<br>	1 x	Seasoning (salt and pepper)<br>	1 x	Nutmeg [pinch)<br>For Filling<br>- Blanch spinach, drain in cold water, and drain again. Squeeze out most moisture and purée in food processor.<br>- Purée or strain ricotta cheese to obtain a smooth paste.<br>- Blend all filling ingredients.<br>- ROLL OUT RAVIOLI DOUGH ABOUT 1 MM THICK<br>- CUT SQUARES OR CIRCLES WITH CUTTER, ABOUT 30 TO 40 mm IN DIAMETTER.<br>- PUT SMALL AMOUNT OF FILLING IN CENTERS, USING A PASTRY BAG.<br>- MOISTEN THE CIRCLE EDGES WITH WATER AND FOLD OVER DOUGH TO MAKE HALF-MOONS. BE SURE EDGES ARE WELL SEALED.<br>- PULL TOGETHER THE POINTED COMERS OF THE HALF-MOONS AND PRESS THE TWO COMERS TOGETHER, OVERLAPPING THEM SLIGHTLY; PRESS TO SEAL THE RESULT	SHOULD BE A CLOSED CIRCLE, WITH FILLING ON ONE SIDE.<br>- PUT TORTELLINI ON A FLOURED BOARD UNTIL USE.<br>- SIMMER TORTELLINI FOR 2-3 MINUTES IN SALTED WATER, DRAIN AND SAVE SMALL AMOUNT OF BOILING WATER.<br>- TUSS PASTA IN OLIVE OIL OR LITTLE PESTO<br>- SERVE PESTO WITH TORTELLINI A PART.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Ricotta Spinach Tortellini with Pesto** | Recipe 644 | Chef P. Diethelm<br><br>**Ingredients (10 servings):**<br>- 500 g ravioli dough<br>- 180 g fresh or frozen spinach<br>- 200 g ricotta cheese<br>- 50 g parmesan cheese, grated<br>- 50 g egg yolk<br>- Salt, pepper, and nutmeg to taste<br><br>**Method:**<br>1. Blanch spinach, cool in cold water, and drain thoroughly. Squeeze out excess moisture and purée in food processor.<br>2. Purée or strain ricotta to obtain a smooth paste.<br>3. Blend spinach, ricotta, parmesan, egg yolk, and seasonings together.<br>4. Roll out ravioli dough to 1 mm thickness.<br>5. Cut squares or circles 30–40 mm in diameter using a cutter.<br>6. Place small amount of filling in center using a pastry bag.<br>7. Moisten circle edges with water and fold over dough to form half-moons, ensuring edges are well sealed.<br>8. Pull together the pointed corners of the half-moons and press them together, slightly overlapping to seal. Result should be a closed circle with filling on one side.<br>9. Place tortellini on a floured board until service.<br>10. Simmer tortellini in salted water for 2–3 minutes, drain, and reserve a small amount of cooking water.<br>11. Toss pasta in olive oil or a small amount of pesto.<br>12. Serve pesto on the side.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

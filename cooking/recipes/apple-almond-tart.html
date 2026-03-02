@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Swiss Apple Almond Tart<br>ZUrcher Pfarrhaustorte<br>Tourte aux pommes zurichoise<br><br><br>Rezept Nr.	: 744<br>Kategorie	: Desserts<br>Koch	: Patrick Diethelm<br>Datum	: 28.07.2005<br>Warenkosten	: CHF 5.19 / EUR 3.29<br><br>EUROPEAN CULINARY CENTER<br><br>Zutaten fur 1.00 Stuck zu 100% (Nettomenge)<br>150<br>g<br>Butter<br>100<br>g<br>Crystal sugar<br>0.5<br>st<br>Lemon peel, grated<br>80<br>g<br>Egg yolk<br>120<br>g<br>Egg whites<br>50<br>g<br>Crystal sugar<br>100<br>g<br>White wheat flour<br>5<br>g<br>Baking powder<br>125<br>g<br>Almonds, skinless grated fine<br>425<br>g<br>Apple<br>10<br>g<br>Crystal sugar<br>25<br>g<br>Apricot glaze<br>10<br>g<br>Powdered sugar<br><br>- Place two cake rings on a baking sheet lined with silicon paper or parchment paper. - Peel apples, cut in half, and remove core.<br>- Make incision on round side of apples, but do not cut all the way through. - Sift together cake flour and baking powder.<br>- Warm apricot glaze.<br>- CREAM BUTTER, 150 g SUGAR, AND GRATED LEMON PEEL. - ADD EGG YOLKS GRADUALLY.<br>- WHIP EGG WHITES AND 50 g SUGAR INTO STIFF PEAKS.<br>- ALTERNATELY FOLD EGG WHITES, FLOUR, AND ALMONDS INTO THE CREAMED BUTTER. - POUR BATTER INTO CAKE RINGS AND SPREAD TO EVEN OUT THE SURFACE. - DIP APPLES, ROUND SIDE DOWN, INTO 20 G SUGAR AND PLACE APPLES, SUGARED SIDE UP, ON TOP OF BATTER. PRESS IN LIGHTLY.<br>- BAKE AT 200°C. FOR APPROX. 25 MINUTES WITH OPEN STEAM ESCAPE<br>CHECK DONENESS WITH NEEDLE TO BE SURE CAKE IS BAKED ALL THE WAY THROUGH. - REMOVE FROM OVEN AND BRUSH, WHILE STILL HOT, WITH APRICOT GLAZE, - LET CAKES COOL ON WIRE RACK.<br>- DUST WITH POWDERED SUGAR BEFORE SERVING.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Swiss Apple Almond Tart<br>ZUrcher Pfarrhaustorte<br>Tourte aux pommes zurichoise<br><br><br>Rezept Nr.	: 744<br>Kategorie	: Desserts<br>Koch	: Patrick Diethelm<br>Datum	: 28.07.2005<br>Warenkosten	: CHF 5.19 / EUR 3.29<br><br>EUROPEAN CULINARY CENTER<br><br>Zutaten fur 1.00 Stuck zu 100% (Nettomenge)<br>150<br>g<br>Butter<br>100<br>g<br>Crystal sugar<br>0.5<br>st<br>Lemon peel, grated<br>80<br>g<br>Egg yolk<br>120<br>g<br>Egg whites<br>50<br>g<br>Crystal sugar<br>100<br>g<br>White wheat flour<br>5<br>g<br>Baking powder<br>125<br>g<br>Almonds, skinless grated fine<br>425<br>g<br>Apple<br>10<br>g<br>Crystal sugar<br>25<br>g<br>Apricot glaze<br>10<br>g<br>Powdered sugar<br><br>- Place two cake rings on a baking sheet lined with silicon paper or parchment paper. - Peel apples, cut in half, and remove core.<br>- Make incision on round side of apples, but do not cut all the way through. - Sift together cake flour and baking powder.<br>- Warm apricot glaze.<br>- CREAM BUTTER, 150 g SUGAR, AND GRATED LEMON PEEL. - ADD EGG YOLKS GRADUALLY.<br>- WHIP EGG WHITES AND 50 g SUGAR INTO STIFF PEAKS.<br>- ALTERNATELY FOLD EGG WHITES, FLOUR, AND ALMONDS INTO THE CREAMED BUTTER. - POUR BATTER INTO CAKE RINGS AND SPREAD TO EVEN OUT THE SURFACE. - DIP APPLES, ROUND SIDE DOWN, INTO 20 G SUGAR AND PLACE APPLES, SUGARED SIDE UP, ON TOP OF BATTER. PRESS IN LIGHTLY.<br>- BAKE AT 200°C. FOR APPROX. 25 MINUTES WITH OPEN STEAM ESCAPE<br>CHECK DONENESS WITH NEEDLE TO BE SURE CAKE IS BAKED ALL THE WAY THROUGH. - REMOVE FROM OVEN AND BRUSH, WHILE STILL HOT, WITH APRICOT GLAZE, - LET CAKES COOL ON WIRE RACK.<br>- DUST WITH POWDERED SUGAR BEFORE SERVING.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Zücher Pfarrhaustorte — Recipe 744 (Patrick Diethelm, DCT Pâtisserie, 2005)<br><br>Place two cake rings on silicon paper–lined baking sheet. Peel and halve apples; remove cores and make incisions on round sides without cutting through. Sift flour and baking powder together. Warm apricot glaze.<br><br>Cream 150 g butter, 100 g sugar, and grated lemon peel. Gradually add 80 g egg yolks. Whip 120 g egg whites with 50 g sugar to stiff peaks. Alternately fold egg whites, flour mixture, and 125 g grated almonds into creamed butter. Divide batter between cake rings and smooth surfaces.<br><br>Dip apple halves, round side down, in 10 g sugar. Place sugared side up on batter and press lightly. Bake at 200°C for approximately 25 minutes with open steam escape. Check doneness with needle. Remove from oven and brush hot cakes with warmed apricot glaze. Cool on wire rack. Dust with powdered sugar before service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

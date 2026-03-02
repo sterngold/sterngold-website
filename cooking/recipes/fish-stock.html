@@ -122,8 +122,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- sweat matignon in butter, add mushroom trimmings<br>- place fish bones on top and cover with cold water<br>- bring to a slow boil and skim<br>- add sachet bag, dry white wine and salt <br>- simmer for 20 minutes<br>- strain carefully through double layer of cheese cloth with china cap</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- sweat matignon in butter, add mushroom trimmings<br>- place fish bones on top and cover with cold water<br>- bring to a slow boil and skim<br>- add sachet bag, dry white wine and salt <br>- simmer for 20 minutes<br>- strain carefully through double layer of cheese cloth with china cap</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sweat matignon in butter, add mushroom trimmings. Place fish bones on top and cover with cold water. Bring to a slow boil and skim. Add sachet bag, dry white wine, and salt. Simmer for 20 minutes. Strain carefully through a double layer of cheesecloth lined with a china cap.</div>
+          
         </section>
         
 
@@ -157,5 +166,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

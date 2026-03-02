@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">гъбите измити и нарязана си пържат в зехтини 3-4 минути.<br>Добавят се аспержите и се пържи още една минута <br>Залива се с всичко останало и се вари още 5-6 минути<br>Сервира се.<br><br>Шепа гъби<br>супена лъжица зехтин<br>3 стръка аспержи<br>½ кубче пилешки бульон<br>250 гр вода<br>табаско<br>магданоз</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">гъбите измити и нарязана си пържат в зехтини 3-4 минути.<br>Добавят се аспержите и се пържи още една минута <br>Залива се с всичко останало и се вари още 5-6 минути<br>Сервира се.<br><br>Шепа гъби<br>супена лъжица зехтин<br>3 стръка аспержи<br>½ кубче пилешки бульон<br>250 гр вода<br>табаско<br>магданоз</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Clean and slice mushrooms. Sauté in olive oil for 3-4 minutes. Add asparagus and sauté for 1 minute. Add stock, water, and remaining ingredients. Simmer 5-6 minutes. Season with Tabasco. Finish with parsley and serve.<br><br>Ingredients per serving:<br>- Handful mushrooms<br>- 1 tbsp olive oil<br>- 3 asparagus spears<br>- ½ cube chicken bouillon<br>- 250 g water<br>- Tabasco<br>- Parsley</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

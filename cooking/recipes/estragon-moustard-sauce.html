@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Uien snijden en zachtjes aanzetten afblussen met witte wijn. Room toevoegen en reduceren. Mosterd en klein beetje rode wijnsaus toevoegen. Passeren door fijne zeef en monteren met ijskoude boter, peper en zout toevoegen. Pas als de suas meegaat beetje dragon toevoegen</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Uien snijden en zachtjes aanzetten afblussen met witte wijn. Room toevoegen en reduceren. Mosterd en klein beetje rode wijnsaus toevoegen. Passeren door fijne zeef en monteren met ijskoude boter, peper en zout toevoegen. Pas als de suas meegaat beetje dragon toevoegen</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Tarragon Mustard Sauce**<br><br>Slice onions and gently sweat in butter. Deglaze with white wine. Add cream and reduce by half. Stir in mustard and a small amount of red wine sauce. Pass through fine sieve. Mount with ice-cold butter, season with pepper and salt. Just as sauce comes together, fold in tarragon.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

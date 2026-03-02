@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">VIТZNAU-LUCERNE SWIТZERLAND<br>GUINEA FOWL TERRINE<br>Yield:	15 servings<br>1 Breast of guinea fowl, skinless trimmed, split lengthwise in half <br>Blanched swiss chard leaves<br>40 g Seasonal mushroom, sauteed with little olive oil<br>40 g Cooked ham 2 x 2 mm salpicon<br>50 g Pistachios<br>2 g Red pepper corns (dry)<br><br>Mousseline Farce<br>300 g Poultry meat or guinea fowl, cut into emince or salpicon <br>20 g White Port wine<br>7g Salt	<br>Saffron disolved with 0.5c warm cream (cool down) <br>250 g Cream<br>15g Past. egg whites	<br><br>Preparation <br>- For the farce, chill all the ingredients<br>- Add guinea fowl meat in food processor with 200 gram cream, saffron cream, salt and egg whites and blend to a smooth mousseline farce<br>- Chill on ice<br>- Pass through drum sieve, put in a stainless steel bowl and place it back on ice<br>- Stir in the cold mushrooms, pistachio, ham, port wine and red pepper corns,<br>- Season to taste<br>- Wrap the seasoned guinea fowl breast pieces into the swiss chard green<br>brushed with extra egg white<br>- Use a tunnel terrine mold, lined out with plastic foil<br>- Line out terrine mold with blanched prepared dry swiss chard leaves<br>- Fill prepared terrine mold, with about half of the farce, place wrapped guinea fowl breast pieces on top<br>- Fin mold with the remaining mousseline farce and smooth out top<br>- Cover with overlapping swiss chard and plastic foil<br>- Rap mold on table for a few times to settle the mousseline farce<br>- Cover terrine and place in Combi steamer at 75° C. with steam until reaches the center temperature of 60°- 62°C<br>- Remove and cool down on wire rack, then place in refrigerator<br>- Place some weight on top<br>- Keep chilled at 1- 3°C until served</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">VIТZNAU-LUCERNE SWIТZERLAND<br>GUINEA FOWL TERRINE<br>Yield:	15 servings<br>1 Breast of guinea fowl, skinless trimmed, split lengthwise in half <br>Blanched swiss chard leaves<br>40 g Seasonal mushroom, sauteed with little olive oil<br>40 g Cooked ham 2 x 2 mm salpicon<br>50 g Pistachios<br>2 g Red pepper corns (dry)<br><br>Mousseline Farce<br>300 g Poultry meat or guinea fowl, cut into emince or salpicon <br>20 g White Port wine<br>7g Salt	<br>Saffron disolved with 0.5c warm cream (cool down) <br>250 g Cream<br>15g Past. egg whites	<br><br>Preparation <br>- For the farce, chill all the ingredients<br>- Add guinea fowl meat in food processor with 200 gram cream, saffron cream, salt and egg whites and blend to a smooth mousseline farce<br>- Chill on ice<br>- Pass through drum sieve, put in a stainless steel bowl and place it back on ice<br>- Stir in the cold mushrooms, pistachio, ham, port wine and red pepper corns,<br>- Season to taste<br>- Wrap the seasoned guinea fowl breast pieces into the swiss chard green<br>brushed with extra egg white<br>- Use a tunnel terrine mold, lined out with plastic foil<br>- Line out terrine mold with blanched prepared dry swiss chard leaves<br>- Fill prepared terrine mold, with about half of the farce, place wrapped guinea fowl breast pieces on top<br>- Fin mold with the remaining mousseline farce and smooth out top<br>- Cover with overlapping swiss chard and plastic foil<br>- Rap mold on table for a few times to settle the mousseline farce<br>- Cover terrine and place in Combi steamer at 75° C. with steam until reaches the center temperature of 60°- 62°C<br>- Remove and cool down on wire rack, then place in refrigerator<br>- Place some weight on top<br>- Keep chilled at 1- 3°C until served</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">GUINEA FOWL TERRINE<br>Vitznau-Lucerne, Switzerland | Yield: 15 servings<br>Station: Garde Manger<br><br>INGREDIENTS<br>1 guinea fowl breast, skinless and trimmed, split lengthwise<br>Blanched Swiss chard leaves<br>40 g seasonal mushrooms, sautéed in olive oil<br>40 g cooked ham, 2 × 2 mm salpicon<br>50 g pistachios<br>2 g red peppercorns (dry)<br><br>Mousseline Farce:<br>300 g poultry/guinea fowl meat, eminced or salpicon<br>20 g white port wine<br>7 g salt<br>Saffron dissolved in 0.5 cup warm cream (cooled)<br>250 g cream<br>15 g pasteurized egg whites<br><br>METHOD<br>Chill all farce ingredients. Process guinea fowl meat with 200 g cream, saffron cream, salt, and egg whites to a smooth mousseline. Chill on ice, pass through drum sieve, and return to ice. Fold in cold mushrooms, pistachios, ham, port wine, and peppercorns. Season to taste.<br><br>Wrap seasoned guinea fowl breast pieces in blanched Swiss chard (brushed with egg white). Line a tunnel terrine mold with plastic foil and blanched chard leaves. Fill halfway with farce, arrange wrapped breast pieces, and finish with remaining farce. Cover with overlapping chard and foil. Tap mold on table to settle. Cover and steam in combi at 75°C until internal temperature reaches 60–62°C. Cool on rack, refrigerate, weight the top, and hold at 1–3°C until service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -162,8 +162,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- saute meat in olive oil <br>- sweat shallots and garlic<br>- add tomato paste, concasse and continue xooking<br>- degalze with wine<br>- add brun veal stock and bring to boil <br>- cover and simmer for 1 hour<br>- season to taste <br>- add chopped herbs</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- saute meat in olive oil <br>- sweat shallots and garlic<br>- add tomato paste, concasse and continue xooking<br>- degalze with wine<br>- add brun veal stock and bring to boil <br>- cover and simmer for 1 hour<br>- season to taste <br>- add chopped herbs</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sauté meat in olive oil. Sweat shallots and garlic. Add tomato paste and concassé, continuing to cook.<br><br>Deglaze with wine. Add brown veal stock and bring to boil. Cover and simmer for 1 hour.<br><br>Season to taste and finish with chopped herbs.</div>
+          
         </section>
         
 
@@ -197,5 +206,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1. Slice / on Silk pat 80 C – stem open<br>2. Deep fat fryer – 130 – 160 C (low sugar ones) – more sugar less temperature – carrots 140 C<br>3. 60 g water / 40 g sugar / 20 – 30 g vinegar – boil, keep in small bottle  - add vegetables to liquid <br> than on silk pad –oven 80 – 120 – stem open<br>4. Tomato skin – with sugar / herbs – oven 80 – 120 C<br>5. Parmezan chips – 80 g cheese + 20 g flour – can make cigars <br>Slice using mandoline - deep fat fry in 140 to 150 C until crsipy <br>Carrtos - slice thin and then add to in plate warmer<br>Fennel. Radis, endive - vegetables with little sugar or any veg with strange taste - 100 g water <br>40 g any type of vinegar / 60 g sugar / boil / add herb, curry, ginger, strain and chill / Add to bottle / <br> Label - sugar for vegetablesw chips / cut vegetables on meat slicer - 2 mm thcik lengthwise <br>/ add in syrop / oven wit steam escape - 100 to 120 C<br>Tomatoes - skins sprinkle with icing sugar in oven at 80 C or plate warmer<br>Cherry tomatoes - blanch / peel skin not completely off - shape should look like carrot top / deep fat fry skin</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1. Slice / on Silk pat 80 C – stem open<br>2. Deep fat fryer – 130 – 160 C (low sugar ones) – more sugar less temperature – carrots 140 C<br>3. 60 g water / 40 g sugar / 20 – 30 g vinegar – boil, keep in small bottle  - add vegetables to liquid <br> than on silk pad –oven 80 – 120 – stem open<br>4. Tomato skin – with sugar / herbs – oven 80 – 120 C<br>5. Parmezan chips – 80 g cheese + 20 g flour – can make cigars <br>Slice using mandoline - deep fat fry in 140 to 150 C until crsipy <br>Carrtos - slice thin and then add to in plate warmer<br>Fennel. Radis, endive - vegetables with little sugar or any veg with strange taste - 100 g water <br>40 g any type of vinegar / 60 g sugar / boil / add herb, curry, ginger, strain and chill / Add to bottle / <br> Label - sugar for vegetablesw chips / cut vegetables on meat slicer - 2 mm thcik lengthwise <br>/ add in syrop / oven wit steam escape - 100 to 120 C<br>Tomatoes - skins sprinkle with icing sugar in oven at 80 C or plate warmer<br>Cherry tomatoes - blanch / peel skin not completely off - shape should look like carrot top / deep fat fry skin</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Slice vegetables thinly (2 mm lengthwise on a meat slicer or mandoline). Dry on a silk pad in the oven at 80–120°C with steam escape open. For high-sugar vegetables (carrots at 140°C; other vegetables at 130–160°C), deep fry until crispy. For low-sugar vegetables (fennel, radish, endive), prepare a syrup of 100 g water, 40 g vinegar, 60 g sugar; bring to boil, add herbs (curry, ginger, or others as desired), strain and chill. Add sliced vegetables to syrup, then dry in oven at 100–120°C with steam escape open. For tomato skins: sprinkle with icing sugar and dry at 80°C or in a plate warmer. For cherry tomatoes: blanch, peel partially (keeping shape like a carrot top), then deep fry the skin. For parmesan chips: combine 80 g cheese with 20 g flour, slice thin on mandoline, fry at 140–150°C until crispy (can form into cigars while warm).</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

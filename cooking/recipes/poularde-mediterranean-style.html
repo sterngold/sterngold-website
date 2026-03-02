@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Zutaten für 5 Personen zu 100% (Nettomenge)<br><br>1.5 kg Swiss Poularde<br>1 x	Seasoning (salt and pepper)<br> 30 ml Olive oil<br>100 g	Bacon slices<br>100 g Onions<br>200 g Assorted bell peppers<br> 20 g	Garlic<br><br>40 g Tomato paste <br>500 g Tomatoes<br><br>100 g Swiss red wine<br>400 g Brown veal stock <br>300 g White chicken stock <br>100 g	Black olives, canned<br>20 g Brown roux<br>1 x	Seasoning (salt)<br>6 g	Basil, fresh<br><br><br>Cut up as for chicken sauté.<br><br><br>Cut into julienne<br>Peel and cut into slices.<br>Remove seeds, wash and cut into julienne. Crush.<br><br><br>Peel, cut in half, remove seeds, and cut into concassé dice.<br><br>- SEASON CHICKEN PIECES WITH SALT,PEPPER AND SAUTÉ IN OLIVE OIL. BEFORE CHICKEN PIECES ARE FULLY COOKED, REMOVE FROM PAN. - ADD BACON, ONIONS, PEPPERS, AND GARLIC TO PAN AND SAUTÉ. - ADD DICED TOMATOES, TOMATO PASTE<br>- DEGLAZE WITH RED WINE AND REDUCE TO SYRUPY CONSISTENCY - ADD STOCK BRING TO A BOIL AND RETURN CHICKEN TO PAN.<br>COVER AND BRAISE UNTIL ALL CHICKEN PIECES ARE COOKED THROUGH. - ADD OLIVES<br>- THICKEN WITH ROUX<br>- ADJUST SEASONING AND KEEP HOT<br>- SERVE CHICKEN COVERED WITH VEGETABLES.<br>- Sprinkle and garnish with plugged herbs or fresh pesto</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Zutaten für 5 Personen zu 100% (Nettomenge)<br><br>1.5 kg Swiss Poularde<br>1 x	Seasoning (salt and pepper)<br> 30 ml Olive oil<br>100 g	Bacon slices<br>100 g Onions<br>200 g Assorted bell peppers<br> 20 g	Garlic<br><br>40 g Tomato paste <br>500 g Tomatoes<br><br>100 g Swiss red wine<br>400 g Brown veal stock <br>300 g White chicken stock <br>100 g	Black olives, canned<br>20 g Brown roux<br>1 x	Seasoning (salt)<br>6 g	Basil, fresh<br><br><br>Cut up as for chicken sauté.<br><br><br>Cut into julienne<br>Peel and cut into slices.<br>Remove seeds, wash and cut into julienne. Crush.<br><br><br>Peel, cut in half, remove seeds, and cut into concassé dice.<br><br>- SEASON CHICKEN PIECES WITH SALT,PEPPER AND SAUTÉ IN OLIVE OIL. BEFORE CHICKEN PIECES ARE FULLY COOKED, REMOVE FROM PAN. - ADD BACON, ONIONS, PEPPERS, AND GARLIC TO PAN AND SAUTÉ. - ADD DICED TOMATOES, TOMATO PASTE<br>- DEGLAZE WITH RED WINE AND REDUCE TO SYRUPY CONSISTENCY - ADD STOCK BRING TO A BOIL AND RETURN CHICKEN TO PAN.<br>COVER AND BRAISE UNTIL ALL CHICKEN PIECES ARE COOKED THROUGH. - ADD OLIVES<br>- THICKEN WITH ROUX<br>- ADJUST SEASONING AND KEEP HOT<br>- SERVE CHICKEN COVERED WITH VEGETABLES.<br>- Sprinkle and garnish with plugged herbs or fresh pesto</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Cut poularde into chicken sauté pieces. Prepare garnish: cut onions into julienne; cut bell peppers into julienne after removing seeds and washing; peel and crush garlic; cut tomatoes into concassé dice after peeling, seeding, and halving.<br><br>Season chicken pieces with salt and pepper, sauté in olive oil until partially cooked, then remove from pan. Add bacon, onions, peppers, and garlic to pan and sauté. Add diced tomatoes and tomato paste. Deglaze with red wine and reduce to syrupy consistency. Add stocks and bring to boil. Return chicken to pan, cover, and braise until cooked through. Add olives and thicken with brown roux. Adjust seasoning. Serve chicken covered with vegetables, garnished with fresh basil or pesto.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

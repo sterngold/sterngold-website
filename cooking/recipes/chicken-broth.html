@@ -106,8 +106,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- add cold water to bones and bring to slwo boil<br>- add slat and skim frequently<br>- simmer for 1 to 2 hours <br>- add sachet bag and bouquet garbi after 1 hour<br>- strain carefully through cheesecloth</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- add cold water to bones and bring to slwo boil<br>- add slat and skim frequently<br>- simmer for 1 to 2 hours <br>- add sachet bag and bouquet garbi after 1 hour<br>- strain carefully through cheesecloth</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHICKEN BROTH<br><br>Method:<br>1. Add cold water to bones and bring to a slow boil.<br>2. Add salt and skim frequently throughout cooking.<br>3. After 1 hour of simmering, add sachet bag and bouquet garni.<br>4. Continue simmering for a total of 1 to 2 hours.<br>5. Strain carefully through cheesecloth.</div>
+          
         </section>
         
 
@@ -141,5 +150,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

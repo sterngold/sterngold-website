@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Marbre of guinea fowl and prawns<br>Marbre von Perlhuhn und Riesencrevetten<br>Recipe #<br>Category	: ECA - Terrine/Paté/Galantine / Mart<br>Chef	: Patrick Diethelm<br>Date	: 22.11.2005<br>Cost of goods 	: CHF 1.24  / EUR 0.78 <br>Ingredients for 10 servings at 100% (Net quantity)<br>400<br>g<br>Guinea fowl Supreme<br>150<br>g<br>Prawns<br>30<br>ml<br>Sherry wine, dry<br>1<br>x<br>Seasoning (pepper)<br>1<br>x<br>Coriander mill<br>1<br>g<br>Chervil, fresh<br>6<br>pc<br>Basil leaves, fresh<br>1<br>x<br>Salt<br>1<br>g<br>Aspic powder<br>200<br>g<br>Pfälzer carrots<br><br>- REMOVE SKIN AND FAT FROM THE SUPREME OF GUINEA FOWL AND CUT INTO LONG STRIPS,<br>REMOVE TENDERLOIN FIRST. - PEEL PRAWNS AND CLEAN<br>- SEASON WITH PEPPER AND CORIANDER MILL, ADD SHERRY WINE AND MARINATE<br>- BLANCH THE THIN SLICED PFÄLZER CARROTS OR REGULAR CARROTS AND REFRESH. - LINE OUT TERRINE MOLD WITH PLASTIC FOIL AND THE SEASONED CARROTS<br>- CHOP THE HERBS<br>- SEASON THE MARINATED MEAT WITH SALT AND ADD THE HERBS<br>- FILL INTO PREPARED TERRINE MOLD AND SPRINKL ON EACH LAYER ASPIC POWDER.<br>- COVER WITH OVERHANGING CARROTS AND COVER WITH THE PLASTIC FOIL - REST FOR 10 MIN. INTHE REFRIGERATOR<br>- poach in the steamer at 75-80°C until center temp. of 60°C - ADD SOME WEIGHT ON TOP OF MARBRE AND COOL DOWN</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Marbre of guinea fowl and prawns<br>Marbre von Perlhuhn und Riesencrevetten<br>Recipe #<br>Category	: ECA - Terrine/Paté/Galantine / Mart<br>Chef	: Patrick Diethelm<br>Date	: 22.11.2005<br>Cost of goods 	: CHF 1.24  / EUR 0.78 <br>Ingredients for 10 servings at 100% (Net quantity)<br>400<br>g<br>Guinea fowl Supreme<br>150<br>g<br>Prawns<br>30<br>ml<br>Sherry wine, dry<br>1<br>x<br>Seasoning (pepper)<br>1<br>x<br>Coriander mill<br>1<br>g<br>Chervil, fresh<br>6<br>pc<br>Basil leaves, fresh<br>1<br>x<br>Salt<br>1<br>g<br>Aspic powder<br>200<br>g<br>Pfälzer carrots<br><br>- REMOVE SKIN AND FAT FROM THE SUPREME OF GUINEA FOWL AND CUT INTO LONG STRIPS,<br>REMOVE TENDERLOIN FIRST. - PEEL PRAWNS AND CLEAN<br>- SEASON WITH PEPPER AND CORIANDER MILL, ADD SHERRY WINE AND MARINATE<br>- BLANCH THE THIN SLICED PFÄLZER CARROTS OR REGULAR CARROTS AND REFRESH. - LINE OUT TERRINE MOLD WITH PLASTIC FOIL AND THE SEASONED CARROTS<br>- CHOP THE HERBS<br>- SEASON THE MARINATED MEAT WITH SALT AND ADD THE HERBS<br>- FILL INTO PREPARED TERRINE MOLD AND SPRINKL ON EACH LAYER ASPIC POWDER.<br>- COVER WITH OVERHANGING CARROTS AND COVER WITH THE PLASTIC FOIL - REST FOR 10 MIN. INTHE REFRIGERATOR<br>- poach in the steamer at 75-80°C until center temp. of 60°C - ADD SOME WEIGHT ON TOP OF MARBRE AND COOL DOWN</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**MARBRE OF GUINEA FOWL AND PRAWNS**<br><br>Yield: 10 servings | Chef: Patrick Diethelm | Date: 22.11.2005<br><br>**PREPARATION:**<br>- Remove skin and fat from 400 g guinea fowl supremes; remove tenderloin first and cut meat into long strips.<br>- Peel and clean 150 prawns.<br>- Season meat and prawns with pepper and coriander mill. Add 30 ml dry sherry wine and marinate.<br>- Blanch thinly sliced 200 g Pfälzer carrots (or regular carrots) and refresh.<br>- Chop 1 g chervil and 6 basil leaves.<br><br>**ASSEMBLY:**<br>- Line terrine mold with plastic film and seasoned carrot slices.<br>- Season marinated meat with salt and fold in herbs.<br>- Fill terrine mold, sprinkling 1 g aspic powder between layers.<br>- Cover with overhanging carrots and plastic film. Rest 10 minutes in refrigerator.<br>- Poach in steamer at 75–80°C until internal temperature reaches 60°C.<br>- Add weight on top and cool down completely.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

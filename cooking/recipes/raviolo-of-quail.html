@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Raviolo of quail <br>Raviolo von Wachtel<br><br>Recipe #<br>Category: ECA - Saucier meat<br>Chef: Patrick Diethelm<br> Date: 15.12.2005<br>Cost of goods: CHF 2.75 / EUR 1.74<br>Ingredients for 5 servings at 100% (Net quantity<br><br><br><br><br><br><br><br><br><br>Raviolo of quail (Continuation)<br>Raviolo von Wachtel<br><br>Recipe #<br>Category	: ECA - Saucier meat<br>Chef	: Patrick Diethelm<br>Date	: 15.12.2005<br>Cost of goods	: CHF 2.75 / EUR 1.74<br>- STEW DRYED TOMATO CONCASSE WITH OLIVE OIL AND SEASON<br>- ARRANGE THE SPRING ONION CIRCLE ON THE PLATE<br>- PLACE THE RAVIOLO ON TOP AND PLACE THE TWO LEGS ON TOP WITH CONCASSE<br>- DRIZZLE THE SAUCE AROUND THE SPRING ONION AND SERVE WITH YOUNG BASIL LEAVES AS GARNISH.<br>- BRUSH THE RAVIOLO WITH SOME OILVE OIL<br>- GOOD TIMING IMPORTANT FORSUCCESSFUL RESULT !!!!!</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Raviolo of quail <br>Raviolo von Wachtel<br><br>Recipe #<br>Category: ECA - Saucier meat<br>Chef: Patrick Diethelm<br> Date: 15.12.2005<br>Cost of goods: CHF 2.75 / EUR 1.74<br>Ingredients for 5 servings at 100% (Net quantity<br><br><br><br><br><br><br><br><br><br>Raviolo of quail (Continuation)<br>Raviolo von Wachtel<br><br>Recipe #<br>Category	: ECA - Saucier meat<br>Chef	: Patrick Diethelm<br>Date	: 15.12.2005<br>Cost of goods	: CHF 2.75 / EUR 1.74<br>- STEW DRYED TOMATO CONCASSE WITH OLIVE OIL AND SEASON<br>- ARRANGE THE SPRING ONION CIRCLE ON THE PLATE<br>- PLACE THE RAVIOLO ON TOP AND PLACE THE TWO LEGS ON TOP WITH CONCASSE<br>- DRIZZLE THE SAUCE AROUND THE SPRING ONION AND SERVE WITH YOUNG BASIL LEAVES AS GARNISH.<br>- BRUSH THE RAVIOLO WITH SOME OILVE OIL<br>- GOOD TIMING IMPORTANT FORSUCCESSFUL RESULT !!!!!</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">RAVIOLO OF QUAIL<br>Chef: Patrick Diethelm | Date: 15.12.2005<br>Yield: 5 servings<br>Cost of goods: CHF 2.75 / EUR 1.74<br><br>Method:<br>Stew dried tomato concassé with olive oil and season to taste. Arrange spring onion circle on the plate. Place raviolo on top and position the two quail legs on top with concassé. Brush raviolo with olive oil. Drizzle sauce around the spring onion circle and serve garnished with young basil leaves.<br><br>Note: Good timing is important for successful result.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Fish terrine with prawns<br>Fischterrine mit Riesencrevetten<br>Recipe #<br>Category	: ECA - Terrine/Paté/Galantine / Mart<br>Chef	: Patrick Diethelm<br>Date	:14.11.2005<br>Cost of goods	: CHF 1.43 / EUR 0.90 <br>Ingredients for 15 servings at 100% (Net quantity)<br>250<br>g<br>Pike perch fillet<br>250<br>ml<br>Heavy cream (35%)<br>20<br>g<br>Egg whites<br>7<br>g<br>Salt<br><br><br>Garnish:<br>200<br>g<br>Shrimp (prawns), large, raw cleaned<br>60<br>g<br>Pistacchios<br>30<br>g<br>Chives, fresh<br>12<br>g<br>Chervil, fresh<br>40<br>g<br>Black truffles or horn of plenty<br><br>- CUT RAW FISH IN DICES<br>- CUT CHIVES AND CHOP DILL<br>- MIX ICE COLD CREAM, EGG WHITE, SALT AND FISH<br>- ADD THE MIXTURE INTO FOOD PROCESSOR AND BLEND UNTIL SMOOTH MOUSSELINE FARCE<br>- REMOVE AND PLACE IN BOWL ON ICE<br>- ADD THE POACHED PRAWNS (see course infos)<br>CHIVES AND CHERVIL AND SEASON WITH SALT,<br>LEMON JUICE AND NOUILLY PRAT, ADD CHOPPED PISTACCHIOS, BLACK TRUFFLE BRUNOISE.<br>- LINE OUT TERRINE MOLD WITH THIN WELL DONE COOKED CARROT SLICES FILL IN THE MOUSSELINE FARCE AND COVER<br>- COVER UP WITH PLASTIC FOIL.<br>- POACH AT 75°C IN STEAMER FOR APPROX.20-25 MIN. UNTIL CENTER TEMP. OF 55°C. - COOL THE TERRINE IN THE REFRIGERATOR FOR 1 HOUR.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Fish terrine with prawns<br>Fischterrine mit Riesencrevetten<br>Recipe #<br>Category	: ECA - Terrine/Paté/Galantine / Mart<br>Chef	: Patrick Diethelm<br>Date	:14.11.2005<br>Cost of goods	: CHF 1.43 / EUR 0.90 <br>Ingredients for 15 servings at 100% (Net quantity)<br>250<br>g<br>Pike perch fillet<br>250<br>ml<br>Heavy cream (35%)<br>20<br>g<br>Egg whites<br>7<br>g<br>Salt<br><br><br>Garnish:<br>200<br>g<br>Shrimp (prawns), large, raw cleaned<br>60<br>g<br>Pistacchios<br>30<br>g<br>Chives, fresh<br>12<br>g<br>Chervil, fresh<br>40<br>g<br>Black truffles or horn of plenty<br><br>- CUT RAW FISH IN DICES<br>- CUT CHIVES AND CHOP DILL<br>- MIX ICE COLD CREAM, EGG WHITE, SALT AND FISH<br>- ADD THE MIXTURE INTO FOOD PROCESSOR AND BLEND UNTIL SMOOTH MOUSSELINE FARCE<br>- REMOVE AND PLACE IN BOWL ON ICE<br>- ADD THE POACHED PRAWNS (see course infos)<br>CHIVES AND CHERVIL AND SEASON WITH SALT,<br>LEMON JUICE AND NOUILLY PRAT, ADD CHOPPED PISTACCHIOS, BLACK TRUFFLE BRUNOISE.<br>- LINE OUT TERRINE MOLD WITH THIN WELL DONE COOKED CARROT SLICES FILL IN THE MOUSSELINE FARCE AND COVER<br>- COVER UP WITH PLASTIC FOIL.<br>- POACH AT 75°C IN STEAMER FOR APPROX.20-25 MIN. UNTIL CENTER TEMP. OF 55°C. - COOL THE TERRINE IN THE REFRIGERATOR FOR 1 HOUR.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Dice raw pike perch fillet. Cut and mince chives and dill. Combine ice-cold cream, egg whites, salt, and fish; process in food processor until smooth mousseline farce forms. Remove to a bowl set on ice. Fold in poached prawns, chives, chervil, and black truffle brunoise. Season with salt, lemon juice, and Noilly Prat. Add chopped pistachios. Line a terrine mold with thin, well-cooked carrot slices. Fill with mousseline farce and cover. Cover with plastic film. Poach at 75°C in a steamer for 20–25 minutes until center temperature reaches 55°C. Cool in refrigerator for 1 hour before serving. Note: Prawns should be poached according to course instructions.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

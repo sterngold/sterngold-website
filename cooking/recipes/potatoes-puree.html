@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Обелени и еднакво нарязани картофи <br>Сваряват се – не прекалено много и не прекалено малко /със сол/ <br>Да се отцедят в цедка<br>Обратно в тенджерата и се разтръсква – steaming  <br>Масло и се мачкат <br>Картофите се изтсикват през цедка /със черпак/<br>Обратно на огъня със мляко и течна сметана и сол</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Обелени и еднакво нарязани картофи <br>Сваряват се – не прекалено много и не прекалено малко /със сол/ <br>Да се отцедят в цедка<br>Обратно в тенджерата и се разтръсква – steaming  <br>Масло и се мачкат <br>Картофите се изтсикват през цедка /със черпак/<br>Обратно на огъня със мляко и течна сметана и сол</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Peel potatoes and cut into uniform pieces. Cook in salted water until just tender—not underdone, not overcooked. Drain in a colander.<br><br>Return to pot and toss to steam off excess moisture. Add butter and mash. Press through a fine sieve using a ladle.<br><br>Return to heat. Add milk and liquid sour cream with salt to taste. Finish over gentle heat.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

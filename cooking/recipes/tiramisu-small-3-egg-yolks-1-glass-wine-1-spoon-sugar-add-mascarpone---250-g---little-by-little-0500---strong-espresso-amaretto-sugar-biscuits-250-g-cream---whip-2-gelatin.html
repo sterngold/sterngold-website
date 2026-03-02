@@ -73,8 +73,17 @@ Biscuits
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Sabayon <br>3 egg yolks <br>1 glass wine <br>1 spoon sugar<br>Add Mascarpone - 250 g. - little by little <br>0.500 - Strong espresso, Amaretto, sugar <br>Biscuits<br>250 g. Cream - whip <br>2 Gelatin</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Sabayon <br>3 egg yolks <br>1 glass wine <br>1 spoon sugar<br>Add Mascarpone - 250 g. - little by little <br>0.500 - Strong espresso, Amaretto, sugar <br>Biscuits<br>250 g. Cream - whip <br>2 Gelatin</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sabayon: Whisk 3 egg yolks with 1 spoon sugar and 1 glass wine until light and thick. Gradually add 250g mascarpone, mixing gently to incorporate smoothly.<br><br>Combine 500ml strong espresso with Amaretto and sugar to taste. Soak biscuits briefly in this mixture. Whip 250g cream to soft peaks. Bloom and dissolve 2 gelatin sheets, then fold into mascarpone sabayon. Fold in whipped cream until combined.<br><br>Assemble in layers: soaked biscuits, then mousse mixture. Repeat layers. Chill until set.</div>
+          
         </section>
         
 
@@ -108,5 +117,24 @@ Biscuits
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

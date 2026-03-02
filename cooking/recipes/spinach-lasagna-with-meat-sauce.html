@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Spinach Lasagna with Meat Sauce<br>Lasagne verdi Lasagne verdi<br><br><br>Rezept Nr.	: 632<br>Kategorie	: Pasta Dishes<br>Koch	: Patrick Diethelm<br>Datum	: 09.08.2005<br>Warenkosten	: CHF 1.06 / EUR 0.67<br><br>EUROPEAN CULINARY CENTER<br>Zutaten für 20 Personen zu 100% (Nettomenge)<br>1 kg Green lasagna sheets Purchased or fresh<br>100 g	Salt<br>40 g Butter<br>1 kg Bologneser Sauce<br>1 L *Cream Sauce [with cream) 100 g Parmesan cheese grated<br>50 g Butter melted<br>- Add salt to water, bring to a boil, and cook lasagna sheets until al dente. - Butter an ovenproof dish (gratin dish).<br>- HEAT SAUCES.<br>- SPREAD BOTTOM OF GRATIN DISH WITH A LAYER OF CREAM SAUCE, COVER WITH HALF THE LASAGNE SHEETS, SPREAD WITH THE ITALIAN SAUCE, AND TOP WITH REMAINING LASAGNA SHEETS. COVER WITH REMAINING CREAM SAUCE.<br>- SPRINKLE WITH CHEESE AND MELTED BUTTER.<br>- BAKE IN OVEN UNTIL HOT AND BROWN ON TOP.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Spinach Lasagna with Meat Sauce<br>Lasagne verdi Lasagne verdi<br><br><br>Rezept Nr.	: 632<br>Kategorie	: Pasta Dishes<br>Koch	: Patrick Diethelm<br>Datum	: 09.08.2005<br>Warenkosten	: CHF 1.06 / EUR 0.67<br><br>EUROPEAN CULINARY CENTER<br>Zutaten für 20 Personen zu 100% (Nettomenge)<br>1 kg Green lasagna sheets Purchased or fresh<br>100 g	Salt<br>40 g Butter<br>1 kg Bologneser Sauce<br>1 L *Cream Sauce [with cream) 100 g Parmesan cheese grated<br>50 g Butter melted<br>- Add salt to water, bring to a boil, and cook lasagna sheets until al dente. - Butter an ovenproof dish (gratin dish).<br>- HEAT SAUCES.<br>- SPREAD BOTTOM OF GRATIN DISH WITH A LAYER OF CREAM SAUCE, COVER WITH HALF THE LASAGNE SHEETS, SPREAD WITH THE ITALIAN SAUCE, AND TOP WITH REMAINING LASAGNA SHEETS. COVER WITH REMAINING CREAM SAUCE.<br>- SPRINKLE WITH CHEESE AND MELTED BUTTER.<br>- BAKE IN OVEN UNTIL HOT AND BROWN ON TOP.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SPINACH LASAGNA WITH MEAT SAUCE | Chef: Patrick Diethelm | Yield: 20 servings<br><br>Ingredients:<br>1 kg green lasagna sheets (purchased or fresh)<br>100 g salt<br>40 g butter<br>1 kg Bolognese sauce<br>1 L cream sauce<br>100 g Parmesan cheese, grated<br>50 g butter, melted<br><br>Method:<br>Add salt to water and bring to a boil. Cook lasagna sheets until al dente. Butter an ovenproof gratin dish. Heat both sauces. Spread a layer of cream sauce on the bottom of the dish. Cover with half the lasagna sheets, spread with Bolognese sauce, and top with remaining lasagna sheets. Cover with remaining cream sauce. Sprinkle with cheese and melted butter. Bake in oven until hot and brown on top.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

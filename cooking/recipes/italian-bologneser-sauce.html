@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Italian Bologneser Sauce <br>Ita/ienische B%gnaise Sauce Sauce ita/ienne <br>Rezept Nr. :62 <br>Kategorie : Sauces <br>Koch : Patrick Diethelm<br>Datum : 09.08.2005 <br>Warenkosten : CHF 15.68/ EUR 9.92 <br><br>Zutaten fOr 2.000 Liter zu 100% [NettomengeJ <br><br>30 ml Olive oil <br><br>1 kg Beef ground meat <br>60 g Butter <br>36 g Shallots Peel and chop. <br>30 g Garlic<br>50 g Tomato paste <br>1 l * Tomato Concasse Can<br>200 ml Red cooking wine <br>800 g Fond de veau brun lie<br>10 g Parsley. Italian. fresh Chop. <br>5 g Oregano. fresh <br>1 x Seasoning [salt and pepper)<br><br>- SAUTE MEAT IN OLIVE OIL <br>- SWEAT SHALLOTS AND GARLIC <br>- ADD TOMATO PASTE. CONCASSE AND CONTINUE COOKING. <br>DEGlAZE WITH RED WINE <br>- ADD BRUN VEAL STOCK AND BRING TO A BOIL. <br>- COVER AND SIMMER FOR 1 HOUR <br>- SEASON TO TASTE. <br>- ADD CHOPPED HERBS</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Italian Bologneser Sauce <br>Ita/ienische B%gnaise Sauce Sauce ita/ienne <br>Rezept Nr. :62 <br>Kategorie : Sauces <br>Koch : Patrick Diethelm<br>Datum : 09.08.2005 <br>Warenkosten : CHF 15.68/ EUR 9.92 <br><br>Zutaten fOr 2.000 Liter zu 100% [NettomengeJ <br><br>30 ml Olive oil <br><br>1 kg Beef ground meat <br>60 g Butter <br>36 g Shallots Peel and chop. <br>30 g Garlic<br>50 g Tomato paste <br>1 l * Tomato Concasse Can<br>200 ml Red cooking wine <br>800 g Fond de veau brun lie<br>10 g Parsley. Italian. fresh Chop. <br>5 g Oregano. fresh <br>1 x Seasoning [salt and pepper)<br><br>- SAUTE MEAT IN OLIVE OIL <br>- SWEAT SHALLOTS AND GARLIC <br>- ADD TOMATO PASTE. CONCASSE AND CONTINUE COOKING. <br>DEGlAZE WITH RED WINE <br>- ADD BRUN VEAL STOCK AND BRING TO A BOIL. <br>- COVER AND SIMMER FOR 1 HOUR <br>- SEASON TO TASTE. <br>- ADD CHOPPED HERBS</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Italian Bolognese Sauce**<br><br>Chef: Patrick Diethelm | Date: 09.08.2005<br>Yield: 2 liters | Cost: CHF 15.68 / EUR 9.92<br><br>**Ingredients:**<br>- 30 ml olive oil<br>- 1 kg ground beef<br>- 60 g butter<br>- 36 g shallots, peeled and chopped<br>- 30 g garlic<br>- 50 g tomato paste<br>- 1 l canned tomato concassée<br>- 200 ml red cooking wine<br>- 800 g brown veal stock (fond de veau brun lié)<br>- 10 g fresh Italian parsley, chopped<br>- 5 g fresh oregano<br>- Salt and pepper to taste<br><br>**Method:**<br>Sauté ground meat in olive oil. Sweat shallots and garlic. Add tomato paste and concassée, continuing to cook. Deglaze with red wine. Add brown veal stock and bring to a boil. Cover and simmer for 1 hour. Season to taste and finish with chopped herbs.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

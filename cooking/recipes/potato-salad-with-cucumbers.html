@@ -154,8 +154,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- wash and boil potato in slat water. (can be steamed)<br>- peel potatoes, while still warm and cut into 4 mm slices<br>- peel and chop onions<br><br>- HEAT BOUILLON AND POOR OVER POTATOES <br>- ADD CHOPPED ONIONS AND SLICED CUCUMBERS<br>- STIR TOGETHER OIL, VINEGAR, SALT AND PEPPER<br>- ADD DRESSING TO POTATOES AND BLEND CAREFULLY<br>- ALLOW DRESSING TO PENATRATE THE POTATOES <br>- SERVE SPRINKLED WITH CHIVES</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- wash and boil potato in slat water. (can be steamed)<br>- peel potatoes, while still warm and cut into 4 mm slices<br>- peel and chop onions<br><br>- HEAT BOUILLON AND POOR OVER POTATOES <br>- ADD CHOPPED ONIONS AND SLICED CUCUMBERS<br>- STIR TOGETHER OIL, VINEGAR, SALT AND PEPPER<br>- ADD DRESSING TO POTATOES AND BLEND CAREFULLY<br>- ALLOW DRESSING TO PENATRATE THE POTATOES <br>- SERVE SPRINKLED WITH CHIVES</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Wash and boil potatoes in salted water (steaming is an alternative). Peel potatoes while still warm and cut into 4 mm slices. Peel and chop onions.<br><br>Heat bouillon and pour over potatoes. Add chopped onions and sliced cucumbers. Whisk together oil, vinegar, salt, and pepper. Add dressing to potatoes and blend carefully. Allow dressing to penetrate the potatoes. Serve sprinkled with chives.</div>
+          
         </section>
         
 
@@ -197,5 +206,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

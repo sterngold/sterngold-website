@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Make reduction – chill down / remove fat <br>Add to the mustard <br>Add the 1 the olive oil / sun flower oil in steady stream <br>Add balsamic – carefully not to split</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Make reduction – chill down / remove fat <br>Add to the mustard <br>Add the 1 the olive oil / sun flower oil in steady stream <br>Add balsamic – carefully not to split</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Prepare a reduction, chill, and remove fat. Add to mustard. Slowly stream in olive oil and sunflower oil in steady flow. Carefully add balsamic vinegar to avoid splitting the emulsion.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Ganache <br>550 butter<br>500 sugar<br>500 ml double cream<br>Vanilla <br>Mix very well and add to freezer<br>Mix again and add to piping bag with nozzle …..<br>Pipe on alum folio small pieces and freeze<br>Melt chocolate couverture <br>With fork add the ganche to chocolate <br>Place on cacao</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Ganache <br>550 butter<br>500 sugar<br>500 ml double cream<br>Vanilla <br>Mix very well and add to freezer<br>Mix again and add to piping bag with nozzle …..<br>Pipe on alum folio small pieces and freeze<br>Melt chocolate couverture <br>With fork add the ganche to chocolate <br>Place on cacao</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Ganache: Combine 550g butter, 500g sugar, and 500ml double cream with vanilla. Mix thoroughly and transfer to freezer. Once set, mix again and pipe into a piping bag fitted with a small nozzle. Pipe small pieces onto aluminium foil and freeze.<br><br>Melt chocolate couverture. Working in batches, use a fork to dip each ganache piece into the melted chocolate, coating completely. Place on cocoa powder to set.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

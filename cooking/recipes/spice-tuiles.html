@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Spice Tuile<br>Gewurz Tuile Tuíle aux épices<br>Recipe #<br>Category	: ECA - Garnishes Decors Tuiles Chips et<br>Chef	: Patrick Diethelm<br>Date	:07112005<br>Cost of goods	: CHF 0.057 EUR 0.03	<br>Ingredients for 10 servings at 100% (Net quantity)<br>25<br>g<br>White wheat flour<br>25<br>g<br>Icing sugar<br>30<br>ml<br>Heavy cream (36%)<br>30<br>g<br>Egg whites<br><br>Sift the Flour and icing sugar and stir in remaining ingredients. - spread with spatula on silpat and sprinkle with seasonal spices<br>Bake at 170°C for about 6 Minutes</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Spice Tuile<br>Gewurz Tuile Tuíle aux épices<br>Recipe #<br>Category	: ECA - Garnishes Decors Tuiles Chips et<br>Chef	: Patrick Diethelm<br>Date	:07112005<br>Cost of goods	: CHF 0.057 EUR 0.03	<br>Ingredients for 10 servings at 100% (Net quantity)<br>25<br>g<br>White wheat flour<br>25<br>g<br>Icing sugar<br>30<br>ml<br>Heavy cream (36%)<br>30<br>g<br>Egg whites<br><br>Sift the Flour and icing sugar and stir in remaining ingredients. - spread with spatula on silpat and sprinkle with seasonal spices<br>Bake at 170°C for about 6 Minutes</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SPICE TUILES | Chef: Patrick Diethelm | Yield: 10 servings<br><br>Ingredients:<br>25 g white wheat flour<br>25 g icing sugar<br>30 ml heavy cream (36%)<br>30 g egg whites<br>Seasonal spices for garnish<br><br>Method:<br>Sift flour and icing sugar together. Stir in cream and egg whites. Spread mixture with a spatula on a silpat and sprinkle with seasonal spices. Bake at 170°C for approximately 6 minutes.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

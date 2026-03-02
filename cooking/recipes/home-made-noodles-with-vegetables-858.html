@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Home-Made Noodles with Vegetables<br>Nudeln mit Gemüsestreifen Nouilles à /a julienne de légumes<br><br><br>Rezept Nr.	: 633<br>Kategorie	: Pasta Dishes<br>Koch	: P.Diethelm<br>Datum	: 03.08.2005<br>Warenkosten	: CHF 0.23 / EUR 0.15<br><br>EUROPEAN CULINARY CENTER<br>Zutaten für 10 Personen zu 100% (Nettomenge)<br>600 g Home-made noodle dough 50 g Salt<br>	200 g	Vegetables julienne<br>25 g Butter<br>	1 x	Seasoning (salt, nutmeg)<br>- Make noodle dough according to Home-Made Noodle Dough. Roll out dough and cut into wide noodle, about 25 mm wide.<br>- Wash, trim, and clean vegetables, such as carrots, celery and zucchini.<br>- Cut vegetables into fine julienne.<br>- Briefly blanch vegetables and drain.<br>- BOIL NOODLES AL DENTE IN AMPLE SALTED WATER AND DRAIN.<br>- HEAT BUTTER AND SAUTÉ VEGETABLES.<br>- TOSS HOT NOODLES WITH VEGETABLES. SEASON TO TASTE WITH SALT AND NUTMEG.<br>Note: If boiled noodles are not used right away, rinse with cold water, drain again, and blend with small amount of oil to prevent noodles from sticking together.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Home-Made Noodles with Vegetables<br>Nudeln mit Gemüsestreifen Nouilles à /a julienne de légumes<br><br><br>Rezept Nr.	: 633<br>Kategorie	: Pasta Dishes<br>Koch	: P.Diethelm<br>Datum	: 03.08.2005<br>Warenkosten	: CHF 0.23 / EUR 0.15<br><br>EUROPEAN CULINARY CENTER<br>Zutaten für 10 Personen zu 100% (Nettomenge)<br>600 g Home-made noodle dough 50 g Salt<br>	200 g	Vegetables julienne<br>25 g Butter<br>	1 x	Seasoning (salt, nutmeg)<br>- Make noodle dough according to Home-Made Noodle Dough. Roll out dough and cut into wide noodle, about 25 mm wide.<br>- Wash, trim, and clean vegetables, such as carrots, celery and zucchini.<br>- Cut vegetables into fine julienne.<br>- Briefly blanch vegetables and drain.<br>- BOIL NOODLES AL DENTE IN AMPLE SALTED WATER AND DRAIN.<br>- HEAT BUTTER AND SAUTÉ VEGETABLES.<br>- TOSS HOT NOODLES WITH VEGETABLES. SEASON TO TASTE WITH SALT AND NUTMEG.<br>Note: If boiled noodles are not used right away, rinse with cold water, drain again, and blend with small amount of oil to prevent noodles from sticking together.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Home-Made Noodles with Vegetables**<br><br>Chef: P. Diethelm | Date: 03.08.2005<br>Yield: 10 servings | Cost: CHF 0.23 / EUR 0.15<br><br>**Ingredients:**<br>- 600 g home-made noodle dough<br>- 50 g salt<br>- 200 g vegetables (carrots, celery, zucchini), julienne<br>- 25 g butter<br>- Salt and nutmeg to taste<br><br>**Method:**<br>Prepare noodle dough per Home-Made Noodle Dough recipe. Roll out and cut into wide noodles approximately 25 mm wide. Wash, trim, and clean vegetables; cut into fine julienne. Briefly blanch vegetables and drain. Boil noodles al dente in ample salted water and drain. Heat butter and sauté vegetables. Toss hot noodles with vegetables and season to taste with salt and nutmeg.<br><br>**Note:** If boiled noodles are not used immediately, rinse with cold water, drain, and toss with a small amount of oil to prevent sticking.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

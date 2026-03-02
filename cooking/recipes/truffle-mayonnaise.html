@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Normal Mayonnaise (всичко се семесва и трябва да бъде на стайна температура/<br>Red wine Vinegar<br>Mustard <br>Yolks<br>Mix<br>Добавя се олиото много бавно докато се бърка силно <br>Да се получи гъста смес <br>Малко вода<br>Сол и пипер за нормализиране на вкуса <br>Трюфели ото буркан<br>Трюфел олио</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Normal Mayonnaise (всичко се семесва и трябва да бъде на стайна температура/<br>Red wine Vinegar<br>Mustard <br>Yolks<br>Mix<br>Добавя се олиото много бавно докато се бърка силно <br>Да се получи гъста смес <br>Малко вода<br>Сол и пипер за нормализиране на вкуса <br>Трюфели ото буркан<br>Трюфел олио</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Truffle Mayonnaise<br>Source: Vijf | Garde Manger<br><br>Ingredients:<br>- Egg yolks<br>- Mustard<br>- Red wine vinegar<br>- Oil<br>- Water<br>- Salt and pepper<br>- Jarred truffles<br>- Truffle oil<br><br>Method:<br>1. Bring all base ingredients to room temperature.<br>2. Combine yolks, mustard, and red wine vinegar. Mix thoroughly.<br>3. Add oil very slowly while whisking vigorously until emulsion forms and mixture thickens.<br>4. Adjust consistency with a little water.<br>5. Season with salt and pepper to taste.<br>6. Fold in chopped jarred truffles and finish with truffle oil.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

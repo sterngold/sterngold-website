@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Semolina Gnocchi 2<br>Griessnocken Gnocchi romaine<br><br><br>Rezept Nr.	: 630<br>Kategorie	: Pasta Dishes<br>Koch	: Patrick Diethelm<br>Datum	: 16.08.2005<br>Warenkosten	: CHF 0.36 / EUR 0.23<br><br>Zutaten für 15 Personen zu 100% (Nettomenge)<br>1.5<br>I<br>Milk<br>75<br>g<br>Butter<br>15<br>g<br>Salt<br>1<br>x<br>Nutmeg (pinch)<br>340<br>g<br>Semolina (hard wheat)<br>150<br>g<br>Sbrinz Grated<br>120<br>g<br>Egg yolk<br>45<br>g<br>Butter<br><br>- Combine millk, butter, salt, and nutmeg in small sauteuse and bring to a boil - Add semolina, stirring with a whisk.<br>- Cover and place into 120°C hot oven and cook for 10 minutes<br>- Remove from oven, mix in egg yolks and half of the grated cheese, using a plastic spatula. - Spread mixture. about 15 - 20 mm thick on oiled parchment paper;<br>and let cam.<br>- CUT CHILLED SEMOLINA PASTE INTO ATTRACTIVE SHAPES.<br>- THE TRADITIONAL SHAPES ARE HALF-MOONS AND CIRCLES.<br>- BUTTER AN OVENPROOF DISH (GRATIN DISH).<br>- PLACE GNOCCHIS ON BLACK BAKING TRAY<br>- SPRINKLE WITH REMAINING CHEESE AND BAKE IN HOT OVEN AT 220° C UNTIL GOLDEN BROWN.<br>Note: Semolina must cook the full time. The semolina must completely absorb all moisture, or the gnocchis will not hold together during baking.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Semolina Gnocchi 2<br>Griessnocken Gnocchi romaine<br><br><br>Rezept Nr.	: 630<br>Kategorie	: Pasta Dishes<br>Koch	: Patrick Diethelm<br>Datum	: 16.08.2005<br>Warenkosten	: CHF 0.36 / EUR 0.23<br><br>Zutaten für 15 Personen zu 100% (Nettomenge)<br>1.5<br>I<br>Milk<br>75<br>g<br>Butter<br>15<br>g<br>Salt<br>1<br>x<br>Nutmeg (pinch)<br>340<br>g<br>Semolina (hard wheat)<br>150<br>g<br>Sbrinz Grated<br>120<br>g<br>Egg yolk<br>45<br>g<br>Butter<br><br>- Combine millk, butter, salt, and nutmeg in small sauteuse and bring to a boil - Add semolina, stirring with a whisk.<br>- Cover and place into 120°C hot oven and cook for 10 minutes<br>- Remove from oven, mix in egg yolks and half of the grated cheese, using a plastic spatula. - Spread mixture. about 15 - 20 mm thick on oiled parchment paper;<br>and let cam.<br>- CUT CHILLED SEMOLINA PASTE INTO ATTRACTIVE SHAPES.<br>- THE TRADITIONAL SHAPES ARE HALF-MOONS AND CIRCLES.<br>- BUTTER AN OVENPROOF DISH (GRATIN DISH).<br>- PLACE GNOCCHIS ON BLACK BAKING TRAY<br>- SPRINKLE WITH REMAINING CHEESE AND BAKE IN HOT OVEN AT 220° C UNTIL GOLDEN BROWN.<br>Note: Semolina must cook the full time. The semolina must completely absorb all moisture, or the gnocchis will not hold together during baking.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">GNOCCHI ROMAINE (Serves 15, 100g portions)<br><br>Combine milk, 75g butter, salt, and nutmeg in sauteuse and bring to a boil. Add semolina, stirring constantly with a whisk. Cover and place in 120°C oven for 10 minutes until semolina has completely absorbed all moisture.<br><br>Remove from oven and fold in egg yolks and half of the grated Sbrinz using a plastic spatula. Spread mixture approximately 15–20mm thick on oiled parchment paper and let cool.<br><br>Once set, cut chilled semolina paste into attractive shapes—traditionally half-moons or circles. Butter an ovenproof gratin dish.<br><br>Arrange gnocchi on the prepared dish, sprinkle with remaining cheese, and bake in 220°C oven until golden brown.<br><br>Note: Semolina must cook the full duration in the oven. Complete moisture absorption is essential to prevent gnocchi from collapsing during baking.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

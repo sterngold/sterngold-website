@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Quiche marseillaise<br>Muschel - Gemdsekuchen mit Safran Quiche marseillaise<br><br><br>Recipe #	: 294<br>Category	: Hot Appetizers<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 1.481 EUR 0.93<br><br><br>Ingredients for 10 servings at 100% (Net quantity)<br><br><br>Short crust with dark rye flour<br>20<br>ml<br>Olive oil<br>30<br>g<br>Shallots<br>60<br>g<br>Fennel julienne<br>190<br>g<br>Leeks (white leaves only)<br>500<br>g<br>Mussels, fresh<br>200<br>ml<br>Dry white wine<br>10<br>g<br>Pastis Pernod<br>1<br>pc<br>Saffron, pinch<br>10<br>g<br>Fennel green<br>1<br>x<br>Seasoning [salt and pepper)<br>170<br>ml<br>Heavy cream (36%)<br>150<br>g<br>Egg whole<br>20<br>g<br>White wheat flour<br><br>- Brush tart mold with butter and dust with flour.<br>- Roll out dark rye dough and line tart mold.<br>Poke holes at random to let steam escape. Blind baking for 12 minutes at 180°C - Wash and trim leeks and fennel; Cut into fine julienne.<br>- Peel arid clean shallots and cut into emince<br>- Scrape mussels, wash and braise in white wine.<br>- Drain mussels out of shells; remove strings.<br>- SWEAT SHALLOTS, FENNEL AND LEEKS IN OLIVE OIL; ADD COOKED MUSSELS, SAFFRON AND HEAT WITH SOME MUSSEL STOCK AND PASTE.<br>DRAIN OFF AND RESERVE STOCK.<br>- LET DRAINED, MUSSELS, AND VEGETABLE COOL.<br>- WHEN COOL, PLACE SEAFOOD WITH VEGETABLES EVENLY IN MOLD LINED WITH DOUGH. - REDUCE RESERVED FISH STOCK AND LET COOL SLIGHTLY.<br>- BLEND CREAM, AND EGGS. MIX WITH REDUCED FISH STOCK. STRAIN THROUGH CHINA CAP. SEASON TO TASTE. ADD CHOPPED FENNEL GREEN<br>- POUR CUSTARD OVER SEAFOOD; BAKE AT LOW HEAT FOR ABOUT 20 - 30 MINUTES, AT 180 - 200° C UNTIL CENTER IS FIRM.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Quiche marseillaise<br>Muschel - Gemdsekuchen mit Safran Quiche marseillaise<br><br><br>Recipe #	: 294<br>Category	: Hot Appetizers<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 1.481 EUR 0.93<br><br><br>Ingredients for 10 servings at 100% (Net quantity)<br><br><br>Short crust with dark rye flour<br>20<br>ml<br>Olive oil<br>30<br>g<br>Shallots<br>60<br>g<br>Fennel julienne<br>190<br>g<br>Leeks (white leaves only)<br>500<br>g<br>Mussels, fresh<br>200<br>ml<br>Dry white wine<br>10<br>g<br>Pastis Pernod<br>1<br>pc<br>Saffron, pinch<br>10<br>g<br>Fennel green<br>1<br>x<br>Seasoning [salt and pepper)<br>170<br>ml<br>Heavy cream (36%)<br>150<br>g<br>Egg whole<br>20<br>g<br>White wheat flour<br><br>- Brush tart mold with butter and dust with flour.<br>- Roll out dark rye dough and line tart mold.<br>Poke holes at random to let steam escape. Blind baking for 12 minutes at 180°C - Wash and trim leeks and fennel; Cut into fine julienne.<br>- Peel arid clean shallots and cut into emince<br>- Scrape mussels, wash and braise in white wine.<br>- Drain mussels out of shells; remove strings.<br>- SWEAT SHALLOTS, FENNEL AND LEEKS IN OLIVE OIL; ADD COOKED MUSSELS, SAFFRON AND HEAT WITH SOME MUSSEL STOCK AND PASTE.<br>DRAIN OFF AND RESERVE STOCK.<br>- LET DRAINED, MUSSELS, AND VEGETABLE COOL.<br>- WHEN COOL, PLACE SEAFOOD WITH VEGETABLES EVENLY IN MOLD LINED WITH DOUGH. - REDUCE RESERVED FISH STOCK AND LET COOL SLIGHTLY.<br>- BLEND CREAM, AND EGGS. MIX WITH REDUCED FISH STOCK. STRAIN THROUGH CHINA CAP. SEASON TO TASTE. ADD CHOPPED FENNEL GREEN<br>- POUR CUSTARD OVER SEAFOOD; BAKE AT LOW HEAT FOR ABOUT 20 - 30 MINUTES, AT 180 - 200° C UNTIL CENTER IS FIRM.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Quiche Marseillaise**<br>*Chef: Patrick Diethelm | 10 servings | Recipe #294*<br><br>**Crust:**<br>Brush tart mold with butter and dust with flour. Roll out dark rye dough and line mold, poking holes randomly for steam escape. Blind bake at 180°C for 12 minutes.<br><br>**Filling:**<br>Wash, trim, and cut leeks and fennel into fine julienne. Peel and emince shallots. Scrape, wash, and braise mussels in dry white wine. Drain mussels from shells and remove strings, reserving stock.<br><br>Sweat shallots, fennel, and leeks in olive oil. Add cooked mussels, a pinch of saffron, and some mussel stock with Pernod. Heat through, then drain, reserving stock. Cool completely.<br><br>Reduce reserved mussel stock and cool slightly. Blend heavy cream and eggs, mix with reduced stock, and strain through fine sieve. Season to taste and add chopped fennel green.<br><br>**Assembly and Baking:**<br>Arrange cooled mussels and vegetables evenly in lined mold. Pour custard over seafood. Bake at 180–200°C for 20–30 minutes until center is firm.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

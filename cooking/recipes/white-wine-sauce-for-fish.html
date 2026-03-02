@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">White Wine Sauce (for fish) <br>Weissweinsauce Sauce au vin blanc <br>Rezept Nr. : 103 <br>Kategorie : Sauces <br>Koch : P.Diethelm <br>Detum : 11.08.2005 <br>Warenkosten : CHF 4.74 / EUR 3.00 <br><br>Zutaten fUr 1.000 Liter zu 100% [Nettomenge) <br>700 ml *Fish Veloute Sauce<br>300 ml Fish stock poaching liquid<br>250 ml Heavy cream (36%) <br><br>1 x Seasoning [salt.\cayenne .pepper)<br>1 x Seasoning lemon juice) <br><br>'- REDUCE FISH STOCK TO A GLAZE. <br>- ADD GLAZE AND CREAM TO FISH VELOUTE; BOIL FOR 5 MINUTES. <br>- STRAIN THROUGH CHEESECLOTH. <br>-SEASON WITH SALT. CAYENNE. AND LEMON JUICE. <br>APPLICATION <br>Use as a basic ingredient in white fish sauce.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">White Wine Sauce (for fish) <br>Weissweinsauce Sauce au vin blanc <br>Rezept Nr. : 103 <br>Kategorie : Sauces <br>Koch : P.Diethelm <br>Detum : 11.08.2005 <br>Warenkosten : CHF 4.74 / EUR 3.00 <br><br>Zutaten fUr 1.000 Liter zu 100% [Nettomenge) <br>700 ml *Fish Veloute Sauce<br>300 ml Fish stock poaching liquid<br>250 ml Heavy cream (36%) <br><br>1 x Seasoning [salt.\cayenne .pepper)<br>1 x Seasoning lemon juice) <br><br>'- REDUCE FISH STOCK TO A GLAZE. <br>- ADD GLAZE AND CREAM TO FISH VELOUTE; BOIL FOR 5 MINUTES. <br>- STRAIN THROUGH CHEESECLOTH. <br>-SEASON WITH SALT. CAYENNE. AND LEMON JUICE. <br>APPLICATION <br>Use as a basic ingredient in white fish sauce.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">WHITE WINE SAUCE (FOR FISH)<br>Chef: P. Diethelm | DCT Saucier Station | 11.08.2005<br>Yield: 1,000 ml | Cost: CHF 4.74<br><br>INGREDIENTS<br>700 ml fish velouté sauce<br>300 ml fish stock poaching liquid<br>250 ml heavy cream (36%)<br>Salt, cayenne, and pepper to taste<br>Lemon juice to taste<br><br>METHOD<br>1. Reduce fish stock to a glaze.<br>2. Add glaze and cream to fish velouté. Boil for 5 minutes.<br>3. Strain through cheesecloth.<br>4. Season with salt, cayenne, pepper, and lemon juice.<br><br>USE: Basic ingredient for white fish sauces.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">VITZNAU-LUCERNE SWITZERLAND<br>DALLENWILER GOAT CHEESE MOUSSE TERRINE WITH HERBS<br>Yield: 8 servings<br>	150 g	goat cheese from Dallenwil<br>	50 g	sour cream or mascarpone<br>fine chopped herbs as basil, parsley, chervil, chive<br> 4	sheets gelatine<br>	50 g	chicken stock<br>	90 g	whipped cream salt, pepper mill<br>Garnish: Sprigs of herbs<br>Preparation:<br>- Press the goat cheese through a fine drum sieve<br>- Add the sour cream and half of the herbs in a bowl<br>Dissolve the soaked squeezed gelatine in the lukewarm chicken stock and stir in with a whisk<br>- Fold in the whipped cream carefully, season to taste with salt and pepper, fill in a prepared small terrine mold (prepared with plastic foil) and cover with the overhang foil - Place in the refrigerator for 1 hour.<br>- Unmold the terrine and remove the plastic.<br>Sprinkle and dredge the goat terrine bavarois in the remaining herbs<br>- Serve with a little rucola salad and a marinated dry tomato olive vinaigrette:<br><br>2	Marinated dried tomatoes<br>8	Black olives<br>10 g	Chopped shallots<br>50 g	Olive oil<br>20 g	Balsamic vinegar Salt, pepper mill<br>10 g	Chicken stock<br><br><br>- Cut all the tomato and black olives into small brunoise, add the fine chopped shallot, oil and vinegar<br>- Season to taste with salt and pepper<br>- Warm up the vinaigrette in a bain marie before serving to the sliced terrine - Garnish with some sprigs of herbs.<br>F.Diethelm 05 - ЕСС</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">VITZNAU-LUCERNE SWITZERLAND<br>DALLENWILER GOAT CHEESE MOUSSE TERRINE WITH HERBS<br>Yield: 8 servings<br>	150 g	goat cheese from Dallenwil<br>	50 g	sour cream or mascarpone<br>fine chopped herbs as basil, parsley, chervil, chive<br> 4	sheets gelatine<br>	50 g	chicken stock<br>	90 g	whipped cream salt, pepper mill<br>Garnish: Sprigs of herbs<br>Preparation:<br>- Press the goat cheese through a fine drum sieve<br>- Add the sour cream and half of the herbs in a bowl<br>Dissolve the soaked squeezed gelatine in the lukewarm chicken stock and stir in with a whisk<br>- Fold in the whipped cream carefully, season to taste with salt and pepper, fill in a prepared small terrine mold (prepared with plastic foil) and cover with the overhang foil - Place in the refrigerator for 1 hour.<br>- Unmold the terrine and remove the plastic.<br>Sprinkle and dredge the goat terrine bavarois in the remaining herbs<br>- Serve with a little rucola salad and a marinated dry tomato olive vinaigrette:<br><br>2	Marinated dried tomatoes<br>8	Black olives<br>10 g	Chopped shallots<br>50 g	Olive oil<br>20 g	Balsamic vinegar Salt, pepper mill<br>10 g	Chicken stock<br><br><br>- Cut all the tomato and black olives into small brunoise, add the fine chopped shallot, oil and vinegar<br>- Season to taste with salt and pepper<br>- Warm up the vinaigrette in a bain marie before serving to the sliced terrine - Garnish with some sprigs of herbs.<br>F.Diethelm 05 - ЕСС</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">DALLENWIL GOAT CHEESE MOUSSE TERRINE (8 servings)<br><br>Press goat cheese through a fine drum sieve. Combine with sour cream or mascarpone and half of the finely chopped herbs (basil, parsley, chervil, chive). Dissolve soaked, squeezed gelatine in lukewarm chicken stock, then whisk into cheese mixture. Fold in whipped cream carefully. Season with salt and pepper mill.<br><br>Fill prepared terrine mold lined with plastic foil, cover with overhang, and refrigerate for 1 hour. Unmold, remove plastic, and coat with remaining chopped herbs. Slice and serve with rucola salad.<br><br>MARINATED TOMATO-OLIVE VINAIGRETTE:<br>Cut marinated dried tomatoes and black olives into brunoise, combine with finely chopped shallots, olive oil, and balsamic vinegar. Season with salt and pepper. Warm in bain marie before service. Garnish terrine with herb sprigs.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

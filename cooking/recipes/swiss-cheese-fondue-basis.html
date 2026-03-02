@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">.<br>A1W11<br><br><br>^~r гдг~+.~иглs:а~ яFмг.•,.<br><br><br><br><br><br>Recipe<br>Swiss Cheese Fondue Basis Käsefondue<br>Addres5<br>DCT - European Culinary Center<br><br><br>Seestrasse<br><br><br>CH - 6354 Vitznau - Lucerne<br><br><br>Switzerland<br>'<br><br> HYPERLINK http://www.culinarvschool.ch www.culinarvschool.ch<br><br><br>Tel. 0041 - 41 - 399 00 00<br><br>Chef<br>Chef Instructor Patrick Díethelm<br><br>Yte1d<br>2 - 4 servings<br><br>Infos<br><br><br>Measure<br>Ingredients<br>Mise en place / Pre -preparation<br>0.5 st<br>Garlic cloves<br>Peeled<br>150 g<br>Dry white wine<br><br>300 g<br>Gruyere cheese or Fondue mixture<br>Grated .<br>15 g<br>Cornstarch<br><br>1<br>Seasoning (white pepper mill)<br><br>1<br>Nutmeg (pinch)<br><br>20 g<br>Kirsch, Calvados or Brandy<br><br>250 g<br>White bread<br>Cut bread into 2.5ст big size cubes<br>Preparation<br><br>- Rub the inside of Fondue caquelon pot with the garlic clove<br><br>- Add wine to caquelon and heat up<br><br>- Sprinkle in the cheese and melt over heat, stirring continuesly<br><br>until smooth and creamy<br><br>- Make а slury with Kirsch and Corn starch; add to boiling cheese mixture<br><br>to thicken to creamy fondue<br><br>- Season with pepper mill and freshly ground nutmeg<br><br>- Serve immediately and place Caquelon on Rechaud (Food warmer)<br><br>- Serve fresh white bread cubes with hot fondue<br><br>- Serve with good chilled dry white wine or black tea</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">.<br>A1W11<br><br><br>^~r гдг~+.~иглs:а~ яFмг.•,.<br><br><br><br><br><br>Recipe<br>Swiss Cheese Fondue Basis Käsefondue<br>Addres5<br>DCT - European Culinary Center<br><br><br>Seestrasse<br><br><br>CH - 6354 Vitznau - Lucerne<br><br><br>Switzerland<br>'<br><br> HYPERLINK http://www.culinarvschool.ch www.culinarvschool.ch<br><br><br>Tel. 0041 - 41 - 399 00 00<br><br>Chef<br>Chef Instructor Patrick Díethelm<br><br>Yte1d<br>2 - 4 servings<br><br>Infos<br><br><br>Measure<br>Ingredients<br>Mise en place / Pre -preparation<br>0.5 st<br>Garlic cloves<br>Peeled<br>150 g<br>Dry white wine<br><br>300 g<br>Gruyere cheese or Fondue mixture<br>Grated .<br>15 g<br>Cornstarch<br><br>1<br>Seasoning (white pepper mill)<br><br>1<br>Nutmeg (pinch)<br><br>20 g<br>Kirsch, Calvados or Brandy<br><br>250 g<br>White bread<br>Cut bread into 2.5ст big size cubes<br>Preparation<br><br>- Rub the inside of Fondue caquelon pot with the garlic clove<br><br>- Add wine to caquelon and heat up<br><br>- Sprinkle in the cheese and melt over heat, stirring continuesly<br><br>until smooth and creamy<br><br>- Make а slury with Kirsch and Corn starch; add to boiling cheese mixture<br><br>to thicken to creamy fondue<br><br>- Season with pepper mill and freshly ground nutmeg<br><br>- Serve immediately and place Caquelon on Rechaud (Food warmer)<br><br>- Serve fresh white bread cubes with hot fondue<br><br>- Serve with good chilled dry white wine or black tea</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SWISS CHEESE FONDUE BASIS<br><br>Yield: 2-4 servings<br>Chef Instructor: Patrick Diethelm<br><br>Ingredients:<br>0.5 garlic clove, peeled<br>150 g dry white wine<br>300 g Gruyere cheese or fondue mixture, grated<br>15 g cornstarch<br>White pepper (from mill)<br>Nutmeg (pinch)<br>20 g Kirsch, Calvados, or Brandy<br>250 g white bread, cut into 2.5 cm cubes<br><br>Method:<br>1. Rub the inside of fondue caquelon with peeled garlic clove.<br>2. Add wine to caquelon and heat.<br>3. Sprinkle in cheese and melt over heat, stirring continuously until smooth and creamy.<br>4. Make a slurry with Kirsch and cornstarch; add to boiling cheese mixture to thicken to creamy consistency.<br>5. Season with freshly ground white pepper and nutmeg.<br>6. Serve immediately, placing caquelon on rechaud (food warmer).<br>7. Serve with fresh white bread cubes alongside hot fondue.<br>8. Accompany with chilled dry white wine or black tea.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

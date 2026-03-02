@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Artichoken schoonmaken en opzetten in een kookvocht van 1 theelepel chinese peper, 2 theelepels korianderzaad en 1 eetlepel anijszaad, 1 tomaat, schil van halve citronen en sinassappel, 5 teentjes knoflook, 1 laurier, 1 tak rozemarijn, 1 takje thijm, scheutje witte wijn, beetje olifolie, zwarte peperkorrels en klein beetje grof zeezout. Vul dit aan met water. Zorg ervoor dat je de artichoken door middel van een bord onder water houdt. Waneer deze gaar zijn uit vocht halen, haar vervijderen en in robotcoupe opdraien met olifolie, voeg evt nog peper en zout toe. Draj dit door een keukenzeef.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Artichoken schoonmaken en opzetten in een kookvocht van 1 theelepel chinese peper, 2 theelepels korianderzaad en 1 eetlepel anijszaad, 1 tomaat, schil van halve citronen en sinassappel, 5 teentjes knoflook, 1 laurier, 1 tak rozemarijn, 1 takje thijm, scheutje witte wijn, beetje olifolie, zwarte peperkorrels en klein beetje grof zeezout. Vul dit aan met water. Zorg ervoor dat je de artichoken door middel van een bord onder water houdt. Waneer deze gaar zijn uit vocht halen, haar vervijderen en in robotcoupe opdraien met olifolie, voeg evt nog peper en zout toe. Draj dit door een keukenzeef.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Clean artichokes and cook in a broth composed of 1 tsp Chinese pepper, 2 tsp coriander seed, 1 tbsp anise seed, 1 tomato, zest of half a lemon and half an orange, 5 cloves garlic, 1 bay leaf, 1 sprig rosemary, 1 sprig thyme, splash white wine, olive oil, black peppercorns, and coarse sea salt. Top up with water and keep artichokes submerged under a plate. When tender, remove from broth and discard hair. Purée in food processor with olive oil, adjust seasoning if needed, and pass through fine sieve.</div>
+          
         </section>
         
 
@@ -97,5 +106,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

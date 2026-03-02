@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Meat - Spinach Ravioli with Sage<br>Ravioli mit Salbei Ravioli â la sauge<br><br><br>Recipe #	: 638<br>Category	: Pasta Dishes<br>Chef	: Patrick Diethelm<br>Date	: 03.11.2005<br>Cost of goods	: CHF 1.23 / EUR 0.78<br><br>Ingredients for 10 servings at 100% (Net quantity]<br>500 g *Ravioli Dough<br>213 g	Veal shoulder Trimmed, boneless <br>160 g Pork shoulder meat Trimmed, boneless<br>50 ml Peanut oil<br>45 g	Shallots<br>10 g	Garlic<br>100 ml Dry white wine<br>300 g Brown veal stock <br>100 g Spinach, fresh<br>1 x	Seasoning (salt and pepper)<br>20 g	Herbs, fresh (chervil,chives and parsley)<br>40 g Butter<br> 75 g Egg yolk<br>Garnish:<br>100 g Butter 67 g	Shallots <br>50 g Sage, fresh<br>- Cut veal and pork into emince<br>- Peel and chop shallots and garlic.<br>- Wash spinach, blanch, chill, and drain. Squeeze out most moisture. - Wash kitchen herbs and chop leaves.<br>For Meat Filling<br>- SAUTÉ DICED VEAL AND PORK IN PEANUT OIL UNTIL GOLDEN BROWN; ADD SHALLOTS AND GARLIC. - ADD WHITE WINE AND BROWN VEAL JUICE. BRING TO A BOIL, COVER AND SIMMER OVER LOW HEAT UNTIL MEAT IS TENDER. REMOVE FROM HEAT AND LET COOL<br>- ADD SPINACH AND HERBS AND SEASON TO TASTE WITH SALT AND PEPPER.<br>- GRIND MIXTURE THROUGH FINE PLATE OF MEAT GRINDER, OR PUREE IN FOOD PROCESSOR. -ADD BUTTER NUGGETS AND EGG YOLK AND FILL RAVIOLIS<br>For Ravioli<br>- PREPARE AND COOK RAVIOLI IN SALTED WATER<br>- DRAIN WHEN AL DENTE, REFRESH AND TOSS IN OLIVE OIL, BU t l	ER MIXTURE<br>For Garnish<br>- WASH SAGE AND CUT LEAVES IN CHIFFONADE<br>- MELT SOME GLAZE DE VIANDE AND POUR OVER THE ARRANGED RAVIOLI - SAUTÉ SAGE CHIFFONADE IN BUTTER AND ADD OVER HOT RAVIOLI.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Meat - Spinach Ravioli with Sage<br>Ravioli mit Salbei Ravioli â la sauge<br><br><br>Recipe #	: 638<br>Category	: Pasta Dishes<br>Chef	: Patrick Diethelm<br>Date	: 03.11.2005<br>Cost of goods	: CHF 1.23 / EUR 0.78<br><br>Ingredients for 10 servings at 100% (Net quantity]<br>500 g *Ravioli Dough<br>213 g	Veal shoulder Trimmed, boneless <br>160 g Pork shoulder meat Trimmed, boneless<br>50 ml Peanut oil<br>45 g	Shallots<br>10 g	Garlic<br>100 ml Dry white wine<br>300 g Brown veal stock <br>100 g Spinach, fresh<br>1 x	Seasoning (salt and pepper)<br>20 g	Herbs, fresh (chervil,chives and parsley)<br>40 g Butter<br> 75 g Egg yolk<br>Garnish:<br>100 g Butter 67 g	Shallots <br>50 g Sage, fresh<br>- Cut veal and pork into emince<br>- Peel and chop shallots and garlic.<br>- Wash spinach, blanch, chill, and drain. Squeeze out most moisture. - Wash kitchen herbs and chop leaves.<br>For Meat Filling<br>- SAUTÉ DICED VEAL AND PORK IN PEANUT OIL UNTIL GOLDEN BROWN; ADD SHALLOTS AND GARLIC. - ADD WHITE WINE AND BROWN VEAL JUICE. BRING TO A BOIL, COVER AND SIMMER OVER LOW HEAT UNTIL MEAT IS TENDER. REMOVE FROM HEAT AND LET COOL<br>- ADD SPINACH AND HERBS AND SEASON TO TASTE WITH SALT AND PEPPER.<br>- GRIND MIXTURE THROUGH FINE PLATE OF MEAT GRINDER, OR PUREE IN FOOD PROCESSOR. -ADD BUTTER NUGGETS AND EGG YOLK AND FILL RAVIOLIS<br>For Ravioli<br>- PREPARE AND COOK RAVIOLI IN SALTED WATER<br>- DRAIN WHEN AL DENTE, REFRESH AND TOSS IN OLIVE OIL, BU t l	ER MIXTURE<br>For Garnish<br>- WASH SAGE AND CUT LEAVES IN CHIFFONADE<br>- MELT SOME GLAZE DE VIANDE AND POUR OVER THE ARRANGED RAVIOLI - SAUTÉ SAGE CHIFFONADE IN BUTTER AND ADD OVER HOT RAVIOLI.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">MEAT-SPINACH RAVIOLI WITH SAGE<br>Chef: Patrick Diethelm | Recipe #638 | 10 servings<br><br>PREPARATION:<br>Cut veal and pork shoulder into emincé. Peel and chop shallots and garlic. Wash spinach, blanch, chill, and drain thoroughly. Squeeze out excess moisture. Wash and chop fresh herbs (chervil, chives, parsley).<br><br>MEAT FILLING:<br>Sauté diced veal and pork in peanut oil until golden brown. Add shallots and garlic. Deglaze with white wine, add brown veal stock, bring to boil, cover and simmer over low heat until meat is tender. Cool completely. Add spinach and herbs, season with salt and pepper. Grind mixture through fine plate of meat grinder or purée in food processor. Fold in butter nuggets and egg yolk. Fill ravioli.<br><br>RAVIOLI:<br>Prepare and cook ravioli in salted water. Drain at al dente, refresh, and toss in olive oil-butter mixture.<br><br>GARNISH:<br>Wash sage and cut into chiffonade. Melt glace de viande and pour over arranged ravioli. Sauté sage chiffonade in butter and scatter over hot ravioli.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

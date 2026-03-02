@@ -106,8 +106,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- roast calvestail pieces in oven until browned evenly at 200 C<br>- add mirepoix and continue roasting<br>- add tomato paste and continue roasting<br>- deglaze with wine and reduce<br>- put all above ingredients in a rondeau, add water or 1/2 brown veal stock<br>- simmer under the boiling point until calves are tender - about 2 to 3 hours<br>- remove calves tails<br>- strain stock through cheesecloth, save and let cool <br>- remove meat from tial, add to terrine mold , press and chill</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- roast calvestail pieces in oven until browned evenly at 200 C<br>- add mirepoix and continue roasting<br>- add tomato paste and continue roasting<br>- deglaze with wine and reduce<br>- put all above ingredients in a rondeau, add water or 1/2 brown veal stock<br>- simmer under the boiling point until calves are tender - about 2 to 3 hours<br>- remove calves tails<br>- strain stock through cheesecloth, save and let cool <br>- remove meat from tial, add to terrine mold , press and chill</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Roast calves tail pieces in the oven at 200°C until evenly browned. Add mirepoix and continue roasting. Add tomato paste and continue roasting. Deglaze with wine and reduce. Transfer all ingredients to a rondeau, add water or half brown veal stock, and simmer below boiling point for 2 to 3 hours until calves tail is tender. Remove calves tail pieces and strain stock through cheesecloth; cool and reserve. Remove meat from tail, add to a terrine mold, press, and chill.</div>
+          
         </section>
         
 
@@ -141,5 +150,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

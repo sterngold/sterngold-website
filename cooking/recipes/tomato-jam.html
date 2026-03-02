@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Tomato jam<br>Tomatenmarmelade Confiture de tomates<br><br><br>Recipe #	: 98<br>Category	; ECA- Saucier sauces<br>Chef	: Patrick Diethelm<br>Date	: 05.12.2005<br>Cost of goods	: CHF 8.57 / EUR 5.42<br><br>Ingredients for 0.200 kilogram. at 100% (Net quantity)</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Tomato jam<br>Tomatenmarmelade Confiture de tomates<br><br><br>Recipe #	: 98<br>Category	; ECA- Saucier sauces<br>Chef	: Patrick Diethelm<br>Date	: 05.12.2005<br>Cost of goods	: CHF 8.57 / EUR 5.42<br><br>Ingredients for 0.200 kilogram. at 100% (Net quantity)</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">TOMATO JAM<br><br>Chef: Patrick Diethelm | Date: 05.12.2005<br>Category: Saucier/Sauces<br><br>Note: Ingredient list only — no method provided in original notes.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

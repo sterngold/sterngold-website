@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1 глава лук <br>чесън паста <br>запържват се в тенджера <br>1 лъжица малка – къри паста <br>1 кутийка кокосово мляко <br>сол/пипер <br>лимонена трева – 5 стръка нарязани напречно <br>ври около 15 мин. <br>пасира се</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1 глава лук <br>чесън паста <br>запържват се в тенджера <br>1 лъжица малка – къри паста <br>1 кутийка кокосово мляко <br>сол/пипер <br>лимонена трева – 5 стръка нарязани напречно <br>ври около 15 мин. <br>пасира се</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">COCONUT CURRY SAUCE<br><br>Sweat 1 onion and garlic paste together in a pot. Add 1 tablespoon curry paste and stir to combine. Pour in 1 can coconut milk and season with salt and pepper. Add 5 stalks lemongrass (sliced crosswise). Simmer approximately 15 minutes. Pass through fine sieve and serve.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

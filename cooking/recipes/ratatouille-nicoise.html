@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Zutaten für 20<br><br>80 ml <br>48 g<br>8 g 400 g <br>400 g 360 g<br>1 x<br>4 g<br>4 g <br>160 g 300 ml<br>Personen zu 100% (Nettomenge)<br><br>Olive oil Cold pressed<br>Shallots<br>Garlic<br>Assorted bell peppers<br>Eggplants<br>Zucchini (vegetable marrow) Seasoning (salt and pepper) Thyme twig, fresh<br>Basil, fresh<br>Tomato paste<br>*Stewed Tomatoes Concassé<br>Peel and chop.<br><br>Trim, wash and cut into dice 1Omm. Trim, wash and cut into dice.<br><br>Wash and chop leaves. Wash and chop leaves.<br><br>- SAUTÉ SCHALOTTS, GARLIC, AND DICED PEPPERS IN OLIVE OIL<br>- ADD EGGPLANT AND ZUCCHINI, THYME, SALT AND PEPPER.<br>- ADD TOMATO PASTE<br>- COVER AND STEW.<br>(VEGETABLES SHOULD CONTAIN SUFFICIENT MOISTURE TO STEW WITHOUT ADDING LIQUID.) - WHEN VEGETABLES ARE TENDER, ADD STEWED TOMATOES CONCASSÉ AND BASIL. HEAT AND SERVE.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Zutaten für 20<br><br>80 ml <br>48 g<br>8 g 400 g <br>400 g 360 g<br>1 x<br>4 g<br>4 g <br>160 g 300 ml<br>Personen zu 100% (Nettomenge)<br><br>Olive oil Cold pressed<br>Shallots<br>Garlic<br>Assorted bell peppers<br>Eggplants<br>Zucchini (vegetable marrow) Seasoning (salt and pepper) Thyme twig, fresh<br>Basil, fresh<br>Tomato paste<br>*Stewed Tomatoes Concassé<br>Peel and chop.<br><br>Trim, wash and cut into dice 1Omm. Trim, wash and cut into dice.<br><br>Wash and chop leaves. Wash and chop leaves.<br><br>- SAUTÉ SCHALOTTS, GARLIC, AND DICED PEPPERS IN OLIVE OIL<br>- ADD EGGPLANT AND ZUCCHINI, THYME, SALT AND PEPPER.<br>- ADD TOMATO PASTE<br>- COVER AND STEW.<br>(VEGETABLES SHOULD CONTAIN SUFFICIENT MOISTURE TO STEW WITHOUT ADDING LIQUID.) - WHEN VEGETABLES ARE TENDER, ADD STEWED TOMATOES CONCASSÉ AND BASIL. HEAT AND SERVE.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">RATATOUILLE NIÇOISE<br>Yield: 20 servings<br><br>Ingredients:<br>80 ml cold-pressed olive oil<br>48 g shallots<br>8 g garlic<br>400 g assorted bell peppers<br>400 g eggplants<br>360 g zucchini<br>4 g thyme, fresh<br>4 g basil, fresh<br>160 g tomato paste<br>300 ml stewed tomatoes concassé<br>Salt and pepper to taste<br><br>Method:<br>Peel and chop shallots and garlic. Trim, wash, and cut peppers, eggplant, and zucchini into 10 mm dice. Wash and chop fresh herbs.<br><br>Sauté shallots, garlic, and diced peppers in olive oil. Add eggplant, zucchini, thyme, salt, and pepper. Stir in tomato paste. Cover and stew—the vegetables should contain sufficient moisture without additional liquid. When vegetables are tender, add stewed tomatoes concassé and fresh basil. Heat through and serve.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

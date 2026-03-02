@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1 kg flour     - 0,500 g <br>1.25 dl milk    -0,62 dl<br>1.25 dl water  - 0,62 dl<br>125 g egg    - 1 egg<br>75 gist         - 40 g always ut more gist (if its old)<br>100 sugar     - 50 g<br>17 g zout   - 8,5<br>250 g botter   - 125 g(soft)<br>Briochebrod - 30 g piece in balck form; 180 C 14 - 16 min preheated</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1 kg flour     - 0,500 g <br>1.25 dl milk    -0,62 dl<br>1.25 dl water  - 0,62 dl<br>125 g egg    - 1 egg<br>75 gist         - 40 g always ut more gist (if its old)<br>100 sugar     - 50 g<br>17 g zout   - 8,5<br>250 g botter   - 125 g(soft)<br>Briochebrod - 30 g piece in balck form; 180 C 14 - 16 min preheated</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Brioche<br><br>Mix 500 g flour with 0.62 dl milk, 0.62 dl water, 1 egg, 40 g yeast (increase if old), and 50 g sugar. Add 8.5 g salt and 125 g soft butter, mixing until fully incorporated. Let dough develop.<br><br>Portion 30 g pieces into black molds. Proof until risen. Bake at 180°C for 14–16 minutes in a preheated oven.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

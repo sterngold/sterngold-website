@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Rhubarbe Vanille saffron pickles<br>Rhabarber vanille-safran pickles<br>Recipe #<br>Category	: ECA - Sauces Garde-manger<br>Chef	: Patrick Diethelm<br>Date	: 22.11.2005<br>Cost of goods	: CHF 0.38 / EUR 0.24 <br><br>European Gourmet:Cuisine<br><br>Ingredients for 5 servings at 100% (Net quantity)<br><br>75 g	Crystal sugar <br>150 ml Water<br>0.5 pc Vanilla bean <br>30 ml Sherry vinegar<br>1 pc Saffron, pinch 300 g Rhubarbe fresh<br><br>1 x	Seasoning [pepper)<br>1 x	Nutmeg [pinch)<br><br><br><br><br><br>Split in half<br><br>Peel rhubarbe and cut into macédoine or betonet [see course inst.	action)<br><br>- ADD SUGAR, WATER, VANILLA BEAN, SHERRY VINEGAR AND SAFFRON AND - REDUCE TO HALF.<br>- REMOVE VANILLA BEAN AND SCRAPE OUT WITH PARING KNIFE - ADD RHUBARBE AND SIMMER FOR 5 MIN. DO NOT COOK !<br>- season with nutmeg and pepper mill.<br>- COOL DOWN AND SERVE</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Rhubarbe Vanille saffron pickles<br>Rhabarber vanille-safran pickles<br>Recipe #<br>Category	: ECA - Sauces Garde-manger<br>Chef	: Patrick Diethelm<br>Date	: 22.11.2005<br>Cost of goods	: CHF 0.38 / EUR 0.24 <br><br>European Gourmet:Cuisine<br><br>Ingredients for 5 servings at 100% (Net quantity)<br><br>75 g	Crystal sugar <br>150 ml Water<br>0.5 pc Vanilla bean <br>30 ml Sherry vinegar<br>1 pc Saffron, pinch 300 g Rhubarbe fresh<br><br>1 x	Seasoning [pepper)<br>1 x	Nutmeg [pinch)<br><br><br><br><br><br>Split in half<br><br>Peel rhubarbe and cut into macédoine or betonet [see course inst.	action)<br><br>- ADD SUGAR, WATER, VANILLA BEAN, SHERRY VINEGAR AND SAFFRON AND - REDUCE TO HALF.<br>- REMOVE VANILLA BEAN AND SCRAPE OUT WITH PARING KNIFE - ADD RHUBARBE AND SIMMER FOR 5 MIN. DO NOT COOK !<br>- season with nutmeg and pepper mill.<br>- COOL DOWN AND SERVE</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">RHUBARBE VANILLE SAFFRON PICKLES<br>Chef: Patrick Diethelm | Date: 22.11.2005<br>Yield: 5 servings<br>Cost of goods: CHF 0.38 / EUR 0.24<br><br>Ingredients:<br>75 g crystal sugar<br>150 ml water<br>0.5 vanilla bean<br>30 ml sherry vinegar<br>1 pinch saffron<br>300 g fresh rhubarb<br>Pepper and nutmeg to taste<br><br>Method:<br>Split vanilla bean in half. Peel rhubarb and cut into macédoine or bâtonnet. Add sugar, water, vanilla bean, sherry vinegar, and saffron to a pot and reduce by half. Remove vanilla bean and scrape out seeds with a paring knife. Add rhubarb and simmer for 5 minutes—do not overcook. Season with nutmeg and pepper mill. Cool down and serve.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

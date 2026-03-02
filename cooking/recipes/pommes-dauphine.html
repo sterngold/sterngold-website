@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Pommes dauphine<br>Dauphine-Kartoffeln Pommes dauphine<br><br><br>Recipe #	: 582<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	: 18.102005<br>Cost of goods	: CHF 0.12 / EUR 0.08 <br><br>European Gourmet Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>	420 g	Potatoes Bintje B/C, peeled<br>	4 g	Salt<br>160 g *Choux Paste<br>	1 x	Seasoning (salt, nutmeg) 15 ml Peanut oil<br><br><br>- Cut peeled potatoes into large even sized chunks.<br>- Steam potatoes in pressure steamer with 1 bar, drain well.<br>- When cooked, dry potatoes briefly in the oven at 150°C with open steam escape. - Pass potatoes through food mill<br>- Cut parchment paper into 50 mm wide strips and oil strips lightly.<br>- Blend hot puréed potatoes with choux paste; season to taste with salt and nutmeg.<br>- Shape into oval dumplings, using two oily tablespoons, and line up dumplings along the parchment paper strips or use piping bag for special suitable shape.<br><br><br>- AT SERVICE TIME, HEAT OIL IN DEEP FRYER AT 175°C.<br>- DIP PAPER STRIPS IN HOT OIL; THE POTATO DUMPLINGS WILL SLIDE OFF.<br>- FRY DUMPLINGS UNTIL GOLDEN BROWN AND DRAIN ON ABSORBENT PAPER. - SERVE ON PAPER DOILIES, AS A SIDE DISH OR GARNISH.<br><br><br>Note: The paper strips should be long enough for one or two portions. Fry portions to order.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Pommes dauphine<br>Dauphine-Kartoffeln Pommes dauphine<br><br><br>Recipe #	: 582<br>Category	: ECA - Entremetier/ side dishes<br>Chef	: Patrick Diethelm<br>Date	: 18.102005<br>Cost of goods	: CHF 0.12 / EUR 0.08 <br><br>European Gourmet Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>	420 g	Potatoes Bintje B/C, peeled<br>	4 g	Salt<br>160 g *Choux Paste<br>	1 x	Seasoning (salt, nutmeg) 15 ml Peanut oil<br><br><br>- Cut peeled potatoes into large even sized chunks.<br>- Steam potatoes in pressure steamer with 1 bar, drain well.<br>- When cooked, dry potatoes briefly in the oven at 150°C with open steam escape. - Pass potatoes through food mill<br>- Cut parchment paper into 50 mm wide strips and oil strips lightly.<br>- Blend hot puréed potatoes with choux paste; season to taste with salt and nutmeg.<br>- Shape into oval dumplings, using two oily tablespoons, and line up dumplings along the parchment paper strips or use piping bag for special suitable shape.<br><br><br>- AT SERVICE TIME, HEAT OIL IN DEEP FRYER AT 175°C.<br>- DIP PAPER STRIPS IN HOT OIL; THE POTATO DUMPLINGS WILL SLIDE OFF.<br>- FRY DUMPLINGS UNTIL GOLDEN BROWN AND DRAIN ON ABSORBENT PAPER. - SERVE ON PAPER DOILIES, AS A SIDE DISH OR GARNISH.<br><br><br>Note: The paper strips should be long enough for one or two portions. Fry portions to order.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Cut peeled potatoes into large even chunks. Steam in pressure steamer at 1 bar and drain well. Dry briefly in oven at 150°C with steam escape open. Pass through food mill. Cut parchment paper into 50 mm strips and oil lightly. Blend hot purée with choux paste; season with salt and nutmeg to taste. Using two oiled tablespoons, shape into oval dumplings and line along parchment strips, or pipe into desired shape. At service, heat oil in deep fryer to 175°C. Dip paper strips in hot oil—dumplings will slide off. Fry until golden brown and drain on absorbent paper. Serve on paper doilies as side dish or garnish. Fry portions to order using paper strips long enough for one or two servings.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

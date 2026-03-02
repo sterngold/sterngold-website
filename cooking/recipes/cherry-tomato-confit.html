@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Cherry Tomato confit<br>Cherry Tomaten confit<br>Recipe #<br>Category	: ECA - Mediterranean cuisine<br>Chef	: Patrick Diethelm<br>Date	: 07.11.2005<br>Cost of goods	: CHF 0.14 / EUR 0.09 <br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% [Net quantity)<br>250<br>g<br>Italian tomatoes Cherry tomatoes<br>1<br>pc<br>Thyme sprig, fresh<br>1<br>pc<br>Bay leaves<br>40<br>ml<br>Olive oil<br><br>- CUT TOMATOES IN HALF AND PLACE INTO OVENPROOF DISH<br>- ADD ALL THE REMAINING INGREDIENTS ON THE TOMATOES AND PLACE FOR 1 HOUR INTO 80° C HOT OVEN (open steam escape)<br>- SEASON WITH ROCK SALT</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Cherry Tomato confit<br>Cherry Tomaten confit<br>Recipe #<br>Category	: ECA - Mediterranean cuisine<br>Chef	: Patrick Diethelm<br>Date	: 07.11.2005<br>Cost of goods	: CHF 0.14 / EUR 0.09 <br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% [Net quantity)<br>250<br>g<br>Italian tomatoes Cherry tomatoes<br>1<br>pc<br>Thyme sprig, fresh<br>1<br>pc<br>Bay leaves<br>40<br>ml<br>Olive oil<br><br>- CUT TOMATOES IN HALF AND PLACE INTO OVENPROOF DISH<br>- ADD ALL THE REMAINING INGREDIENTS ON THE TOMATOES AND PLACE FOR 1 HOUR INTO 80° C HOT OVEN (open steam escape)<br>- SEASON WITH ROCK SALT</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHERRY TOMATO CONFIT<br><br>Chef: Patrick Diethelm | Date: 07.11.2005<br>Category: ECA - Mediterranean cuisine<br><br>Ingredients (10 servings):<br>- 250 g Italian cherry tomatoes<br>- 1 sprig fresh thyme<br>- 1 bay leaf<br>- 40 ml olive oil<br><br>Method:<br>1. Halve the cherry tomatoes and place into an ovenproof dish.<br>2. Add thyme sprig and bay leaf to the tomatoes, then drizzle with olive oil.<br>3. Place in a 80°C oven for 1 hour with the oven door slightly ajar to allow steam to escape.<br>4. Season with rock salt before service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">VITZNAU-LUCERNE SWITZERLAND<br>SOUR CREAM DOUGH<br>Yield: 15 servings<br>	200 g	white wheat flour<br>	100 g	sour cream<br>	50 g	butter<br>	4 g	salt<br>Preparation:<br>- Combine all the ingredients and knead to a dough. (short crust) Wrap up with plastic foil and rest on a cool place for about 30 min.<br>- Roll out dough 1 rnm and let rest again on parchment paper</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">VITZNAU-LUCERNE SWITZERLAND<br>SOUR CREAM DOUGH<br>Yield: 15 servings<br>	200 g	white wheat flour<br>	100 g	sour cream<br>	50 g	butter<br>	4 g	salt<br>Preparation:<br>- Combine all the ingredients and knead to a dough. (short crust) Wrap up with plastic foil and rest on a cool place for about 30 min.<br>- Roll out dough 1 rnm and let rest again on parchment paper</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SOUR CREAM DOUGH | Yield: 15 servings<br><br>Ingredients:<br>200 g white wheat flour<br>100 g sour cream<br>50 g butter<br>4 g salt<br><br>Method:<br>Combine all ingredients and knead to a short crust dough. Wrap in plastic film and rest in a cool place for approximately 30 minutes. Roll out dough to 1 mm thickness and rest again on parchment paper.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

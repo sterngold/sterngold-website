@@ -162,8 +162,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- wash cucumbers and peel partially. Split, remove seeds if necessary and cut into julliene<br>- peel tomatoes (optional), halve and cut into slices<br>- combine dill, mustard, salt and pepper, herb  vinegar  and sunflower oil <br><br>-JUST BEFORE SERVING BLEND CUCUMBERS WITH THE DILL MIXTURE <br>- MAKE MOUNFS OF CUCUMBER SALAD IN THE CENTRES OF PLATES<br>- PLACE TOMATO SLICES AROUND<br>- COMBINE RED VINEGAR WITH SALT AND PEPPER AND OLIVE OIL. DRIZZLE RED WINE VINEAGR OLIVE OIL DRESSING OVER TOMATOES<br>- SRPINKLE WITH CHIVES</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- wash cucumbers and peel partially. Split, remove seeds if necessary and cut into julliene<br>- peel tomatoes (optional), halve and cut into slices<br>- combine dill, mustard, salt and pepper, herb  vinegar  and sunflower oil <br><br>-JUST BEFORE SERVING BLEND CUCUMBERS WITH THE DILL MIXTURE <br>- MAKE MOUNFS OF CUCUMBER SALAD IN THE CENTRES OF PLATES<br>- PLACE TOMATO SLICES AROUND<br>- COMBINE RED VINEGAR WITH SALT AND PEPPER AND OLIVE OIL. DRIZZLE RED WINE VINEAGR OLIVE OIL DRESSING OVER TOMATOES<br>- SRPINKLE WITH CHIVES</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Cucumber and Tomato Salad**<br><br>Wash cucumbers and peel partially in strips. Split lengthwise, remove seeds if necessary, and cut into julienne. Peel tomatoes (optional), halve, and cut into slices.<br><br>Prepare dill vinaigrette: combine dill, mustard, salt, pepper, herb vinegar, and sunflower oil.<br><br>Just before service, fold cucumbers with dill mixture. Mound cucumber salad in center of plates and arrange tomato slices around.<br><br>Prepare red wine dressing: whisk red vinegar, salt, pepper, and olive oil. Drizzle over tomato slices. Garnish with sliced chives.</div>
+          
         </section>
         
 
@@ -197,5 +206,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

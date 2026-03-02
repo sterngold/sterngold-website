@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Sorbet's opdraaien met een suiker gehjalte van 15 baume. De sorbets in spuitzakken doen en in de gekoelde en aan de onderkant met plastic gedichte buisjes doen. Zorg ervoor dat je van elke sorebt evenveel in een buisje doet. <br>- Meegeven - vers fruit mooi snijden en aanmaken met klein beetje vanillie siroop en in het midden van glazen bord plaatsen. Staaf schuim snijden en in een driehoek om het fruit leggen. Vanille siroop erom heen doen</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Sorbet's opdraaien met een suiker gehjalte van 15 baume. De sorbets in spuitzakken doen en in de gekoelde en aan de onderkant met plastic gedichte buisjes doen. Zorg ervoor dat je van elke sorebt evenveel in een buisje doet. <br>- Meegeven - vers fruit mooi snijden en aanmaken met klein beetje vanillie siroop en in het midden van glazen bord plaatsen. Staaf schuim snijden en in een driehoek om het fruit leggen. Vanille siroop erom heen doen</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">ICE SORBET TRIANGLE<br>Station: Pâtisserie | Source: Vijf<br><br>Method:<br>- Prepare sorbets with 15° Baumé sugar content.<br>- Fill piping bags with sorbets and transfer to chilled tubes sealed at bottom with plastic.<br>- Ensure equal quantity of each sorbet in each tube.<br>- Cut fresh fruit neatly and dress with small amount of vanilla syrup; place in center of chilled plate.<br>- Cut vanilla stick foam into triangle shapes and arrange around fruit.<br>- Drizzle vanilla syrup around the plate.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Laat de kwartelboutjes 1 dag marin ieren in een mengsel van - thijm, rozemarijn, knoflook, gekneusde zwarte peperkorrels en een beetje grof zeezout. Zet de boutjes op met ganzvenvet op zeer laag vuur (konfijten) zodat ze gaar zijn maar niet van het bot vallen. Haal de boutjes uit het vet en laat afkoelen. Wanner uitgevraagd bak je de boutjes op de huid kant (evt nog peper en zout naar smaak<br>- deze salade bestaat uit verschillende sla en kruidensoorten (frisee, eikenblaad, mint en dragon). Darbij komen gekonfijte kwartel die gebakken zijn. Servren met fingerbowl - met fingers duven eten.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Laat de kwartelboutjes 1 dag marin ieren in een mengsel van - thijm, rozemarijn, knoflook, gekneusde zwarte peperkorrels en een beetje grof zeezout. Zet de boutjes op met ganzvenvet op zeer laag vuur (konfijten) zodat ze gaar zijn maar niet van het bot vallen. Haal de boutjes uit het vet en laat afkoelen. Wanner uitgevraagd bak je de boutjes op de huid kant (evt nog peper en zout naar smaak<br>- deze salade bestaat uit verschillende sla en kruidensoorten (frisee, eikenblaad, mint en dragon). Darbij komen gekonfijte kwartel die gebakken zijn. Servren met fingerbowl - met fingers duven eten.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Marinate quail legs for 1 day in a mixture of thyme, rosemary, garlic, crushed black peppercorns, and coarse sea salt. Place legs in goose fat and cook very gently (confit) until tender but meat still holds to the bone. Remove legs from fat and cool. When needed, pan-fry skin-side down until golden; adjust seasoning as needed.<br><br>To serve: Dress a salad of mixed greens and herbs (frisée, oak leaf, mint, tarragon) with the cooled confit quail legs, pan-fried. Serve with fingerbowl—meant to be eaten with fingers.</div>
+          
         </section>
         
 
@@ -97,5 +106,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

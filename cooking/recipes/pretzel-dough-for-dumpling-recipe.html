@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">0	o°<br>to - (r)<br>VITZNAU-LUCERNE SWITZERLAND<br>Pretzel dough for dumpling recipe<br>Yield for 800 gram<br><br>250<br><br>water<br>20<br>g<br>yeast<br>5<br>g<br>malt<br>10<br>g<br>salt<br>25<br>g<br>peanut oil<br>500<br><br>white wheat flour<br><br>Dough Preparation<br>Mix the dough ingredients to a dough without the oil and salt.<br>After three quarters of the kneading time add the oil, followed by the salt. Bulk fermentation time 15 to 20 minutes.<br>Caustic soda water solution<br>in trade offer:<br>Caustic soda solution below 5% strength is available ready for use and without poison certificate (max. 4,9%).<br>b) ones own preparation of the soda solution.<br>200 g warm water<br>10 g Sodium hydroxide, pure, sold in discs<br>Boil the water and sodium Hydroxide discs together until the discs are completely dissolved.<br><br>Temperature of use approx. 40°C. Final preparation <br>Divide dough into 2 pieces and mould out long. After a short recovery shape into normal bread loaves. Allow to prove a little and then place in a cool place. Before baking, dip in the caustic soda solution, place on parchment paper and sprinkle with coarse salt. Bake at 175 ° C with an open steam escape.<br>DCT— Culinary bakery 05</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">0	o°<br>to - (r)<br>VITZNAU-LUCERNE SWITZERLAND<br>Pretzel dough for dumpling recipe<br>Yield for 800 gram<br><br>250<br><br>water<br>20<br>g<br>yeast<br>5<br>g<br>malt<br>10<br>g<br>salt<br>25<br>g<br>peanut oil<br>500<br><br>white wheat flour<br><br>Dough Preparation<br>Mix the dough ingredients to a dough without the oil and salt.<br>After three quarters of the kneading time add the oil, followed by the salt. Bulk fermentation time 15 to 20 minutes.<br>Caustic soda water solution<br>in trade offer:<br>Caustic soda solution below 5% strength is available ready for use and without poison certificate (max. 4,9%).<br>b) ones own preparation of the soda solution.<br>200 g warm water<br>10 g Sodium hydroxide, pure, sold in discs<br>Boil the water and sodium Hydroxide discs together until the discs are completely dissolved.<br><br>Temperature of use approx. 40°C. Final preparation <br>Divide dough into 2 pieces and mould out long. After a short recovery shape into normal bread loaves. Allow to prove a little and then place in a cool place. Before baking, dip in the caustic soda solution, place on parchment paper and sprinkle with coarse salt. Bake at 175 ° C with an open steam escape.<br>DCT— Culinary bakery 05</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PRETZEL DOUGH FOR DUMPLING RECIPE<br>Yield: 800g<br><br>Ingredients:<br>250g water<br>20g yeast<br>5g malt<br>10g salt<br>25g peanut oil<br>500g white wheat flour<br><br>Dough Preparation:<br>Mix water, yeast, malt, flour, and salt together until a dough forms. Three-quarters through kneading, incorporate the oil, then the salt. Bulk ferment 15-20 minutes.<br><br>Caustic Soda Solution:<br>Boil 200g warm water with 10g sodium hydroxide discs until completely dissolved. Cool to approximately 40°C before use.<br><br>Final Preparation:<br>Divide dough into 2 pieces and shape into long loaves. After brief rest, form into standard bread loaves. Proof lightly, then place in cool storage. Before baking, dip loaves in caustic soda solution, transfer to parchment paper, and sprinkle generously with coarse salt. Bake at 175°C with open steam escape.</div>
+          
         </section>
         
 
@@ -90,5 +99,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

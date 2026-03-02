@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Измиваш го – за 10-12 кюфтета ти трябват две връзки. <br>После го сваряваш 2-3 минути като спанака, но малко по-дълго. Студена вода. <br>После отстраняваш дръжките и нарязваш ситно листата. <br>Яйца, брашно, подправки – все забравям сол, но ти нямаш склероза като мене и няма да забравиш.<br>Особеното е, че кюфтета от магданоз се овалват с ръка - хубаво е да си топиш пръстите във вода за да не ти лепнат по пръстите. Правиш малки топки и ги овалваш в брашно или ситна галета. После ги пускаш да се пържат в обилно подгрято олио.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Измиваш го – за 10-12 кюфтета ти трябват две връзки. <br>После го сваряваш 2-3 минути като спанака, но малко по-дълго. Студена вода. <br>После отстраняваш дръжките и нарязваш ситно листата. <br>Яйца, брашно, подправки – все забравям сол, но ти нямаш склероза като мене и няма да забравиш.<br>Особеното е, че кюфтета от магданоз се овалват с ръка - хубаво е да си топиш пръстите във вода за да не ти лепнат по пръстите. Правиш малки топки и ги овалваш в брашно или ситна галета. После ги пускаш да се пържат в обилно подгрято олио.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">For 10–12 balls, use two bunches parsley. Wash and blanch 2–3 minutes in salted boiling water (slightly longer than spinach). Cool in ice water. Remove stems and chop leaves finely.<br><br>Combine with beaten egg(s), flour, and seasonings (salt, dill, caraway, garlic). Form small balls by hand, wetting fingers in water to prevent sticking. Roll lightly in flour or fine breadcrumbs.<br><br>Fry in abundant hot oil until golden. Drain and serve.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

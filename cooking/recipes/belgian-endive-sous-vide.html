@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Belgian Endive Sous vide style<br>Brüsseler Endivie sous vide Endives sous vide<br><br><br>Recipe #	: 541<br>Category	: ECA - Vegetables<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 0.33 EUR 0.21<br><br>European Gourmet Cuisine<br><br>Ingredients for 6 servings at 100% (Net quantity) <br>400 g	Belgian endive<br>3 g	Salt<br>30 g Butter<br>120 ml Orange juice And zest<br>Wash endives, trim if necessary. split length wise in half remove the bitter core. Be sure endive leaves do not separate.<br><br>- Reduce orange juice to 30 ml.<br><br>- PLACE ENDIVE TIGHTLY, SIDE BY SIDE INTO VACUUM BAG<br>- SEASON WITH SALT<br>- ADD REDUCED ORANGE JUICE AND BUTTER PIECES AND VACUUM WITH 95% <br>- STEAM AT 91°C FOR APPROX. 35-40 MIN IN COMB! STEAMER<br>UNTIL BELGIAN ENDIVE ARE TENDER.<br>- COOL DOWN IN VACUUM BAG IN ICE WATER AS QIUCK AS POSSIBLE<br>- WHEN 2°C REMOVE FROM ICE WATER<br>- LABEL AND YOU CAN STORE SOUS VIDE COOKED VEGETABLES AT LEAST 5-10 DAYS<br>- FOR REHEATING ENDIVE BELGE ADD VACUUM BAG INTO STEAM FOR 10 -15 MIN.<br>- READY FOR SERVING<br>- PLACE REMAINING LIQUID INTO SAUTEUSE AND REDUCE BRUSH ENDIVE AND SERVE.<br>APPROX. COOKING TIME LIST FOR SOUS VIDE VEGETABLES AT 91-94°C<br>POTATOES NATURE 45 - 55 MIN CARROTS BATONNET 45 MIN FENNEL HALF	90 MIN. ASPARAGUS WHITE 50 MIN. ASPARAGUS GREEN 35 MIN.<br>CELERY ROOT	8O MIN.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Belgian Endive Sous vide style<br>Brüsseler Endivie sous vide Endives sous vide<br><br><br>Recipe #	: 541<br>Category	: ECA - Vegetables<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 0.33 EUR 0.21<br><br>European Gourmet Cuisine<br><br>Ingredients for 6 servings at 100% (Net quantity) <br>400 g	Belgian endive<br>3 g	Salt<br>30 g Butter<br>120 ml Orange juice And zest<br>Wash endives, trim if necessary. split length wise in half remove the bitter core. Be sure endive leaves do not separate.<br><br>- Reduce orange juice to 30 ml.<br><br>- PLACE ENDIVE TIGHTLY, SIDE BY SIDE INTO VACUUM BAG<br>- SEASON WITH SALT<br>- ADD REDUCED ORANGE JUICE AND BUTTER PIECES AND VACUUM WITH 95% <br>- STEAM AT 91°C FOR APPROX. 35-40 MIN IN COMB! STEAMER<br>UNTIL BELGIAN ENDIVE ARE TENDER.<br>- COOL DOWN IN VACUUM BAG IN ICE WATER AS QIUCK AS POSSIBLE<br>- WHEN 2°C REMOVE FROM ICE WATER<br>- LABEL AND YOU CAN STORE SOUS VIDE COOKED VEGETABLES AT LEAST 5-10 DAYS<br>- FOR REHEATING ENDIVE BELGE ADD VACUUM BAG INTO STEAM FOR 10 -15 MIN.<br>- READY FOR SERVING<br>- PLACE REMAINING LIQUID INTO SAUTEUSE AND REDUCE BRUSH ENDIVE AND SERVE.<br>APPROX. COOKING TIME LIST FOR SOUS VIDE VEGETABLES AT 91-94°C<br>POTATOES NATURE 45 - 55 MIN CARROTS BATONNET 45 MIN FENNEL HALF	90 MIN. ASPARAGUS WHITE 50 MIN. ASPARAGUS GREEN 35 MIN.<br>CELERY ROOT	8O MIN.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Belgian Endive Sous Vide**<br><br>Yield: 6 servings | Chef: Patrick Diethelm (25.10.2005)<br><br>**Ingredients:**<br>400 g Belgian endive<br>3 g salt<br>30 g butter<br>120 ml orange juice and zest<br><br>**Method:**<br>1. Wash endives and trim if necessary. Split lengthwise in half and remove the bitter core, keeping leaves intact.<br>2. Reduce orange juice to 30 ml.<br>3. Arrange endive halves tightly, side by side, in a vacuum bag. Season with salt.<br>4. Add reduced orange juice and butter pieces. Vacuum seal at 95%.<br>5. Steam at 91°C for 35–40 minutes in combi steamer until endives are tender.<br>6. Cool immediately in ice water while still in vacuum bag until internal temperature reaches 2°C.<br>7. Label and store sous vide for 5–10 days.<br><br>**To reheat:** Return vacuum bag to steam for 10–15 minutes.<br><br>**To serve:** Remove endives from bag. Pour remaining cooking liquid into sauteuse and reduce. Brush endives with reduced liquid and serve.<br><br>**Sous vide cooking times at 91–94°C reference:**<br>Potatoes (nature) 45–55 min | Carrots (batonnet) 45 min | Fennel (half) 90 min | White asparagus 50 min | Green asparagus 35 min | Celery root 80 min</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

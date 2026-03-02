@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Camargue Rice<br>Roter Reis<br>Riz de Camargue<br><br><br>Recipe #<br>Category<br>Chef Date<br>Cost of goods<br>:5112D<br>: ECA - Entremetier/ side dishes : Patrick Diethelm<br>: 25.10.2005<br>: CHF 0.23 / EUR 0.15 <br>European G.ourrrre Cuisine<br>Ingredients for 4 servings at 100% (Net quantity)<br>	10 g	Butter<br>	10 g	Shallots<br>200 g *Camargue Rice<br>460 ml *Vegetable Stock<br>20 g Butter<br>	1 x	Seasoning (salt and pepper)<br>-Sauté the Rice in butter.<br>- Add hot vegetable bouillon, bring to a boil, cover, and cook in slow oven,165°C, for about 45 minutes until soft.<br>- Mix in cold butter, in small nuggets, with a fork. Season to taste.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Camargue Rice<br>Roter Reis<br>Riz de Camargue<br><br><br>Recipe #<br>Category<br>Chef Date<br>Cost of goods<br>:5112D<br>: ECA - Entremetier/ side dishes : Patrick Diethelm<br>: 25.10.2005<br>: CHF 0.23 / EUR 0.15 <br>European G.ourrrre Cuisine<br>Ingredients for 4 servings at 100% (Net quantity)<br>	10 g	Butter<br>	10 g	Shallots<br>200 g *Camargue Rice<br>460 ml *Vegetable Stock<br>20 g Butter<br>	1 x	Seasoning (salt and pepper)<br>-Sauté the Rice in butter.<br>- Add hot vegetable bouillon, bring to a boil, cover, and cook in slow oven,165°C, for about 45 minutes until soft.<br>- Mix in cold butter, in small nuggets, with a fork. Season to taste.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CAMARGUE RICE<br>Yield: 4 servings | Chef: Patrick Diethelm<br><br>Ingredients:<br>10g butter<br>10g shallots<br>200g Camargue rice<br>460ml vegetable stock<br>20g butter<br>Salt and pepper<br><br>Method:<br>Sauté rice in butter. Add hot vegetable bouillon, bring to boil, cover, and cook in slow oven at 165°C for approximately 45 minutes until tender.<br><br>Remove from oven. Mix in cold butter in small nuggets using a fork. Season to taste with salt and pepper.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

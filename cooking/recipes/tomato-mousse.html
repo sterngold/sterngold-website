@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Tomato mousse<br>ltalieпisches Tomatenmousse Mousse de tomate<br><br><br>Recipe #<br>Category	: ECA - Mediterranean cuisine<br>Chef	: Patrick Diethelm<br>Date	:07112005<br>Cost of goods	: CHF 0.42 / EUR 0.27 <br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br><br>150 g	Concassé of tomatoes big chunks<br>100 ml Tomato Ketchup <br>40 ml Tomato juice <br>60 g Tomato paste<br>5 pc Gelatin, leaves <br>7 g	Sea salt<br>15 ml Balsamic vinegar 340 mI Heavy cream (36%)<br>3 pc Basil leaves, fresh<br>40 ml *Chicken broth Strong or<br>consomme<br>60 g Concassé of tomatoes 3x3mm<br><br><br><br>- BLEND THE FIRST TOMATO CONCASSE, PASTE, JUICE AND KETCHUP IN BAR BLENDER - SOAK THE GELATIN IN COLD WATER<br>- MIX THE VINEGAR AND CHICKEN BROTH AND BRING TO A BOIL WITH THE SALT - DISSOLVE GELATIN IN WARM MIXTURE<br>- STIR INTO TOMATO MIX<br>- USE WHISK AND FOLD 1/4 OF WHIPPED CREAM INTO COOL MIXTURE<br>- SEASON TO TASTE WITH SALT AND PEPPER, TABASCO<br>- FOLD IN REMAINING CREAM CHOPPED BASIL LEAVES AND SECOND TOMATO CONCASSE - FILL INTO BOWLS AND LET REST FOR AT LEAST 1 HOUR.<br>- FORM QUENELLES AND DRIZZLE WITH HERB OIL OR CHILI OIL</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Tomato mousse<br>ltalieпisches Tomatenmousse Mousse de tomate<br><br><br>Recipe #<br>Category	: ECA - Mediterranean cuisine<br>Chef	: Patrick Diethelm<br>Date	:07112005<br>Cost of goods	: CHF 0.42 / EUR 0.27 <br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br><br>150 g	Concassé of tomatoes big chunks<br>100 ml Tomato Ketchup <br>40 ml Tomato juice <br>60 g Tomato paste<br>5 pc Gelatin, leaves <br>7 g	Sea salt<br>15 ml Balsamic vinegar 340 mI Heavy cream (36%)<br>3 pc Basil leaves, fresh<br>40 ml *Chicken broth Strong or<br>consomme<br>60 g Concassé of tomatoes 3x3mm<br><br><br><br>- BLEND THE FIRST TOMATO CONCASSE, PASTE, JUICE AND KETCHUP IN BAR BLENDER - SOAK THE GELATIN IN COLD WATER<br>- MIX THE VINEGAR AND CHICKEN BROTH AND BRING TO A BOIL WITH THE SALT - DISSOLVE GELATIN IN WARM MIXTURE<br>- STIR INTO TOMATO MIX<br>- USE WHISK AND FOLD 1/4 OF WHIPPED CREAM INTO COOL MIXTURE<br>- SEASON TO TASTE WITH SALT AND PEPPER, TABASCO<br>- FOLD IN REMAINING CREAM CHOPPED BASIL LEAVES AND SECOND TOMATO CONCASSE - FILL INTO BOWLS AND LET REST FOR AT LEAST 1 HOUR.<br>- FORM QUENELLES AND DRIZZLE WITH HERB OIL OR CHILI OIL</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">TOMATO MOUSSE<br><br>Chef: Patrick Diethelm | Date: 07.11.2005<br>Yield: 10 servings<br><br>Ingredients:<br>150 g tomato concassé (large chunks)<br>100 ml tomato ketchup<br>40 ml tomato juice<br>60 g tomato paste<br>5 gelatine leaves<br>7 g sea salt<br>15 ml balsamic vinegar<br>340 ml heavy cream (36%)<br>3 fresh basil leaves<br>40 ml chicken broth or strong consommé<br>60 g tomato concassé (3 × 3 mm)<br>Salt, pepper, Tabasco to taste<br><br>Method:<br>Blend first tomato concassé, paste, juice, and ketchup in bar blender. Soak gelatine in cold water. Heat vinegar and chicken broth together, bring to boil with salt. Dissolve soaked gelatine in warm mixture. Stir into tomato mix. Whip cream until light, then fold one quarter into cooled tomato mixture. Season to taste with salt, pepper, and Tabasco. Fold in remaining whipped cream, chopped basil leaves, and fine tomato concassé. Fill into bowls and rest for at least 1 hour. Form quenelles and drizzle with herb oil or chili oil.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

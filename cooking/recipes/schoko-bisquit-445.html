@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1. Butter und Zucker <br>2. Ei langsam <br>3. 180 C<br><br>2.1 kg Mehl <br>5 tl Soda<br>2 kg Schokolade gehackt<br>1.1 kg Butter<br>1 kg braun Zucker<br>0.5 dl ei <br>Vanille</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1. Butter und Zucker <br>2. Ei langsam <br>3. 180 C<br><br>2.1 kg Mehl <br>5 tl Soda<br>2 kg Schokolade gehackt<br>1.1 kg Butter<br>1 kg braun Zucker<br>0.5 dl ei <br>Vanille</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Cream together 1.1 kg butter and 1 kg brown sugar. Slowly incorporate 0.5 dl eggs and vanille. Fold in 2.1 kg flour, 5 tsp baking soda, and 2 kg chopped chocolate. Bake at 180°C until set.</div>
+          
         </section>
         
 
@@ -97,5 +106,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

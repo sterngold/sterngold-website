@@ -170,8 +170,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- grind meat clarification and vegetables through coarse plate of meat grinder<br>- make clarification by throughly combining ground chicken and beef meat, leek, carrots, celery, tomatoes, egg whites, rosemary, white peppercorns and water. <br><br>- combine clarification with cold chicken broth and stir well<br>- bring to boil while stirring carefully with a frying spatula<br>- as soon as consomme starts to boil, do not stir any longer<br>- simmer for 1 hour<br>- strain carefully through kitchen cloths or napkin with help of hair sieve <br>- remove all fat from surface with absorbent paper<br>- season to taste<br>- add sherry to parfume the consomme</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- grind meat clarification and vegetables through coarse plate of meat grinder<br>- make clarification by throughly combining ground chicken and beef meat, leek, carrots, celery, tomatoes, egg whites, rosemary, white peppercorns and water. <br><br>- combine clarification with cold chicken broth and stir well<br>- bring to boil while stirring carefully with a frying spatula<br>- as soon as consomme starts to boil, do not stir any longer<br>- simmer for 1 hour<br>- strain carefully through kitchen cloths or napkin with help of hair sieve <br>- remove all fat from surface with absorbent paper<br>- season to taste<br>- add sherry to parfume the consomme</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHICKEN CONSOMMÉ<br><br>Prepare clarification:<br>1. Grind chicken and beef meat, leek, carrots, celery, tomatoes, egg whites, rosemary, and white peppercorns through the coarse plate of a meat grinder.<br>2. Thoroughly combine ground mixture with water.<br><br>Cook consommé:<br>1. Combine clarification with cold chicken broth and stir well.<br>2. Bring to a boil while stirring carefully with a frying spatula.<br>3. Once the consommé begins to boil, cease stirring.<br>4. Simmer for 1 hour without further disturbance.<br>5. Strain carefully through kitchen cloths or napkins with the aid of a hair sieve.<br>6. Remove all fat from the surface using absorbent paper.<br>7. Season to taste and add sherry for aroma.</div>
+          
         </section>
         
 
@@ -212,5 +221,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

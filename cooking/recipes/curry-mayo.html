@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Curry Madaras 100 g <br>200 g Mangochutney <br>500g Geflugelfond<br>Verkochen / Purieren <br>5 kg Mayo<br>5 g Safron<br>Add in lauwarm fond</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Curry Madaras 100 g <br>200 g Mangochutney <br>500g Geflugelfond<br>Verkochen / Purieren <br>5 kg Mayo<br>5 g Safron<br>Add in lauwarm fond</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Reduce curry madras (100 g) with mango chutney (200 g) and poultry stock (500 g) by cooking and puréeing together. Warm the mixture to lukewarm. Fold into mayo (5 kg) with saffron (5 g), incorporating the warm reduction slowly until fully combined.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

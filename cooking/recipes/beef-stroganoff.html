@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Beef Stroganoff<br>Rindsfiletgulasch Stroganow Filet de boeuf Stroganov<br>Recipe #	: 430<br>Category	: Hot Meat Dishes<br>Chef	: P.Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 6.94 / EUR 4.39<br>Ingredients for 2 servings at 100% [Net quantity)<br>300<br>g<br>Beef tenderloin Trimmed<br>1<br>x<br>Seasoning (salt and pepper)<br>1<br>x<br>Seasoning, paprika<br>30<br>g<br>Shallots<br>25<br>g<br>Dill pickles, drained<br>50<br>g<br>Mushroom, fresh champignon<br>2<br>g<br>Paprika<br>50<br>ml<br>Red cooking wine<br>200<br>g<br>Fond brun lie<br>80<br>ml<br>Heavy cream (36%)<br>50<br>ml<br>Sour full cream<br>1<br>x<br>Seasoning (salt)<br><br>- SAUTE MEAT QUICKLY IN HOT CLARIFIED BUTTER AND SEASON WITH SALT AND PEPPER. - PUT MEAT IN A COLANDER TO DRAIN.<br>- ADD SHALLOTS TO PAN AND SWEAT. ADD GHERKINS AND MUSHROOMS.<br>- DUST WITH PAPRIKA. ADD RED WINE AND REDUCE<br>- ADD FOND BRUN LIE, REDUCE<br>- THEN ADD HEAVY CREAM<br>- BRING TO A BOIL AND BOIL BRIEFLY.<br>- STIR IN SOUR CREAM THOROUGHLY, BUT DO NOT ALLOW THE SAUCE TO RETURN TO A BOIL. - ADD MEAT AND HEAT. (MEAT SHOULD NOT TO BE WELL DONE COOKED)</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Beef Stroganoff<br>Rindsfiletgulasch Stroganow Filet de boeuf Stroganov<br>Recipe #	: 430<br>Category	: Hot Meat Dishes<br>Chef	: P.Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 6.94 / EUR 4.39<br>Ingredients for 2 servings at 100% [Net quantity)<br>300<br>g<br>Beef tenderloin Trimmed<br>1<br>x<br>Seasoning (salt and pepper)<br>1<br>x<br>Seasoning, paprika<br>30<br>g<br>Shallots<br>25<br>g<br>Dill pickles, drained<br>50<br>g<br>Mushroom, fresh champignon<br>2<br>g<br>Paprika<br>50<br>ml<br>Red cooking wine<br>200<br>g<br>Fond brun lie<br>80<br>ml<br>Heavy cream (36%)<br>50<br>ml<br>Sour full cream<br>1<br>x<br>Seasoning (salt)<br><br>- SAUTE MEAT QUICKLY IN HOT CLARIFIED BUTTER AND SEASON WITH SALT AND PEPPER. - PUT MEAT IN A COLANDER TO DRAIN.<br>- ADD SHALLOTS TO PAN AND SWEAT. ADD GHERKINS AND MUSHROOMS.<br>- DUST WITH PAPRIKA. ADD RED WINE AND REDUCE<br>- ADD FOND BRUN LIE, REDUCE<br>- THEN ADD HEAVY CREAM<br>- BRING TO A BOIL AND BOIL BRIEFLY.<br>- STIR IN SOUR CREAM THOROUGHLY, BUT DO NOT ALLOW THE SAUCE TO RETURN TO A BOIL. - ADD MEAT AND HEAT. (MEAT SHOULD NOT TO BE WELL DONE COOKED)</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sauté 300g trimmed beef tenderloin quickly in hot clarified butter and season with salt and pepper. Drain meat in a colander. Add shallots to the pan and sweat. Add drained dill pickles and fresh mushrooms. Dust with paprika and add red wine, reducing by half. Add fond brun lié and reduce. Add heavy cream and bring to a boil briefly. Stir in sour cream thoroughly, but do not allow the sauce to return to a boil. Return meat to pan and heat through gently—meat should remain pink. Serves 2.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

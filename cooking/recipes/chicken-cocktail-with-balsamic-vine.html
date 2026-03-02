@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Chicken Cocktail with Balsamic Vine <br>GentOgelcocktail mit Ba/samico <br>Cocktail de pou/et au vinaigre ba/samique <br>Rezept Nr. :240 <br>Kategorie : Cold Appetizers<br>Koch : Patrick Diethelm<br>Datum : 01.03.2004 <br>Warenkosten : CHF 1.91 / EUR 1.21 <br>Zuaten fUr 10 Personen zu 100% (Nettomenge) <br>Chicken 1kg<br>Olive oil Cold pressed 80 ml<br>Garlic 10 g<br>Head of lettuce1 st Clean. <br> Tomatoes 237 g Peel, remove seeds, and cut into 5mm concasse. Chop. <br>Onions 90 g<br>Olive oil Cold pressed 200 ml<br>Balsamic vinegar 50 ml<br>Shallots 36 g<br>Seasoning (salt and pepper) 1 x <br>Basil, fresh 10 g<br>Parsley, Italian, fresh 20 g Chop. <br><br>Method for Dressing <br>- Mix olive oil, balsamic vinegar, salt and pepper. <br>- Chop shallots and basil. Add to oil mixture. Blend thoroughly. <br>- SAUTE CHICKEN MEAT WITH OLIVE OIL AND GARLlC.SEASON AND CUT THEN INTO BIGGER SIZE JULIENNE <br>- BLEND TOMATOES AND ONIONS WITH SOME DRESSING. <br>- PLACE SMALL LETTUCE LEAVES INTO GLASS <br>- PLACE BOUQUETS OF TOMATO SALAD AND CHICKEN SALAD ON LEAVES. <br>- DRIZZLE WITH DRESSING. SPRINKLE WITH CHOPPED PARSLEY. <br>- GARNISH EACH GLAS WITH FRESH BASIL</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Chicken Cocktail with Balsamic Vine <br>GentOgelcocktail mit Ba/samico <br>Cocktail de pou/et au vinaigre ba/samique <br>Rezept Nr. :240 <br>Kategorie : Cold Appetizers<br>Koch : Patrick Diethelm<br>Datum : 01.03.2004 <br>Warenkosten : CHF 1.91 / EUR 1.21 <br>Zuaten fUr 10 Personen zu 100% (Nettomenge) <br>Chicken 1kg<br>Olive oil Cold pressed 80 ml<br>Garlic 10 g<br>Head of lettuce1 st Clean. <br> Tomatoes 237 g Peel, remove seeds, and cut into 5mm concasse. Chop. <br>Onions 90 g<br>Olive oil Cold pressed 200 ml<br>Balsamic vinegar 50 ml<br>Shallots 36 g<br>Seasoning (salt and pepper) 1 x <br>Basil, fresh 10 g<br>Parsley, Italian, fresh 20 g Chop. <br><br>Method for Dressing <br>- Mix olive oil, balsamic vinegar, salt and pepper. <br>- Chop shallots and basil. Add to oil mixture. Blend thoroughly. <br>- SAUTE CHICKEN MEAT WITH OLIVE OIL AND GARLlC.SEASON AND CUT THEN INTO BIGGER SIZE JULIENNE <br>- BLEND TOMATOES AND ONIONS WITH SOME DRESSING. <br>- PLACE SMALL LETTUCE LEAVES INTO GLASS <br>- PLACE BOUQUETS OF TOMATO SALAD AND CHICKEN SALAD ON LEAVES. <br>- DRIZZLE WITH DRESSING. SPRINKLE WITH CHOPPED PARSLEY. <br>- GARNISH EACH GLAS WITH FRESH BASIL</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CHICKEN COCKTAIL WITH BALSAMIC VINEGAR<br>Chef: Patrick Diethelm | Recipe for 10 servings | Cost: CHF 1.91<br><br>Ingredients:<br>1 kg chicken breast<br>80 ml cold-pressed olive oil (for cooking)<br>10 g garlic<br>1 head lettuce, cleaned<br>237 g tomatoes (peeled, seeded, 5 mm concasse)<br>90 g onions<br>200 ml cold-pressed olive oil (for dressing)<br>50 ml balsamic vinegar<br>36 g shallots<br>10 g fresh basil<br>20 g fresh Italian parsley, chopped<br>Salt and pepper<br><br>Method:<br>Prepare dressing: Mix 200 ml olive oil with balsamic vinegar, salt, and pepper. Finely chop shallots and basil, add to dressing, and blend thoroughly.<br><br>Sauté chicken breast with 80 ml olive oil and garlic until cooked. Season, cool, and cut into large julienne.<br><br>Toss tomatoes and onions with some dressing.<br><br>Line serving glasses with small lettuce leaves. Layer tomato salad and chicken salad on top.<br><br>Drizzle with remaining dressing and sprinkle with chopped parsley. Garnish each glass with fresh basil leaf.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Calabrian Octopus salad<br>Tintenfischsalat aus Calabria Insa/ata di po/ipi<br>Recipe #<br>Category	: ECA - Mediterranean cuisine<br>Chef	: Patrick Diethelm<br>Date	: 03.11.2005<br>Cost of goods	: CHF 1.28 / EUR 0.81 <br>Ingredients for 10 servings at '100% [Net quantity)<br>1<br>kg<br>Octopus, whole<br><br>500<br>ml<br>Red wine vinegar<br><br>500<br>g<br>Water<br><br>1<br>pc<br>Sachet bag<br><br>100<br>g<br>Olive oil<br><br>30<br>g<br>Garlic Peeled<br>Chopped<br>5<br>g<br>Basil, fresh<br>Chopped<br>20<br>g<br>Parsley, Italian, fresh<br>Chopped<br>1<br>x<br>Seasoning (salt and pepper)<br><br><br>- Clean the octopus, and put them in a pot with the vinegar and the water. - Add sachet bag and season with salt<br>- Bring it to a boil, add cork, cover it, and simmer the octopus until it's tender.<br>- Drain the octopus, trim the suckers (which are unpleasantly rubbery) from the tentacles, and dice the octopus, putting the pieces in gastronorm or pastry bowl.<br>- Season with chopped basil and parsley, salt and pepper mill<br>- Add extra vergine olive oil<br>- Serve with tomato confit, black olives and crostinis</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Calabrian Octopus salad<br>Tintenfischsalat aus Calabria Insa/ata di po/ipi<br>Recipe #<br>Category	: ECA - Mediterranean cuisine<br>Chef	: Patrick Diethelm<br>Date	: 03.11.2005<br>Cost of goods	: CHF 1.28 / EUR 0.81 <br>Ingredients for 10 servings at '100% [Net quantity)<br>1<br>kg<br>Octopus, whole<br><br>500<br>ml<br>Red wine vinegar<br><br>500<br>g<br>Water<br><br>1<br>pc<br>Sachet bag<br><br>100<br>g<br>Olive oil<br><br>30<br>g<br>Garlic Peeled<br>Chopped<br>5<br>g<br>Basil, fresh<br>Chopped<br>20<br>g<br>Parsley, Italian, fresh<br>Chopped<br>1<br>x<br>Seasoning (salt and pepper)<br><br><br>- Clean the octopus, and put them in a pot with the vinegar and the water. - Add sachet bag and season with salt<br>- Bring it to a boil, add cork, cover it, and simmer the octopus until it's tender.<br>- Drain the octopus, trim the suckers (which are unpleasantly rubbery) from the tentacles, and dice the octopus, putting the pieces in gastronorm or pastry bowl.<br>- Season with chopped basil and parsley, salt and pepper mill<br>- Add extra vergine olive oil<br>- Serve with tomato confit, black olives and crostinis</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Clean the whole octopus and place in a pot with red wine vinegar, water, and a sachet bag. Season with salt, bring to a boil, add a cork, cover, and simmer until tender. Drain the octopus and trim the suckers from the tentacles. Dice the octopus and place in a gastronorm or pastry bowl. Season with chopped basil, parsley, salt, and pepper. Add extra virgin olive oil and toss. Serve with tomato confit, black olives, and crostini.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

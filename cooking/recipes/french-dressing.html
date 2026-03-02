@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">French Dressing PO <br>Franzosische Salatsauce <br>Rezept Nr. <br>Kategorie : ECA - Sauces Garde-manger<br>Koch : Patrick Diethelm <br>Datum : 16.02.2004 <br>Warenkosten: CHF 3.18/ EUR 2.01 <br><br>Zutaten fUr 3.000 Liter zu 100'1. (Nettomenge)<br>#1<br>15 g Salt<br>1 g Pepper ground<br>375 g Egg past. <br>30 g Dijon mustard<br>1 g Beef broth powder<br> 8 g Garlic <br><br>#2<br>1.75 I Sunflower oil<br>500 ml Herb vinegar<br>175 ml Water <br><br># 1 ADD ALL THE INGREDIENTS INTO MIXING BOWl AND STIR UNTIL CREAMY <br># 2 ADD ALL THE INGREDIENTS INTO BAR BLENDER AND MIX WITH 'I#.1 UNTIL CREAMY WHITE. <br>SEASON TO TASTE <br>STRAIN THROUGH CHINA CAP AND FILL INTO BOITLES. <br>Label with Date and Name (expire date + 10 Days)</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">French Dressing PO <br>Franzosische Salatsauce <br>Rezept Nr. <br>Kategorie : ECA - Sauces Garde-manger<br>Koch : Patrick Diethelm <br>Datum : 16.02.2004 <br>Warenkosten: CHF 3.18/ EUR 2.01 <br><br>Zutaten fUr 3.000 Liter zu 100'1. (Nettomenge)<br>#1<br>15 g Salt<br>1 g Pepper ground<br>375 g Egg past. <br>30 g Dijon mustard<br>1 g Beef broth powder<br> 8 g Garlic <br><br>#2<br>1.75 I Sunflower oil<br>500 ml Herb vinegar<br>175 ml Water <br><br># 1 ADD ALL THE INGREDIENTS INTO MIXING BOWl AND STIR UNTIL CREAMY <br># 2 ADD ALL THE INGREDIENTS INTO BAR BLENDER AND MIX WITH 'I#.1 UNTIL CREAMY WHITE. <br>SEASON TO TASTE <br>STRAIN THROUGH CHINA CAP AND FILL INTO BOITLES. <br>Label with Date and Name (expire date + 10 Days)</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">FRENCH DRESSING (Französische Salatsauce)<br>Yield: 3 liters<br><br>Ingredients:<br>15 g salt<br>1 g ground pepper<br>375 g egg paste<br>30 g Dijon mustard<br>1 g beef broth powder<br>8 g garlic<br>1.75 liters sunflower oil<br>500 ml herb vinegar<br>175 ml water<br><br>Method:<br>1. Combine salt, pepper, egg paste, Dijon mustard, beef broth powder, and garlic in mixing bowl. Stir until creamy.<br>2. Add sunflower oil, herb vinegar, and water to bar blender along with mixture from step 1.<br>3. Blend until creamy white consistency.<br>4. Season to taste.<br>5. Strain through china cap.<br>6. Fill into bottles and label with date and name. Shelf life: 10 days.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

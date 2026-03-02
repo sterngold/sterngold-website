@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Delice de volaille homardine<br>Geflügeldelikatesse mit Hummer<br>Recipe #<br>Category	: ECA - Terrine/Paté/Galantine / Mart<br>Chef	: Patrick Diethelm<br>Date	: 15.12.2005<br>Cost of goods	: CHF 4.66 / EUR 2.95 <br><br>Ingredients for 5 servings at 100% (Net quantity)<br><br>125 g	Chicken breast, skinless<br>45 g	Chicken mousseline farce<br>50 g	Spinach, frozen, chopped<br>50 ml *Chicken Stock<br>75 g	Vegetable batonet mixture<br>1 g	Truffle, canned, drained<br>250 g	Lobster Rock lobster	<br><br><br><br>- Add dry fine chopped spinach into raw mousseline farce<br><br>- butterfly chicken breast and flatten between plastic foil. - season with salt and pepper and truffle brunoise. - spread farce on chicken breast.<br>- place rock lobster tail<br>- roll in tightly [see tours instruction)<br>- poach in chicken stock until 58°C<br>- chill in stock and slice cold.<br><br>Serve on top of cooked fiпe marinated vegetable batoпet<br>prepare whipped cream and fold in corail and lemon juice <br> season with salt and pepper and form quenelle</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Delice de volaille homardine<br>Geflügeldelikatesse mit Hummer<br>Recipe #<br>Category	: ECA - Terrine/Paté/Galantine / Mart<br>Chef	: Patrick Diethelm<br>Date	: 15.12.2005<br>Cost of goods	: CHF 4.66 / EUR 2.95 <br><br>Ingredients for 5 servings at 100% (Net quantity)<br><br>125 g	Chicken breast, skinless<br>45 g	Chicken mousseline farce<br>50 g	Spinach, frozen, chopped<br>50 ml *Chicken Stock<br>75 g	Vegetable batonet mixture<br>1 g	Truffle, canned, drained<br>250 g	Lobster Rock lobster	<br><br><br><br>- Add dry fine chopped spinach into raw mousseline farce<br><br>- butterfly chicken breast and flatten between plastic foil. - season with salt and pepper and truffle brunoise. - spread farce on chicken breast.<br>- place rock lobster tail<br>- roll in tightly [see tours instruction)<br>- poach in chicken stock until 58°C<br>- chill in stock and slice cold.<br><br>Serve on top of cooked fiпe marinated vegetable batoпet<br>prepare whipped cream and fold in corail and lemon juice <br> season with salt and pepper and form quenelle</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Delice de Volaille Homardine** | Chef Patrick Diethelm, 15.12.2005<br><br>Add dry fine-chopped spinach into raw mousseline farce. Butterfly 125 g chicken breast and flatten between plastic foil. Season with salt, pepper, and 1 g truffle brunoise. Spread 45 g farce on breast. Place rock lobster tail and roll tightly.<br><br>Poach in 50 ml chicken stock until internal temperature reaches 58°C. Chill in stock and slice cold.<br><br>**Service:**<br>Arrange sliced ballotine on top of cooked fine marinated vegetable batonet. Prepare whipped cream, fold in coral and lemon juice, season with salt and pepper, and form quenelle alongside.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

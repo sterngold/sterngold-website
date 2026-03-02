@@ -226,8 +226,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- peel and grate the knob celey with rosty grater<br>- sweat shallots in butter, add celery and stew<br>- add stock and the cream and bring to boil<br>- simmer until soft, then pour white wine and blend the soup with the brown butter. Season to taste<br><br># Dumplings <br>- add all ingredients into a bowl and mix to a dough. Season<br>- Shape dumplings whte two tea spoons and poach in chicken stock <br>- If dumplings to soft add more parmesan<br><br>- bring soup to a boil, add whipped cream and blend with pole blender until foamy<br>- serve in soup plate and add the hot dumplings and all the garnish<br>- drizzle with few drops of white truffle oil<br><br># Garnish<br>- droplets of white truffle oil<br>- small sprig of basil<br>- black truffel brunoise or julliene</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- peel and grate the knob celey with rosty grater<br>- sweat shallots in butter, add celery and stew<br>- add stock and the cream and bring to boil<br>- simmer until soft, then pour white wine and blend the soup with the brown butter. Season to taste<br><br># Dumplings <br>- add all ingredients into a bowl and mix to a dough. Season<br>- Shape dumplings whte two tea spoons and poach in chicken stock <br>- If dumplings to soft add more parmesan<br><br>- bring soup to a boil, add whipped cream and blend with pole blender until foamy<br>- serve in soup plate and add the hot dumplings and all the garnish<br>- drizzle with few drops of white truffle oil<br><br># Garnish<br>- droplets of white truffle oil<br>- small sprig of basil<br>- black truffel brunoise or julliene</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">KNOB CELERY CREAM SOUP WITH PARMESAN TRUFFLE DUMPLINGS AND WHITE TRUFFLE OIL<br>Station: Entremétier | Source: DCT<br><br>SOUP<br>Peel and grate knob celery on a box grater. Sweat shallots in butter, add celery, and stew until soft. Add stock and cream, bring to a boil and simmer until celery is tender.<br><br>Deglaze with white wine. Blend soup with brown butter until smooth. Season to taste. Just before service, bring to a boil, add whipped cream, and blend with an immersion blender until foamy.<br><br>DUMPLINGS<br>Combine all dumpling ingredients in a bowl and mix to a dough. Season to taste. Using two teaspoons, shape dumplings and poach in chicken stock until cooked. If dumplings are too soft, add more parmesan.<br><br>FINISH<br>Pour soup into plates. Add hot dumplings. Garnish with black truffle brunoise or julienne, small basil sprigs, and drizzle with drops of white truffle oil.</div>
+          
         </section>
         
 
@@ -261,5 +270,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

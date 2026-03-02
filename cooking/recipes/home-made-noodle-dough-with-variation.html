@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Home-Made Noodle Dough<br>Hausmachemude/n Nouilles maison<br>New Pauli recipe<br><br>Recipe #	: 631<br>Category	: Pasta Dishes<br>Chef	: P.Diethelm<br>Date	: 02.11.2005<br>Cost of goods	: CHF 0.26 / EUR 0.17<br><br>European Gourmet Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>160<br>g<br>White wheat flour<br>160<br>g<br>Semolina flour, fine<br>150<br>g<br>Egg<br>15<br>g<br>Water<br>15<br>g<br>Olive oil<br><br>METHOD BY HAND<br>- Sift white and semolina flours together. Put flour in pastry bowl. -Add eggs, olive oil and water<br>- Knead mixture thoroughly, by hand, into a dense, smooth, elastic dough. - Let dough rest for at least 1/2 hour before use.<br>[Handmade dough can also be made by kneading the mixture, letting it rest briefly, and then rolling the dough a number of times through a pasta rolling machine.)<br>Notes: The purpose of kneading the dough thoroughly is to develop the gluten in the flour, which makes the dough elastic.<br>Noodle and ravioli doughs are not salted, because salt would make the dough brittle.<br>NOODLE VARIATIONS<br>Basil noodles: Blend dough with chopped fresh basil.<br>Red beet noodles: Use beet juice in place of water.<br>Whole wheat noodles: Use sifted whole wheat flour in place of white wheat flour. Black noodles: Use squid ink in place of water.<br>Saffron noodles: Dissolve saffron in small amount of hot water.<br>Let the infused water cool, and use in place of water.<br>Tomato noodles: Use tomato paste in place of water.<br>Spinach noodles: Use spinach puree in place of water.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Home-Made Noodle Dough<br>Hausmachemude/n Nouilles maison<br>New Pauli recipe<br><br>Recipe #	: 631<br>Category	: Pasta Dishes<br>Chef	: P.Diethelm<br>Date	: 02.11.2005<br>Cost of goods	: CHF 0.26 / EUR 0.17<br><br>European Gourmet Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>160<br>g<br>White wheat flour<br>160<br>g<br>Semolina flour, fine<br>150<br>g<br>Egg<br>15<br>g<br>Water<br>15<br>g<br>Olive oil<br><br>METHOD BY HAND<br>- Sift white and semolina flours together. Put flour in pastry bowl. -Add eggs, olive oil and water<br>- Knead mixture thoroughly, by hand, into a dense, smooth, elastic dough. - Let dough rest for at least 1/2 hour before use.<br>[Handmade dough can also be made by kneading the mixture, letting it rest briefly, and then rolling the dough a number of times through a pasta rolling machine.)<br>Notes: The purpose of kneading the dough thoroughly is to develop the gluten in the flour, which makes the dough elastic.<br>Noodle and ravioli doughs are not salted, because salt would make the dough brittle.<br>NOODLE VARIATIONS<br>Basil noodles: Blend dough with chopped fresh basil.<br>Red beet noodles: Use beet juice in place of water.<br>Whole wheat noodles: Use sifted whole wheat flour in place of white wheat flour. Black noodles: Use squid ink in place of water.<br>Saffron noodles: Dissolve saffron in small amount of hot water.<br>Let the infused water cool, and use in place of water.<br>Tomato noodles: Use tomato paste in place of water.<br>Spinach noodles: Use spinach puree in place of water.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Home-Made Noodle Dough**<br><br>Chef: P. Diethelm | Date: 02.11.2005<br>Yield: 6 servings | Cost: CHF 0.26 / EUR 0.17<br><br>**Ingredients:**<br>- 160 g white wheat flour<br>- 160 g fine semolina flour<br>- 150 g egg<br>- 15 g water<br>- 15 g olive oil<br><br>**Method:**<br>Sift white and semolina flours together and place in a pastry bowl. Add eggs, olive oil, and water. Knead thoroughly by hand into a dense, smooth, elastic dough. Rest for at least 30 minutes before use.<br><br>**Note:** Thorough kneading develops gluten, making the dough elastic. Do not salt; salt makes the dough brittle.<br><br>**Variations:**<br>- **Basil:** Blend dough with chopped fresh basil<br>- **Beet:** Substitute beet juice for water<br>- **Whole wheat:** Use sifted whole wheat flour in place of white wheat flour<br>- **Black (squid ink):** Substitute squid ink for water<br>- **Saffron:** Dissolve saffron in small amount of hot water, cool, then substitute for water<br>- **Tomato:** Substitute tomato paste for water<br>- **Spinach:** Substitute spinach purée for water</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -106,8 +106,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- add cold water to carcasse and bring to a slow boil <br>- add slat and skim frequently <br>- simmer for one hour<br>- add sachet bag and bouquet garni after 1/2 hour<br>- strain carefully through double layer of cheesecloth or china cap</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- add cold water to carcasse and bring to a slow boil <br>- add slat and skim frequently <br>- simmer for one hour<br>- add sachet bag and bouquet garni after 1/2 hour<br>- strain carefully through double layer of cheesecloth or china cap</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Add cold water to carcass and bring to a slow boil. Add salt and skim frequently. Simmer for one hour. Add sachet bag and bouquet garni after 30 minutes. Strain carefully through a double layer of cheesecloth or china cap.</div>
+          
         </section>
         
 
@@ -141,5 +150,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

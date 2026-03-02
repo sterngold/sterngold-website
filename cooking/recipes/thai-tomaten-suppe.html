@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1 глава бял лук – нарязан на ситно се запържва <br>Джинджър – корен – на ситно се нарязва <br>10 лимонови листа – на ситно<br>Кореандър – топченцата се счукват на прах <br>Чеснова паста <br>Самбала олек паста <br>Сол <br>Пипер <br>Доматено пюре <br>Ври 40 – 45 мин. <br>Лимонена трева – десет стръка – разрязват се по дължина <br>1 кутийка кокосово мляко <br>ври 30 мин. <br>Махат се тревите <br>2 лъжици зеленчуков бульон <br>пасира се <br>добавя се вода</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1 глава бял лук – нарязан на ситно се запържва <br>Джинджър – корен – на ситно се нарязва <br>10 лимонови листа – на ситно<br>Кореандър – топченцата се счукват на прах <br>Чеснова паста <br>Самбала олек паста <br>Сол <br>Пипер <br>Доматено пюре <br>Ври 40 – 45 мин. <br>Лимонена трева – десет стръка – разрязват се по дължина <br>1 кутийка кокосово мляко <br>ври 30 мин. <br>Махат се тревите <br>2 лъжици зеленчуков бульон <br>пасира се <br>добавя се вода</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">THAI TOMATO SOUP<br><br>Sweat 1 head white onion (finely diced) in a pot. Add fresh ginger (finely diced), 10 lime leaves (finely sliced), coriander seeds (crushed), garlic paste, and sambal oelek paste. Season with salt and pepper. Add tomato purée and simmer 40–45 minutes.<br><br>Add 10 stalks lemongrass (split lengthwise) and 1 can coconut milk. Continue simmering 30 minutes. Remove lemongrass stalks. Finish with 2 tablespoons vegetable stock. Pass through fine sieve. Adjust consistency with water as needed.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

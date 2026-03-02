@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">with ricotta cheese and peppercorn – royal fillets are frozen and than cut as a whole layer thin on the machine and layered down on a follies. Than ricotta I piped in plus any other ingredients.<br><br>Den Lachs halbieren und auf der Aufschnittmaschine aufschneiden. Auf Folie legen.<br>Mascarpone und angeschlagene Sahne miteinander verrühren, 10 Blatt Gelatine unterrühren.<br>Den Räucherlachs mit der Creme und Kräutern bestreichen und den bestrichenen Lachs rollen. Kalt stellen und mit Folie schneiden. Auf dem Gurkencarpaccio anrichten und ausgarnieren.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">with ricotta cheese and peppercorn – royal fillets are frozen and than cut as a whole layer thin on the machine and layered down on a follies. Than ricotta I piped in plus any other ingredients.<br><br>Den Lachs halbieren und auf der Aufschnittmaschine aufschneiden. Auf Folie legen.<br>Mascarpone und angeschlagene Sahne miteinander verrühren, 10 Blatt Gelatine unterrühren.<br>Den Räucherlachs mit der Creme und Kräutern bestreichen und den bestrichenen Lachs rollen. Kalt stellen und mit Folie schneiden. Auf dem Gurkencarpaccio anrichten und ausgarnieren.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Halve the salmon and slice thinly on the meat slicer as a single layer. Lay on plastic film.<br><br>Whip together mascarpone and whipped cream. Fold in 10 sheets of gelatin.<br><br>Spread the smoked salmon with the mascarpone cream and herbs, then roll tightly. Chill and cut through the plastic film.<br><br>Plate on cucumber carpaccio and garnish as needed.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

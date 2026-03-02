@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Melba (raspberry) Sauce <br>Hirnbeersauce <br>Sauce aux framboises [Melba} <br><br>Rezept Nr. :719 <br><br> Kategorie : Desserts <br><br>Koch : Patrick Diethelm<br>Datum 28.07.2005<br>Warenkosten: : CHF 7.41 LEUR 4.68 <br><br><br>Zutaten fUr 1.000 Liter zu 100% (Nettomenge) <br><br>855 g Raspberries, fresh<br>250 g Powdered sugar<br>1st Lemon juice <br><br>- COMBINE RASPBERRIES WITH POWDERED SUGAR. PUREE. AND STRAIN. <br>- ADD LEMON JUICE ACCORDING TO TASTE.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Melba (raspberry) Sauce <br>Hirnbeersauce <br>Sauce aux framboises [Melba} <br><br>Rezept Nr. :719 <br><br> Kategorie : Desserts <br><br>Koch : Patrick Diethelm<br>Datum 28.07.2005<br>Warenkosten: : CHF 7.41 LEUR 4.68 <br><br><br>Zutaten fUr 1.000 Liter zu 100% (Nettomenge) <br><br>855 g Raspberries, fresh<br>250 g Powdered sugar<br>1st Lemon juice <br><br>- COMBINE RASPBERRIES WITH POWDERED SUGAR. PUREE. AND STRAIN. <br>- ADD LEMON JUICE ACCORDING TO TASTE.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">MELBA (RASPBERRY) SAUCE<br>Chef: Patrick Diethelm | Recipe #719 | Yield: 1 liter<br><br>Ingredients:<br>855 g fresh raspberries<br>250 g powdered sugar<br>Lemon juice to taste<br><br>Method:<br>Combine raspberries with powdered sugar. Purée and strain through fine sieve. Season with lemon juice to taste.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

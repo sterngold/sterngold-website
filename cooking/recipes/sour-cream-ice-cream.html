@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Sour cream ice cream<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	: 17.11.2005<br>Cost of goods	: CHF 0.63 / EUR 0.40<br><br>European Gourmet Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>500<br>ml<br>Sour cream 35%<br>150<br>g<br>Vanilla sugar<br>50<br>g<br>Lemon juice ml<br>3<br>g<br>Lemon zest<br><br>- Mix all the ingredients in bowl and fill into beaker. - Freeze over night<br>- Pacotice twice and add back to freezer for 30 Minutes. - serve with fresh fruits.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Sour cream ice cream<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	: 17.11.2005<br>Cost of goods	: CHF 0.63 / EUR 0.40<br><br>European Gourmet Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>500<br>ml<br>Sour cream 35%<br>150<br>g<br>Vanilla sugar<br>50<br>g<br>Lemon juice ml<br>3<br>g<br>Lemon zest<br><br>- Mix all the ingredients in bowl and fill into beaker. - Freeze over night<br>- Pacotice twice and add back to freezer for 30 Minutes. - serve with fresh fruits.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SOUR CREAM ICE CREAM | Chef: Patrick Diethelm | For 6 servings<br><br>Ingredients:<br>500 ml sour cream (35%)<br>150 g vanilla sugar<br>50 g lemon juice<br>3 g lemon zest<br><br>Method:<br>Mix all ingredients in a bowl and transfer to a beaker. Freeze overnight. Pacojet twice and return to freezer for 30 minutes. Serve with fresh fruits.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">В чиния <br>В средата – зелена салата Isbergsla  - нарязана на ситно <br>Отстрани – Lollo rosso <br>В единия край – 3 резена домат и 3 краставица<br>Върху това – ситно нарязан зелен лук <br>Запържени сълнчогледови семки <br>Червен лук <br>Дресинг <br>Запеченето сирене <br>Tamijan <br>Печена маринована чушка за украса <br>Приготвяне на сиренето <br>В чиния <br>Две парчета сирене <br>2 – 3 лъжици мед <br>запича се във фурна само от горе <br>Дресинг<br>Зехтин <br>Ачето балсамико <br>Горчица <br>Мед/захар <br>Бял пипер <br>Поднася се съ млако препечен хляб</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">В чиния <br>В средата – зелена салата Isbergsla  - нарязана на ситно <br>Отстрани – Lollo rosso <br>В единия край – 3 резена домат и 3 краставица<br>Върху това – ситно нарязан зелен лук <br>Запържени сълнчогледови семки <br>Червен лук <br>Дресинг <br>Запеченето сирене <br>Tamijan <br>Печена маринована чушка за украса <br>Приготвяне на сиренето <br>В чиния <br>Две парчета сирене <br>2 – 3 лъжици мед <br>запича се във фурна само от горе <br>Дресинг<br>Зехтин <br>Ачето балсамико <br>Горчица <br>Мед/захар <br>Бял пипер <br>Поднася се съ млако препечен хляб</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PLATING:<br>Arrange Iceberg lettuce, finely shredded, in the center of the plate. Place Lollo rosso to the side. Arrange 3 tomato slices and 3 cucumber slices along one edge. Top with finely chopped green onion, toasted sunflower seeds, sliced red onion, roasted marinated peppers for garnish, and thyme.<br><br>GOAT CHEESE:<br>Place 2 pieces of cheese on a plate. Top with 2–3 tablespoons honey. Bake in oven from above only until golden.<br><br>DRESSING:<br>Combine olive oil, balsamic vinegar, mustard, honey or sugar, and white pepper. Dress salad and serve with warm toasted bread.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

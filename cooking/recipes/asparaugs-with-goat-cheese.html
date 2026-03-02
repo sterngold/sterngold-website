@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">bekonat se parji dokato stane na korichka, izwajda se<br>asperjite se waryat 7 minuti<br>serwirat se 4-5 aspreji ako e predyastie, 10 ako e osnowno blyudo.<br>otgore se nastargwa sireneto. otgore se slaga bekona<br>razbiwat se zehtina, limonowiya sok i s towa se poraswa<br><br>500 gr zeleni asperji<br>v<br>4 parcheta becon<br>zehtin<br>limon - sok i parcheta<br>sol i piper.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">bekonat se parji dokato stane na korichka, izwajda se<br>asperjite se waryat 7 minuti<br>serwirat se 4-5 aspreji ako e predyastie, 10 ako e osnowno blyudo.<br>otgore se nastargwa sireneto. otgore se slaga bekona<br>razbiwat se zehtina, limonowiya sok i s towa se poraswa<br><br>500 gr zeleni asperji<br>v<br>4 parcheta becon<br>zehtin<br>limon - sok i parcheta<br>sol i piper.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Cook bacon until crispy; remove and set aside.<br><br>Boil asparagus for 7 minutes. Plate 4-5 spears for appetizer portions, 10 for main course.<br><br>Grate goat cheese over asparagus. Top with bacon pieces.<br><br>Whisk olive oil with lemon juice and season. Dress the plate with this mixture.<br><br>Ingredients:<br>- 500 g green asparagus<br>- 4 bacon slices<br>- Olive oil<br>- Lemon (juice and zest)<br>- Salt and pepper</div>
+          
         </section>
         
 
@@ -99,5 +108,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

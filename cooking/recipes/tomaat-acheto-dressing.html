@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Остатъка от  Бланширани и изчисетни домати <br>Basilicum<br>Red Wine Vinegar<br>Tijm<br>Rozemarijn<br>Olive olie <br>salt / pepper<br>garlic paste<br>(1 hour to stay) <br>Mixer – trough drainer или прото през цедка</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Остатъка от  Бланширани и изчисетни домати <br>Basilicum<br>Red Wine Vinegar<br>Tijm<br>Rozemarijn<br>Olive olie <br>salt / pepper<br>garlic paste<br>(1 hour to stay) <br>Mixer – trough drainer или прото през цедка</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Tomato Vinegar Dressing<br>Source: Vijf | Garde Manger<br><br>Ingredients:<br>- Blanched and seeded tomato remnants<br>- Basil<br>- Red wine vinegar<br>- Thyme<br>- Rosemary<br>- Olive oil<br>- Salt and pepper<br>- Garlic paste<br><br>Method:<br>Combine blanched, seeded tomatoes with basil, red wine vinegar, thyme, rosemary, olive oil, salt, pepper, and garlic paste. Let rest 1 hour. Pass through mixer-trough drainer or fine sieve before service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

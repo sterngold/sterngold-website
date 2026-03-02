@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Calves Liver with Madeira Sauce<br>Geschnetzelte Kalbsleber an Madeirasauce Emincë de Foie de veau au mac/ere<br>Recipe #	: 387<br>Category	: Hot Meat Dishes<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 4.74 / EUR 3.00<br>Ingredients for 5 servings at 100% (Net quantity)<br>750<br>g<br>Calves' liver<br>40<br>g<br>Clarified butter<br>1<br>x<br>Seasoning (salt and pepper)<br>25<br>g<br>Butter<br>100<br>g<br>Shallots<br>75<br>ml<br>Madeira wine<br>400<br>g<br>Fond de veau brun lie<br>15<br>g<br>Parsley, fresh<br>5<br>g<br>Herbs fresh Thyme, Rosemary<br>40<br>g<br>Butter<br><br>- SAUTE LIVER IN CLARIFIED BUTTER OVER HIGH HEAT UNTIL STILL RARE. DO NOT OVERCOOK.<br>- AND PUT THE LIVER IN A COLANDER OR HAIR SIEVE TO DRAIN.<br>- SEASON WITH SALT AND PEPPER<br>- ADD BUTTER TO THE PAN AND SWEAT SHALLOTS<br>- DEGLAZE WITH MADEIRA WINE AND BRING TO A BOIL AND REDUCE. - ADD FOND DE VEAU BRUN LIE AND REDUCE<br>- ADD FRESH CHOPPED HERBS AND EXTRA BUTTER<br>- REMOVE FROM HEAT, ADD LIVER JUST TO WARM IT, AND COMBINE WITH SAUCE. DO NOT ALLOW TO BOIL.<br>- SERVE IMMEDIATELY</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Calves Liver with Madeira Sauce<br>Geschnetzelte Kalbsleber an Madeirasauce Emincë de Foie de veau au mac/ere<br>Recipe #	: 387<br>Category	: Hot Meat Dishes<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 4.74 / EUR 3.00<br>Ingredients for 5 servings at 100% (Net quantity)<br>750<br>g<br>Calves' liver<br>40<br>g<br>Clarified butter<br>1<br>x<br>Seasoning (salt and pepper)<br>25<br>g<br>Butter<br>100<br>g<br>Shallots<br>75<br>ml<br>Madeira wine<br>400<br>g<br>Fond de veau brun lie<br>15<br>g<br>Parsley, fresh<br>5<br>g<br>Herbs fresh Thyme, Rosemary<br>40<br>g<br>Butter<br><br>- SAUTE LIVER IN CLARIFIED BUTTER OVER HIGH HEAT UNTIL STILL RARE. DO NOT OVERCOOK.<br>- AND PUT THE LIVER IN A COLANDER OR HAIR SIEVE TO DRAIN.<br>- SEASON WITH SALT AND PEPPER<br>- ADD BUTTER TO THE PAN AND SWEAT SHALLOTS<br>- DEGLAZE WITH MADEIRA WINE AND BRING TO A BOIL AND REDUCE. - ADD FOND DE VEAU BRUN LIE AND REDUCE<br>- ADD FRESH CHOPPED HERBS AND EXTRA BUTTER<br>- REMOVE FROM HEAT, ADD LIVER JUST TO WARM IT, AND COMBINE WITH SAUCE. DO NOT ALLOW TO BOIL.<br>- SERVE IMMEDIATELY</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CALVES LIVER WITH MADEIRA SAUCE<br>Yield: 5 servings | Chef: Patrick Diethelm<br><br>Ingredients:<br>750g calves' liver<br>40g clarified butter<br>Salt and pepper<br>25g butter<br>100g shallots<br>75ml Madeira wine<br>400g fond de veau brun lié<br>15g parsley, fresh<br>5g fresh herbs (thyme, rosemary)<br>40g butter<br><br>Method:<br>Sauté liver in clarified butter over high heat until still rare—do not overcook. Drain in colander or hair sieve. Season with salt and pepper.<br><br>Add butter to pan and sweat shallots. Deglaze with Madeira wine, bring to boil, and reduce. Add fond de veau brun lié and reduce again.<br><br>Stir in fresh chopped herbs and extra butter. Remove from heat, add liver just to warm through, and combine with sauce. Do not allow to boil.<br><br>Serve immediately.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

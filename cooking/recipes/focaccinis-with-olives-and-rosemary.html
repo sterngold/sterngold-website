@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Focaccinis with olives and rosemary<br>Oliven Focaccinis mit Rosmarin Pâte à pain aux olives et romarin<br><br>Ingredients for 0.850 kilogram. at 100% (Net quantity)<br><br>Sift together the flour and salt into mixing bowl.<br>- ADD WATER/YEAST TO FLOUR AND MIX WITH DOUGH HOOK, AT SLOW SPEED, ABOUT 10 -15 MINUTES.<br>- ADD SEEDLESS OLIVES AND CHOPPED ROSEMARY<br>- COVER DOUG AND PROOF IN A WARM PLACE FOR 1/2 HOUR.<br>- PUNCH DOWN DOUGH BEFORE USE.<br>- FORM INTO SMALL FOCCACINIS AND PROOF AGAIN<br>- The focaccia is a flat round bread, instead of a long bread<br>- Brush the bread with plain olive oil before baking and sprinkle different kinds of ingredients on it<br>- Bake at 210° for about 8 -10 minutes<br>Focaccia bread varietys:<br>Sage bread	Add fresh chopped sage to the dough<br>Walnut bread	Add roughly chopped walnuts, brush bread with walnut oil before baking<br>Olive bread	- Add sauteed garlic to the dough<br>Hot pepper bread	- Add fine chopped hot chilis and fresh herbs Tomato bread - Add roughly chopped dried tomatoes to the dough<br>Notes: Italian's serve focaccia bread always fresh and hot from the oven</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Focaccinis with olives and rosemary<br>Oliven Focaccinis mit Rosmarin Pâte à pain aux olives et romarin<br><br>Ingredients for 0.850 kilogram. at 100% (Net quantity)<br><br>Sift together the flour and salt into mixing bowl.<br>- ADD WATER/YEAST TO FLOUR AND MIX WITH DOUGH HOOK, AT SLOW SPEED, ABOUT 10 -15 MINUTES.<br>- ADD SEEDLESS OLIVES AND CHOPPED ROSEMARY<br>- COVER DOUG AND PROOF IN A WARM PLACE FOR 1/2 HOUR.<br>- PUNCH DOWN DOUGH BEFORE USE.<br>- FORM INTO SMALL FOCCACINIS AND PROOF AGAIN<br>- The focaccia is a flat round bread, instead of a long bread<br>- Brush the bread with plain olive oil before baking and sprinkle different kinds of ingredients on it<br>- Bake at 210° for about 8 -10 minutes<br>Focaccia bread varietys:<br>Sage bread	Add fresh chopped sage to the dough<br>Walnut bread	Add roughly chopped walnuts, brush bread with walnut oil before baking<br>Olive bread	- Add sauteed garlic to the dough<br>Hot pepper bread	- Add fine chopped hot chilis and fresh herbs Tomato bread - Add roughly chopped dried tomatoes to the dough<br>Notes: Italian's serve focaccia bread always fresh and hot from the oven</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sift flour and salt together into mixing bowl. Add water and yeast, mixing with dough hook at slow speed for 10–15 minutes. Fold in seedless olives and chopped rosemary. Cover dough and proof in a warm place for 30 minutes. Punch down dough. Form into small focaccinis and proof again. Brush with olive oil, sprinkle desired toppings, and bake at 210°C for 8–10 minutes.<br><br>Variations: Sage bread—add fresh chopped sage; Walnut bread—add roughly chopped walnuts and brush with walnut oil; Olive bread—add sautéed garlic; Hot pepper bread—add finely chopped hot chilis and fresh herbs; Tomato bread—add roughly chopped dried tomatoes.<br><br>Note: Serve focaccia fresh and hot from the oven.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

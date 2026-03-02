@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Sabayon - 200 g egg yolk + 50 sugar + 1 muscat wine + 1 glas (big) strong coffie <br>Maybe not so much koffie but add water <br>1/ 4 Chocolate couverture - melt <br>Mix Sabayon with couverture <br>500 g  Cream - whip fold  to the mix <br>Egg white - fold to the mix (300 g )</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Sabayon - 200 g egg yolk + 50 sugar + 1 muscat wine + 1 glas (big) strong coffie <br>Maybe not so much koffie but add water <br>1/ 4 Chocolate couverture - melt <br>Mix Sabayon with couverture <br>500 g  Cream - whip fold  to the mix <br>Egg white - fold to the mix (300 g )</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sabayon: Whisk together 200g egg yolk, 50g sugar, 1 measure Muscat wine, and 1 large glass strong coffee (reduce coffee quantity if needed; add water to adjust). Set aside.<br><br>Melt 250g chocolate couverture. Fold cooled couverture into sabayon mixture. Whip 500g cream to soft peaks and fold into mousse. Whip 300g egg whites and gently fold into the mixture until just combined.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -162,8 +162,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- make clarification mixture by combining meat, carrots, knob celery, leeks, tomatoes, egg whites, bay leaf and white peppercorns with water. Mix througly and refrigerate for at least 1/2 hour<br><br>- throughly combine meat mixture with cold bouillon<br>- stirring carefully with frying spatula until 97 C. Once consomme starts to boil, do not stir any longer and add 3 -4 ice cubes to cool. <br>- lower heat and simmer for at least 1/2 hour. <br>- season to taste <br>- strain carefully through napkin<br>- remove all fat with absorbent paper<br>- add little sherry wine to parfume</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- make clarification mixture by combining meat, carrots, knob celery, leeks, tomatoes, egg whites, bay leaf and white peppercorns with water. Mix througly and refrigerate for at least 1/2 hour<br><br>- throughly combine meat mixture with cold bouillon<br>- stirring carefully with frying spatula until 97 C. Once consomme starts to boil, do not stir any longer and add 3 -4 ice cubes to cool. <br>- lower heat and simmer for at least 1/2 hour. <br>- season to taste <br>- strain carefully through napkin<br>- remove all fat with absorbent paper<br>- add little sherry wine to parfume</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Prepare clarification mixture by combining meat, carrots, celeriac, leeks, tomatoes, egg whites, bay leaf, and white peppercorns with water. Mix thoroughly and refrigerate for at least 30 minutes.<br><br>Combine the meat mixture thoroughly with cold bouillon. Heat gently, stirring carefully with a frying spatula until 97°C. Once the consommé reaches a boil, stop stirring and add 3–4 ice cubes to cool. Lower heat and simmer for at least 30 minutes. Season to taste. Strain carefully through a napkin. Remove all fat using absorbent paper. Add a little sherry wine to perfume.</div>
+          
         </section>
         
 
@@ -197,5 +206,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

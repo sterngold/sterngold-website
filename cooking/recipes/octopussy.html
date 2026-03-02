@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Маха се окото на охтопода 8 мастилото<br>слага се със главата нагоре<br>морска сол /малко/<br>Кората и сока от един портокал<br>2 домата на половина – леко се изстискват<br>Tijm / Rozemarijn<br>Чесън – цяла глава от скалидки – напловин срязана<br>Lauril blad <br>Черен пипер<br>Вода <br>Чиния да го притисне<br>окло 2 часа на много бавен огън <br>Може и лук да се добави.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Маха се окото на охтопода 8 мастилото<br>слага се със главата нагоре<br>морска сол /малко/<br>Кората и сока от един портокал<br>2 домата на половина – леко се изстискват<br>Tijm / Rozemarijn<br>Чесън – цяла глава от скалидки – напловин срязана<br>Lauril blad <br>Черен пипер<br>Вода <br>Чиния да го притисне<br>окло 2 часа на много бавен огън <br>Може и лук да се добави.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Station: Poissonnier | Vijf<br><br>Remove eyes and ink sacs from octopus. Place head-side up in pot. Season with sea salt. Add zest and juice from 1 orange, 2 halved tomatoes (lightly squeezed), thyme, rosemary, 1 whole head of garlic (halved), bay leaf, and black pepper. Cover with water. Weight down with a plate. Cook on very low heat for approximately 2 hours. Optional: add onion.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

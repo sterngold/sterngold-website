@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Potato Cakes with parsley<br>Kartoffelgaletten mit Petersilie Galettes de pommes de terre<br><br><br>Rezept Nr.	: 602<br>Kategorie	: Potato Dishes<br>Koch	: Patrick Diethelm<br>Datum	: 03.08.2005<br>Warenkosten	: CHF 0.24 / EUR 0.15<br><br>Culinary FEC TERM 1<br><br>Zutaten für 10 Personen zu 100% (Nettomenge)<br><br>1.1 kg Potatoes<br>10 g	Salt (optional) 25 g Butter<br>4 st Egg yolks<br>1 x	Seasoning (salt and pepper)<br>1 x	Nutmeg (pinch) 100 g White wheat flour<br>3 g	Parsley, fresh<br>100 g	Clarified butter<br>Chopped<br><br>- Wash and peel potatoes and cut into even-sized chunks.<br>- Steam potatoes or cook in lightly salted water and drain well. - When cooked, dry potatoes briefly in the oven.<br>- Pass potatoes through a wire sieve or ricer.<br>- Blend hot puréed potatoes with butter and egg yolks. - Chill mixture and add white wheat flour<br>- Put mixture on a floured work table; divide into two parts. - Shape into two tubular rolls about 35 mm in diameter.<br>- CUT ROLLS INTO 12 mm THICK SLICES ON A FLOURED WORK TABLE. - DECORATE SLICES IN A GRATE PATTERN WITH THE BACK OF A KNIFE.<br>- FLOUR SLICES AND SAUTÉ IN BUTTER UNTIL GOLDEN BROWN ON BOTH SIDES.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Potato Cakes with parsley<br>Kartoffelgaletten mit Petersilie Galettes de pommes de terre<br><br><br>Rezept Nr.	: 602<br>Kategorie	: Potato Dishes<br>Koch	: Patrick Diethelm<br>Datum	: 03.08.2005<br>Warenkosten	: CHF 0.24 / EUR 0.15<br><br>Culinary FEC TERM 1<br><br>Zutaten für 10 Personen zu 100% (Nettomenge)<br><br>1.1 kg Potatoes<br>10 g	Salt (optional) 25 g Butter<br>4 st Egg yolks<br>1 x	Seasoning (salt and pepper)<br>1 x	Nutmeg (pinch) 100 g White wheat flour<br>3 g	Parsley, fresh<br>100 g	Clarified butter<br>Chopped<br><br>- Wash and peel potatoes and cut into even-sized chunks.<br>- Steam potatoes or cook in lightly salted water and drain well. - When cooked, dry potatoes briefly in the oven.<br>- Pass potatoes through a wire sieve or ricer.<br>- Blend hot puréed potatoes with butter and egg yolks. - Chill mixture and add white wheat flour<br>- Put mixture on a floured work table; divide into two parts. - Shape into two tubular rolls about 35 mm in diameter.<br>- CUT ROLLS INTO 12 mm THICK SLICES ON A FLOURED WORK TABLE. - DECORATE SLICES IN A GRATE PATTERN WITH THE BACK OF A KNIFE.<br>- FLOUR SLICES AND SAUTÉ IN BUTTER UNTIL GOLDEN BROWN ON BOTH SIDES.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">POTATO CAKES WITH PARSLEY<br>Yield: 10 servings | Chef: Patrick Diethelm<br><br>Ingredients:<br>1.1 kg potatoes<br>25 g butter<br>4 egg yolks<br>100 g white wheat flour<br>3 g fresh parsley, chopped<br>100 g clarified butter<br>Salt, pepper, nutmeg (pinch)<br><br>Method:<br>Wash, peel, and cut potatoes into even chunks. Steam or cook in lightly salted water; drain thoroughly. Dry briefly in oven. Pass through sieve or ricer. Blend hot purée with butter and egg yolks. Chill mixture, then fold in white wheat flour and season with salt, pepper, and nutmeg. Divide into two equal portions and shape into tubular rolls approximately 35 mm diameter. On floured work surface, cut into 12 mm thick slices. Score surface in crosshatch pattern with back of knife. Flour lightly and sauté in clarified butter until golden brown on both sides.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

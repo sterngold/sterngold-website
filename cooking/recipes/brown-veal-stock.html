@@ -130,8 +130,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- roast veal bones and calves feet slowly. Use rotissoire , convection oven or regular oven at 200 C<br>- add mirepoix and continue roasting<br>- pour off excess fat <br>- add tomato paste and continue roasting at 180 C<br>- add a small amount of water two or three times and reduce each time until almost evaporated<br>- transfer bones and pan drippings to a suitable marmite. Add wine and water<br>- bring to boil, add slat and skim<br>- simmer for 3 to 4 hours<br>- after 2 hours add sachet bag<br>- strain first through china cap or hair sieve and than strain again through cheese cloth<br>- reduce down to 1/3</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- roast veal bones and calves feet slowly. Use rotissoire , convection oven or regular oven at 200 C<br>- add mirepoix and continue roasting<br>- pour off excess fat <br>- add tomato paste and continue roasting at 180 C<br>- add a small amount of water two or three times and reduce each time until almost evaporated<br>- transfer bones and pan drippings to a suitable marmite. Add wine and water<br>- bring to boil, add slat and skim<br>- simmer for 3 to 4 hours<br>- after 2 hours add sachet bag<br>- strain first through china cap or hair sieve and than strain again through cheese cloth<br>- reduce down to 1/3</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Roast veal bones and calf's feet slowly in rotisserie, convection oven, or regular oven at 200°C. Add mirepoix and continue roasting. Pour off excess fat. Add tomato paste and continue roasting at 180°C. Add small amounts of water two or three times, reducing each time until almost evaporated. Transfer bones and pan drippings to a suitable marmite. Add wine and water, bring to boil, add salt, and skim. Simmer for 3 to 4 hours. Add sachet bag after 2 hours. Strain first through china cap or hair sieve, then strain again through cheesecloth. Reduce down to one-third.</div>
+          
         </section>
         
 
@@ -165,5 +174,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

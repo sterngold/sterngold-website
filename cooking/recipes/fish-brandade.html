@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Подготовка на рибата<br>Във вода 24 часа<br>Вари се на бавен огън със <br>вода<br>мляко<br>pepper<br>garlic – глава 2<br>rosemarin<br>lauril blad<br>Рибата се изчиства от костите<br>Във пюре със Tabasco, сол пипер, зехтин, чеснова паста</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Подготовка на рибата<br>Във вода 24 часа<br>Вари се на бавен огън със <br>вода<br>мляко<br>pepper<br>garlic – глава 2<br>rosemarin<br>lauril blad<br>Рибата се изчиства от костите<br>Във пюре със Tabasco, сол пипер, зехтин, чеснова паста</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Soak fish in water for 24 hours.<br><br>Poach gently in water with milk, pepper, 2 garlic heads, rosemary, and bay leaf.<br><br>Remove bones from fish. Purée with Tabasco, salt, pepper, olive oil, and garlic paste.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

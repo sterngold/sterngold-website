@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Pike perch salmon Terrine<br>Zander,- Lachsternine<br>Terrine de sandre et saumon<br>Recipe #	:213<br>Category	: ECA - Terrine/Paté/Galantine / Mark<br>Chef	: Patrick Diethelm<br>Date	:14,11.2005<br>Cost of goods 	: CHF 0.90 / EUR 0.57 <br><br>Ingredients for 12 servings at 100% (Net quantity)<br>300<br>g<br>Pike perch fillet<br><br>20<br>g<br>Egg whites<br><br>300<br>ml<br>Heavy cream (36%)<br><br>150<br>g<br>Salmon trout fillet, skinless Back<br>pieces<br><br>7<br>g<br>Salt<br><br>75<br>g<br>Spinach, fresh Or Swiss chard<br><br>12<br>g<br>Egg whites<br><br>4<br>g<br>Dill, fresh<br>Chopped<br>12<br>g<br>Horn of plenty<br>Soaked and sauteed<br><br>- Line terrine mold carefully with plastic foil and line out with cooked carrot slices. - Skin pike perch fillets dice and refrigerate.<br>For Garnish<br>- Blanch spinach leaves and spread out on absorbent paper to dry. - Cut salmon into long strips.<br>- Brush salmon pieces with egg white and wrap in spinach leaves.<br>- slice carrot thin on mandoline and blanch in salted water and refresh. - line out terrine mold.<br><br>- BLEND PIKE PERCH WITH EGG WHITE, CREAM AND SALT UNTIL SMOOTH. - PASS/STRAIN THROUGH DRUM SIEVE.<br>- PLACE IN A BOWL OVER ICE. SEASON TO TASTE. ADD CHOPPED DILL AND MUSHROOM - FILL TERRINE MOLD WITH ABOUT 1/3 OF FISH MOUSSELINE FARCE.<br>- PLACE SALMON STRIPS IN CENTER OF TERRINE.<br>- FILL TERRINE WITH REMAINING MOUSSE. BE SURE THERE ARE NO AIR BUBBLES. - COVER WITH OVERLAPPING CARROT SLICES AND PLASTIC FOIL<br>- POACH IN CONVECTION OVEN AT 75°C, UNTIL CENTER OF TERRINE HAS REACHED - WEIGH DOWN SLIGHTLY AND COOL IN MOLD.<br>55-58°C.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Pike perch salmon Terrine<br>Zander,- Lachsternine<br>Terrine de sandre et saumon<br>Recipe #	:213<br>Category	: ECA - Terrine/Paté/Galantine / Mark<br>Chef	: Patrick Diethelm<br>Date	:14,11.2005<br>Cost of goods 	: CHF 0.90 / EUR 0.57 <br><br>Ingredients for 12 servings at 100% (Net quantity)<br>300<br>g<br>Pike perch fillet<br><br>20<br>g<br>Egg whites<br><br>300<br>ml<br>Heavy cream (36%)<br><br>150<br>g<br>Salmon trout fillet, skinless Back<br>pieces<br><br>7<br>g<br>Salt<br><br>75<br>g<br>Spinach, fresh Or Swiss chard<br><br>12<br>g<br>Egg whites<br><br>4<br>g<br>Dill, fresh<br>Chopped<br>12<br>g<br>Horn of plenty<br>Soaked and sauteed<br><br>- Line terrine mold carefully with plastic foil and line out with cooked carrot slices. - Skin pike perch fillets dice and refrigerate.<br>For Garnish<br>- Blanch spinach leaves and spread out on absorbent paper to dry. - Cut salmon into long strips.<br>- Brush salmon pieces with egg white and wrap in spinach leaves.<br>- slice carrot thin on mandoline and blanch in salted water and refresh. - line out terrine mold.<br><br>- BLEND PIKE PERCH WITH EGG WHITE, CREAM AND SALT UNTIL SMOOTH. - PASS/STRAIN THROUGH DRUM SIEVE.<br>- PLACE IN A BOWL OVER ICE. SEASON TO TASTE. ADD CHOPPED DILL AND MUSHROOM - FILL TERRINE MOLD WITH ABOUT 1/3 OF FISH MOUSSELINE FARCE.<br>- PLACE SALMON STRIPS IN CENTER OF TERRINE.<br>- FILL TERRINE WITH REMAINING MOUSSE. BE SURE THERE ARE NO AIR BUBBLES. - COVER WITH OVERLAPPING CARROT SLICES AND PLASTIC FOIL<br>- POACH IN CONVECTION OVEN AT 75°C, UNTIL CENTER OF TERRINE HAS REACHED - WEIGH DOWN SLIGHTLY AND COOL IN MOLD.<br>55-58°C.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">MISE EN PLACE<br>Line terrine mold with plastic foil, then with blanched carrot slices. Skin pike perch fillets, dice, and refrigerate. Blanch spinach leaves and dry on absorbent paper. Cut salmon trout into long strips. Slice carrot thin on mandoline, blanch in salted water, and refresh. Line carrot slices in terrine mold.<br><br>MOUSSELINE<br>Blend diced pike perch with 20g egg white, heavy cream, and salt until smooth. Pass through drum sieve. Place in bowl over ice and season to taste. Fold in chopped dill and sautéed horn of plenty.<br><br>ASSEMBLY<br>Fill terrine mold with approximately one-third of the fish mousseline. Wrap salmon strips in blanched spinach leaves and arrange down the center of the terrine. Fill remaining space with mousse, ensuring no air bubbles. Cover with overlapping carrot slices and plastic foil.<br><br>COOKING AND FINISH<br>Poach in convection oven at 75°C until center reaches 55-58°C. Weigh down slightly and cool in mold before turning out.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

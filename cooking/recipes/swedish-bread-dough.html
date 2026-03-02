@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">VITZNAU-LUCERNE SWITZERLAND<br>SWEDISH BREAD DOUGH<br>Yield: 10 servings<br>350<br>g<br>white wheat flour<br>10<br>g<br>sugar<br>20<br>g<br>honey<br>120<br>g<br>butter<br>50<br>g<br>egg<br>4<br>g<br>salt<br>80<br>g<br>milk<br>20<br>g<br>sour cream<br>25<br>g<br>fresh yeast<br>1<br>g<br>cumin<br><br>Preparation:</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">VITZNAU-LUCERNE SWITZERLAND<br>SWEDISH BREAD DOUGH<br>Yield: 10 servings<br>350<br>g<br>white wheat flour<br>10<br>g<br>sugar<br>20<br>g<br>honey<br>120<br>g<br>butter<br>50<br>g<br>egg<br>4<br>g<br>salt<br>80<br>g<br>milk<br>20<br>g<br>sour cream<br>25<br>g<br>fresh yeast<br>1<br>g<br>cumin<br><br>Preparation:</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SWEDISH BREAD DOUGH<br><br>Yield: 10 servings<br><br>INGREDIENTS<br>350g White wheat flour<br>10g Sugar<br>20g Honey<br>120g Butter<br>50g Egg<br>4g Salt<br>80g Milk<br>20g Sour cream<br>25g Fresh yeast<br>1g Cumin<br><br>Note: Preparation method not provided in original notes.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

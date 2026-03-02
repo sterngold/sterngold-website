@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Glazed Carrots<br>Glasierte Karotten<br>Carottes glacées<br><br>Rezept Nr.	: 547<br>Kategorie	: Vegetables<br>Koch	: Patrick Diethelm<br>Datum	: 17.08.2005<br>Warenkosten	: CHF 0.13 / EUR 0.08<br><br>EUROPEAN CULINARY CENTER<br><br>Zutaten für 12 Personen zu 100% (Nettomenge)<br> 900 g	Carrot<br><br><br>45 g	Butter<br>1 x	Crystal sugar (pinch)<br>150 ml Water Or vegetable stock <br>6 g	Salt<br>Wash, peel cut into modern shape Blanch if very large<br>(or they wil be tough).<br><br>- ADD BUTTER INTO RONDEAU.<br>- ADD CARROTS SUGAR AND SALT. SWEAT CARROTS LIGHTLY. - ADD STOCK TO CARROTS.<br>- COVER, AND STEW UNTIL CARROTS ARE TENDER.<br>-REMOVE LID AND REDUCE LIQUID RAPIDLY TO A SYRUPY CONSISTENCY.<br>- TossCARROTS IN SYRUP TO GLAZE.<br>For glazed summer vegetables use several different vegetables cut into uniform shape and blanch.<br>Glaze together like carrots</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Glazed Carrots<br>Glasierte Karotten<br>Carottes glacées<br><br>Rezept Nr.	: 547<br>Kategorie	: Vegetables<br>Koch	: Patrick Diethelm<br>Datum	: 17.08.2005<br>Warenkosten	: CHF 0.13 / EUR 0.08<br><br>EUROPEAN CULINARY CENTER<br><br>Zutaten für 12 Personen zu 100% (Nettomenge)<br> 900 g	Carrot<br><br><br>45 g	Butter<br>1 x	Crystal sugar (pinch)<br>150 ml Water Or vegetable stock <br>6 g	Salt<br>Wash, peel cut into modern shape Blanch if very large<br>(or they wil be tough).<br><br>- ADD BUTTER INTO RONDEAU.<br>- ADD CARROTS SUGAR AND SALT. SWEAT CARROTS LIGHTLY. - ADD STOCK TO CARROTS.<br>- COVER, AND STEW UNTIL CARROTS ARE TENDER.<br>-REMOVE LID AND REDUCE LIQUID RAPIDLY TO A SYRUPY CONSISTENCY.<br>- TossCARROTS IN SYRUP TO GLAZE.<br>For glazed summer vegetables use several different vegetables cut into uniform shape and blanch.<br>Glaze together like carrots</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**GLAZED CARROTS**<br><br>Recipe #547 | Chef: Patrick Diethelm | 17.08.2005<br><br>Yield: 12 servings<br><br>**Ingredients:**<br>- 900 g carrots<br>- 45 g butter<br>- 150 ml water or vegetable stock<br>- 6 g salt<br>- Pinch of crystal sugar<br><br>**Method:**<br>1. Wash and peel carrots. Cut into uniform modern shape. Blanch if very large to prevent toughness.<br>2. Add butter to rondeau over moderate heat.<br>3. Add carrots, sugar, and salt. Sweat lightly.<br>4. Pour in stock, cover, and braise until carrots are tender.<br>5. Remove lid and reduce liquid rapidly to syrupy consistency.<br>6. Toss carrots in syrup to coat and glaze.<br><br>**Note:** For glazed mixed vegetables, use several types cut to uniform size, blanch individually, and glaze together using the same method.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

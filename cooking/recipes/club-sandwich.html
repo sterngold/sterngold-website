@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">3 toast bread <br>Green salad chifonade with cocktail sauce <br>Chicken breasts <br>Tomato x 2 / Cucumber x 2 <br>Egg – in half <br>Close / cut ends <br>Two sticks olives with bacon <br>Salad <br>Italian vegetables <br>Chips</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">3 toast bread <br>Green salad chifonade with cocktail sauce <br>Chicken breasts <br>Tomato x 2 / Cucumber x 2 <br>Egg – in half <br>Close / cut ends <br>Two sticks olives with bacon <br>Salad <br>Italian vegetables <br>Chips</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Toast three slices of bread. Build layers: chifonnade of green salad with cocktail sauce, chicken breast, tomato, and cucumber slices. Add halved hard-boiled egg between layers. Close sandwich and remove crusts, cut into triangles. Secure with two olive-topped bacon skewers through center. Plate with salad and Italian vegetables. Serve with chips.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

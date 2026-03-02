@@ -194,8 +194,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- String beans - trim boil in salted water until still crisp, drain, chill and drain again. Cut into 35 mm lengths <br>- tomatoes - cut in half, cut each a half into eight wedges<br>- lettuce - trim and wash, separate leaves <br>- bell pepper - - trim and wash, cut in half and remove seeds. Cut into fine strips (julienne)<br>- onions - peel and slice into thin rings<br><br>- CHOP GARLIC <br>- MAKE VINAIGRETE WITH GARLIC, HERBS, OILS, VINEGAR AND SEASONING<br>- COMBINE GREEN BEANS AND TOMATO WEDGES AND SEASON WITH HALF THE VINAIGRETTE<br>- ARRANGE SMALL LETTUCE LEAVES ON PLATES. PLACE A BOUGUET OF GREEN BEAN / TOMATO SALAD IN THE CENTER OF EACH PLATE, A TOP OF LETTUCE<br>- PLACE BOUGUETES OF MUSHROOMS AND PEPPERS AROUND GREEN BEAN /TOMATO SALAD<br>- DRIZZLE REMAINING VINAIGRETTE OVER THE MUSHROOMS AND THE PEPPERS<br>-GRANISHWITH ONION RINGS AND FRESH HERBS</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- String beans - trim boil in salted water until still crisp, drain, chill and drain again. Cut into 35 mm lengths <br>- tomatoes - cut in half, cut each a half into eight wedges<br>- lettuce - trim and wash, separate leaves <br>- bell pepper - - trim and wash, cut in half and remove seeds. Cut into fine strips (julienne)<br>- onions - peel and slice into thin rings<br><br>- CHOP GARLIC <br>- MAKE VINAIGRETE WITH GARLIC, HERBS, OILS, VINEGAR AND SEASONING<br>- COMBINE GREEN BEANS AND TOMATO WEDGES AND SEASON WITH HALF THE VINAIGRETTE<br>- ARRANGE SMALL LETTUCE LEAVES ON PLATES. PLACE A BOUGUET OF GREEN BEAN / TOMATO SALAD IN THE CENTER OF EACH PLATE, A TOP OF LETTUCE<br>- PLACE BOUGUETES OF MUSHROOMS AND PEPPERS AROUND GREEN BEAN /TOMATO SALAD<br>- DRIZZLE REMAINING VINAIGRETTE OVER THE MUSHROOMS AND THE PEPPERS<br>-GRANISHWITH ONION RINGS AND FRESH HERBS</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Green Beans, Tomatoes and Mushrooms**<br><br>Pre-prep:<br>Trim and boil green beans in salted water until still crisp. Drain, chill, and drain again. Cut into 35 mm lengths.<br><br>Halve tomatoes, then cut each half into eight wedges.<br><br>Trim and wash lettuce; separate leaves.<br><br>Trim and wash bell peppers, halve, remove seeds, and cut into fine julienne strips.<br><br>Peel onions and slice into thin rings.<br><br>Chop garlic.<br><br>Method:<br>Make vinaigrette with garlic, herbs, oils, vinegar, and seasoning.<br><br>Combine green beans and tomato wedges; season with half the vinaigrette.<br><br>Arrange small lettuce leaves on plates. Place a bouquet of green bean and tomato salad in the centre, topped with lettuce.<br><br>Arrange bouquets of mushrooms and peppers around the green bean mixture.<br><br>Drizzle remaining vinaigrette over mushrooms and peppers. Garnish with onion rings and fresh herbs.</div>
+          
         </section>
         
 
@@ -229,5 +238,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

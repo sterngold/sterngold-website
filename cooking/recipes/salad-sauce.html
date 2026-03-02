@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">4 eat spoon Dijon<br>4 – 5 dl Balsamic<br>5 dl Baumnuss oil <br>5 dl Disteloil <br>3 dl Truffle jus<br>3 dl Neutral bouillon<br>Mustard and Vinegar mix<br>Oil slow mix<br>Truffle jus <br>Bouillon</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">4 eat spoon Dijon<br>4 – 5 dl Balsamic<br>5 dl Baumnuss oil <br>5 dl Disteloil <br>3 dl Truffle jus<br>3 dl Neutral bouillon<br>Mustard and Vinegar mix<br>Oil slow mix<br>Truffle jus <br>Bouillon</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Salad Sauce<br><br>Ingredients:<br>4 tablespoons Dijon mustard<br>4–5 dl balsamic vinegar<br>5 dl walnut oil<br>5 dl neutral oil<br>3 dl truffle jus<br>3 dl neutral bouillon<br>Salt and pepper to taste<br><br>Method:<br>Whisk together Dijon mustard and balsamic vinegar. Combine walnut oil and neutral oil. Slowly emulsify the oil mixture into the mustard-vinegar base, whisking constantly. Gently incorporate truffle jus and neutral bouillon to balance. Season with salt and pepper. The sauce should be balanced between acidity and richness, with the oils fully integrated.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">¼ л. мляко <br>¾ л. течна сметана<br>1 цяла ванила – като се вадят зърната плюс стръка <br>Загрява се на котлон<br>Захар 160 гр. <br>Жълтъци 350 гр. <br>Малко от млякото във захарта/жълтъците<br>Обратно във млякото <br>На котлон докато се стопи захарта <br>През финна цедка <br>Във чинийка – покрива се със фолио<br>Загрята фурна – 155 градуса<br>Около 10 мин. Но се проверява докато е готово – да не нащърбено отгоре и вес пак да е малко течно гладка повърхност<br>Фолиото се маха – иначе пада вода <br>Оставят се да изстината<br>Сервиране – поръсват се със захар и се карамелизират.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">¼ л. мляко <br>¾ л. течна сметана<br>1 цяла ванила – като се вадят зърната плюс стръка <br>Загрява се на котлон<br>Захар 160 гр. <br>Жълтъци 350 гр. <br>Малко от млякото във захарта/жълтъците<br>Обратно във млякото <br>На котлон докато се стопи захарта <br>През финна цедка <br>Във чинийка – покрива се със фолио<br>Загрята фурна – 155 градуса<br>Около 10 мин. Но се проверява докато е готово – да не нащърбено отгоре и вес пак да е малко течно гладка повърхност<br>Фолиото се маха – иначе пада вода <br>Оставят се да изстината<br>Сервиране – поръсват се със захар и се карамелизират.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Combine 250 ml milk and 750 ml liquid cream. Split 1 vanilla pod, scrape seeds, and add both pod and seeds to the milk mixture. Heat gently on the stove.<br><br>Whisk together 160 g sugar and 350 g egg yolks. Temper by adding a small amount of the hot milk mixture to the yolks, then return everything to the milk. Heat on the stove until sugar dissolves completely.<br><br>Pass through fine sieve into ramekins and cover with foil. Bake in a preheated 155°C oven for approximately 10 minutes—they are ready when the edges are just set but the center remains slightly liquid with a smooth surface. Do not overbake.<br><br>Remove foil carefully (water will drip from condensation). Let cool completely, then refrigerate until service.<br><br>To serve: sprinkle with sugar and caramelize with a torch.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

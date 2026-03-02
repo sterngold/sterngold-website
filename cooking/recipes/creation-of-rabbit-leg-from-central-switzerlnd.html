@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Creation of Rabbit leg from central Switzerland<br>Hot Kitchen/ Main course meat & sauce 110 Pax. Kreation vom lnnerschweizer Kaninchenschenkel<br><br>Creation of Rabbit leg from central<br>Switzerland (Fortsetzung)<br>Hot Kitchen/Main course meat & sauce 110 Pax. Kreation vom Innerschweizer Kaninchenschenkel\<br><br>Rezept Nr.	: Hot kitchen 1<br>Kategorie	: Culinary Olympics, Erfurt 2004<br>Koch	: Swiss Junior Team<br>Datum	: 28.02.2005<br>Warenkosten	: CHF 3.43 / EUR 2.17 <br>PREPARATION:<br>1 Rabbit leg ballotine part 1<br>- Debone the remaining part of the rabbit leg<br>- Remove some bigger parts of meat, trim of fat and darker parts of meat<br>- The trimmed rabbit legs should be placed between two plastic foil to a rectangular piece and flatten - Place on prepared air dried ham and season with satt and pepper mill<br>- Place dry savoy cabbage leaves on top of rabbit meat, season with salt and chill<br>- Reserve removed meat and chill<br>1.1 Rabbit mousseline farce<br>- Grind chilled meat of rabbit with meat grinder<br>- Combine meat with chilled cream and salt<br>- Add into food processor and blend to fine, smooth fine farce - Remove from cutter and chill in bowl on ice<br>-Strain through drum sieve and place back on ice<br>- Add all remaining ingredients and season to taste - Fill into piping bag and keep chilled<br>1 Rabbit leg ballotine part 2<br>- Pipe farce evenly in center of prepared seasoned rectangular<br>- Carefull roll up tightly, tie with butchers twine and chill<br>- Heat up rotissoir add clarified butter and brown on all sides<br>- Place in oven and roast briefly in hot oven <br>- Lower heat and continue roasting	<br>- Baste occasionally	<br>- Check the internal meat temperatur <br>- When the desired degree of doneness is reached, remove meat to wire rack and keep warm - Carefully drain of all fat from rotissoir, add matignon and saute briefly<br>- Add wine and reduce completely<br>- Add brown veal stock and bring to a boil<br>- Skim, and strain sauce through fine mesh china cap<br>- Return stock to stove and reduce to desired consistency or add little brown roux<br>- Adjust seasoning<br>- Slice the roasted rabbit ballotine and brush slices with melted butter to give a nice sheen and arrange with some sauce</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Creation of Rabbit leg from central Switzerland<br>Hot Kitchen/ Main course meat & sauce 110 Pax. Kreation vom lnnerschweizer Kaninchenschenkel<br><br>Creation of Rabbit leg from central<br>Switzerland (Fortsetzung)<br>Hot Kitchen/Main course meat & sauce 110 Pax. Kreation vom Innerschweizer Kaninchenschenkel\<br><br>Rezept Nr.	: Hot kitchen 1<br>Kategorie	: Culinary Olympics, Erfurt 2004<br>Koch	: Swiss Junior Team<br>Datum	: 28.02.2005<br>Warenkosten	: CHF 3.43 / EUR 2.17 <br>PREPARATION:<br>1 Rabbit leg ballotine part 1<br>- Debone the remaining part of the rabbit leg<br>- Remove some bigger parts of meat, trim of fat and darker parts of meat<br>- The trimmed rabbit legs should be placed between two plastic foil to a rectangular piece and flatten - Place on prepared air dried ham and season with satt and pepper mill<br>- Place dry savoy cabbage leaves on top of rabbit meat, season with salt and chill<br>- Reserve removed meat and chill<br>1.1 Rabbit mousseline farce<br>- Grind chilled meat of rabbit with meat grinder<br>- Combine meat with chilled cream and salt<br>- Add into food processor and blend to fine, smooth fine farce - Remove from cutter and chill in bowl on ice<br>-Strain through drum sieve and place back on ice<br>- Add all remaining ingredients and season to taste - Fill into piping bag and keep chilled<br>1 Rabbit leg ballotine part 2<br>- Pipe farce evenly in center of prepared seasoned rectangular<br>- Carefull roll up tightly, tie with butchers twine and chill<br>- Heat up rotissoir add clarified butter and brown on all sides<br>- Place in oven and roast briefly in hot oven <br>- Lower heat and continue roasting	<br>- Baste occasionally	<br>- Check the internal meat temperatur <br>- When the desired degree of doneness is reached, remove meat to wire rack and keep warm - Carefully drain of all fat from rotissoir, add matignon and saute briefly<br>- Add wine and reduce completely<br>- Add brown veal stock and bring to a boil<br>- Skim, and strain sauce through fine mesh china cap<br>- Return stock to stove and reduce to desired consistency or add little brown roux<br>- Adjust seasoning<br>- Slice the roasted rabbit ballotine and brush slices with melted butter to give a nice sheen and arrange with some sauce</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Creation of Rabbit Leg from Central Switzerland** | Swiss Junior Team, Culinary Olympics Erfurt 2004<br><br>**Rabbit leg ballotine:**<br>Debone rabbit leg. Remove larger meat portions, trim fat and dark meat. Place trimmed leg between plastic foil and flatten to a rectangular shape. Season with salt and pepper. Layer with air-dried ham, top with dry savoy cabbage leaves, season, and chill.<br><br>**Rabbit mousseline farce:**<br>Grind chilled removed rabbit meat. Combine with chilled cream and salt. Process in food processor to smooth farce. Strain through drum sieve onto ice. Season and fill into piping bag. Keep chilled.<br><br>**Assembly and cooking:**<br>Pipe farce evenly down center of prepared rabbit rectangle. Roll tightly, tie with butcher's twine, and chill. Heat clarified butter in roasting pan and brown ballotine on all sides. Roast in hot oven, then lower heat and continue roasting, basting occasionally. Check internal temperature and remove to wire rack when desired doneness is reached.<br><br>**Sauce:**<br>Drain fat from roasting pan. Sauté matignon briefly, add wine and reduce completely. Add brown veal stock, bring to boil, skim, and strain through fine mesh. Return to stove and reduce to desired consistency. Adjust seasoning with roux if needed.<br><br>**Service:**<br>Slice ballotine, brush slices with melted butter for sheen, arrange with sauce.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -106,8 +106,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- Clean the stuffed duck liver and remove all bloody parts senews etc. <br>- place the liver pieces and add all the ingridients into vacuum bag<br>- vacuum pack <br>- chill and marinate for one our<br>- poach into combi oven with steam at 64 C for 10 min in bain marie (30 C)<br>- chill for short time in ice water<br>- open vacuum bag and <br>separate all the fat from the poached liver and shape into one roll <br>- roll into plastick foil and chill for 1 - 3 days <br><br>- serve with toasted brioche and apple confit</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- Clean the stuffed duck liver and remove all bloody parts senews etc. <br>- place the liver pieces and add all the ingridients into vacuum bag<br>- vacuum pack <br>- chill and marinate for one our<br>- poach into combi oven with steam at 64 C for 10 min in bain marie (30 C)<br>- chill for short time in ice water<br>- open vacuum bag and <br>separate all the fat from the poached liver and shape into one roll <br>- roll into plastick foil and chill for 1 - 3 days <br><br>- serve with toasted brioche and apple confit</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Clean stuffed duck liver thoroughly, removing all blood, sinews, and connective tissue. Place liver pieces with all ingredients into vacuum bag. Vacuum seal and refrigerate to marinate for 1 hour.<br><br>Poach in combi oven with steam at 64°C for 10 minutes in a bain-marie at 30°C. Chill briefly in ice water. Open bag and separate all rendered fat from poached liver. Shape liver into a single roll, wrap tightly in plastic film, and refrigerate for 1–3 days.<br><br>Serve with toasted brioche and apple confit.</div>
+          
         </section>
         
 
@@ -141,5 +150,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

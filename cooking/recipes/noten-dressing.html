@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">mostard - 2 et l<br>egg yolk 1 el<br>sherryazijn 1 dl<br>normal olie - 3dl<br>noten olie - 1 dl<br>slat pepper, cayenneppper</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">mostard - 2 et l<br>egg yolk 1 el<br>sherryazijn 1 dl<br>normal olie - 3dl<br>noten olie - 1 dl<br>slat pepper, cayenneppper</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Nut Dressing<br><br>Whisk together 2 tablespoons mustard with 1 egg yolk. Add 1 dl sherry vinegar. Slowly incorporate 3 dl neutral oil, then 1 dl nut oil, whisking constantly to emulsify. Season with salt, pepper, and cayenne pepper to taste.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

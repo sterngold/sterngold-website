@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1 lt. Melk<br>½ lt. Room<br>250 gr. Suiker<br>1 vanilla treken<br>treken garen met<br><br>250 gr. Suiker <br>4 dl. Eigel</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1 lt. Melk<br>½ lt. Room<br>250 gr. Suiker<br>1 vanilla treken<br>treken garen met<br><br>250 gr. Suiker <br>4 dl. Eigel</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">VANILLA ICE CREAM | Pâtisserie Station<br><br>Infuse 1 vanilla pod in 1 L milk and ½ L cream. Heat gently until the vanilla flavors fully into the liquid.<br><br>Whisk together 250 g sugar with 4 dl egg yolks until pale and thick. Temper the yolks by slowly adding the hot milk mixture while whisking constantly. Return to heat and cook to 82°C, stirring continuously.<br><br>Pass through fine sieve. Chill thoroughly before churning.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

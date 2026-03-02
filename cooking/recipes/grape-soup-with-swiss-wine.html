@@ -146,8 +146,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- sweet vegetable in butter<br>- add 50% wine and fond de veau blanc<br>- simmer for 30 min <br>- add cream and simmer for 5 min <br>- add remaining wine and season to taste <br>- blend with bar blender <br>- strain through fine china cap <br>- garnish  with grapes<br>- serve with freshly smoked fish on toasted triangle crouton<br>- drizzle some sour cream into the soup <br>- sprinkle with marjoram leaves</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- sweet vegetable in butter<br>- add 50% wine and fond de veau blanc<br>- simmer for 30 min <br>- add cream and simmer for 5 min <br>- add remaining wine and season to taste <br>- blend with bar blender <br>- strain through fine china cap <br>- garnish  with grapes<br>- serve with freshly smoked fish on toasted triangle crouton<br>- drizzle some sour cream into the soup <br>- sprinkle with marjoram leaves</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Sweat sweet vegetables in butter. Add 50% wine and white veal stock, then simmer for 30 minutes. Add cream and simmer for 5 minutes. Add remaining wine and season to taste. Blend with an immersion blender and pass through a fine chinois. Garnish with grapes. Serve with freshly smoked fish on toasted triangular croutons. Drizzle sour cream into the soup and sprinkle with marjoram leaves.</div>
+          
         </section>
         
 
@@ -181,5 +190,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

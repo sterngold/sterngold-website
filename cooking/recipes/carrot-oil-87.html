@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">-         cut on the grater – birken <br>-         dry in the oven – not brown – open steam escape<br>-         blend in the mixer with oil – sun flower oil<br>-         put in the filter – coffee filter <br>-         keep in deep freezer for long time</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">-         cut on the grater – birken <br>-         dry in the oven – not brown – open steam escape<br>-         blend in the mixer with oil – sun flower oil<br>-         put in the filter – coffee filter <br>-         keep in deep freezer for long time</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Grate the carrots using a birken grater. Dry in the oven without browning, leaving the steam escape open. Blend in the mixer with sunflower oil. Pass through a coffee filter. Store in the deep freezer.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

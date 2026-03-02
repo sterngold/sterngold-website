@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Pommes Berny<br>Fritierte Mande/kartoffelkugeln Pommes Berny<br><br><br>Recipe #	: 589<br>Category	: Potato Dishes<br>Chef	: Patrick Diethelm<br>Date	: 18.10.2005<br>Cost of goods	: CHF 0.35 / EUR 0.22<br><br>Ingredients for 4 servings at 100% (Net quantity)<br>450<br>g<br>Potatoes<br>Cut peeled potatoes into even sized chunks.<br>40<br>g<br>Egg yolk<br><br>10<br>g<br>Horn of plenty<br>Soaked and chopped and sauteed.<br>4<br>g<br>Salt<br><br>1<br>x<br>Nutmeg (pinch)<br><br>20<br>g<br>White wheat flour<br><br>1<br>pc<br>Eggs<br><br>40<br>g<br>Almonds sliced<br>Crush.<br>60<br>ml<br>Oil for frying [10% oil loss)<br><br><br>- Steam potatoes and drain well.<br>- When cooked, dry briefly in the oven at 150°C, and pass through food mill to purée. - Blend hot puréed potatoes with sauteed horn of plenty and egg yolks.<br>Season to taste with salt and nutmeg.<br>- Shape into small balls, about 20 mm in diameter.<br>- BREAK EGGS AND MIX WITH SMALL AMOUNT OF COLD WATER.<br>- DREDGE BALLS, FIRST IN FLOUR, THEN IN EGGS, AND THEN ROLL IN ALMONDS.<br>PRESS ALMONDS INTO THE POTATO BALLS, MAKING SURE THE BALLS ARE EVENLY COATED. - DEEP-FRY AT 180°C UNTIL GOLDEN BROWN.<br>- DRAIN ON ABSORBENT PAPER.<br>- SERVE ON PAPER DOILIES, AS A SIDE DISH OR A GARNISH.<br>NOTE: LESS EXPENSIVE CANNED TRUFFLE PEELINGS CAN BE USED INSTEAD OF WHOLE OR SLICED TRUFFLES.<br>ALSO, HORN OF PLENTY CAN BE SUBSTITUTED FOR THE TRUFFLES.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Pommes Berny<br>Fritierte Mande/kartoffelkugeln Pommes Berny<br><br><br>Recipe #	: 589<br>Category	: Potato Dishes<br>Chef	: Patrick Diethelm<br>Date	: 18.10.2005<br>Cost of goods	: CHF 0.35 / EUR 0.22<br><br>Ingredients for 4 servings at 100% (Net quantity)<br>450<br>g<br>Potatoes<br>Cut peeled potatoes into even sized chunks.<br>40<br>g<br>Egg yolk<br><br>10<br>g<br>Horn of plenty<br>Soaked and chopped and sauteed.<br>4<br>g<br>Salt<br><br>1<br>x<br>Nutmeg (pinch)<br><br>20<br>g<br>White wheat flour<br><br>1<br>pc<br>Eggs<br><br>40<br>g<br>Almonds sliced<br>Crush.<br>60<br>ml<br>Oil for frying [10% oil loss)<br><br><br>- Steam potatoes and drain well.<br>- When cooked, dry briefly in the oven at 150°C, and pass through food mill to purée. - Blend hot puréed potatoes with sauteed horn of plenty and egg yolks.<br>Season to taste with salt and nutmeg.<br>- Shape into small balls, about 20 mm in diameter.<br>- BREAK EGGS AND MIX WITH SMALL AMOUNT OF COLD WATER.<br>- DREDGE BALLS, FIRST IN FLOUR, THEN IN EGGS, AND THEN ROLL IN ALMONDS.<br>PRESS ALMONDS INTO THE POTATO BALLS, MAKING SURE THE BALLS ARE EVENLY COATED. - DEEP-FRY AT 180°C UNTIL GOLDEN BROWN.<br>- DRAIN ON ABSORBENT PAPER.<br>- SERVE ON PAPER DOILIES, AS A SIDE DISH OR A GARNISH.<br>NOTE: LESS EXPENSIVE CANNED TRUFFLE PEELINGS CAN BE USED INSTEAD OF WHOLE OR SLICED TRUFFLES.<br>ALSO, HORN OF PLENTY CAN BE SUBSTITUTED FOR THE TRUFFLES.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Steam potatoes and drain well. Dry briefly in oven at 150°C, then pass through food mill to purée. Blend hot purée with sautéed horn of plenty and egg yolks; season with salt and nutmeg to taste. Shape into 20 mm balls. Whisk eggs with small amount of cold water. Dredge balls in flour, then egg wash, then roll in crushed almonds, pressing to coat evenly. Deep-fry at 180°C until golden brown. Drain on absorbent paper and serve on paper doilies as side dish or garnish. Note: Canned truffle peelings can substitute for horn of plenty if needed.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

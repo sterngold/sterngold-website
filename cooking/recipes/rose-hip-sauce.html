@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Rose hip sauce<br>Hagebuttensauce Sauce cynorrhodon<br><br><br>Recipe #<br>Category	: ECA - Sauces Garde-manger<br>Chef	: Patrick Diethelm<br>Date	: 14.11.2005<br>Cost of goods	: CHF 0.43 / EUR 0.27 <br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br>400 g Rose hip puree <br>800 mg Cinnamon, ground<br>1 x	Ceyenne pepper 8 g Ginger<br>2 g Mustard powder 150 ml Orange juice 70 ml Lemon juice<br>- Heat up rose hip puree amd stir to smooth mixture - Season and add all the remaining ingredients.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Rose hip sauce<br>Hagebuttensauce Sauce cynorrhodon<br><br><br>Recipe #<br>Category	: ECA - Sauces Garde-manger<br>Chef	: Patrick Diethelm<br>Date	: 14.11.2005<br>Cost of goods	: CHF 0.43 / EUR 0.27 <br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br>400 g Rose hip puree <br>800 mg Cinnamon, ground<br>1 x	Ceyenne pepper 8 g Ginger<br>2 g Mustard powder 150 ml Orange juice 70 ml Lemon juice<br>- Heat up rose hip puree amd stir to smooth mixture - Season and add all the remaining ingredients.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">ROSE HIP SAUCE | DCT | Garde Manger<br>Chef Patrick Diethelm | 14.11.2005 | Cost: CHF 0.43 / EUR 0.27<br><br>For 10 servings (100%):<br>- Rose hip puree: 400 g<br>- Cinnamon, ground: 800 mg<br>- Cayenne pepper: 8 g<br>- Ginger: (quantity unclear in source)<br>- Mustard powder: 2 g<br>- Orange juice: 150 ml<br>- Lemon juice: 70 ml<br><br>Method: Heat rose hip puree and stir to a smooth consistency. Season to taste. Add all remaining ingredients and combine thoroughly.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

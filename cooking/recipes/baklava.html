@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1. Walnuts Plus lemon, vanilla and sugar<br>2. Fillo - put one and brush with butter, add Mie de pin <br>3. In the middle add the walnuts<br>4. Syrup - boil 15 min - plus lemon juice<br>5. Cold baklava - add syrup hot- put in warm place<br><br>400 - 600 gr. Fillo dough <br>Caneel <br>Mie de pain<br>lemon zest<br>3 tbl Sugar<br>600 gr walnuts<br>butter 500 g <br>Syrup - 600 gr. Water / 600 gr sugar</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1. Walnuts Plus lemon, vanilla and sugar<br>2. Fillo - put one and brush with butter, add Mie de pin <br>3. In the middle add the walnuts<br>4. Syrup - boil 15 min - plus lemon juice<br>5. Cold baklava - add syrup hot- put in warm place<br><br>400 - 600 gr. Fillo dough <br>Caneel <br>Mie de pain<br>lemon zest<br>3 tbl Sugar<br>600 gr walnuts<br>butter 500 g <br>Syrup - 600 gr. Water / 600 gr sugar</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Filling: Combine walnuts with lemon juice, vanilla, and sugar.<br><br>Assembly: Layer fillo dough sheet by sheet, brushing each with melted butter and sprinkling with breadcrumbs. Place walnut filling in the middle. Roll and shape as desired.<br><br>Syrup: Boil water and sugar for 15 minutes, add lemon juice, and cool slightly.<br><br>Finish: Pour hot syrup over cold baked baklava. Place in warm location to absorb syrup.<br><br>Ingredients: 400–600g fillo dough, 500g butter, 600g walnuts, 3 tbsp sugar, cinnamon, breadcrumbs, lemon zest. Syrup: 600g water, 600g sugar.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

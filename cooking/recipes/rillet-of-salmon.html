@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1 	Salmona се изчиства от кожата и стомаха – оставая се само розвоата част<br>2 	Нарязва се на големи парчета<br>3 	On Bain Marie рибата се готви със Сол, пипер, limon и chives /ситно нарязан/ - добавя се към края <br>4 	Оставя се да изстине в хладилник и се маха образувалата се течност<br>5 	Предварително приготвено масло и вода – водата се загрява до кипене и се добавя масло което се бърка докато се образува хомогенна течност.  <br>6 	Добавя се към рибата</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1 	Salmona се изчиства от кожата и стомаха – оставая се само розвоата част<br>2 	Нарязва се на големи парчета<br>3 	On Bain Marie рибата се готви със Сол, пипер, limon и chives /ситно нарязан/ - добавя се към края <br>4 	Оставя се да изстине в хладилник и се маха образувалата се течност<br>5 	Предварително приготвено масло и вода – водата се загрява до кипене и се добавя масло което се бърка докато се образува хомогенна течност.  <br>6 	Добавя се към рибата</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Clean salmon, removing skin and organs—reserve only the roe.<br><br>Cut into large pieces. Cook in bain-marie with salt, pepper, lemon, and finely chopped chives added at the end.<br><br>Cool in refrigerator and drain off accumulated liquid.<br><br>Prepare beurre blanc: heat water to a boil, whisk in butter until emulsified and homogeneous.<br><br>Fold beurre blanc into the salmon.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

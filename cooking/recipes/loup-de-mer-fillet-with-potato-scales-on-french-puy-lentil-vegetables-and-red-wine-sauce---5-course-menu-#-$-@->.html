@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">VITZNAU-LUCERNE SWITZERLAND<br>LOUP DE MER FILLET WITH POTATO SCALES ON FRENCH PUY LENTIL VEGETABLES AND RED WINE SAUCE<br><br>Yield: 4 servings<br>4	Loup de mer fillets [see coure instruction) salt, pepper<br>white wheat flour<br>some cream<br>2	potatoes B type<br>1	egg white clarified butter<br>100 g leek julienne 8 cm long<br>peanut oil for frying<br>Lentil vegetable:	<br>40 g small brown lentils [soaked 1 hour in vegetable stock) French puy lentils <br>1 sprigs of thyme<br>¼ bay leaf<br>olive oil<br>20 g bacon brunoise <br>40 g vegetable brunoise<br><br><br>Red wine sauce<br>20 g shallot émincé<br>150 g red wine<br>50 g Port wine<br>100 g brown veal stock [reduced) <br>30 g olive oil<br><br>Preparation: <br>- Boil the lentils, thyme and bay leaf in the vegetable stock until well done and drain them - Sweat the bacon in olive oil, add the vegetable brunoise and mix with cooked lentils - Dredge fish fillets in wheat flour and brush with some cream<br>- Slice the peeled potatoes with the mandoline in very thin slices and steam quickly<br>add the hot potato slices in egg white and place on the fish fillet as a tiled roof<br> - Chill until service<br><br>- For the sauce, sweat fine chopped shallots in butter, pour in red wine, port wine and veal stock and reduce to desired consistency<br>- Strain through china cap<br>- Stir in the olive oil on low heat and cover<br><br>- Season and saute the fish fillet carefully, first at potato side down into the hot butter,<br> - Fry the leek julienne crispy, and keep warm<br>- Spread the lentil vegetables on the hot plate, arrange the fish fillet and pour some sauce around the dish<br>- Place the fryed leek julienne<br>- Garnish with sprigs of herbs.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">VITZNAU-LUCERNE SWITZERLAND<br>LOUP DE MER FILLET WITH POTATO SCALES ON FRENCH PUY LENTIL VEGETABLES AND RED WINE SAUCE<br><br>Yield: 4 servings<br>4	Loup de mer fillets [see coure instruction) salt, pepper<br>white wheat flour<br>some cream<br>2	potatoes B type<br>1	egg white clarified butter<br>100 g leek julienne 8 cm long<br>peanut oil for frying<br>Lentil vegetable:	<br>40 g small brown lentils [soaked 1 hour in vegetable stock) French puy lentils <br>1 sprigs of thyme<br>¼ bay leaf<br>olive oil<br>20 g bacon brunoise <br>40 g vegetable brunoise<br><br><br>Red wine sauce<br>20 g shallot émincé<br>150 g red wine<br>50 g Port wine<br>100 g brown veal stock [reduced) <br>30 g olive oil<br><br>Preparation: <br>- Boil the lentils, thyme and bay leaf in the vegetable stock until well done and drain them - Sweat the bacon in olive oil, add the vegetable brunoise and mix with cooked lentils - Dredge fish fillets in wheat flour and brush with some cream<br>- Slice the peeled potatoes with the mandoline in very thin slices and steam quickly<br>add the hot potato slices in egg white and place on the fish fillet as a tiled roof<br> - Chill until service<br><br>- For the sauce, sweat fine chopped shallots in butter, pour in red wine, port wine and veal stock and reduce to desired consistency<br>- Strain through china cap<br>- Stir in the olive oil on low heat and cover<br><br>- Season and saute the fish fillet carefully, first at potato side down into the hot butter,<br> - Fry the leek julienne crispy, and keep warm<br>- Spread the lentil vegetables on the hot plate, arrange the fish fillet and pour some sauce around the dish<br>- Place the fryed leek julienne<br>- Garnish with sprigs of herbs.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Yield: 4 servings<br><br>Lentil Vegetables:<br>Boil soaked French puy lentils with thyme and bay leaf in vegetable stock until tender; drain. Sweat bacon brunoise in olive oil, add vegetable brunoise, fold in cooked lentils. Season and hold.<br><br>Red Wine Sauce:<br>Sweat shallot émincé in butter, deglaze with red wine and Port wine, add reduced veal stock. Reduce to desired consistency, strain through china cap. Finish with olive oil on low heat and cover.<br><br>Potato Scales and Fish:<br>Dredge fillets in wheat flour, brush lightly with cream. Mandoline potatoes B type into very thin slices, steam briefly. Dip hot potato slices in egg white and layer on fish fillet like roof tiles. Chill until service.<br><br>Service:<br>Season and sauté fish fillet skin-side down in hot clarified butter until golden. Fry leek julienne in peanut oil until crispy. Spoon lentil vegetables onto hot plate, position fish fillet, sauce around. Top with fried leek julienne. Garnish with herb sprigs.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

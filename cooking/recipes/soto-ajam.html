@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">per portie<br>Tauge - 25 gr<br>Kippedijfilet - 50 gr. <br>Ej - half<br>Bosui - 5 gr. <br>Noodels - 10 gr. <br>Gebakken uitjes - 5gr.<br><br>Ui - 10 kg <br>Gember - 100 gr <br>Knof - 40 gr. <br>Handje limoenblad<br>Kipboullion - 150 grr. <br>Limoenen - 4<br>Sereh - 4<br>Sambal - 2 eetlepels<br>Koenjit - 40 gr. <br>Peper</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">per portie<br>Tauge - 25 gr<br>Kippedijfilet - 50 gr. <br>Ej - half<br>Bosui - 5 gr. <br>Noodels - 10 gr. <br>Gebakken uitjes - 5gr.<br><br>Ui - 10 kg <br>Gember - 100 gr <br>Knof - 40 gr. <br>Handje limoenblad<br>Kipboullion - 150 grr. <br>Limoenen - 4<br>Sereh - 4<br>Sambal - 2 eetlepels<br>Koenjit - 40 gr. <br>Peper</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Stock preparation: sweat sliced onions with ginger, garlic, lemongrass, turmeric, and sambal. Pour in chicken bouillon and simmer. Add lime juice and lemongrass. Season with pepper.<br><br>Per portion: Blanch bean sprouts. Cook chicken breast fillet. Crack egg into soup bowl. Layer with noodles and fried onions. Pour hot stock over. Garnish with sprouts and chicken.<br><br>Stock ingredients:<br>- 10 kg onions<br>- 100 g ginger<br>- 40 g garlic<br>- Handful lemongrass<br>- 150 g chicken bouillon<br>- 4 limes<br>- 4 lemongrass stalks<br>- 2 tbsp sambal<br>- 40 g turmeric<br>- Pepper</div>
+          
         </section>
         
 
@@ -97,5 +106,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

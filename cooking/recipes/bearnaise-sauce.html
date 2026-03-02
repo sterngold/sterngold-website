@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Rezept Nr. : 33 <br><br>Kategorie : Sauces <br><br>Koch : Patrick Diethelm<br>Datum : 16.08.2005 <br><br>Warenkosten : CHF 14.25/ EUR 9.01 <br><br><br>Bearnaise Sauce <br>Beamer Sauce Sauce beamaise <br>Zut~ten fOr 0.500 Liter zu 100% (Nettomenge)<br> 500 ml *Hollandaise Sauce <br>	15 ml 	Tarragon vinegar <br>	30 ml 	Dry white wine <br>	5 9 	Tarragon, fresh Wash and chop leaves<br>	3 g 	Chervil, fresh . Wash and chop leaves. <br>	1 x 	Seasoning (salt) <br>• <br>- COMBINE TARRAGON, TARRAGON VINEGAR, AND VIIINE. <br>- REDUCE UNTIL ALMOST EVAPORATED. <br>- BLEND REDUCTION VIIITH HOLLANDAISE SAUCE. <br>- ADD CHOPPED CHERVIL. <br>- SEASON TO TASTE. <br>APPLICATIONS <br>Serve with sauteed, roasted, or grilled beef dishes, or with grilled fish. Use to fill artichoke bottoms or tomatoes.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Rezept Nr. : 33 <br><br>Kategorie : Sauces <br><br>Koch : Patrick Diethelm<br>Datum : 16.08.2005 <br><br>Warenkosten : CHF 14.25/ EUR 9.01 <br><br><br>Bearnaise Sauce <br>Beamer Sauce Sauce beamaise <br>Zut~ten fOr 0.500 Liter zu 100% (Nettomenge)<br> 500 ml *Hollandaise Sauce <br>	15 ml 	Tarragon vinegar <br>	30 ml 	Dry white wine <br>	5 9 	Tarragon, fresh Wash and chop leaves<br>	3 g 	Chervil, fresh . Wash and chop leaves. <br>	1 x 	Seasoning (salt) <br>• <br>- COMBINE TARRAGON, TARRAGON VINEGAR, AND VIIINE. <br>- REDUCE UNTIL ALMOST EVAPORATED. <br>- BLEND REDUCTION VIIITH HOLLANDAISE SAUCE. <br>- ADD CHOPPED CHERVIL. <br>- SEASON TO TASTE. <br>APPLICATIONS <br>Serve with sauteed, roasted, or grilled beef dishes, or with grilled fish. Use to fill artichoke bottoms or tomatoes.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">BÉARNAISE SAUCE<br>Recipe #33 | Chef: Patrick Diethelm | Date: 16.08.2005<br>Yield: 500 ml<br><br>INGREDIENTS<br>500 ml Hollandaise sauce<br>15 ml Tarragon vinegar<br>30 ml Dry white wine<br>5 g Fresh tarragon<br>3 g Fresh chervil<br>Salt to taste<br><br>METHOD<br>Wash and chop tarragon leaves. Wash and chop chervil leaves.<br><br>Combine tarragon, tarragon vinegar, and dry white wine in saucepan. Reduce over heat until almost completely evaporated.<br><br>Blend the reduction with hollandaise sauce. Fold in chopped chervil. Season to taste with salt.<br><br>APPLICATIONS<br>Serve with sautéed, roasted, or grilled beef dishes, or with grilled fish. Use to fill artichoke bottoms or tomatoes.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

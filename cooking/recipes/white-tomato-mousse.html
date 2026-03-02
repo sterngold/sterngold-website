@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">White tomato mousse<br>Weisses Tomatenmousse<br>Recipe #<br>Category	: ECA - Terrine/Paté/Galantine / Mart<br>Chef	: Patrick Diethelm<br>Date	:0711.2005<br>Cost of goods	: CHF 0.87 / EUR 0.55 <br>Ingredients for 5 servings at 100% (Net quantity)<br>600	g	Tomatoes, fresh Italian ramata<br>1	x	Seasoning (salt and pepper)<br>1	x	Crystal sugar (pinch)<br>10	ml	Gin<br>1	x	Seasoning (lemon juice) 1/4 p.<br>3	pc	Gelatin, leaves<br>120	ml	Heavy cream (36%)<br><br><br>wash the very ripe tomatoes and cut into chunks.<br>add all the remaining ingredients ( not the cream and gelatin) <br> blend the tomatoes with the bar blender until fine puree<br>- pour into cheese cloth and hang up over night in refrigerator<br><br>- line out timbale mold or special round molds ith plastic foil (see course instruction)<br>- soak gelatin and dissolve with a little tomato liquid<br>- stir into remaining tomato liquid, gin and season to taste with tabasco and salt.<br>whip the heavy cream and fold in like bavarois ( it must start to get firm) not to early into tomato liquid – 22 26<br>fill into prepared molds and cool down for 1 hour<br><br>IMPORTANT	<br>For 250 gram juice you need 3 sheet gelatin and 90 -120 gram whipped cream depense on the texture of mousse<br><br><br>DCT - Swiss Culinary School - Vitznau / Luzern	CALCMENU</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">White tomato mousse<br>Weisses Tomatenmousse<br>Recipe #<br>Category	: ECA - Terrine/Paté/Galantine / Mart<br>Chef	: Patrick Diethelm<br>Date	:0711.2005<br>Cost of goods	: CHF 0.87 / EUR 0.55 <br>Ingredients for 5 servings at 100% (Net quantity)<br>600	g	Tomatoes, fresh Italian ramata<br>1	x	Seasoning (salt and pepper)<br>1	x	Crystal sugar (pinch)<br>10	ml	Gin<br>1	x	Seasoning (lemon juice) 1/4 p.<br>3	pc	Gelatin, leaves<br>120	ml	Heavy cream (36%)<br><br><br>wash the very ripe tomatoes and cut into chunks.<br>add all the remaining ingredients ( not the cream and gelatin) <br> blend the tomatoes with the bar blender until fine puree<br>- pour into cheese cloth and hang up over night in refrigerator<br><br>- line out timbale mold or special round molds ith plastic foil (see course instruction)<br>- soak gelatin and dissolve with a little tomato liquid<br>- stir into remaining tomato liquid, gin and season to taste with tabasco and salt.<br>whip the heavy cream and fold in like bavarois ( it must start to get firm) not to early into tomato liquid – 22 26<br>fill into prepared molds and cool down for 1 hour<br><br>IMPORTANT	<br>For 250 gram juice you need 3 sheet gelatin and 90 -120 gram whipped cream depense on the texture of mousse<br><br><br>DCT - Swiss Culinary School - Vitznau / Luzern	CALCMENU</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">WHITE TOMATO MOUSSE<br>Chef: Patrick Diethelm | DCT, Garde Manger | July 2005<br>Yield: 5 servings at 100g each<br><br>INGREDIENTS<br>600g fresh Italian ramata tomatoes<br>Salt and pepper to taste<br>Pinch of crystal sugar<br>10ml gin<br>1/4 lemon, juice<br>3 gelatin leaves<br>120ml heavy cream (36%)<br><br>METHOD<br>Wash very ripe tomatoes and cut into chunks. Add all remaining ingredients except cream and gelatin. Blend with bar blender to fine purée. Pour into cheesecloth and hang overnight in refrigerator to drain.<br><br>Line timbale or round molds with plastic foil. Soak gelatin leaves and dissolve with a little tomato liquid. Stir into remaining tomato liquid with gin, then season to taste with tabasco and salt. Whip heavy cream and fold in like bavarois once mousse begins to firm (22–26°C); do not fold in too early. Fill prepared molds and cool for 1 hour.<br><br>NOTE: For 250ml juice, use 3 gelatin leaves and 90–120g whipped cream, depending on desired texture.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

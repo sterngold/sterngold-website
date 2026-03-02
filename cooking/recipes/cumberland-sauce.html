@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Cumberland Sauce<br>Cumber/andSauce Sauce Cumber/and<br>Recipe #	: 41<br>Category	: Sauces<br>Chef	: Patrick Diethelm	<br>Date	: 28.11.2005<br>Cost of goods	: CHF 4.94 / EUR 3.12 <br>Ingredients for 0.600 liters at 100% (Net quantity)<br>1 pc Orange<br>1 pc Lemon<br>40 ml Red cooking wine	<br>100 ml Red Port wine<br>4 g Mustard powder<br>400 g	Red currant jelly<br>16 g	Horseradish, fresh	Peel horseradish and ginger and grate fine. 6 g Ginger<br>1 x	Seasoning (salt)<br>- Wash oranges and lemons in hot water, dry with a towel. - Peel outer skin [zest) and cut into very fine julienne. - Blanch zest and boil in red wine until soft.<br>- Squeeze juice from oranges and lemons.<br>- MELT RED CURRANT JELLY IN BOWL OVER STEAM<br>- ADD ORANGE JUICE AND LEMON JUICE TO RED CURRANT JELLY.<br>- ADD RED WINE/ZEST MIXTURE.<br>- MIX MUSTARD POWDER WITH PORT WINE; ADD TO FRUIT JUICE/JELLY MIXTURE. - ADD HORSERADISH AND GINGER.<br>- MIX WELL SEASON TO TASTE, AND CHILL<br>APPLICATIONS<br>Serve with cold poultry or game dishes. Serve with meat pates and terrines.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Cumberland Sauce<br>Cumber/andSauce Sauce Cumber/and<br>Recipe #	: 41<br>Category	: Sauces<br>Chef	: Patrick Diethelm	<br>Date	: 28.11.2005<br>Cost of goods	: CHF 4.94 / EUR 3.12 <br>Ingredients for 0.600 liters at 100% (Net quantity)<br>1 pc Orange<br>1 pc Lemon<br>40 ml Red cooking wine	<br>100 ml Red Port wine<br>4 g Mustard powder<br>400 g	Red currant jelly<br>16 g	Horseradish, fresh	Peel horseradish and ginger and grate fine. 6 g Ginger<br>1 x	Seasoning (salt)<br>- Wash oranges and lemons in hot water, dry with a towel. - Peel outer skin [zest) and cut into very fine julienne. - Blanch zest and boil in red wine until soft.<br>- Squeeze juice from oranges and lemons.<br>- MELT RED CURRANT JELLY IN BOWL OVER STEAM<br>- ADD ORANGE JUICE AND LEMON JUICE TO RED CURRANT JELLY.<br>- ADD RED WINE/ZEST MIXTURE.<br>- MIX MUSTARD POWDER WITH PORT WINE; ADD TO FRUIT JUICE/JELLY MIXTURE. - ADD HORSERADISH AND GINGER.<br>- MIX WELL SEASON TO TASTE, AND CHILL<br>APPLICATIONS<br>Serve with cold poultry or game dishes. Serve with meat pates and terrines.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Cumberland Sauce** | Chef: Patrick Diethelm | 28.11.2005<br><br>Wash oranges and lemons in hot water and dry with towel. Peel zest (outer skin) and cut into very fine julienne. Blanch zest and simmer in red cooking wine until soft. Squeeze juice from fruit.<br><br>Melt red currant jelly in bowl over steam. Add orange and lemon juice to jelly. Add red wine and zest mixture.<br><br>Whisk mustard powder with Port wine and add to fruit juice and jelly mixture. Stir in grated horseradish and ginger. Mix well, season to taste with salt, and chill.<br><br>**Service:** Serve with cold poultry, game dishes, meat pâtés, and terrines.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

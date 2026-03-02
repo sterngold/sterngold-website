@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Stuffed Onions with vegetables<br>Gefüllte Zwiebeln Oignous farcies<br><br>Recipe #	: 539<br>Category	: Vegetables<br>Chef	: P.Diethelm<br>Date	: 19.10.2005<br>Cost of goods	: CHF 0.51 / EUR 0.32<br><br>Ingredients for 6 servings at 100% [Net quantity)<br>300 g Onions 3 medium, same size BO ml *Beef Broth<br>20 g Sbrinz Grated<br>	1 x	Salt<br>40 g Butter<br>60 g Smoked bacon sliced<br>	70 g	Vegetables jardiniere<br>60 g Tomato concasse<br>	4 g	Parsley, Italian, fresh<br>	50 g	White bread [Pullman loaf)<br>	1 x	Seasoning (salt and pepper]<br>	1 g	Marjoram fresh or basil<br>- Peel onions, cut off tops, and leave root end in tact. Blanch briefly in salted water or steam onions lightly.<br>- Carefully scoop out centers to form cups.<br>Be sure onions are held together at the root ends.<br>The cups should be at least 2 layers thick.<br>- Chop scooped out onion and reserve.<br>For Stuffing<br>- Cut bacon into small brunoise.<br>- Cut seasonal vegetables into small jardiniere<br>- Cut peeled seedless tomato into concasse<br>- Chop parsley and marjoram leaves.<br>- Remove crust from bread and slice into small croutons<br>Toast cubes under the salamander until golden brown.<br>- Sauté diced bacon in butter,add vegetables<br>- Add parsley, marjoram, croutons, and reserved chopped onions and concasse. - Season to taste with salt and pepper.<br>- ARRANGE ONION CUPS IN AN OVENPROOF DISH (GRATIN PLATTER).<br>- FILL ONION CUPS WITH STUFFING. POUR BOUILLON AROUND ONIONS, AND COVER WITH BUTTERED ALUMINUM FOIL.<br>- BAKE IN OVEN AT 165°C UNTIL ONIONS ARE BROWN.<br>- REMOVE FOIL AND SPRINKLE WITH CHEESE.<br>- BROWN IN HOT OVEN OR UNDER THE SALAMANDER.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Stuffed Onions with vegetables<br>Gefüllte Zwiebeln Oignous farcies<br><br>Recipe #	: 539<br>Category	: Vegetables<br>Chef	: P.Diethelm<br>Date	: 19.10.2005<br>Cost of goods	: CHF 0.51 / EUR 0.32<br><br>Ingredients for 6 servings at 100% [Net quantity)<br>300 g Onions 3 medium, same size BO ml *Beef Broth<br>20 g Sbrinz Grated<br>	1 x	Salt<br>40 g Butter<br>60 g Smoked bacon sliced<br>	70 g	Vegetables jardiniere<br>60 g Tomato concasse<br>	4 g	Parsley, Italian, fresh<br>	50 g	White bread [Pullman loaf)<br>	1 x	Seasoning (salt and pepper]<br>	1 g	Marjoram fresh or basil<br>- Peel onions, cut off tops, and leave root end in tact. Blanch briefly in salted water or steam onions lightly.<br>- Carefully scoop out centers to form cups.<br>Be sure onions are held together at the root ends.<br>The cups should be at least 2 layers thick.<br>- Chop scooped out onion and reserve.<br>For Stuffing<br>- Cut bacon into small brunoise.<br>- Cut seasonal vegetables into small jardiniere<br>- Cut peeled seedless tomato into concasse<br>- Chop parsley and marjoram leaves.<br>- Remove crust from bread and slice into small croutons<br>Toast cubes under the salamander until golden brown.<br>- Sauté diced bacon in butter,add vegetables<br>- Add parsley, marjoram, croutons, and reserved chopped onions and concasse. - Season to taste with salt and pepper.<br>- ARRANGE ONION CUPS IN AN OVENPROOF DISH (GRATIN PLATTER).<br>- FILL ONION CUPS WITH STUFFING. POUR BOUILLON AROUND ONIONS, AND COVER WITH BUTTERED ALUMINUM FOIL.<br>- BAKE IN OVEN AT 165°C UNTIL ONIONS ARE BROWN.<br>- REMOVE FOIL AND SPRINKLE WITH CHEESE.<br>- BROWN IN HOT OVEN OR UNDER THE SALAMANDER.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">STUFFED ONIONS WITH VEGETABLES<br><br>Yield: 6 servings<br>Chef: P. Diethelm | Cost: CHF 0.51/EUR 0.32 per serving<br><br>INGREDIENTS<br>300g Onions (3 medium, same size)<br>80ml Beef broth<br>20g Sbrinz, grated<br>40g Butter<br>60g Smoked bacon, sliced<br>70g Vegetables, jardinière<br>60g Tomato concasse<br>4g Italian parsley, fresh, chopped<br>50g White bread (Pullman loaf)<br>1g Marjoram, fresh or basil<br>Salt and pepper to taste<br><br>METHOD<br>1. Peel onions, cut off tops, and leave root ends intact. Blanch briefly in salted water or steam lightly.<br>2. Carefully scoop out centers to form cups, maintaining structure at the root. Cups should be at least 2 layers thick. Reserve chopped scooped onion.<br>3. Cut bacon into small brunoise; cut seasonal vegetables into jardinière; prepare tomato concasse; chop parsley and marjoram; remove bread crust and cut into small croutons, then toast under salamander until golden.<br>4. Sauté bacon in butter, add vegetables. Fold in parsley, marjoram, croutons, reserved chopped onions, and concasse. Season to taste.<br>5. Arrange onion cups in a gratin platter. Fill with stuffing and pour bouillon around onions. Cover with buttered aluminum foil.<br>6. Bake at 165°C until onions are brown. Remove foil, sprinkle with cheese, and brown in hot oven or under salamander.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

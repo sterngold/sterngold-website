@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">75 gr. Suiker<br>75 gr. Golden suiker<br>40 bloem<br>1 teelepel kaneel<br>75 gr. Waldnooten<br>85 - 65 gr. Blokjes boter<br>Muessli <br>pulsing in the magi mix<br>in oven 200</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">75 gr. Suiker<br>75 gr. Golden suiker<br>40 bloem<br>1 teelepel kaneel<br>75 gr. Waldnooten<br>85 - 65 gr. Blokjes boter<br>Muessli <br>pulsing in the magi mix<br>in oven 200</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Crumble** | Vijf, Pâtisserie<br><br>**Ingredients:**<br>- 75 g sugar<br>- 75 g golden sugar<br>- 40 g flour<br>- 1 tsp cinnamon<br>- 75 g walnuts<br>- 85–65 g butter, diced<br>- Muesli<br><br>**Method:**<br>1. Combine sugar, golden sugar, flour, cinnamon, and walnuts.<br>2. Pulse in diced butter and muesli using food processor until breadcrumb texture.<br>3. Bake at 200°C until golden.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

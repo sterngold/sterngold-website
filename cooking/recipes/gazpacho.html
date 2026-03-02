@@ -186,8 +186,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- fill bar blender with cucumbers, tomaotes, bell peppers, onions, garlic and soaked mie de pain, with cold broth or consomme<br>- add vinegar and oil in small amounts and puree mixture to a homogenues puree<br>- season well with salt and pepper and tabasco<br>- chill soup very well, and serve in chilled soup cups<br>Garnish:<br>- serve croutons and diced vegetables on the side in small dishes<br>- cut bread into small dice and toast  croutons in oven<br>- peel cucumbers and tomatoes, split in half, remove seeds and cut into brunoise<br>- split bell peppers, remove seeds, wash and cut into brunoise</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- fill bar blender with cucumbers, tomaotes, bell peppers, onions, garlic and soaked mie de pain, with cold broth or consomme<br>- add vinegar and oil in small amounts and puree mixture to a homogenues puree<br>- season well with salt and pepper and tabasco<br>- chill soup very well, and serve in chilled soup cups<br>Garnish:<br>- serve croutons and diced vegetables on the side in small dishes<br>- cut bread into small dice and toast  croutons in oven<br>- peel cucumbers and tomatoes, split in half, remove seeds and cut into brunoise<br>- split bell peppers, remove seeds, wash and cut into brunoise</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Fill a bar blender with cucumbers, tomatoes, bell peppers, onions, garlic, and soaked bread crumbs. Add cold broth or consommé.<br><br>Add vinegar and oil in small amounts while pureeing to a homogeneous consistency. Season well with salt, pepper, and tabasco. Chill very well.<br><br>For garnish: Peel cucumbers and tomatoes, halve, remove seeds, and cut into brunoise. Halve bell peppers, remove seeds, wash, and cut into brunoise. Cut bread into small dice and toast in the oven to make croutons.<br><br>Serve gazpacho in chilled soup cups with croutons and diced vegetables presented separately in small dishes.</div>
+          
         </section>
         
 
@@ -221,5 +230,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

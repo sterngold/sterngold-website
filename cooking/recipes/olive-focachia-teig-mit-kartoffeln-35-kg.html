@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1 kg Kartofeln – kocht in sahclen / passieren<br>1.5 kg weissmehl 400 <br>1 lt. Milch <br>70 g hefe <br>50 g salz<br>120 g Oliven<br>Hefe in milch <br>Mehl / Kartofel / Salz mix mit flusigkeit<br>Gehakte oliven<br>Gehen lassen</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1 kg Kartofeln – kocht in sahclen / passieren<br>1.5 kg weissmehl 400 <br>1 lt. Milch <br>70 g hefe <br>50 g salz<br>120 g Oliven<br>Hefe in milch <br>Mehl / Kartofel / Salz mix mit flusigkeit<br>Gehakte oliven<br>Gehen lassen</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Olive Focaccia Dough with Potatoes (3.5 kg)<br><br>Ingredients:<br>1 kg potatoes<br>1.5 kg type 400 wheat flour<br>1 L milk<br>70 g yeast<br>50 g salt<br>120 g olives, coarsely chopped<br><br>Method:<br>Cook potatoes in salted water until tender. Drain well and pass through a ricer while warm. Dissolve yeast in lukewarm milk and let it activate briefly. Combine flour, passed potatoes, and salt. Pour the milk-yeast mixture into the dry ingredients and mix until a cohesive dough forms. Fold in the coarsely chopped olives evenly throughout. Place in a lightly oiled container, cover, and allow to rise at room temperature until doubled in volume (approximately 1.5–2 hours). Dough is ready for shaping and final proof before baking.</div>
+          
         </section>
         
 
@@ -98,5 +107,24 @@ Mit Tomaten – 120 g Marinierte Tomaten                                     175
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

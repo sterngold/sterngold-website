@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Картофите се нарязват на кръгчета и се запържват леко<br>Патладжана, обелен, се нарязва на кръгчета и се запържва леко. <br>Кайма – се запържва и се бърка докато стане готова, добавя и се доматеното пюре. <br>В йена глас се подреждат един пласт картофи /плътно/, пласт кайма, пласт патладжани, пласт кайма, пласт картофи. <br>Пече се около 30 мин. <br>Заливка – 2 яйца, кисело мляко се разбиват, изтисква се лимон, чаена лъжичка брашно, добавя се ала кеф /копър; магданоз; чесън; кашкавал/<br>Запича се.<br><br>картофи – 4 –5 <br>патладжан<br>кайма – сол, пипер, орех, треви, печена чушка, яйце<br>доматено пюре<br>кисело мляко<br>яйце<br>брашно.<br>Копър<br>лимон</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Картофите се нарязват на кръгчета и се запържват леко<br>Патладжана, обелен, се нарязва на кръгчета и се запържва леко. <br>Кайма – се запържва и се бърка докато стане готова, добавя и се доматеното пюре. <br>В йена глас се подреждат един пласт картофи /плътно/, пласт кайма, пласт патладжани, пласт кайма, пласт картофи. <br>Пече се около 30 мин. <br>Заливка – 2 яйца, кисело мляко се разбиват, изтисква се лимон, чаена лъжичка брашно, добавя се ала кеф /копър; магданоз; чесън; кашкавал/<br>Запича се.<br><br>картофи – 4 –5 <br>патладжан<br>кайма – сол, пипер, орех, треви, печена чушка, яйце<br>доматено пюре<br>кисело мляко<br>яйце<br>брашно.<br>Копър<br>лимон</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">MUSSAKA<br><br>Prepare potatoes and eggplant by slicing into rounds and shallow-frying until lightly cooked. Brown ground meat, stirring constantly until cooked through, then add tomato purée.<br><br>In a baking dish, layer tightly as follows: potatoes, ground meat, eggplant, ground meat, potatoes. Bake approximately 30 minutes.<br><br>For the custard topping: whisk together 2 eggs, sour milk, juice of 1 lemon, 1 teaspoon flour. Fold in dill, parsley, garlic, and grated cheese (kaskavali) to taste.<br><br>Pour custard over mussaka and bake until set.<br><br>Seasoning for meat: salt, pepper, nutmeg, herbs, roasted pepper, egg.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Prawn Tournedos with leek<br>Riesencrevetten tournedos mit Lauch<br>Recipe #<br>Category	: ECA - Saucier fish<br>Chef	: Patrick Diethelm<br>Date	: 12.12.2005<br>Cost of goods	: CHF 2.10 / EUR 1.33<br><br>European Gourmet cuisine<br>Ingredients for 3 servings at 100% (Net quantity)<br>250<br>g<br>Prawns<br>150<br>g<br>Leeks V<br>20<br>ml<br>Olive oil<br><br>- PEEL THE PRAWNS<br><br><br>- Blanch the washed clean leek and refresh in ice water. - Preparation see course instruction</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Prawn Tournedos with leek<br>Riesencrevetten tournedos mit Lauch<br>Recipe #<br>Category	: ECA - Saucier fish<br>Chef	: Patrick Diethelm<br>Date	: 12.12.2005<br>Cost of goods	: CHF 2.10 / EUR 1.33<br><br>European Gourmet cuisine<br>Ingredients for 3 servings at 100% (Net quantity)<br>250<br>g<br>Prawns<br>150<br>g<br>Leeks V<br>20<br>ml<br>Olive oil<br><br>- PEEL THE PRAWNS<br><br><br>- Blanch the washed clean leek and refresh in ice water. - Preparation see course instruction</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Peel the prawns. Blanch washed, cleaned leeks and refresh in ice water. See course instruction for detailed leek preparation. Finish according to service requirements.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

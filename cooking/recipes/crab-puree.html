@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Puree<br>Tomat-lemon mayo<br>Tabasco<br>Ctiroen/Orange <br>Peper/Salt<br>Knoflok puree</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Puree<br>Tomat-lemon mayo<br>Tabasco<br>Ctiroen/Orange <br>Peper/Salt<br>Knoflok puree</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">CRAB PURÉE | Garde Manger Station<br><br>Ingredientsonly — no method provided in source notes:<br>- Crab purée<br>- Tomato-lemon mayonnaise<br>- Tabasco<br>- Citron/Orange<br>- Pepper/Salt<br>- Garlic purée</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

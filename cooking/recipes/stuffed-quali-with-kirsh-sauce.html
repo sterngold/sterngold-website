@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">STUFFED QUAIL WITH KIRSCH SAUCE<br><br>Yield: 8 servings<br><br><br>8 quails, dressed <br>50 ml clarified butter <br>50 ml Zuger Kirsch <br>200 ml quail juice<br>50 g butter<br><br>Stuffing: <br>20 g chopped shallots<br>10 g butter  60 g apple<br>120 g chopped mushrooms <br>90 g fresh mie de pain<br>40 g blanched bacon brunoise<br> 20 ml kirsch<br>30 g egg yolk <br>30 ml cream<br>chopped basil and parsley<br>salt and pepper mill<br><br>Stuffing:		Sweat the chopped mushroom until dry, add shallots,bacon and 		apple 3x3mm, deglaze with kirsch<br>		Add into a bowl and stir in remaining ingredients<br>		Season to taste with salt, pepper and herbs<br><br>Quail mise en place: 	Unbone the quails hollow very carefully without perforating the skin. 			Season the inside with salt and pepper. Stuff the quails and sew 			the opening.<br><br>Sauce: Use the carcasse and prepare a kirsch sauce with thyme.<br><br>Preparation:	 Season the quails and roast at 220° C for about 10-15 min, basting 		frequently. Let rest for about 10 min.<br><br>Vegetable: Glaze all the prepared blanched vegetables.<br><br>Remove the skewer from the quail and arrange with starch dish and glazed vegetables. - brush quails with little glaze<br>Pour some sauce around each portion, arrange and garnish with some fresh herbs. and glazed cherrys.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">STUFFED QUAIL WITH KIRSCH SAUCE<br><br>Yield: 8 servings<br><br><br>8 quails, dressed <br>50 ml clarified butter <br>50 ml Zuger Kirsch <br>200 ml quail juice<br>50 g butter<br><br>Stuffing: <br>20 g chopped shallots<br>10 g butter  60 g apple<br>120 g chopped mushrooms <br>90 g fresh mie de pain<br>40 g blanched bacon brunoise<br> 20 ml kirsch<br>30 g egg yolk <br>30 ml cream<br>chopped basil and parsley<br>salt and pepper mill<br><br>Stuffing:		Sweat the chopped mushroom until dry, add shallots,bacon and 		apple 3x3mm, deglaze with kirsch<br>		Add into a bowl and stir in remaining ingredients<br>		Season to taste with salt, pepper and herbs<br><br>Quail mise en place: 	Unbone the quails hollow very carefully without perforating the skin. 			Season the inside with salt and pepper. Stuff the quails and sew 			the opening.<br><br>Sauce: Use the carcasse and prepare a kirsch sauce with thyme.<br><br>Preparation:	 Season the quails and roast at 220° C for about 10-15 min, basting 		frequently. Let rest for about 10 min.<br><br>Vegetable: Glaze all the prepared blanched vegetables.<br><br>Remove the skewer from the quail and arrange with starch dish and glazed vegetables. - brush quails with little glaze<br>Pour some sauce around each portion, arrange and garnish with some fresh herbs. and glazed cherrys.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">STUFFED QUAIL WITH KIRSCH SAUCE<br>Yield: 8 servings<br><br>Stuffing:<br>1. Sweat chopped mushrooms until dry. Add shallots, bacon brunoise, and apple (3×3mm dice). Deglaze with kirsch.<br>2. Transfer to bowl and fold in remaining ingredients: mie de pain, egg yolk, cream, blanched bacon, chopped basil and parsley. Season with salt and pepper mill.<br><br>Quail Mise en Place:<br>1. Carefully unbone quails without perforating skin.<br>2. Season cavity with salt and pepper.<br>3. Stuff each quail and sew opening closed.<br><br>Sauce:<br>Prepare kirsch sauce from carcasses with thyme.<br><br>Cooking:<br>1. Season quails and roast at 220°C for 10–15 minutes, basting frequently.<br>2. Rest for 10 minutes.<br>3. Glaze all blanched vegetables.<br>4. Remove skewer from quail.<br>5. Brush quails lightly with glaze. Arrange with starch dish and glazed vegetables.<br>6. Pour sauce around each portion. Garnish with fresh herbs and glazed cherries.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

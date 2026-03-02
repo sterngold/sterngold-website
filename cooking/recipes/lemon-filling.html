@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">6 яйца <br>350 гр. Пудра захар<br>125 гр. Масло – без сол <br>Сока от 4 лимона плюс кората им ситно настъргана <br>Яйцата леко се разбиват – добавя се пудра захарта и се бърка докато се абсорбира – добаяв се маслото – предварително леко разтопено. – добавя се лимона и кората –на огъня -  бърка се много докато масата стане гъста – но да не минава точката на кипене – до нея – маха се и си оставя да изстине.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">6 яйца <br>350 гр. Пудра захар<br>125 гр. Масло – без сол <br>Сока от 4 лимона плюс кората им ситно настъргана <br>Яйцата леко се разбиват – добавя се пудра захарта и се бърка докато се абсорбира – добаяв се маслото – предварително леко разтопено. – добавя се лимона и кората –на огъня -  бърка се много докато масата стане гъста – но да не минава точката на кипене – до нея – маха се и си оставя да изстине.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Station: Pâtisserie | Vijf<br><br>Lightly beat 6 eggs, then whisk in 350g powdered sugar until absorbed. Add 125g softened unsalted butter. Incorporate juice and finely zested zest from 4 lemons. Place over gentle heat and whisk continuously until thick and pale—do not allow to boil. Remove from heat and cool completely.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

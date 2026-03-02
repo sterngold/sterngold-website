@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Ifalienische Sa/atsauce Sauce a /'italienne <br>Italian Dressing PO <br><br>Rezept Nr. <br>Kategorie : ECA - Sauces Garde-manger<br>Koch : Patrick Diethelm <br>Datum : 13.02.2004 <br>Warenkosten : CHF 4.53 / EUR 2.86 <br><br>Zutaten fUr 3.000 Liter zu 100-;. (Nettomenge) <br><br>#1<br>11 g Dijon mustard<br>300 ml Olive oil <br>500 ml Red wine vinegar<br>400 ml White wine vinegar<br>1 l Sunflower oil 			1 Blend all ingregients<br><br><br>#2<br>200 ml Italian red wine 		2 Bring all the following ingredients to a boil <br>23 g Beef broth powder<br>4 g Oregano dry <br><br>6 g Salt <br><br>1 g Pepper ground<br>8 g Garlic <br><br>200 g Red beets Cooked<br>30 g White roux<br>4 g Mustard powder <br><br>1 BLEND ALL THE INGREDIENTS <br>2 BRING ALL THE INGREDIENTS TO A BOIL AND USE BAR BLENDER TO MIX WITH # 1 <br>Season to taste <br>Strain through china cap and chill <br>Fill into bottles and label with date and name.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Ifalienische Sa/atsauce Sauce a /'italienne <br>Italian Dressing PO <br><br>Rezept Nr. <br>Kategorie : ECA - Sauces Garde-manger<br>Koch : Patrick Diethelm <br>Datum : 13.02.2004 <br>Warenkosten : CHF 4.53 / EUR 2.86 <br><br>Zutaten fUr 3.000 Liter zu 100-;. (Nettomenge) <br><br>#1<br>11 g Dijon mustard<br>300 ml Olive oil <br>500 ml Red wine vinegar<br>400 ml White wine vinegar<br>1 l Sunflower oil 			1 Blend all ingregients<br><br><br>#2<br>200 ml Italian red wine 		2 Bring all the following ingredients to a boil <br>23 g Beef broth powder<br>4 g Oregano dry <br><br>6 g Salt <br><br>1 g Pepper ground<br>8 g Garlic <br><br>200 g Red beets Cooked<br>30 g White roux<br>4 g Mustard powder <br><br>1 BLEND ALL THE INGREDIENTS <br>2 BRING ALL THE INGREDIENTS TO A BOIL AND USE BAR BLENDER TO MIX WITH # 1 <br>Season to taste <br>Strain through china cap and chill <br>Fill into bottles and label with date and name.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**ITALIAN DRESSING**<br><br>Yield: 3 liters (net)<br>Chef: Patrick Diethelm | Date: 13.02.2004<br><br>**PART 1:**<br>- Blend together: 11 g Dijon mustard, 300 ml olive oil, 500 ml red wine vinegar, 400 ml white wine vinegar, and 1 liter sunflower oil until combined.<br><br>**PART 2:**<br>- Bring to a boil: 200 ml Italian red wine, 23 g beef broth powder, 4 g dry oregano, 6 g salt, 1 g ground pepper, and 8 g garlic.<br>- Add to the boiling mixture: 200 g cooked red beets, 30 g white roux, and 4 g mustard powder.<br>- Use an immersion blender to combine Part 2 with Part 1 thoroughly.<br>- Season to taste.<br>- Strain through china cap and chill.<br>- Fill into bottles and label with date and name.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Mousse of broccoli I Таg<br>Bгakkalimousse<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	: 17.11.2005<br>Cost of goods	: CHF 0.04 / EUR 0.02<br><br>European Gourmet Cuisine<br>Ingredients for 25 servings at 100% (Net quantity)<br>500<br>g<br>Broccoli, fresh<br>8<br>g<br>Salt<br>80<br>ml<br>Light chicken stock<br><br><br>- BOIL THE BROCCOLI IN SALTED WATER NOT TO SOFT<br>- REFRESH AND SQUEEZE OUT ALL THE WATER<br>- ADD THE BROCCOLI WITH THE CHICKEN STOCK OR VEGETABLE STOCK AND THE SALT INTO THE BEAKER<br>- PRESS DOWN AND FREEZE AT MINUS 20°C FOR 24 HOURS<br>2.Моussе of broccoli<br>Brokkolimousse<br>Recipe #	:<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	: 01.12.2005<br>Cost of goods	: CHF 0.38 / EUR 0.24<br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br>22 g	Gelatine leaves 500 ml Heavy cream (36%)<br>Method Pacotise :<br>- PACOTISE THE CONTENT OF THE BEAKER AND ADD INTO A BOWL - WARM THE BROCCOLI OVER A WATER BATH UNTIL LIQUID<br>- SOAK THE GELATINE IN COLD WATER<br>- DISSOLVE THE GELATINE WITH A LITTLE BROCCOLI CONCENTRATE - STIR INTO THE REMAINING MIXTURE<br>- WHIP THE HEAVY CREAM<br>- COOL DOWN THE BROCCOLI MIXTURE UNTIL 25°C ( BAVAROIS TEMP.) THEN FOLD IN THE WHIPPED CREAM<br>- FILL INTO PREPARED CLEAN BOWL AND LET REST FOR 1-2 HOURS - SCOOP OUT DUMPLINGS WITH A WARM SPOON AND ARRANGE<br>- FOR GARNISHES BOIL SOME BROCCOLI FLEURETS AND REFRESH AND MARINATE WITH OIL AND VINEGAR AND SEASONING</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Mousse of broccoli I Таg<br>Bгakkalimousse<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	: 17.11.2005<br>Cost of goods	: CHF 0.04 / EUR 0.02<br><br>European Gourmet Cuisine<br>Ingredients for 25 servings at 100% (Net quantity)<br>500<br>g<br>Broccoli, fresh<br>8<br>g<br>Salt<br>80<br>ml<br>Light chicken stock<br><br><br>- BOIL THE BROCCOLI IN SALTED WATER NOT TO SOFT<br>- REFRESH AND SQUEEZE OUT ALL THE WATER<br>- ADD THE BROCCOLI WITH THE CHICKEN STOCK OR VEGETABLE STOCK AND THE SALT INTO THE BEAKER<br>- PRESS DOWN AND FREEZE AT MINUS 20°C FOR 24 HOURS<br>2.Моussе of broccoli<br>Brokkolimousse<br>Recipe #	:<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	: 01.12.2005<br>Cost of goods	: CHF 0.38 / EUR 0.24<br><br>European Gourmet Cuisine<br>Ingredients for 10 servings at 100% (Net quantity)<br>22 g	Gelatine leaves 500 ml Heavy cream (36%)<br>Method Pacotise :<br>- PACOTISE THE CONTENT OF THE BEAKER AND ADD INTO A BOWL - WARM THE BROCCOLI OVER A WATER BATH UNTIL LIQUID<br>- SOAK THE GELATINE IN COLD WATER<br>- DISSOLVE THE GELATINE WITH A LITTLE BROCCOLI CONCENTRATE - STIR INTO THE REMAINING MIXTURE<br>- WHIP THE HEAVY CREAM<br>- COOL DOWN THE BROCCOLI MIXTURE UNTIL 25°C ( BAVAROIS TEMP.) THEN FOLD IN THE WHIPPED CREAM<br>- FILL INTO PREPARED CLEAN BOWL AND LET REST FOR 1-2 HOURS - SCOOP OUT DUMPLINGS WITH A WARM SPOON AND ARRANGE<br>- FOR GARNISHES BOIL SOME BROCCOLI FLEURETS AND REFRESH AND MARINATE WITH OIL AND VINEGAR AND SEASONING</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Boil fresh broccoli in salted water until al dente. Refresh and squeeze out all water. Add broccoli to a Pacojet beaker with light chicken stock and salt. Press down and freeze at minus 20°C for 24 hours.<br><br>Pacojet the frozen mixture into a bowl. Warm gently over a water bath until liquid. Soak gelatine leaves in cold water, then dissolve in a small amount of the warm broccoli purée. Stir back into the remaining mixture. Whip heavy cream to soft peaks. Cool the broccoli mixture to 25°C, then fold in the whipped cream. Fill into prepared bowl and rest 1–2 hours. Scoop dumplings with a warm spoon and arrange on plate.<br><br>For garnish: boil broccoli florets, refresh, and marinate with oil, vinegar, and seasoning.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

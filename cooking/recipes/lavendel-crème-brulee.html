@@ -106,8 +106,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Slagroom opzetten met gehakte lavendel (half uur laten trekken) rest van de ingredienten erbij doen en dit mengsel zeefen. In crème brulee bakjes doen en afgedeckt in de oven garen (160 C) - 15 min  totdat dit mengsel op vla dikte is. Laten afkoelen en daarna zeer dun met suiker bestroien en met ijzer branden. Let erop dat de suiker laag krokant is</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Slagroom opzetten met gehakte lavendel (half uur laten trekken) rest van de ingredienten erbij doen en dit mengsel zeefen. In crème brulee bakjes doen en afgedeckt in de oven garen (160 C) - 15 min  totdat dit mengsel op vla dikte is. Laten afkoelen en daarna zeer dun met suiker bestroien en met ijzer branden. Let erop dat de suiker laag krokant is</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Whip heavy cream with chopped lavender and let infuse for 30 minutes. Add remaining ingredients and mix well. Pass through a fine sieve. Pour into crème brûlée dishes, cover, and bake at 160°C for 15 minutes until the mixture reaches custard consistency. Cool completely. Dust very thinly with sugar and caramelize with a torch, ensuring the sugar layer is crisp.</div>
+          
         </section>
         
 
@@ -141,5 +150,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

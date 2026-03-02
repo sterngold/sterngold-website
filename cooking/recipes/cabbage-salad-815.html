@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Cabbage Salad <br>Weisskohlsa/at <br>Salade de choux blancs <br>Rezept Nr.: 525 <br>Kategorie: Salads <br>Koch : Patrick Diethelm Datum: 16.02.2004 <br>Warenkosten: CHF 0.59 / EUR 0.37 <br>Zutaten fOr 10 Personen zu 100'/, (Nettomenge) <br>1.275 kg Cabbage Trim and cut into thin slices. <br>200 g Smoked bacon Cut into small dice.<br> 135 g Onions Peel and chop. <br>1 x Seasoning (salt, nutmeg)<br>10 g Caraway seeds, whole<br>1 x Seasoning (black pepper<br>200 ml *BeefBroth<br>Dressing: <br>20 g Prepared mustard, mild<br>150 ml Herb vinegar <br>150 ml Sunflower oil <br>- PUT CABBAGE IN A LARGE BOWL. <br>- SAUTE BACON, ADD ONIONS, AND SAUTE LIGHTLY. ADD TO CABBAGE. <br>- SEASON CABBAGE WITH SALT, NUTMEG, CARAWAY SEEDS, AND PEPPER. <br>- BRING BOUILLON TO A BOIL AND POUR OVER CABBAGE. LET CABBAGE MARINATE UNTIL COOL. <br>- MIX ALL DRESSING INGREDIENTS AND ADD TO CABBAGE. TOSS TO MIX WELL. <br>Note: Red Cabbage salad may be made by substituting red cabbage, and by using red wine vinegar. See also recipes for Salad of Red Cabbage, Apples, and Grapes.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Cabbage Salad <br>Weisskohlsa/at <br>Salade de choux blancs <br>Rezept Nr.: 525 <br>Kategorie: Salads <br>Koch : Patrick Diethelm Datum: 16.02.2004 <br>Warenkosten: CHF 0.59 / EUR 0.37 <br>Zutaten fOr 10 Personen zu 100'/, (Nettomenge) <br>1.275 kg Cabbage Trim and cut into thin slices. <br>200 g Smoked bacon Cut into small dice.<br> 135 g Onions Peel and chop. <br>1 x Seasoning (salt, nutmeg)<br>10 g Caraway seeds, whole<br>1 x Seasoning (black pepper<br>200 ml *BeefBroth<br>Dressing: <br>20 g Prepared mustard, mild<br>150 ml Herb vinegar <br>150 ml Sunflower oil <br>- PUT CABBAGE IN A LARGE BOWL. <br>- SAUTE BACON, ADD ONIONS, AND SAUTE LIGHTLY. ADD TO CABBAGE. <br>- SEASON CABBAGE WITH SALT, NUTMEG, CARAWAY SEEDS, AND PEPPER. <br>- BRING BOUILLON TO A BOIL AND POUR OVER CABBAGE. LET CABBAGE MARINATE UNTIL COOL. <br>- MIX ALL DRESSING INGREDIENTS AND ADD TO CABBAGE. TOSS TO MIX WELL. <br>Note: Red Cabbage salad may be made by substituting red cabbage, and by using red wine vinegar. See also recipes for Salad of Red Cabbage, Apples, and Grapes.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Cabbage Salad**<br><br>Prepare ingredients: Trim and slice cabbage thinly. Cut smoked bacon into small dice. Peel and chop onions.<br><br>Method: Place cabbage in a large bowl. Sauté bacon, add onions, and lightly sauté. Add to cabbage. Season with salt, nutmeg, caraway seeds, and black pepper. Bring beef broth to a boil and pour over cabbage. Allow to marinate until cool.<br><br>Dressing: Mix prepared mustard, herb vinegar, and sunflower oil. Add dressing to cabbage and toss thoroughly.<br><br>Variation: Red cabbage salad may be prepared by substituting red cabbage and using red wine vinegar instead.<br><br>*Yield: 10 servings | Cost CHF 0.59*</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

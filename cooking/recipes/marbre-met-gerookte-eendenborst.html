@@ -122,8 +122,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Foie gras <br>Clean and break in pieces <br>Marinated in White wine, Red wine, Marsala, osborne veterano brandy and pepper <br>For 3 pieces foie gras - 1.5 - Ruby Red port / Ossborne - 50 ml - Sweet white wine - 1 glass / 100 ml - pepper<br>Place Foie gras on table - add Kleursalt, salt, pepper, clean more <br>Terrine form - layer with Bacon- cut 6 ml - on the long side - <br>Put foie grass in sieve - remove liquid <br>Make three layers - foie gras / duck brests - x 4  cut on the long side)<br>Wrap in aluminium foil <br>In bain marrie (already hot - half gastronorm) - 12'preheated oven - 160 C <br>Remove Foil - add to fridge - 1 hour to cool down - then press for 1 more hour <br>Marbre - a la carte - 80 g two pieces <br>Salt/pepper mixture<br>Gherkins - cut in 4 <br>Onion comfit</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Foie gras <br>Clean and break in pieces <br>Marinated in White wine, Red wine, Marsala, osborne veterano brandy and pepper <br>For 3 pieces foie gras - 1.5 - Ruby Red port / Ossborne - 50 ml - Sweet white wine - 1 glass / 100 ml - pepper<br>Place Foie gras on table - add Kleursalt, salt, pepper, clean more <br>Terrine form - layer with Bacon- cut 6 ml - on the long side - <br>Put foie grass in sieve - remove liquid <br>Make three layers - foie gras / duck brests - x 4  cut on the long side)<br>Wrap in aluminium foil <br>In bain marrie (already hot - half gastronorm) - 12'preheated oven - 160 C <br>Remove Foil - add to fridge - 1 hour to cool down - then press for 1 more hour <br>Marbre - a la carte - 80 g two pieces <br>Salt/pepper mixture<br>Gherkins - cut in 4 <br>Onion comfit</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Clean foie gras and break into pieces. Marinate in combination of ruby red port or Osborne (50 ml), sweet white wine (100 ml), red wine, Marsala, and pepper for 3 pieces foie gras using 1.5 parts port/Osborne. Season with curing salt and pepper. Strain through sieve to remove excess liquid. Line terrine mold with bacon slices (6 mm thick, laid lengthwise). Create three layers alternating foie gras and smoked duck breast (4 pieces, cut lengthwise each). Wrap in aluminum foil. Poach in preheated bain-marie at 160°C for 12 minutes using half gastronorm. Remove foil and refrigerate for 1 hour to cool. Press for an additional hour. For service: slice 80 g (two pieces) per portion. Season with salt and pepper mixture. Garnish with gherkins (quartered) and onion confit.</div>
+          
         </section>
         
 
@@ -157,5 +166,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -162,8 +162,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- pumpkin -  with melon baller, scoop out 20 small balls to use as garnish, and boil in vegetable stock or steam until cooked<br><br>- sweet leeks, onions, carrots and knob celery in butter<br>- add sliced pumpkin and continue cooking<br>- dust with flour and stir well<br>- add stock and bring to boil, stirring continously<br>- boil until vegetables are soft, skimming occasionally<br>- stir in cream and milk. Bring to a boil again. Season to taste <br>- puree with bar blender and strain through fine china cap<br><br>- add pumpkin garnish to soup, sprinkle with chervil and serve</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- pumpkin -  with melon baller, scoop out 20 small balls to use as garnish, and boil in vegetable stock or steam until cooked<br><br>- sweet leeks, onions, carrots and knob celery in butter<br>- add sliced pumpkin and continue cooking<br>- dust with flour and stir well<br>- add stock and bring to boil, stirring continously<br>- boil until vegetables are soft, skimming occasionally<br>- stir in cream and milk. Bring to a boil again. Season to taste <br>- puree with bar blender and strain through fine china cap<br><br>- add pumpkin garnish to soup, sprinkle with chervil and serve</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PUMPKIN CREAM SOUP<br><br>Prepare garnish: Using a melon baller, scoop 20 small pumpkin balls. Cook separately in vegetable stock or steam until tender.<br><br>Soup base: Sweat sweet leeks, onions, carrots, and knob celery in butter. Add sliced pumpkin and continue cooking. Dust with flour and stir well. Add stock and bring to boil, stirring continuously.<br><br>Simmer until vegetables are soft, skimming occasionally. Stir in cream and milk, bring to boil again. Season to taste.<br><br>Finish: Purée with immersion blender and strain through fine china cap. Add reserved pumpkin balls, sprinkle with chervil, and serve.</div>
+          
         </section>
         
 
@@ -197,5 +206,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

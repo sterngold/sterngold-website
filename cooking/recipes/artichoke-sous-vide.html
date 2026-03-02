@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Artichoke Sous vide style<br>Artischocke sous vide Artichoke sous vide<br><br><br>Recipe #	: 541<br>Category	: ECA - Vegetables<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 1.17 / EUR 0.74<br><br>Ingredients for 6 servings at 100% [Net quantity)<br>6<br>pc<br>Artichoke bottoms<br>3<br>g<br>Salt<br>40<br>g<br>Butter or Olive oil<br>1<br>pc<br>Rosemary twig<br>1<br>pc<br>Thyme sprig, fresh<br><br>- PLACE CLEANED ARTICHOKE BOTTOMS TIGHTLY, SIDE BY SIDE INTO VACUUM BAG - SEASON WITH SALT ROSEMARY AND THYME<br>- ADD BUTTER AND VACUUM PACK<br>- STEAM AT 91°C FOR APPROX. 40 MIN IN COMBI STEAMER<br>UNTIL ARTICHOKES ARE TENDER.<br>- COOL DOWN IN VACUUM BAG IN ICE WATER AS QUICK AS POSSIBLE<br>- WHEN 2°C REMOVE FROM ICE WATER<br>- LABEL AND YOU CAN STORE SOUS VIDE COOKED VEGETABLES AT LEAST 5-10 DAYS<br>- FOR REHEATING ARTICHOKES ADD VACUUM BAG INTO STEAM FOR 10 -15 MIN.<br>- READY FOR SERVING<br>- PLACE REMAINING LIQUID INTO SAUTEUSE AND REDUCE BRUSH VEGETABLE AND SERVE.<br>APPROX. COOKING TIME LIST FOR SOUS VIDE VEGETABLES AT 91-94°C<br>POTATOES NATURE 45 - 55 MIN CARROTS BATONNET 45 MIN FENNEL HALF	90 MIN. ASPARAGUS WHITE 50 MIN. ASPARAGUS GREEN 35 MIN.<br>CELERY ROOT	80 MIN.<br>BELGIAN ENDIVE	35 MIN,</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Artichoke Sous vide style<br>Artischocke sous vide Artichoke sous vide<br><br><br>Recipe #	: 541<br>Category	: ECA - Vegetables<br>Chef	: Patrick Diethelm<br>Date	: 25.10.2005<br>Cost of goods	: CHF 1.17 / EUR 0.74<br><br>Ingredients for 6 servings at 100% [Net quantity)<br>6<br>pc<br>Artichoke bottoms<br>3<br>g<br>Salt<br>40<br>g<br>Butter or Olive oil<br>1<br>pc<br>Rosemary twig<br>1<br>pc<br>Thyme sprig, fresh<br><br>- PLACE CLEANED ARTICHOKE BOTTOMS TIGHTLY, SIDE BY SIDE INTO VACUUM BAG - SEASON WITH SALT ROSEMARY AND THYME<br>- ADD BUTTER AND VACUUM PACK<br>- STEAM AT 91°C FOR APPROX. 40 MIN IN COMBI STEAMER<br>UNTIL ARTICHOKES ARE TENDER.<br>- COOL DOWN IN VACUUM BAG IN ICE WATER AS QUICK AS POSSIBLE<br>- WHEN 2°C REMOVE FROM ICE WATER<br>- LABEL AND YOU CAN STORE SOUS VIDE COOKED VEGETABLES AT LEAST 5-10 DAYS<br>- FOR REHEATING ARTICHOKES ADD VACUUM BAG INTO STEAM FOR 10 -15 MIN.<br>- READY FOR SERVING<br>- PLACE REMAINING LIQUID INTO SAUTEUSE AND REDUCE BRUSH VEGETABLE AND SERVE.<br>APPROX. COOKING TIME LIST FOR SOUS VIDE VEGETABLES AT 91-94°C<br>POTATOES NATURE 45 - 55 MIN CARROTS BATONNET 45 MIN FENNEL HALF	90 MIN. ASPARAGUS WHITE 50 MIN. ASPARAGUS GREEN 35 MIN.<br>CELERY ROOT	80 MIN.<br>BELGIAN ENDIVE	35 MIN,</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Arrange cleaned artichoke bottoms tightly in a vacuum bag. Season with salt, rosemary, and thyme; add butter and vacuum seal. Cook in a combi steamer at 91°C for approximately 40 minutes until tender. Cool in ice water as quickly as possible to 2°C. Label and store sous vide for 5–10 days. To reheat, add vacuum bag to steam for 10–15 minutes. For service, reduce the remaining cooking liquid in a sautoir, brush vegetables, and serve. (Reference cooking times for other vegetables at 91–94°C: potatoes 45–55 min, carrots batonnet 45 min, fennel half 90 min, asparagus white 50 min, asparagus green 35 min, celery root 80 min, Belgian endive 35 min.)</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

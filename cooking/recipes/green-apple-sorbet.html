@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Green Apple sorbet<br>Apfelsorbet<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	:17.11.2005<br>Cost of goods 	: CHF  0.11 / EUR 0.07<br>Ingredients for 10 servings at 100% (Net quantity)<br><br>375	g	Apples Granny smith<br>250	ml	Apple juice<br>50 	g 	Crystal sugar<br>30	g 	Glucose syrup<br>20	ml	Lemon juice<br><br>- WASH APPLES, CUT INTO QUARTER REMOVE CORE, CUT EMINCE AND FILL INTO BEAKER - ADD THE LEMON JUICE AND MIX WELL<br>- BRING THE APPLE JUICE, SUGAR AND GLUCOSE TO A BOIL<br>- COOL DOWN<br>- ADD TO THE APPLES AND FREEZE at minus 20° C FOR 24 HOURS<br><br>METHOD PACOTISE:<br>- Pacotise twice will enhance the flavour and texture of the recipe</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Green Apple sorbet<br>Apfelsorbet<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	:17.11.2005<br>Cost of goods 	: CHF  0.11 / EUR 0.07<br>Ingredients for 10 servings at 100% (Net quantity)<br><br>375	g	Apples Granny smith<br>250	ml	Apple juice<br>50 	g 	Crystal sugar<br>30	g 	Glucose syrup<br>20	ml	Lemon juice<br><br>- WASH APPLES, CUT INTO QUARTER REMOVE CORE, CUT EMINCE AND FILL INTO BEAKER - ADD THE LEMON JUICE AND MIX WELL<br>- BRING THE APPLE JUICE, SUGAR AND GLUCOSE TO A BOIL<br>- COOL DOWN<br>- ADD TO THE APPLES AND FREEZE at minus 20° C FOR 24 HOURS<br><br>METHOD PACOTISE:<br>- Pacotise twice will enhance the flavour and texture of the recipe</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Green Apple Sorbet**<br><br>Ingredients (10 servings):<br>- 375 g Granny Smith apples<br>- 250 ml apple juice<br>- 50 g crystal sugar<br>- 30 g glucose syrup<br>- 20 ml lemon juice<br><br>Method:<br>Wash apples, quarter them, remove cores, and cut into fine dice. Transfer to blender and add lemon juice; mix well.<br><br>Bring apple juice, sugar, and glucose syrup to a boil. Cool completely.<br><br>Combine cooled syrup with apple mixture and freeze at -20°C for 24 hours.<br><br>Pacotise twice through the Pacojet to enhance flavour and texture.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

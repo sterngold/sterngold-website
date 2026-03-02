@@ -114,8 +114,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- butter, flour, cacao in op vuur zacht laten worden <br>- suiker en eieren opslaan<br>- alles mengen en In bedekte bak in de oven garen (20 min)</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- butter, flour, cacao in op vuur zacht laten worden <br>- suiker en eieren opslaan<br>- alles mengen en In bedekte bak in de oven garen (20 min)</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">BROWNIES<br><br>Method:<br>Gently melt butter, flour, and cacao together over low heat. Whisk sugar and eggs together until light. Combine wet and dry mixtures.<br><br>Transfer to a covered baking pan and bake in the oven for 20 minutes.</div>
+          
         </section>
         
 
@@ -149,5 +158,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

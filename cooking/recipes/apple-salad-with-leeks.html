@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Праз – реже се на кубчета /2 пъти по дължина – на кръст и накрая на ситно/. <br>Жълти ябълки – обелват се и се режат на половина; изчистват се и се нарязва на ситни кубчета /може настъргване/. <br>Праза и ябълката се смесват. Добавя се майонеза или сладка сметана, кисело мляко или лимон. Сол на вкус.<br>По избор –добавя се ролца от раци, акула, скариди. <br>/в допълнение – авокадо на по едри парчета, зелена ябълка с кората на едри парчета/</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Праз – реже се на кубчета /2 пъти по дължина – на кръст и накрая на ситно/. <br>Жълти ябълки – обелват се и се режат на половина; изчистват се и се нарязва на ситни кубчета /може настъргване/. <br>Праза и ябълката се смесват. Добавя се майонеза или сладка сметана, кисело мляко или лимон. Сол на вкус.<br>По избор –добавя се ролца от раци, акула, скариди. <br>/в допълнение – авокадо на по едри парчета, зелена ябълка с кората на едри парчета/</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Cut leeks into small dice (cut lengthwise twice, then crosswise finely). Peel yellow apples, halve, core, and cut into small dice or grate. Combine leeks and apple. Dress with mayonnaise or sour cream, sour milk, or lemon juice. Season to taste with salt. Optional additions: crayfish, shark, or shrimp. Variation: add avocado in larger pieces and green apple with skin cut into larger pieces.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

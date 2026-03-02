@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Обелват се крушите <br>Десертно вино – мускатово <br>Подправки – Stern, Kruid nagel, Chinese papper, Vanile –половинкар, Koriander – топчета<br>Мед<br>Лимон – сок и цяла обвивка<br>Портокал – кората се обелва /каротофобелачка/ и сока <br>Вода <br>Захар<br>На бавен огън</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Обелват се крушите <br>Десертно вино – мускатово <br>Подправки – Stern, Kruid nagel, Chinese papper, Vanile –половинкар, Koriander – топчета<br>Мед<br>Лимон – сок и цяла обвивка<br>Портокал – кората се обелва /каротофобелачка/ и сока <br>Вода <br>Захар<br>На бавен огън</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Peel pears and set aside.<br><br>Combine muscatel dessert wine, honey, lemon juice, lemon zest, orange zest (peeled with a peeler), orange juice, and water in a pot. Add sugar and spices: star anise, cloves, Sichuan pepper, half a vanilla pod, and coriander seeds.<br><br>Bring to a gentle simmer and poach pears slowly until tender. Cook on low heat until desired doneness is achieved.<br><br>Allow to cool in the poaching liquid before service.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

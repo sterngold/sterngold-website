@@ -114,8 +114,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- peel shallots and chop fine<br>- combine shallots with dry white wine and reduce <br>- add white wine vinegar and reduce again <br>- add fish fumet and reduce to about 1/2 <br>- season with salt and freshly ground white pepper<br>- remove form heat and add cold butter in small amounts, whipping vigorously<br>- whip suace once more with hand haeld electric mixer (if aviable)<br><br>- be sure sauce does not return to boil</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- peel shallots and chop fine<br>- combine shallots with dry white wine and reduce <br>- add white wine vinegar and reduce again <br>- add fish fumet and reduce to about 1/2 <br>- season with salt and freshly ground white pepper<br>- remove form heat and add cold butter in small amounts, whipping vigorously<br>- whip suace once more with hand haeld electric mixer (if aviable)<br><br>- be sure sauce does not return to boil</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Beurre Blanc for Fish**<br><br>**Method:**<br>1. Peel and finely chop shallots.<br>2. Combine shallots with dry white wine and reduce.<br>3. Add white wine vinegar and reduce again.<br>4. Add fish fumet and reduce to approximately half.<br>5. Season with salt and freshly ground white pepper.<br>6. Remove from heat. Add cold butter in small pieces while whisking vigorously.<br>7. Whip sauce once more with a handheld electric mixer, if available.<br><br>**Note:** Ensure sauce does not return to a boil.</div>
+          
         </section>
         
 
@@ -159,5 +168,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

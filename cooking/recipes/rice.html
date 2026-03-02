@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Ориз се исипва във горещото масло и се бурка докато стане стъклен. Добавя се вода - 3 пъти обема.Сол. Лук със забоден карамфил. Оставай се на слаб огън докато се появят дупчици. Спира се котлона и се оставя да се задушава покрит със кърпа.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Ориз се исипва във горещото масло и се бурка докато стане стъклен. Добавя се вода - 3 пъти обема.Сол. Лук със забоден карамфил. Оставай се на слаб огън докато се появят дупчици. Спира се котлона и се оставя да се задушава покрит със кърпа.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Pour rice into hot oil and stir constantly until translucent. Add water—three times the volume of rice. Season with salt. Add onion studded with clove. Cook over low heat until small holes appear on the surface. Remove from heat, cover with a kitchen cloth, and leave to steam until cooked through.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Banana - Yogurt ice cream<br>Bananen- Joghurt glace<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	: 17.11.2005<br>Cost of goods	: CHF 2.61 / EUR 1.65<br><br><br>Ingredients for 1.000 liters at 100% (Net quantity)<br>250<br>g<br>Bananas<br>400<br>g<br>Yogurt, plain<br>100<br>ml<br>Heavy cream (36%)<br>60<br>g<br>Crystal sugar<br>1<br>pc<br>Vanilla bean<br><br>- PEEL AND SLICE THE BANANA<br>- scrape out vanilla bean and stir into yogurt<br>- ADD ALL THE REMAINING INGREDIENTS INTO A BOWL AND STIR WELL<br>- ADD THE FILLING INTO A PACOJET BEAKER AND ENSURE SURFACE IS LEVEL, THEN FREEZE AT MINUS 20°C FOR 24 HOURS<br>Method Pacotise:<br>- PACOTISE PORTION BY PORTION OR THE WHOLE BEAKER</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Banana - Yogurt ice cream<br>Bananen- Joghurt glace<br>Recipe #<br>Category	: ECA - Paco jet<br>Chef	: Patrick Diethelm<br>Date	: 17.11.2005<br>Cost of goods	: CHF 2.61 / EUR 1.65<br><br><br>Ingredients for 1.000 liters at 100% (Net quantity)<br>250<br>g<br>Bananas<br>400<br>g<br>Yogurt, plain<br>100<br>ml<br>Heavy cream (36%)<br>60<br>g<br>Crystal sugar<br>1<br>pc<br>Vanilla bean<br><br>- PEEL AND SLICE THE BANANA<br>- scrape out vanilla bean and stir into yogurt<br>- ADD ALL THE REMAINING INGREDIENTS INTO A BOWL AND STIR WELL<br>- ADD THE FILLING INTO A PACOJET BEAKER AND ENSURE SURFACE IS LEVEL, THEN FREEZE AT MINUS 20°C FOR 24 HOURS<br>Method Pacotise:<br>- PACOTISE PORTION BY PORTION OR THE WHOLE BEAKER</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">BANANA YOGURT ICE CREAM<br>Pacojet method | Chef Patrick Diethelm<br><br>For 1 liter:<br>250g Bananas<br>400g Plain yogurt<br>100ml Heavy cream (36%)<br>60g Crystal sugar<br>1 Vanilla bean<br><br>Peel and slice bananas. Scrape out vanilla bean and stir into yogurt. Combine all ingredients in a bowl and stir well. Pour mixture into Pacojet beaker, ensuring surface is level. Freeze at −20°C for 24 hours.<br><br>To serve: Pacotise portion by portion or entire beaker according to service requirements.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

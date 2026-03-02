@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Warm Potato Espuma with Herbs<br>Warmer Kartoffel Espuma mit Kräutern<br>Recipe #<br>Category	: ECA - Trendy Espuma ' s<br>Chef	: Patrick Diethelm<br>Date	: 12.12.2005<br>Cost of goods	: CHF 0.21 / EUR 0.13 <br><br>European Gourmet Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>	280 g	Bintje potatoes<br>	80 g	Milk past.<br>40 ml Sour cream 35%<br>40 g Vegetable stock<br>30 g Butter<br>	8 g	Herbs, fresh (chervil,chives and parsley]<br>- STEAM THE POTATOES UNTIL WELL DONE COOKED - STRAIN POTATOES TWICE THORUGH A FOOD MILL<br>. BLEND THE VEGETABLE STOCK WITH MILK, CREAM AND BUTTER WITH ALL THE CHOPPED HERBS UNTIL GREEN AND STRAIN THROUGH A CHINA CAP. <br>- MIX ALL THE INGREDIENTS INTO POTATO AND STIR.<br>- FILL INTO ISI PROFI WHIP AND KEEP WARM AT MAX 70°C. IN BAIN MARIE.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Warm Potato Espuma with Herbs<br>Warmer Kartoffel Espuma mit Kräutern<br>Recipe #<br>Category	: ECA - Trendy Espuma ' s<br>Chef	: Patrick Diethelm<br>Date	: 12.12.2005<br>Cost of goods	: CHF 0.21 / EUR 0.13 <br><br>European Gourmet Cuisine<br>Ingredients for 6 servings at 100% (Net quantity)<br>	280 g	Bintje potatoes<br>	80 g	Milk past.<br>40 ml Sour cream 35%<br>40 g Vegetable stock<br>30 g Butter<br>	8 g	Herbs, fresh (chervil,chives and parsley]<br>- STEAM THE POTATOES UNTIL WELL DONE COOKED - STRAIN POTATOES TWICE THORUGH A FOOD MILL<br>. BLEND THE VEGETABLE STOCK WITH MILK, CREAM AND BUTTER WITH ALL THE CHOPPED HERBS UNTIL GREEN AND STRAIN THROUGH A CHINA CAP. <br>- MIX ALL THE INGREDIENTS INTO POTATO AND STIR.<br>- FILL INTO ISI PROFI WHIP AND KEEP WARM AT MAX 70°C. IN BAIN MARIE.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">WARM POTATO ESPUMA WITH HERBS<br>Chef: Patrick Diethelm | DCT Entremétier Station | 12.12.2005<br>Yield: 6 servings | Cost: CHF 0.21<br><br>INGREDIENTS<br>280 g Bintje potatoes<br>80 g milk paste<br>40 ml sour cream (35%)<br>40 g vegetable stock<br>30 g butter<br>8 g fresh herbs (chervil, chives, parsley)<br><br>METHOD<br>1. Steam potatoes until fully cooked.<br>2. Pass potatoes twice through a food mill.<br>3. Blend vegetable stock, milk, cream, butter, and all chopped herbs until green. Strain through china cap.<br>4. Mix herb mixture into strained potatoes and stir to combine.<br>5. Fill into ISI Profi whip and hold warm at maximum 70°C in bain-marie.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

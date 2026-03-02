@@ -122,8 +122,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">- cut onions into small dice and sweet in butter<br>- add flour and cook briefly <br>- cool resulting roux<br>- bring milk to a boiling point and add to roux<br>- simmer for about 20 minutes<br>- add cream and bring to boil again and season to taste<br>- strian through fine china cap <br>- cover with a lid or use immediately</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">- cut onions into small dice and sweet in butter<br>- add flour and cook briefly <br>- cool resulting roux<br>- bring milk to a boiling point and add to roux<br>- simmer for about 20 minutes<br>- add cream and bring to boil again and season to taste<br>- strian through fine china cap <br>- cover with a lid or use immediately</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Dice onions small and sweat in butter. Add flour and cook briefly. Cool the resulting roux. Bring milk to a boil and add to roux. Simmer for approximately 20 minutes. Add cream and return to boil. Season to taste. Strain through a fine china cap. Cover with a lid or use immediately.</div>
+          
         </section>
         
 
@@ -157,5 +166,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

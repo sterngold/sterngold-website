@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Bramata Polenta with Mascarpone<br>Polenta mit Mascarpone Polenta aux mascarpone<br><br><br>Recipe #	: 653<br>Category	: Rice and Grain Dishes<br>Chef	: P.Diethelm<br>Date	: 03.11.2005<br>Cost of goods	: CHF 0.40 / EUR 0.25<br><br>European Gourmet Cuisine'<br>Ingredients for 5 servings at 100% (Net quantity)<br>30 ml Olive oil<br>50 g Onions	Peel and chop.<br>5 g	Garlic	Peel and chop. 125 ml Milk<br>500 m/ *Veal broth<br>1 pc Bay leaves<br>135 g Cornmeal, coarse Bramata<br>1 x	Seasoning (salt and pepper)<br>100 g Mascarpone<br><br>SWEAT ONIONS AND GARLIC IN OLIVE OIL WITHOUT GETTING COLOR. - ADD BROTH AND MILK AND BRING TO A BOIL.<br>- ADD CORNMEAL GRADUALLY, IN A THIN STREAM,<br>STIRRING CONTINUOUSLY WITH A STRONG WIRE WHISK.<br>- SIMMER FOR 5 MINUTES, STIRRING WITH A PLASTIC SPATULA.<br>- ADD BAY LEAF AND SALT AND PEPPER, COVER, AND COOK AT 120°C IN OVEN, FOR 75 MINUTES.<br>DO NOT STIR DURING THIS TIME.<br>- REMOVE BAY LEAF, STIR IN MASCARPONE AND SERVE</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Bramata Polenta with Mascarpone<br>Polenta mit Mascarpone Polenta aux mascarpone<br><br><br>Recipe #	: 653<br>Category	: Rice and Grain Dishes<br>Chef	: P.Diethelm<br>Date	: 03.11.2005<br>Cost of goods	: CHF 0.40 / EUR 0.25<br><br>European Gourmet Cuisine'<br>Ingredients for 5 servings at 100% (Net quantity)<br>30 ml Olive oil<br>50 g Onions	Peel and chop.<br>5 g	Garlic	Peel and chop. 125 ml Milk<br>500 m/ *Veal broth<br>1 pc Bay leaves<br>135 g Cornmeal, coarse Bramata<br>1 x	Seasoning (salt and pepper)<br>100 g Mascarpone<br><br>SWEAT ONIONS AND GARLIC IN OLIVE OIL WITHOUT GETTING COLOR. - ADD BROTH AND MILK AND BRING TO A BOIL.<br>- ADD CORNMEAL GRADUALLY, IN A THIN STREAM,<br>STIRRING CONTINUOUSLY WITH A STRONG WIRE WHISK.<br>- SIMMER FOR 5 MINUTES, STIRRING WITH A PLASTIC SPATULA.<br>- ADD BAY LEAF AND SALT AND PEPPER, COVER, AND COOK AT 120°C IN OVEN, FOR 75 MINUTES.<br>DO NOT STIR DURING THIS TIME.<br>- REMOVE BAY LEAF, STIR IN MASCARPONE AND SERVE</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Peel and chop onions and garlic. Sweat onions and garlic in olive oil without coloring. Add veal broth and milk, bring to a boil. Add cornmeal gradually in a thin stream, stirring continuously with a strong wire whisk. Simmer for 5 minutes, stirring with a plastic spatula. Add bay leaf, season with salt and pepper, cover, and cook at 120°C in oven for 75 minutes without stirring. Remove bay leaf, stir in mascarpone, and serve.<br><br>**Ingredients (5 servings):** 30 ml olive oil, 50 g onions, 5 g garlic, 125 ml milk, 500 ml veal broth, 1 bay leaf, 135 g bramata cornmeal, salt and pepper, 100 g mascarpone.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

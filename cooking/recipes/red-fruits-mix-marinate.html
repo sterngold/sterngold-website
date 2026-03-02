@@ -130,8 +130,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">1 	Плодове замразени <br>2 	Канела пръчка<br>3 	Ванила – млако резънче – оклол 5 см – вадят се семената плюс обвивката<br>4 	Портокал плюс обвивката<br>5 	Лимно плюс обвивката<br>6 	Ром <br>7 	Creme de Kasisi – няколко капки <br>8 	Покрива се със захар</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">1 	Плодове замразени <br>2 	Канела пръчка<br>3 	Ванила – млако резънче – оклол 5 см – вадят се семената плюс обвивката<br>4 	Портокал плюс обвивката<br>5 	Лимно плюс обвивката<br>6 	Ром <br>7 	Creme de Kasisi – няколко капки <br>8 	Покрива се със захар</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Red Fruits Mix / Marinate<br>Source: Vijf | Pâtisserie<br><br>Ingredients:<br>- Frozen red fruits<br>- Cinnamon stick<br>- Vanilla pod (approx. 5 cm), split and seeds scraped<br>- Orange with zest<br>- Lemon with zest<br>- Rum<br>- Crème de cassis (a few drops)<br>- Sugar<br><br>Method:<br>Combine frozen fruits with cinnamon stick, vanilla pod with seeds and pod, orange and lemon (both with zest), rum, and crème de cassis. Cover with sugar and marinate until fruits thaw and flavors infuse.</div>
+          
         </section>
         
 
@@ -165,5 +174,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

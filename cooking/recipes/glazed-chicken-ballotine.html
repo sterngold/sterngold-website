@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Glazed chicken ballotine<br>Geflügelballotine<br><br>Ingredients for 6 servings at 100% (Net quantity)<br><br>- Debone poularde for ballotine (see demo and detailed instruction)<br>- Mix cream, egg, trimmed chicken leg meat and chill in freezer for 5 minutes add salt and pacotice twice in pacojet. (or freeze over night and pacotice)<br>- Remove and chill on ice<br>- Add list of condiments or any other seasonal ingredients<br>- SEE COURSE DEMONSTRATION<br>- Pipe farce on debonesd poularde and roll to even size ballotine. - Tie carefully with kitchen twine and chill.<br>- For the final stage of cooking use the cooking method glazing or roasting. (see traditional cooking methods)<br>- The cooking time will be approx. 20 Minutes and 5 Minutes resting time !!<br>Important; use directly reduced Fond de veau brun !!!</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Glazed chicken ballotine<br>Geflügelballotine<br><br>Ingredients for 6 servings at 100% (Net quantity)<br><br>- Debone poularde for ballotine (see demo and detailed instruction)<br>- Mix cream, egg, trimmed chicken leg meat and chill in freezer for 5 minutes add salt and pacotice twice in pacojet. (or freeze over night and pacotice)<br>- Remove and chill on ice<br>- Add list of condiments or any other seasonal ingredients<br>- SEE COURSE DEMONSTRATION<br>- Pipe farce on debonesd poularde and roll to even size ballotine. - Tie carefully with kitchen twine and chill.<br>- For the final stage of cooking use the cooking method glazing or roasting. (see traditional cooking methods)<br>- The cooking time will be approx. 20 Minutes and 5 Minutes resting time !!<br>Important; use directly reduced Fond de veau brun !!!</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**GLAZED CHICKEN BALLOTINE**<br><br>Yield: 6 servings | Station: Saucier<br><br>**Method:**<br>1. Debone poularde for ballotine (see demonstration for detailed technique).<br>2. Prepare farce: combine cream, egg, and trimmed chicken leg meat. Chill in freezer 5 minutes. Process twice in pacojet. (Alternatively, freeze overnight and process.) Remove and chill over ice.<br>3. Fold in seasonal condiments or garnish ingredients as desired.<br>4. Pipe farce evenly onto deboned poularde skin. Roll to consistent ballotine shape.<br>5. Tie carefully with kitchen twine and chill thoroughly.<br>6. Cook using glazing or roasting method (see traditional cooking methods) for approximately 20 minutes, followed by 5 minutes rest.<br><br>**Critical:** Use only freshly reduced brown veal stock (fond de veau brun) for finishing.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

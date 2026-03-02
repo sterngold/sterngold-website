@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Cream Puffs<br>Windbeutel<br>Choux à la crème<br><br><br>Rezept Nr.	784<br>Kategorie	: Desserts<br>Koch	: Patrick Diethelm<br>Datum	: 28.07.2005<br>Warenkosten	: CHF 0.46 / EUR 029<br><br>EUROPEAN CULINARY CENTER<br><br>Zutaten für 10 Personen zu 100% (Nettomenge)<br><br>400 g *Puff Paste [basic sweet recipe) <br>10 g	Butter<br>10 g White wheat flour<br>250 m/ *Vanilla Mousseline Cream 250 ml Heavy cream (36%) Whipped<br>20 g Powdered sugar<br><br><br>- Butter a baking sheet pan and dust with flour.<br>- WITH PASTRY BAG, DRESS 20 g ROSETTES, USING MEDIUM-SIZE STAR TUBE. - BAKE AT 180 - 200°C), WITH OPEN STEAM ESCAPE UNTIL GOLDEN BROWN. - COOL AND SPLIT PASTRY PUFFS IN HALF HORIZONTALLY.<br>- FILL BOTTOM HALVES WITH VANILLA MOUSSELINE CREAM.<br>- WITH A PASTRY BAG, DRESS WHIPPED CREAM ON TOP OF THE MOUSSELINE. - REPLACE TOP LAYER AND DUST WITH POWDERED SUGAR.<br>VARIATIONS<br>Eclairs with Chocolate Cream: Dress puff paste into 100 mm long tubes.<br>Flavor vanilla mousseline cream with couverture. Brush puffs with apricot glaze and cover with chocolate fondant.<br>Eclairs with Kirsch Cream: Dress puff paste into 100 mm long tubes. Flavor vanilla mousseline cream with kirsch. Cover puffs with pink fondant.<br>Small Cream Puffs (Profiteroles) with Chocolate Sauce: Make small cream puffs.Instead of cutting them in half, make a small opening in the bottom and fill them with whipped cream, using a pastry bag. Serve on top of chocolate sauce.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Cream Puffs<br>Windbeutel<br>Choux à la crème<br><br><br>Rezept Nr.	784<br>Kategorie	: Desserts<br>Koch	: Patrick Diethelm<br>Datum	: 28.07.2005<br>Warenkosten	: CHF 0.46 / EUR 029<br><br>EUROPEAN CULINARY CENTER<br><br>Zutaten für 10 Personen zu 100% (Nettomenge)<br><br>400 g *Puff Paste [basic sweet recipe) <br>10 g	Butter<br>10 g White wheat flour<br>250 m/ *Vanilla Mousseline Cream 250 ml Heavy cream (36%) Whipped<br>20 g Powdered sugar<br><br><br>- Butter a baking sheet pan and dust with flour.<br>- WITH PASTRY BAG, DRESS 20 g ROSETTES, USING MEDIUM-SIZE STAR TUBE. - BAKE AT 180 - 200°C), WITH OPEN STEAM ESCAPE UNTIL GOLDEN BROWN. - COOL AND SPLIT PASTRY PUFFS IN HALF HORIZONTALLY.<br>- FILL BOTTOM HALVES WITH VANILLA MOUSSELINE CREAM.<br>- WITH A PASTRY BAG, DRESS WHIPPED CREAM ON TOP OF THE MOUSSELINE. - REPLACE TOP LAYER AND DUST WITH POWDERED SUGAR.<br>VARIATIONS<br>Eclairs with Chocolate Cream: Dress puff paste into 100 mm long tubes.<br>Flavor vanilla mousseline cream with couverture. Brush puffs with apricot glaze and cover with chocolate fondant.<br>Eclairs with Kirsch Cream: Dress puff paste into 100 mm long tubes. Flavor vanilla mousseline cream with kirsch. Cover puffs with pink fondant.<br>Small Cream Puffs (Profiteroles) with Chocolate Sauce: Make small cream puffs.Instead of cutting them in half, make a small opening in the bottom and fill them with whipped cream, using a pastry bag. Serve on top of chocolate sauce.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Butter a baking sheet and dust with flour. Using a pastry bag fitted with a medium star tube, pipe 20 g rosettes of puff paste. Bake at 180–200°C with steam vents open until golden brown. Cool and split puffs horizontally. Fill bottom halves with vanilla mousseline cream. Pipe whipped cream on top using a pastry bag. Replace top layer and dust with powdered sugar.<br><br>Variations: For éclairs with chocolate cream, pipe 100 mm tubes, flavor mousseline with couverture, brush with apricot glaze, and cover with chocolate fondant. For kirsch cream éclairs, flavor mousseline with kirsch and cover with pink fondant. For profiteroles, make small puffs, pierce the bottom, fill with whipped cream using a pastry bag, and serve over chocolate sauce.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

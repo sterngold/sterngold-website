@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Zucchini custard<br>Zucchetti flan<br>Recipe #<br>Category	: ECA - Garde-manger special<br>Chef	: Patrick Diethelm<br>Date	: 07.11.2005<br>Cost of goods	: CHF 0.64 / EUR 0.41 <br><br>European Gourmet Cuisine<br><br>Ingredients for 6 servings at 100% (Net quantity)<br><br>6 g Butter<br>12 g	Shallots<br>200 g Zucchinis  Cut into emince or smaller diced<br>10 g White wheat flour<br>20 g Peccorino Grated<br>50 g Parmesan grated<br>70 ml Heavy cream [36%)<br>150 g Egg<br>1 x	Seasoning (salt and pepper)<br><br><br>- SWEAT THE SHALLOTS IN BUTTER<br>- ADD THE EMINCE FROM ZUCCHINIS AND SEASON WITH SALT AND PEPPER<br>- STEW ON LOW HEAT FOR 2-3 MINUTES - DUST WITH WHITE WHEAT FLOUR - REMOVE FROM HEAT<br>- BLEND IN THE FOOD PROCESSOR UNTIL FINE PUREE WITH THE CREAM, EGGS<br>AND GRATED PARMESAN<br>- ONLY STRAIN THROUGH HAIR SIEVE IF NOT FINE PUREE.<br>- SEASON WITH SALT AND PEPPER<br>- LINE OUT I EHRINE MOLD WITH PLASTIC FOIL<br>- FILL UP WITH ZUCCHINI CUSTARD AND POACH AT 90°C IN CONVECTION OVEN<br>- COOL DOWN AND SERVE COLD WITH LUKEWARM VEGETABLE VINAIGRETTE</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Zucchini custard<br>Zucchetti flan<br>Recipe #<br>Category	: ECA - Garde-manger special<br>Chef	: Patrick Diethelm<br>Date	: 07.11.2005<br>Cost of goods	: CHF 0.64 / EUR 0.41 <br><br>European Gourmet Cuisine<br><br>Ingredients for 6 servings at 100% (Net quantity)<br><br>6 g Butter<br>12 g	Shallots<br>200 g Zucchinis  Cut into emince or smaller diced<br>10 g White wheat flour<br>20 g Peccorino Grated<br>50 g Parmesan grated<br>70 ml Heavy cream [36%)<br>150 g Egg<br>1 x	Seasoning (salt and pepper)<br><br><br>- SWEAT THE SHALLOTS IN BUTTER<br>- ADD THE EMINCE FROM ZUCCHINIS AND SEASON WITH SALT AND PEPPER<br>- STEW ON LOW HEAT FOR 2-3 MINUTES - DUST WITH WHITE WHEAT FLOUR - REMOVE FROM HEAT<br>- BLEND IN THE FOOD PROCESSOR UNTIL FINE PUREE WITH THE CREAM, EGGS<br>AND GRATED PARMESAN<br>- ONLY STRAIN THROUGH HAIR SIEVE IF NOT FINE PUREE.<br>- SEASON WITH SALT AND PEPPER<br>- LINE OUT I EHRINE MOLD WITH PLASTIC FOIL<br>- FILL UP WITH ZUCCHINI CUSTARD AND POACH AT 90°C IN CONVECTION OVEN<br>- COOL DOWN AND SERVE COLD WITH LUKEWARM VEGETABLE VINAIGRETTE</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">ZUCCHINI CUSTARD<br>Chef: Patrick Diethelm | DCT, Garde Manger | July 2005<br>Yield: 6 servings<br><br>INGREDIENTS<br>6g butter<br>12g shallots<br>200g zucchini, cut into emince or small dice<br>10g white wheat flour<br>20g Pecorino, grated<br>50g Parmesan, grated<br>70ml heavy cream (36%)<br>150g egg<br>Salt and pepper to taste<br><br>METHOD<br>Sweat shallots in butter. Add zucchini emince and season with salt and pepper. Stew on low heat for 2–3 minutes, then dust with white wheat flour and remove from heat. Blend in food processor to fine purée with cream, eggs, and grated Parmesan. Strain through hair sieve only if purée is not smooth. Season with salt and pepper. Line terrine mold with plastic foil. Fill with zucchini custard and poach at 90°C in convection oven. Cool and serve cold with lukewarm vegetable vinaigrette.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

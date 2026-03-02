@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">RABBIT BALLOTINE WITH PRUNES AND ALMONDS<br>Yield: 4 - 6 servings <br>1 fresh rabbit<br>50 ml olive oil<br>120 g dry prunes<br>1 dl marsala wine<br>40 g almonds toasted<br>250 g rabbit mousseline farce - leg shoulder<br>1 clove garlic<br>2 sprigs of rosemry<br>10 g croutons 2 x 2 mm (toasted under salamander) 20 g egg yolk<br>20 g parmesan cheese<br>salt, pepper<br>100 g mirepoix<br>150 ml white wine<br>200 ml brown veal stock<br><br>Preparation:<br>- Sweat the garlic (chopped) in olive oil, add the almonds<br>- Add fine chopped rosmary, cool down.<br>- Mix the rest o e ingredients and season to taste with salt and pepper - Stew the whole dry prunes with marsala wine and cool down. <br>- Bone out rabbit carefuly<br>- Remove the hind legs and fore legs<br>     - debone  the meat from the rib bones <br>- Put the stuffing on the loins (see course instruction) and roll up tightly . - Tie with butcher's twine<br>- Season with salt, pepper and brown lightly on all sides, remove from pan add the mirepoix, Tomato paste and keep roasting<br>- Deglaze with white wine and reduce, add the brown stock and bring to a boil place the rabbit back into the pan.<br>- Cover and glaze at 180° C, basting frequently<br>- When rabbit is well done, remove and keep warm<br>add extra brown stock to glaze and bring to a boil<br>Reduce sauce to desired consistency and season to taste (40ml per person) - Strain sauce through china cap<br>- Remove carefully the twine and slice meat.<br>- Arrange on a plate and pour some sauce around the meat<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>RAW RABBIT MOUSSEUNE FARCE<br>Yield: 8 servings<br>	130 g	lean rabbit meat<br>	10 g	egg white<br>120 g cream<br>	3 g	salt<br>plus different added ingredients, depense on purpose of use<br>Preparation:<br>- Mince the lean rabbit meat very fine ( cool down)<br>- Blend in a food processor with cream, salt and egg white. - Place the bowl on ice and cool down<br>- Strain through drum sieve and keep on ice<br>- Allow to rest in the refrigerator and use for your purposes</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">RABBIT BALLOTINE WITH PRUNES AND ALMONDS<br>Yield: 4 - 6 servings <br>1 fresh rabbit<br>50 ml olive oil<br>120 g dry prunes<br>1 dl marsala wine<br>40 g almonds toasted<br>250 g rabbit mousseline farce - leg shoulder<br>1 clove garlic<br>2 sprigs of rosemry<br>10 g croutons 2 x 2 mm (toasted under salamander) 20 g egg yolk<br>20 g parmesan cheese<br>salt, pepper<br>100 g mirepoix<br>150 ml white wine<br>200 ml brown veal stock<br><br>Preparation:<br>- Sweat the garlic (chopped) in olive oil, add the almonds<br>- Add fine chopped rosmary, cool down.<br>- Mix the rest o e ingredients and season to taste with salt and pepper - Stew the whole dry prunes with marsala wine and cool down. <br>- Bone out rabbit carefuly<br>- Remove the hind legs and fore legs<br>     - debone  the meat from the rib bones <br>- Put the stuffing on the loins (see course instruction) and roll up tightly . - Tie with butcher's twine<br>- Season with salt, pepper and brown lightly on all sides, remove from pan add the mirepoix, Tomato paste and keep roasting<br>- Deglaze with white wine and reduce, add the brown stock and bring to a boil place the rabbit back into the pan.<br>- Cover and glaze at 180° C, basting frequently<br>- When rabbit is well done, remove and keep warm<br>add extra brown stock to glaze and bring to a boil<br>Reduce sauce to desired consistency and season to taste (40ml per person) - Strain sauce through china cap<br>- Remove carefully the twine and slice meat.<br>- Arrange on a plate and pour some sauce around the meat<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>RAW RABBIT MOUSSEUNE FARCE<br>Yield: 8 servings<br>	130 g	lean rabbit meat<br>	10 g	egg white<br>120 g cream<br>	3 g	salt<br>plus different added ingredients, depense on purpose of use<br>Preparation:<br>- Mince the lean rabbit meat very fine ( cool down)<br>- Blend in a food processor with cream, salt and egg white. - Place the bowl on ice and cool down<br>- Strain through drum sieve and keep on ice<br>- Allow to rest in the refrigerator and use for your purposes</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Rabbit Ballotine with Prunes and Almonds**<br>*Station: Saucier | 4–6 servings*<br><br>**Farce:**<br>Sweat chopped garlic in olive oil, add toasted almonds and finely chopped rosemary. Cool. Mix with rabbit mousseline farce, croutons, egg yolk, and Parmesan. Season with salt and pepper.<br><br>Stew dry prunes in Marsala wine and cool.<br><br>**Rabbit Preparation:**<br>Bone rabbit carefully. Remove hind and fore legs, debone meat from rib bones. Spread farce on loins, roll tightly, and tie with butcher's twine. Season with salt and pepper.<br><br>**Cooking:**<br>Brown ballotine on all sides. Remove from pan, add mirepoix and tomato paste, continue roasting. Deglaze with white wine, reduce, add brown stock, and bring to boil. Return rabbit to pan, cover, and braise at 180°C, basting frequently until cooked through.<br><br>Remove rabbit and keep warm. Add extra brown stock to pan juices, bring to boil, and reduce to desired consistency (40 ml per person). Strain sauce through fine sieve.<br><br>Remove twine carefully, slice meat, arrange on plate, and sauce around.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

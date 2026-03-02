@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Smoked bacon foam <br>Recipe # <br>Category : ECA- Saucier sauces<br>Chef: Patrick Diethelm <br> Date : 12.12.2005 <br>Cost of goods : CHF 0.31 LEUR 0.19 <br><br><br>Ingredients for 5.00 portions at 100% (Net qUelntity) <br>50 g Smoked bacon<br>40 ml Consomme   White veal stock <br>75 ml Heavy cream (36%) <br><br><br>- SWEAT THE BACON, ADD THE CREAM AND CONSOMME AND BRING TO A BOIL <br>- FOR SERVING STRAIN THROUGH A CHINA CAP AND BLEND WITH POLE BLENDER <br>TO PRODUCE FOAM AND SPOON ONLY FOAM ON DISH.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Smoked bacon foam <br>Recipe # <br>Category : ECA- Saucier sauces<br>Chef: Patrick Diethelm <br> Date : 12.12.2005 <br>Cost of goods : CHF 0.31 LEUR 0.19 <br><br><br>Ingredients for 5.00 portions at 100% (Net qUelntity) <br>50 g Smoked bacon<br>40 ml Consomme   White veal stock <br>75 ml Heavy cream (36%) <br><br><br>- SWEAT THE BACON, ADD THE CREAM AND CONSOMME AND BRING TO A BOIL <br>- FOR SERVING STRAIN THROUGH A CHINA CAP AND BLEND WITH POLE BLENDER <br>TO PRODUCE FOAM AND SPOON ONLY FOAM ON DISH.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">SMOKED BACON FOAM (5 portions)<br><br>Sweat the bacon in a saucepan. Add heavy cream and white veal consommé, bring to a boil.<br><br>Strain through fine china cap and blend with a stick blender until foamy.<br><br>For service, spoon foam only onto the plate, discarding any settled liquid if desired.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

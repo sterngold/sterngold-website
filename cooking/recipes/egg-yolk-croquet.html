@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">EGG yolks – cooked <br>Garliic paste<br>Basilicum<br>salt/pepr<br>Small kaneel form and in the fridge<br>Egg wihte/bloem</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">EGG yolks – cooked <br>Garliic paste<br>Basilicum<br>salt/pepr<br>Small kaneel form and in the fridge<br>Egg wihte/bloem</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">**Egg Yolk Croquet** | Vijf, Garde Manger<br><br>**Ingredients:**<br>- Cooked egg yolks<br>- Garlic paste<br>- Basil<br>- Salt and pepper<br>- Egg white and flour for coating<br><br>**Method:**<br>1. Mix cooked egg yolks with garlic paste, basil, salt, and pepper.<br>2. Form small croquettes and refrigerate.<br>3. Coat with egg white and flour.<br>4. Fry until golden.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

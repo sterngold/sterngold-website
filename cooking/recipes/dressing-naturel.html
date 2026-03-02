@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">Doe in een mengkom 3 eetlepels zachte mosterd en 3 eetlepels rode wijnazijn. Voeg al roerend druppelsgewijs 6 dl olifolie toe. Breng op smaak met peper en zout. Wanneer deze dressing bijna in de schift raakt een beetje water (kippen bouillon) toevoegen</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">Doe in een mengkom 3 eetlepels zachte mosterd en 3 eetlepels rode wijnazijn. Voeg al roerend druppelsgewijs 6 dl olifolie toe. Breng op smaak met peper en zout. Wanneer deze dressing bijna in de schift raakt een beetje water (kippen bouillon) toevoegen</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Combine 3 tablespoons soft mustard and 3 tablespoons red wine vinegar in a mixing bowl. While stirring constantly, add 6 dl olive oil in a slow stream until emulsified. Season with pepper and salt. If the dressing becomes too thick, thin with a little water or chicken bouillon.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

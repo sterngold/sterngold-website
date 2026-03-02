@@ -90,8 +90,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">per portie<br>Glasnoodels - 80 gr. <br>Salade - handje<br>Komkommer - 0,33<br>Chukawakme<br>Chi take <br>Aspereges - 2<br>Tomaat concasse - 0,5<br>Garnalen - 2</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">per portie<br>Glasnoodels - 80 gr. <br>Salade - handje<br>Komkommer - 0,33<br>Chukawakme<br>Chi take <br>Aspereges - 2<br>Tomaat concasse - 0,5<br>Garnalen - 2</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Harusame Salad (per portion)<br><br>Ingredients:<br>- Glass noodles: 80 g<br>- Salad greens: handful<br>- Cucumber: ⅓<br>- Shiitake mushroom<br>- Shiitake mushroom (noted twice in original)<br>- Asparagus: 2 spears<br>- Tomato concassé: 0.5<br>- Shrimp: 2<br><br>Note: Original notes appear incomplete for method; components listed are ingredients for assembly.</div>
+          
         </section>
         
 
@@ -130,5 +139,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

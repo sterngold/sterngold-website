@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">VITZNAU-LUCERNE SWITZERLAND<br>PUMKIN GNOCCHI<br>Yield: 10 servings<br>	400 g	pumkin marrow /no skin<br>	150 g	white wheat flour<br>	60 g	grated parmesan<br>	50 g	egg<br>	20 g	curd cheese<br>	40 g	brunoise of sauteed pumkin brunoise<br>	40 g	roasted chopped pumkin seeds<br>	5 g	chopped chervil<br>nutmeg, salt, pepper, pinch of baking powder<br>	30 g	butter<br>	50 g	pumkin julienne<br>Preparation:<br>Cut the pumkin skin off.<br>Wrap in alu foil ans place it on ovenproof dish and bake at 160° C approx. 35 minutes until well done<br>Strain/pass pumkin through a drum sieve and cool down. Add egg, cold pumkin brunoise, chervil to dough and chill. Add sifted flour and parmesan.<br>Season to taste with salt, pepper, nutmeg and baking powder. Allow to rest for 20 min. Scoop out small quenelles into boiling salt water. Poach for 3 - 4 min and drain <br>Toss in butter, season and arange into the-soup on top of apple rosti<br>• Small dumplings can be served as soup garnish</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">VITZNAU-LUCERNE SWITZERLAND<br>PUMKIN GNOCCHI<br>Yield: 10 servings<br>	400 g	pumkin marrow /no skin<br>	150 g	white wheat flour<br>	60 g	grated parmesan<br>	50 g	egg<br>	20 g	curd cheese<br>	40 g	brunoise of sauteed pumkin brunoise<br>	40 g	roasted chopped pumkin seeds<br>	5 g	chopped chervil<br>nutmeg, salt, pepper, pinch of baking powder<br>	30 g	butter<br>	50 g	pumkin julienne<br>Preparation:<br>Cut the pumkin skin off.<br>Wrap in alu foil ans place it on ovenproof dish and bake at 160° C approx. 35 minutes until well done<br>Strain/pass pumkin through a drum sieve and cool down. Add egg, cold pumkin brunoise, chervil to dough and chill. Add sifted flour and parmesan.<br>Season to taste with salt, pepper, nutmeg and baking powder. Allow to rest for 20 min. Scoop out small quenelles into boiling salt water. Poach for 3 - 4 min and drain <br>Toss in butter, season and arange into the-soup on top of apple rosti<br>• Small dumplings can be served as soup garnish</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">PUMPKIN GNOCCHI<br>Yield: 10 servings | Station: Pasta<br><br>Ingredients:<br>400 g pumpkin marrow (no skin)<br>150 g white wheat flour<br>60 g grated Parmesan<br>50 g egg<br>20 g curd cheese<br>40 g pumpkin brunoise, sautéed<br>40 g roasted chopped pumpkin seeds<br>5 g chopped chervil<br>30 g butter<br>50 g pumpkin julienne<br>Nutmeg, salt, pepper, pinch of baking powder<br><br>Method:<br>Skin pumpkin and wrap in aluminum foil. Place on ovenproof dish and bake at 160°C for approximately 35 minutes until fully cooked. Pass pumpkin through drum sieve and cool. Add egg, cold pumpkin brunoise, and chervil. Chill dough. Fold in sifted flour and Parmesan. Season with salt, pepper, nutmeg, and baking powder. Rest 20 minutes. Scoop small quenelles into boiling salted water and poach 3–4 minutes. Drain and toss in butter. Arrange on soup with pumpkin julienne and apple rosti.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>

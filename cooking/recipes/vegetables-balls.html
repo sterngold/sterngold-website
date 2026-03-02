@@ -57,8 +57,17 @@
 
         
         <section class="recipe-production reveal">
-          <h2>Production</h2>
-          <div class="production-text">#първо се настъргват /само пир магданоза и малко по-особено/, <br>#после се добавя яйце, разбърква се добре, <br>#после брашно докато се получи необходимата гъстота – за да може да се сипва с лъжица с силно затоплено олио. <br>#Оставя се да почине – защото, например, тиквичките пускат сок и е възможно да се наложи да се добави още малко брашно.<br>В Европа правят подобни неща, но от стъргани картофи – известните в Берлин kartoffeln puffern oder pläzchen. Евреите – онези от Полша го правят за ханука, казват се латки.<br>Всичките тези кюфтета се поднасят със сос от кисело мляко /каквото има, с копъри чесън , но това ти го знаеш и го правиш по-добре от мене. Ако му добавиш малко горчица става още по-пикантно.</div>
+          
+          <div class="production-toggle">
+            <h2>Production</h2>
+            <div class="toggle-tabs">
+              <button class="toggle-tab active" data-view="original">Original</button>
+              <button class="toggle-tab" data-view="ai">AI's Reading</button>
+            </div>
+          </div>
+          <div class="production-text production-view" data-view="original">#първо се настъргват /само пир магданоза и малко по-особено/, <br>#после се добавя яйце, разбърква се добре, <br>#после брашно докато се получи необходимата гъстота – за да може да се сипва с лъжица с силно затоплено олио. <br>#Оставя се да почине – защото, например, тиквичките пускат сок и е възможно да се наложи да се добави още малко брашно.<br>В Европа правят подобни неща, но от стъргани картофи – известните в Берлин kartoffeln puffern oder pläzchen. Евреите – онези от Полша го правят за ханука, казват се латки.<br>Всичките тези кюфтета се поднасят със сос от кисело мляко /каквото има, с копъри чесън , но това ти го знаеш и го правиш по-добре от мене. Ако му добавиш малко горчица става още по-пикантно.</div>
+          <div class="production-text production-ai production-view" data-view="ai" style="display: none;">Grate parsley (with a light hand on the parsley—don't overdo it). Add egg and mix thoroughly. Gradually incorporate flour until you reach the desired consistency—thick enough to be dropped by spoon into hot oil. Let the mixture rest, as vegetables release moisture and may require additional flour.<br><br>Note: Similar preparations exist throughout Europe, such as the Berlin kartoffeln puffern or pläzchen made from grated potatoes, and latkes made by Polish Jews for Hanukkah.<br><br>Service: Accompany with sour cream sauce finished with dill, garlic, and a touch of mustard for extra piquancy.</div>
+          
         </section>
         
 
@@ -92,5 +101,24 @@
 
   <script src="../../js/main.js"></script>
   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.toggle-tab');
+  const views = document.querySelectorAll('.production-view');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.view;
+      views.forEach(v => {
+        v.style.display = v.dataset.view === target ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
+
+
 </body>
 </html>
