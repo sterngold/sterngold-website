@@ -1,0 +1,56 @@
+# Vlad Sterngold
+
+> Digital transformation executive with six careers behind him — from professional kitchens and military service to building data and AI teams at Booking.com and Danone. He writes about what happens to people when machines get better than them.
+
+## Research: The Promethean Gap
+
+The Promethean Gap is the space between what humans can build and what humans can feel about what they've built. It shows up as shame, blindness, and the quiet moment when someone realizes the machine doesn't need them anymore.
+
+- URL: https://sterngold.nl/research.html
+- Framework: Draws on Gunther Anders (Promethean shame, 1956), Joy Buolamwini (algorithmic bias), and Alice Guy-Blache (Promethean blindness)
+- Context: 15 years of corporate AI transformation at Booking.com and Danone
+
+## Writing
+
+Essays exploring the human side of technology, identity, and work.
+
+### Machines & People (Promethean series)
+
+- [A Philosopher Named It in 1956. Your Employees Feel It Every Day.](https://sterngold.nl/writing/a-philosopher-named-it.html) — Gunther Anders saw factory workers ashamed of being slower than machines in 1956. Seventy years later, it happens at standing desks.
+- [The Lumieres Didn't Know They Were Making Art. Neither Does AI.](https://sterngold.nl/writing/the-lumieres-didnt-know.html) — December 28, 1895. The Lumiere brothers screened ten short films. Nobody called it art. AI is in its Lumiere phase right now.
+- [The Doctor and the Machine](https://sterngold.nl/writing/the-doctor-and-the-machine.html) — The machine scanned 207 moles in nine minutes. The doctor did something the machine mathematically cannot do.
+- [Your AI Transformation Program Is 113 Years Old](https://sterngold.nl/writing/we-adapted-to-the-machine.html) — Frederick Taylor sent stopwatch engineers to factory floors in 1911. We adapted to the machine then. We are doing it again now.
+- [The Machine That Builds the Machine](https://sterngold.nl/writing/the-machine-builds-the-machine.html) — In 1956, Gunther Anders predicted machines would stop waiting for us. When AI builds AI, humans become spectators of their own obsolescence.
+- [I Write About Dehumanization. I Was Doing It in My Own Sentences.](https://sterngold.nl/writing/the-bias-i-didnt-see.html) — Ten pieces. Every historical authority figure: male. Every woman in a corporate vignette: reactive. I audited my own writing for bias.
+- [The Hands Already Knew](https://sterngold.nl/writing/the-hands-already-knew.html) — A Georgian psychologist proved in the 1930s that perception is pre-set before the encounter happens. The same thing happens in every boardroom where someone demos an AI tool.
+- [The Discomfort Underneath 15 Years of Translating Tech](https://sterngold.nl/writing/fear-underneath.html) — Fifteen years translating tech to business. The bridge worked until AI made the translation unnecessary.
+- [I Built My Career on Being the Translator. Then I Ran Out of Languages.](https://sterngold.nl/writing/ran-out-of-languages.html) — For 15 years, my job was standing between the people who build technology and the people who pay for it. Then the gap closed.
+- [The Serve Nobody Taught Me](https://sterngold.nl/writing/the-serve-nobody-taught-me.html) — Tennis teaches you that the serve you need most is the one nobody taught you. AI forces the same kind of decision.
+- [What Tennis Taught Me About Sitting With Losing](https://sterngold.nl/writing/sitting-with-losing.html) — Down 2-5 in a set, your body wants to fix it. The real lesson is learning to stay.
+- [What's in a Name](https://sterngold.nl/writing/werkanders-name-story.html) — My father sent lectures from Sofia to two sons in different countries. The company that died so a new one could start.
+
+### Bodies & Identity
+
+- [What Stops You From Being Strong?](https://sterngold.nl/writing/what-stops-you-from-being-strong.html) — Three bodies, three stories, one family. On muscle, aging, and the work nobody can do for you.
+- [The Dropped Vowels](https://sterngold.nl/writing/the-dropped-vowels.html) — Hebrew drops the vowels because it trusts the reader. Systems process compressed versions of you.
+
+### Building
+
+- [I Automated My Morning Context Load. Here's What I Learned.](https://sterngold.nl/writing/i-automated-my-morning-context-load.html) — Every morning session started the same way — 15 minutes of tab-switching before actual thinking. So I built a skill to handle it.
+
+## Professional Background
+
+- Homepage and full bio: https://sterngold.nl/
+- Coaching practice: https://werkanders.com
+- 15+ years in digital transformation leadership
+- VP-level roles at Booking.com (2011-2020) and Danone (2020-2025)
+- MBA in Big Data & Analytics, University of Amsterdam
+
+## Cooking Archive
+
+- 893 family recipes: https://sterngold.nl/cooking.html
+
+## Contact
+
+- Email: vlad@sterngold.nl
+- LinkedIn: https://linkedin.com/in/sterngold

@@ -790,6 +790,25 @@ body:has(.site-nav) .hero { min-height: calc(90vh - 56px); }
   transform: translateY(0);
 }
 
+/* --- Comments (Giscus) --- */
+.comments-section {
+  padding: 3rem 0 2rem;
+  border-top: 1px solid #1a1a1a;
+}
+
+.comments-heading {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  margin-bottom: 1.5rem;
+}
+
+.giscus-wrapper {
+  min-height: 260px;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
   .about-grid {

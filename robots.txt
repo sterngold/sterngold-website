@@ -3,7 +3,17 @@ Allow: /
 
 Sitemap: https://sterngold.nl/sitemap.xml
 
-# Block AI training crawlers
+# AI agent content index — curated summary for answer engines
+# See: https://sterngold.nl/llms.txt
+
+# Allow AI answer/search agents that cite sources
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# Block AI training crawlers (do not use content for model training)
 User-agent: GPTBot
 Disallow: /
 
@@ -26,4 +36,10 @@ User-agent: cohere-ai
 Disallow: /
 
 User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: FacebookBot
 Disallow: /
