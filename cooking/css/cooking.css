@@ -1,0 +1,455 @@
+/* ============================================
+   Sterngold's Cooking — extends Spectrum design
+   ============================================ */
+
+/* --- Nav back link --- */
+.nav-back {
+  opacity: 0.5;
+  font-size: 0.8rem;
+  border-right: 1px solid #333;
+  padding-right: 1rem;
+  margin-right: 0.5rem;
+}
+
+.nav-back:hover { opacity: 1; }
+
+/* --- Cooking Hero --- */
+.cooking-hero {
+  padding: 4rem 0 2rem;
+}
+
+.cooking-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+}
+
+.cooking-tagline {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: var(--prose-width);
+  line-height: 1.7;
+}
+
+/* --- Cooking cards (override card for clickable links) --- */
+.cooking-card {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.cooking-card:hover h3 { color: var(--cyan); }
+
+/* --- Browse sections --- */
+.cooking-browse { padding: 3rem 0; }
+
+/* --- Source chips --- */
+.source-grid, .origin-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.source-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.source-chip:hover {
+  border-color: var(--cyan);
+  background: var(--card-bg-hover);
+}
+
+.source-name {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.source-count {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.05);
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+}
+
+/* --- Recipe page --- */
+.recipe-page {
+  padding: 4rem 0 2rem;
+}
+
+.recipe-header {
+  margin-bottom: 2rem;
+}
+
+.recipe-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.recipe-tag {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+.recipe-tag.station {
+  color: var(--cyan);
+  border-color: rgba(72, 219, 251, 0.3);
+}
+
+.recipe-tag.type {
+  color: var(--gold);
+  border-color: rgba(254, 202, 87, 0.3);
+}
+
+.recipe-tag.origin {
+  color: var(--green);
+  border-color: rgba(46, 213, 115, 0.3);
+}
+
+.recipe-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-name-alt {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.recipe-meta a { font-weight: 500; }
+
+/* --- Ingredients table --- */
+.recipe-ingredients h2,
+.recipe-production h2,
+.recipe-notes h2 {
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.ingredients-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ingredients-table td {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: 0.95rem;
+}
+
+.ing-qty {
+  width: 100px;
+  color: var(--cyan);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.ing-name {
+  color: var(--text);
+}
+
+.ing-note {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* --- Production text --- */
+.production-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text);
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--gold);
+  font-family: var(--font-body);
+}
+
+/* --- Recipe notes --- */
+.recipe-notes p {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* --- Recipe footer --- */
+.recipe-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+
+.recipe-provenance {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* --- Dictionary --- */
+.dict-search {
+  padding: 1.5rem 0;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: var(--cyan);
+}
+
+.search-input-large {
+  max-width: 600px;
+  font-size: 1.1rem;
+  padding: 1rem 1.25rem;
+}
+
+.search-stats {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.dict-header {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  border-bottom: 2px solid #2a2a2a;
+}
+
+.dict-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: 0.9rem;
+  color: var(--text);
+  transition: background 0.2s;
+}
+
+.dict-row:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+/* --- Notebook --- */
+.notebook-entry {
+  margin-bottom: 2rem;
+}
+
+.notebook-id {
+  font-size: 1rem;
+  color: var(--cyan);
+  margin-bottom: 1rem;
+}
+
+.notebook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.notebook-cell {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #2a2a2a;
+}
+
+.notebook-label {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.notebook-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* --- Gallery --- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item {
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid #2a2a2a;
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.gallery-item:hover {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  background: #111;
+}
+
+.gallery-caption {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Lightbox --- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+  padding: 2rem;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* --- Recipe stub (empty recipes) --- */
+.recipe-stub {
+  opacity: 0.55;
+  border-left: 2px solid var(--text-dim);
+}
+
+.recipe-stub:hover {
+  opacity: 0.8;
+}
+
+.stub-box {
+  background: var(--card-bg);
+  border: 1px dashed #333;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.stub-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.stub-box h2 {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.stub-box p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* --- Search box on hero --- */
+.search-box {
+  margin-top: 1.5rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .dict-header, .dict-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .dict-header span:nth-child(4),
+  .dict-header span:nth-child(5),
+  .dict-row span:nth-child(4),
+  .dict-row span:nth-child(5) {
+    display: none;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .recipe-meta { flex-direction: column; gap: 0.5rem; }
+
+  .source-grid, .origin-grid {
+    gap: 0.5rem;
+  }
+
+  .notebook-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .dict-header, .dict-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dict-header span:nth-child(3),
+  .dict-row span:nth-child(3) {
+    display: none;
+  }
+}

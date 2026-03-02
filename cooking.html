@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Before the Boardrooms | Vlad Sterngold</title>
-  <meta name="description" content="Before the Fortune 500s, before the data teams — there were kitchens. Seven years of professional cooking, from Wagamama Amsterdam to five-star Tschuggen Grand Hotel in the Swiss Alps.">
+  <meta name="description" content="Before the Fortune 500s, before the data teams — there were kitchens. Seven years of professional cooking, from Wagamama Amsterdam to five-star Tschuggen Grand Hotel in the Swiss Alps. 893 recipes from a professional kitchen archive.">
   <meta property="og:title" content="Before the Boardrooms — Vlad Sterngold">
   <meta property="og:description" content="Seven years of professional cooking. From Wagamama Amsterdam to the Swiss Alps. 893 recipes from a life that taught everything the boardrooms later needed.">
   <meta property="og:type" content="website">
@@ -65,10 +65,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .photo-placeholder {
-      background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), rgba(168, 85, 247, 0.1));
-      border: 2px dashed rgba(217, 119, 6, 0.3);
-    }
     .kitchen-dot {
       width: 8px;
       height: 8px;
@@ -76,13 +72,22 @@
       border-radius: 50%;
       box-shadow: 0 0 8px rgba(217, 119, 6, 0.4);
     }
+    .recipe-preview {
+      background: rgba(26, 26, 28, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .recipe-preview:hover {
+      border-color: rgba(217, 119, 6, 0.4);
+      transform: translateY(-2px);
+    }
   </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Before the Boardrooms — Vlad Sterngold",
-    "description": "Seven years of professional cooking. From Wagamama Amsterdam to five-star Tschuggen Grand Hotel. Before the Fortune 500s, before the data teams — there were kitchens.",
+    "description": "Seven years of professional cooking. From Wagamama Amsterdam to five-star Tschuggen Grand Hotel. 893 recipes from a professional kitchen archive.",
     "author": {
       "@type": "Person",
       "name": "Vlad Sterngold",
@@ -106,13 +111,16 @@
     </div>
   </nav>
 
-  <!-- Single Screen -->
+  <!-- Hero Section -->
   <section class="min-h-screen flex items-center justify-center px-6 py-24">
     <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
-      <!-- Left: Photo -->
+      <!-- Left: Chef Photo -->
       <div class="rounded-2xl overflow-hidden aspect-[4/5]">
-        <img src="img/cooking-placeholder.jpg" alt="Before the boardrooms — placeholder for Vlad's cooking photo" class="w-full h-full object-cover">
+        <picture>
+          <source srcset="cooking/img/optimized/Pictures/Vladi_chef1.webp" type="image/webp">
+          <img src="cooking/img/optimized/Pictures/Vladi_chef1.jpg" alt="Vlad Sterngold in professional kitchen whites" class="w-full h-full object-cover">
+        </picture>
       </div>
 
       <!-- Right: Story -->
@@ -140,32 +148,99 @@
           <div class="flex items-center gap-4">
             <div class="kitchen-dot"></div>
             <div>
-              <span class="text-white font-semibold">Tschuggen Grand Hotel</span>
-              <span class="text-gray-500 text-sm"> &mdash; Arosa, Switzerland &middot; 5&#9733;</span>
-              <span class="text-warm text-xs ml-2">&#x1F3C6; Gold Medal, Culinary Competition</span>
+              <span class="text-white font-semibold">DCT Culinary School</span>
+              <span class="text-gray-500 text-sm"> &mdash; Vitznau &amp; Lucerne, Switzerland</span>
             </div>
           </div>
           <div class="flex items-center gap-4">
             <div class="kitchen-dot"></div>
             <div>
-              <span class="text-white font-semibold">Airline Catering</span>
-              <span class="text-gray-500 text-sm"> &mdash; running the operation</span>
+              <span class="text-white font-semibold">Tschuggen Grand Hotel</span>
+              <span class="text-gray-500 text-sm"> &mdash; Arosa, Switzerland &middot; 5&#9733;</span>
+              <span class="text-warm text-xs ml-2">&#x1F3C6; Gold Medal</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="kitchen-dot"></div>
+            <div>
+              <span class="text-white font-semibold">Restaurant Vijf</span>
+              <span class="text-gray-500 text-sm"> &mdash; Amsterdam</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="kitchen-dot"></div>
+            <div>
+              <span class="text-white font-semibold">VandeMarkt</span>
+              <span class="text-gray-500 text-sm"> &mdash; Amsterdam</span>
             </div>
           </div>
         </div>
 
-        <!-- Favorite Recipes (placeholder) -->
-        <div class="pt-6 border-t border-white/5 mb-10">
-          <p class="text-xs uppercase tracking-[0.3em] text-warm/60 mb-3 font-semibold">Favorite Recipes</p>
-          <p class="text-gray-500 text-sm italic">Coming soon</p>
-        </div>
+        <!-- CTA -->
+        <a href="cooking/index.html" class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-warm/20 border border-warm/40 text-warm font-semibold hover:bg-warm/30 hover:border-warm/60 transition-all text-lg">
+          Enter the archive &rarr;
+        </a>
 
-        <!-- The line -->
-        <p class="text-gray-400 text-sm italic border-l-2 border-warm/30 pl-4">
-          Discipline, pressure, timing, and the understanding that good work is physical before it's intellectual. Everything the boardrooms later needed &mdash; the kitchens taught first.
-        </p>
+        <!-- Stats -->
+        <div class="flex gap-8 mt-8 text-sm text-gray-500">
+          <div><span class="text-white font-display font-bold text-lg">893</span> recipes</div>
+          <div><span class="text-white font-display font-bold text-lg">7</span> stations</div>
+          <div><span class="text-white font-display font-bold text-lg">248</span> photos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase Recipes -->
+  <section class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-5xl mx-auto">
+      <p class="text-xs uppercase tracking-[0.3em] text-warm/60 mb-8 font-semibold">From the Archive</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <a href="cooking/recipes/thai-beef-salad.html" class="recipe-preview rounded-xl p-6 block">
+          <div class="text-xs text-gray-500 uppercase tracking-widest mb-2">Tabac &middot; Garde Manger</div>
+          <h3 class="text-white font-semibold text-lg mb-3">Thai Beef Salad</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Dressing voor 25 porties &mdash; Paprika, Spanse peper, Knof, Suiker, Tomaat, Koriander, Vissaus, Limoen...</p>
+        </a>
+
+        <a href="cooking/recipes/apple-with-caramel-18.html" class="recipe-preview rounded-xl p-6 block">
+          <div class="text-xs text-gray-500 uppercase tracking-widest mb-2">Tschuggen &middot; Saucier</div>
+          <h3 class="text-white font-semibold text-lg mb-3">Apple with Caramel</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">80g crystal sugar caramelized, 5dl white wine &mdash; abl&ouml;schen. Turned apple dazugeben...</p>
+        </a>
+
+        <a href="cooking/recipes/blinis-vijf.html" class="recipe-preview rounded-xl p-6 block">
+          <div class="text-xs text-gray-500 uppercase tracking-widest mb-2">Vijf &middot; Garde Manger</div>
+          <h3 class="text-white font-semibold text-lg mb-3">Blinis Vijf</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Bloem, rogge, eiern en zachte boter mengen. Melk licht verwarmen, gist toevoegen...</p>
+        </a>
+
+        <a href="cooking/recipes/apple-almond-tart.html" class="recipe-preview rounded-xl p-6 block">
+          <div class="text-xs text-gray-500 uppercase tracking-widest mb-2">DCT &middot; P&acirc;tisserie</div>
+          <h3 class="text-white font-semibold text-lg mb-3">Swiss Apple Almond Tart</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Z&uuml;rcher Pfarrhaustorte &mdash; Tourte aux pommes zurichoise. A classic Swiss pastry tradition...</p>
+        </a>
+
+        <a href="cooking/recipes/butter-crust-for-gratinating.html" class="recipe-preview rounded-xl p-6 block">
+          <div class="text-xs text-gray-500 uppercase tracking-widest mb-2">Tschuggen &middot; Entremet</div>
+          <h3 class="text-white font-semibold text-lg mb-3">Butter Crust for Gratinating</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Melt the butter. Add the shallots and the garlic, leave on fire. Remove and add the Mie de Pain...</p>
+        </a>
 
       </div>
+
+      <div class="mt-10 text-center">
+        <a href="cooking/index.html" class="text-warm hover:text-white transition-colors text-sm font-semibold uppercase tracking-widest">Browse all 893 recipes &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Line -->
+  <section class="py-16 px-6 border-t border-white/5">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-gray-400 text-lg italic leading-relaxed">
+        Discipline, pressure, timing, and the understanding that good work is physical before it's intellectual. Everything the boardrooms later needed &mdash; the kitchens taught first.
+      </p>
     </div>
   </section>
 
