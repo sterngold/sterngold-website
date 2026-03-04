@@ -25,39 +25,61 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Vlad Sterngold",
-    "url": "https://sterngold.nl",
-    "mainEntityOfPage": "https://sterngold.nl/about.html",
-    "jobTitle": "Digital Transformation Executive",
-    "description": "Vlad Sterngold is a digital transformation executive with six careers behind him — from professional kitchens and military service to building data and AI teams at Booking.com and Danone. He writes about what happens to people when machines get better than them.",
-    "hasOccupation": {
-      "@type": "Occupation",
-      "name": "Digital Transformation Executive",
-      "occupationalCategory": "15-1199.09"
-    },
-    "worksFor": {
-      "@type": "Organization",
-      "name": "WerkAnders",
-      "url": "https://werkanders.com"
-    },
-    "subjectOf": {
-      "@type": "ResearchProject",
-      "name": "The Promethean Gap",
-      "url": "https://sterngold.nl/research.html",
-      "description": "Research into the gap between what humans can build and what humans can feel about what they've built."
-    },
-    "sameAs": [
-      "https://linkedin.com/in/sterngold",
-      "https://medium.com/@Sterngold",
-      "https://vladsterngold.substack.com",
-      "https://www.reddit.com/user/vlad_sterngold/",
-      "https://werkanders.com"
-    ],
-    "knowsLanguage": ["en", "bg", "nl", "ru", "de", "he"],
-    "alumniOf": [
-      {"@type": "CollegeOrUniversity", "name": "University of Amsterdam"},
-      {"@type": "CollegeOrUniversity", "name": "VU Amsterdam"}
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://sterngold.nl/#person",
+        "name": "Vlad Sterngold",
+        "url": "https://sterngold.nl",
+        "mainEntityOfPage": "https://sterngold.nl/about.html",
+        "jobTitle": "Digital Transformation Executive",
+        "description": "Digital transformation executive with six careers behind him — from professional kitchens and military service to building data and AI teams at Booking.com and Danone. He writes about what happens to people when machines get better than them.",
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Digital Transformation Executive",
+          "occupationalCategory": "15-1199.09"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "WerkAnders",
+          "url": "https://werkanders.com"
+        },
+        "alumniOf": [
+          {"@type": "CollegeOrUniversity", "name": "University of Amsterdam"},
+          {"@type": "CollegeOrUniversity", "name": "VU Amsterdam"}
+        ],
+        "knowsLanguage": ["en", "bg", "nl", "ru", "de", "he"],
+        "sameAs": [
+          "https://linkedin.com/in/sterngold",
+          "https://medium.com/@Sterngold",
+          "https://vladsterngold.substack.com",
+          "https://www.reddit.com/user/vlad_sterngold/",
+          "https://werkanders.com"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://sterngold.nl/#website",
+        "name": "Vlad Sterngold",
+        "url": "https://sterngold.nl",
+        "description": "Personal website of Vlad Sterngold — six careers, one thread.",
+        "author": {"@id": "https://sterngold.nl/#person"}
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "@id": "https://sterngold.nl/research.html",
+        "name": "The Promethean Gap",
+        "url": "https://sterngold.nl/research.html",
+        "author": {"@id": "https://sterngold.nl/#person"},
+        "description": "The gap between what humans can build and what humans can feel about what they've built. Shows up as shame, blindness, and the quiet moment when someone realizes the machine doesn't need them anymore.",
+        "about": [
+          "Promethean shame",
+          "algorithmic bias",
+          "AI transformation",
+          "human-machine relationship"
+        ],
+        "isPartOf": {"@id": "https://sterngold.nl/#website"}
+      }
     ]
   }
   </script>
