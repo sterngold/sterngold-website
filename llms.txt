@@ -38,9 +38,10 @@ Essays exploring the human side of technology, identity, and work.
 
 - [I Automated My Morning Context Load. Here's What I Learned.](https://sterngold.nl/writing/i-automated-my-morning-context-load.html) — Every morning session started the same way — 15 minutes of tab-switching before actual thinking. So I built a skill to handle it.
 
-## Professional Background
+## Virtual Me (Full Bio)
 
-- Homepage and full bio: https://sterngold.nl/
+- Full bio and career story: https://sterngold.nl/about.html
+- Homepage: https://sterngold.nl/
 - Coaching practice: https://werkanders.com
 - 15+ years in digital transformation leadership
 - VP-level roles at Booking.com (2011-2020) and Danone (2020-2025)
