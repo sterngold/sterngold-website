@@ -6,6 +6,32 @@
 /* --- Reset & Base --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Skip-to-content link — CSS-only, no inline JS */
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.sr-only:focus {
+  position: fixed;
+  left: 0.5rem;
+  top: 0.5rem;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: #A855F7;
+  color: #0a0a0b;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
 :root {
   --bg: #0a0a0a;
   --card-bg: #1a1a1a;

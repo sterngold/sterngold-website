@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <a class="sr-only" href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" onfocus="this.style.position='fixed';this.style.left='0.5rem';this.style.top='0.5rem';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';this.style.zIndex='9999';this.style.padding='0.5rem 1rem';this.style.background='#A855F7';this.style.color='#0a0a0b';this.style.borderRadius='8px';this.style.fontSize='0.875rem';this.style.fontWeight='700'" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden'">Skip to main content</a>
+  <a class="sr-only" href="#main-content">Skip to main content</a>
 
   <!-- ===== NAV ===== -->
   <nav class="site-nav" aria-label="Main navigation">
@@ -234,45 +234,6 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script>
-    // Category filtering
-    document.addEventListener('DOMContentLoaded', () => {
-      const pills = document.querySelectorAll('.filter-pill');
-      const cards = document.querySelectorAll('.essay-card');
-      const featured = document.querySelector('.featured-card');
-
-      pills.forEach(pill => {
-        pill.addEventListener('click', () => {
-          pills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-selected', 'false'); });
-          pill.classList.add('active');
-          pill.setAttribute('aria-selected', 'true');
-
-          const filter = pill.dataset.filter;
-
-          // Featured card
-          if (featured) {
-            if (filter === 'all' || featured.dataset.category === filter) {
-              featured.style.display = '';
-              featured.closest('.writing-featured').style.display = '';
-            } else {
-              featured.style.display = 'none';
-              featured.closest('.writing-featured').style.display = 'none';
-            }
-          }
-
-          // Essay cards
-          cards.forEach(card => {
-            if (filter === 'all' || card.dataset.category === filter) {
-              card.style.display = '';
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            } else {
-              card.style.display = 'none';
-            }
-          });
-        });
-      });
-    });
-  </script>
+  <script src="js/writing-filters.js"></script>
 </body>
 </html>
