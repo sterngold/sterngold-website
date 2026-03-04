@@ -49,9 +49,10 @@
   </script>
 </head>
 <body>
+<a class="sr-only" href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" onfocus="this.style.position='fixed';this.style.left='0.5rem';this.style.top='0.5rem';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';this.style.zIndex='9999';this.style.padding='0.5rem 1rem';this.style.background='#A855F7';this.style.color='#0a0a0b';this.style.borderRadius='8px';this.style.fontSize='0.875rem';this.style.fontWeight='700'" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden'">Skip to main content</a>
 
   <!-- ===== NAV ===== -->
-  <nav class="site-nav">
+  <nav class="site-nav" aria-label="Main navigation">
     <div class="container nav-inner">
       <a href="../index.html" class="nav-name">Vlad Sterngold</a>
       <div class="nav-links">
@@ -64,7 +65,7 @@
   </nav>
 
   <!-- ===== ESSAY ===== -->
-  <article class="essay">
+  <article class="essay" id="main-content">
     <div class="container">
       <div class="prose">
 
@@ -159,7 +160,7 @@
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer>
+  <footer aria-label="Site footer">
     <p>&copy; 2026 Vlad Sterngold</p>
   </footer>
 

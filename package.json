@@ -1,0 +1,11 @@
+{
+  "name": "sterngold-nl",
+  "private": true,
+  "scripts": {
+    "build": "npx @tailwindcss/cli -i src/input.css -o dist/output.css",
+    "dev": "npx @tailwindcss/cli -i src/input.css -o dist/output.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4"
+  }
+}

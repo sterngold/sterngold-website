@@ -18,70 +18,10 @@
   <meta name="twitter:description" content="Seven years of professional cooking. From Wagamama Amsterdam to the Swiss Alps. 893 recipes.">
   <meta property="og:image" content="https://sterngold.nl/img/social-card-default.png">
   <meta name="twitter:image" content="https://sterngold.nl/img/social-card-default.png">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="/dist/output.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Space Grotesk', 'sans-serif'],
-          },
-          colors: {
-            brand: '#A855F7',
-            darkBg: '#0a0a0b',
-            cardBg: '#1a1a1c',
-            warm: '#D97706',
-            pride: {
-              red: '#ef4444',
-              orange: '#f97316',
-              yellow: '#eab308',
-              green: '#22c55e',
-              blue: '#3b82f6',
-              purple: '#a855f7',
-              grey: '#71717a'
-            }
-          },
-          backgroundImage: {
-            'pride-gradient': 'linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #a855f7)',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    .glass-card {
-      background: rgba(26, 26, 28, 0.7);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .pride-text {
-      background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .kitchen-dot {
-      width: 8px;
-      height: 8px;
-      background: #D97706;
-      border-radius: 50%;
-      box-shadow: 0 0 8px rgba(217, 119, 6, 0.4);
-    }
-    .recipe-preview {
-      background: rgba(26, 26, 28, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .recipe-preview:hover {
-      border-color: rgba(217, 119, 6, 0.4);
-      transform: translateY(-2px);
-    }
-  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -96,23 +36,24 @@
   }
   </script>
 </head>
-<body class="bg-darkBg text-gray-300 font-sans selection:bg-brand selection:text-darkBg">
+<body class="bg-dark-bg text-gray-300 font-sans selection:bg-brand selection:text-dark-bg">
+  <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-brand focus:text-dark-bg focus:rounded-lg focus:text-sm focus:font-bold" href="#main-content">Skip to main content</a>
 
   <!-- Sticky Nav -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-darkBg/85 backdrop-blur-xl border-b border-white/5">
+  <nav aria-label="Main navigation" class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/85 backdrop-blur-xl border-b border-white/5">
     <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
       <a href="index.html" class="text-white font-bold tracking-tight text-sm hover:text-brand transition-colors">Vlad Sterngold</a>
       <div class="flex gap-6">
         <a href="index.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Home</a>
         <a href="research.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Research</a>
         <a href="writing.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Writing</a>
-        <a href="cooking.html" class="text-xs uppercase tracking-widest text-white hover:text-brand transition-colors">Cooking</a>
+        <a href="cooking.html" aria-current="page" class="text-xs uppercase tracking-widest text-white hover:text-brand transition-colors">Cooking</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="min-h-screen flex items-center justify-center px-6 py-24">
+  <section id="main-content" class="min-h-screen flex items-center justify-center px-6 py-24">
     <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
       <!-- Left: Chef Photos -->
@@ -127,13 +68,13 @@
           <div class="rounded-xl overflow-hidden">
             <picture>
               <source srcset="cooking/img/chef/chef2.webp" type="image/webp">
-              <img src="cooking/img/chef/chef2.jpg" alt="Vlad Sterngold receiving gold medal trophy at Kocharena with fellow competitor" class="w-full h-full object-cover">
+              <img src="cooking/img/chef/chef2.jpg" alt="Vlad Sterngold receiving gold medal trophy at Kocharena with fellow competitor" class="w-full h-full object-cover" loading="lazy">
             </picture>
           </div>
           <div class="rounded-xl overflow-hidden">
             <picture>
               <source srcset="cooking/img/chef/chef3.webp" type="image/webp">
-              <img src="cooking/img/chef/chef3.jpg" alt="Vlad Sterngold with Kocharena award plate and DCT European Culinary Center badge" class="w-full h-full object-cover">
+              <img src="cooking/img/chef/chef3.jpg" alt="Vlad Sterngold with Kocharena award plate and DCT European Culinary Center badge" class="w-full h-full object-cover" loading="lazy">
             </picture>
           </div>
         </div>
@@ -261,7 +202,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-12 bg-darkBg text-center px-6 border-t border-white/5">
+  <footer aria-label="Site footer" class="py-12 bg-dark-bg text-center px-6 border-t border-white/5">
     <div class="max-w-3xl mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-gray-600 gap-6">
         <div>&copy; 2026 Vlad Sterngold</div>

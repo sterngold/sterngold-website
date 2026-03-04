@@ -16,30 +16,31 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Writing — Vlad Sterngold">
   <meta name="twitter:description" content="Essays on AI transformation, aging bodies, and building things. By Vlad Sterngold.">
-  <meta property="og:image" content="https://sterngold.nl/img/social-card-default.png">
-  <meta name="twitter:image" content="https://sterngold.nl/img/social-card-default.png">
+  <meta property="og:image" content="https://sterngold.nl/img/social-card-writing.png">
+  <meta name="twitter:image" content="https://sterngold.nl/img/social-card-writing.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <a class="sr-only" href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" onfocus="this.style.position='fixed';this.style.left='0.5rem';this.style.top='0.5rem';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';this.style.zIndex='9999';this.style.padding='0.5rem 1rem';this.style.background='#A855F7';this.style.color='#0a0a0b';this.style.borderRadius='8px';this.style.fontSize='0.875rem';this.style.fontWeight='700'" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden'">Skip to main content</a>
 
   <!-- ===== NAV ===== -->
-  <nav class="site-nav">
+  <nav class="site-nav" aria-label="Main navigation">
     <div class="container nav-inner">
       <a href="index.html" class="nav-name">Vlad Sterngold</a>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="research.html">Research</a>
-        <a href="writing.html" class="active">Writing</a>
+        <a href="writing.html" class="active" aria-current="page">Writing</a>
         <a href="cooking.html">Cooking</a>
       </div>
     </div>
   </nav>
 
   <!-- ===== WRITING HEADER ===== -->
-  <section class="writing-header">
+  <section id="main-content" class="writing-header">
     <div class="container">
       <h1 class="gradient-text reveal">Writing</h1>
       <p class="writing-intro reveal">Field notes from the Promethean Gap. On machines and the people who live with them. On bodies that age and the work nobody can do for you. On building things that didn't exist yesterday.</p>
@@ -49,11 +50,11 @@
   <!-- ===== FILTERS ===== -->
   <section class="writing-filters" style="padding: 0;">
     <div class="container">
-      <div class="filter-pills reveal">
-        <button class="filter-pill active" data-filter="all">All</button>
-        <button class="filter-pill" data-filter="machines">Machines &amp; People</button>
-        <button class="filter-pill" data-filter="bodies">Bodies &amp; Time</button>
-        <button class="filter-pill" data-filter="building">Building Things</button>
+      <div class="filter-pills reveal" role="tablist" aria-label="Filter essays by category">
+        <button class="filter-pill active" role="tab" aria-selected="true" data-filter="all">All</button>
+        <button class="filter-pill" role="tab" aria-selected="false" data-filter="machines">Machines &amp; People</button>
+        <button class="filter-pill" role="tab" aria-selected="false" data-filter="bodies">Bodies &amp; Time</button>
+        <button class="filter-pill" role="tab" aria-selected="false" data-filter="building">Building Things</button>
       </div>
     </div>
   </section>
@@ -228,7 +229,7 @@
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer>
+  <footer aria-label="Site footer">
     <p>&copy; 2026 Vlad Sterngold</p>
   </footer>
 
@@ -242,8 +243,9 @@
 
       pills.forEach(pill => {
         pill.addEventListener('click', () => {
-          pills.forEach(p => p.classList.remove('active'));
+          pills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-selected', 'false'); });
           pill.classList.add('active');
+          pill.setAttribute('aria-selected', 'true');
 
           const filter = pill.dataset.filter;
 

@@ -18,115 +18,11 @@
   <meta name="twitter:description" content="Six careers — from professional kitchens and military service to building data and AI teams at Booking.com and Danone. He writes about what happens to people when machines get better than them.">
   <meta property="og:image" content="https://sterngold.nl/img/social-card-default.png">
   <meta name="twitter:image" content="https://sterngold.nl/img/social-card-default.png">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preload" as="image" href="img/hero-sailing-full.jpg">
+  <link href="/dist/output.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            brand: '#A855F7',
-            darkBg: '#0a0a0b',
-            cardBg: '#1a1a1c',
-            pride: {
-              red: '#ef4444',
-              orange: '#f97316',
-              yellow: '#eab308',
-              green: '#22c55e',
-              blue: '#3b82f6',
-              purple: '#a855f7',
-              grey: '#71717a'
-            }
-          },
-          backgroundImage: {
-            'pride-gradient': 'linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #a855f7)',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    @keyframes glow {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 5px rgba(168, 85, 247, 0.2); }
-      50% { transform: scale(1.2); box-shadow: 0 0 20px rgba(168, 85, 247, 0.6); }
-    }
-    .glow-dot {
-      animation: glow 3s infinite ease-in-out;
-      transition: all 0.3s ease;
-    }
-    .timeline-node:hover .glow-dot {
-      transform: scale(1.4);
-      filter: brightness(1.2);
-    }
-    .timeline-tooltip {
-      display: none;
-      position: absolute;
-      top: 120%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      z-index: 50;
-    }
-    .timeline-node:hover .timeline-tooltip {
-      display: block;
-    }
-    .glass-card {
-      background: rgba(26, 26, 28, 0.7);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .pride-text {
-      background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-bg {
-      background-image: linear-gradient(rgba(10, 10, 11, 0.15), rgba(10, 10, 11, 0.65)), url('img/hero-sailing-full.jpg');
-      background-size: cover;
-      background-position: center 40%;
-    }
-    /* Accordion */
-    details[data-purpose='career-accordion'] summary {
-      list-style: none;
-      cursor: pointer;
-      outline: none;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-    }
-    details[data-purpose='career-accordion'] summary::-webkit-details-marker {
-      display: none;
-    }
-    details[data-purpose='career-accordion'][open] summary {
-      color: #A855F7;
-    }
-    details[data-purpose='career-accordion'] summary:hover {
-      background-color: rgba(255, 255, 255, 0.05);
-      transform: translateY(-2px) scale(1.01);
-    }
-    details[data-purpose='career-accordion'] summary:hover .text-white {
-      color: #A855F7;
-    }
-    details[data-purpose='career-accordion'] summary:hover svg {
-      transform: translateY(2px);
-    }
-    /* Flag Animations */
-    @keyframes funky-float {
-      0%, 100% { transform: translateY(0) rotate(0); }
-      25% { transform: translateY(-4px) rotate(-2deg); }
-      75% { transform: translateY(-2px) rotate(2deg); }
-    }
-    .animate-funky-flag {
-      animation: funky-float 3s infinite ease-in-out;
-    }
-  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -167,14 +63,15 @@
   }
   </script>
 </head>
-<body class="bg-darkBg text-gray-300 font-sans selection:bg-brand selection:text-darkBg">
+<body class="bg-dark-bg text-gray-300 font-sans selection:bg-brand selection:text-dark-bg">
+  <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-brand focus:text-dark-bg focus:rounded-lg focus:text-sm focus:font-bold" href="#main-content">Skip to main content</a>
 
   <!-- Sticky Nav -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-darkBg/85 backdrop-blur-xl border-b border-white/5">
+  <nav aria-label="Main navigation" class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/85 backdrop-blur-xl border-b border-white/5">
     <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
       <a href="index.html" class="text-white font-bold tracking-tight text-sm hover:text-brand transition-colors">Vlad Sterngold</a>
       <div class="flex gap-6">
-        <a href="index.html" class="text-xs uppercase tracking-widest text-white hover:text-brand transition-colors">Home</a>
+        <a href="index.html" aria-current="page" class="text-xs uppercase tracking-widest text-white hover:text-brand transition-colors">Home</a>
         <a href="research.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Research</a>
         <a href="writing.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Writing</a>
         <a href="cooking.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Cooking</a>
@@ -183,7 +80,7 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="relative h-screen flex flex-col items-center justify-center text-center px-4 hero-bg">
+  <section id="main-content" class="relative h-screen flex flex-col items-center justify-center text-center px-4 hero-bg">
     <div class="max-w-4xl">
       <h1 class="text-6xl md:text-8xl font-extrabold mb-4 tracking-tight">
         Vlad <span class="pride-text">Sterngold</span>
@@ -198,7 +95,7 @@
   </section>
 
   <!-- Stats Bar -->
-  <section class="py-12 border-y border-white/5 bg-darkBg/50 backdrop-blur-sm">
+  <section class="py-12 border-y border-white/5 bg-dark-bg/50 backdrop-blur-sm">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
         <div>
@@ -231,7 +128,7 @@
       <div class="w-full lg:w-1/3 flex justify-center lg:justify-start">
         <div class="relative w-48 h-48 rounded-full border-2 border-brand/30 flex items-center justify-center p-2 group overflow-hidden">
           <div class="absolute inset-0 border-2 border-brand rounded-full opacity-20 group-hover:opacity-100 transition-opacity duration-700"></div>
-          <div class="w-full h-full bg-cardBg rounded-full flex items-center justify-center text-4xl font-bold tracking-tighter text-brand">
+          <div class="w-full h-full bg-card-bg rounded-full flex items-center justify-center text-4xl font-bold tracking-tighter text-brand">
             VS
           </div>
         </div>
@@ -255,43 +152,43 @@
         <div class="absolute h-[2px] w-full bg-white/10 top-1/2 -translate-y-1/2"></div>
         <div class="flex justify-between w-full relative z-10">
           <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
-            <div class="w-6 h-6 bg-pride-red rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <div class="w-6 h-6 bg-pride-red rounded-full glow-dot border-4 border-dark-bg mb-4" aria-hidden="true"></div>
             <span class="text-sm font-bold text-white">1998</span>
             <span class="text-[10px] uppercase text-gray-500 mt-1">Kitchens</span>
-            <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">The pressure of high-end service. Discipline, speed, and teamwork.</div>
+            <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">The pressure of high-end service. Discipline, speed, and teamwork. <a href="cooking.html" class="text-brand hover:underline">See the kitchens &rarr;</a></div>
           </div>
           <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
-            <div class="w-6 h-6 bg-pride-orange rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <div class="w-6 h-6 bg-pride-orange rounded-full glow-dot border-4 border-dark-bg mb-4" aria-hidden="true"></div>
             <span class="text-sm font-bold text-white">2000</span>
             <span class="text-[10px] uppercase text-gray-500 mt-1">Military</span>
             <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">Structured leadership and adaptability in high-stakes environments.</div>
           </div>
           <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
-            <div class="w-6 h-6 bg-pride-yellow rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <div class="w-6 h-6 bg-pride-yellow rounded-full glow-dot border-4 border-dark-bg mb-4" aria-hidden="true"></div>
             <span class="text-sm font-bold text-white">2003</span>
             <span class="text-[10px] uppercase text-gray-500 mt-1">Advertising</span>
             <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">Creative strategy and understanding human behavior through data.</div>
           </div>
           <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
-            <div class="w-6 h-6 bg-pride-green rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <div class="w-6 h-6 bg-pride-green rounded-full glow-dot border-4 border-dark-bg mb-4" aria-hidden="true"></div>
             <span class="text-sm font-bold text-white">2004</span>
             <span class="text-[10px] uppercase text-gray-500 mt-1">Founder</span>
             <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">Launching Anders Star. Building analytics for the hospitality sector.</div>
           </div>
           <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
-            <div class="w-6 h-6 bg-pride-blue rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <div class="w-6 h-6 bg-pride-blue rounded-full glow-dot border-4 border-dark-bg mb-4" aria-hidden="true"></div>
             <span class="text-sm font-bold text-white">2011</span>
             <span class="text-[10px] uppercase text-gray-500 mt-1 text-center">Booking.com</span>
             <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">9 years scaling teams from 3 to 50+ and driving AI innovation globally.</div>
           </div>
           <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
-            <div class="w-6 h-6 bg-pride-purple rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <div class="w-6 h-6 bg-pride-purple rounded-full glow-dot border-4 border-dark-bg mb-4" aria-hidden="true"></div>
             <span class="text-sm font-bold text-white">2020</span>
             <span class="text-[10px] uppercase text-gray-500 mt-1 text-center">Danone</span>
             <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">5 years establishing digital trust and global data governance.</div>
           </div>
           <div class="flex flex-col items-center group cursor-pointer timeline-node relative">
-            <div class="w-6 h-6 bg-white rounded-full glow-dot border-4 border-darkBg mb-4"></div>
+            <div class="w-6 h-6 bg-white rounded-full glow-dot border-4 border-dark-bg mb-4" aria-hidden="true"></div>
             <span class="text-sm font-bold text-white">2026</span>
             <span class="text-[10px] uppercase text-gray-500 mt-1">Next</span>
             <div class="timeline-tooltip glass-card p-3 rounded-lg text-xs text-gray-300">Focused on AI transformation and the human side of technology.</div>
@@ -336,7 +233,7 @@
   </section>
 
   <!-- Career Highlights -->
-  <section class="py-24 bg-cardBg/30 border-y border-white/5">
+  <section class="py-24 bg-card-bg/30 border-y border-white/5">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-12 font-semibold">Career Highlights</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -469,14 +366,14 @@
   </section>
 
   <!-- Footer / CTA -->
-  <footer class="py-32 bg-darkBg text-center px-6">
+  <footer aria-label="Site footer" class="py-32 bg-dark-bg text-center px-6">
     <div class="max-w-3xl mx-auto">
       <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
         I'd welcome a <span class="pride-text">conversation.</span>
       </h2>
       <p class="text-gray-500 mb-12">Amsterdam, Netherlands</p>
       <div class="flex flex-col sm:flex-row justify-center gap-6">
-        <a class="px-10 py-4 bg-brand text-darkBg font-bold rounded-lg hover:bg-brand/90 transition-all text-sm uppercase tracking-widest shadow-lg shadow-brand/20" href="mailto:vlad@sterngold.nl">
+        <a class="px-10 py-4 bg-brand text-dark-bg font-bold rounded-lg hover:bg-brand/90 transition-all text-sm uppercase tracking-widest shadow-lg shadow-brand/20" href="mailto:vlad@sterngold.nl">
           Email Me
         </a>
         <a class="px-10 py-4 border border-white/10 text-white font-bold rounded-lg hover:bg-white/5 transition-all text-sm uppercase tracking-widest" href="https://linkedin.com/in/sterngold" target="_blank" rel="noopener">

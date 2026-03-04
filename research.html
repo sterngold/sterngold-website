@@ -16,212 +16,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Promethean Gap — Vlad Sterngold">
   <meta name="twitter:description" content="What happens to people when machines get better than them. Research into the gap between building and understanding.">
-  <meta property="og:image" content="https://sterngold.nl/img/social-card-default.png">
-  <meta name="twitter:image" content="https://sterngold.nl/img/social-card-default.png">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <meta property="og:image" content="https://sterngold.nl/img/social-card-research.png">
+  <meta name="twitter:image" content="https://sterngold.nl/img/social-card-research.png">
+  <link href="/dist/output.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Space Grotesk', 'sans-serif'],
-          },
-          colors: {
-            brand: '#A855F7',
-            darkBg: '#0a0a0b',
-            cardBg: '#1a1a1c',
-            pride: {
-              red: '#ef4444',
-              orange: '#f97316',
-              yellow: '#eab308',
-              green: '#22c55e',
-              blue: '#3b82f6',
-              purple: '#a855f7',
-              grey: '#71717a'
-            }
-          },
-          backgroundImage: {
-            'pride-gradient': 'linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #a855f7)',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    .glass-card {
-      background: rgba(26, 26, 28, 0.7);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .pride-text {
-      background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .vignette-card {
-      border-left: 2px solid rgba(168, 85, 247, 0.3);
-      transition: all 0.3s ease;
-    }
-    .vignette-card:hover {
-      border-left-color: #A855F7;
-      background: rgba(168, 85, 247, 0.03);
-    }
-    blockquote {
-      position: relative;
-    }
-    blockquote::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, #A855F7, transparent);
-    }
-
-    /* --- Mirror Gate --- */
-    #mirror-gate {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6rem 1.5rem 4rem;
-    }
-    .mirror-container {
-      max-width: 640px;
-      width: 100%;
-    }
-    .mirror-step {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      position: absolute;
-      width: 100%;
-      pointer-events: none;
-    }
-    .mirror-step.active {
-      opacity: 1;
-      transform: translateY(0);
-      position: relative;
-      pointer-events: auto;
-    }
-    .mirror-step.fading-out {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    .mirror-question {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
-      font-weight: 500;
-      color: #fff;
-      line-height: 1.4;
-      margin-bottom: 2rem;
-    }
-    .mirror-step-indicator {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #A855F7;
-      margin-bottom: 1.5rem;
-    }
-    .mirror-options {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-    }
-    .mirror-option {
-      background: rgba(26, 26, 28, 0.7);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 1.25rem 1rem;
-      color: #d1d5db;
-      font-size: 0.95rem;
-      line-height: 1.4;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: left;
-    }
-    .mirror-option:hover {
-      border-color: rgba(168, 85, 247, 0.4);
-      background: rgba(168, 85, 247, 0.05);
-    }
-    .mirror-option.selected {
-      border-color: #A855F7;
-      background: rgba(168, 85, 247, 0.1);
-      color: #fff;
-    }
-    .mirror-skip {
-      display: inline-block;
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      color: #6b7280;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .mirror-skip:hover {
-      color: #A855F7;
-    }
-    .mirror-begin-btn {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.75rem 2.5rem;
-      background: #A855F7;
-      color: #0a0a0b;
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .mirror-begin-btn:hover {
-      background: rgba(168, 85, 247, 0.85);
-    }
-    .mirror-enter-btn {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.75rem 2.5rem;
-      background: #A855F7;
-      color: #0a0a0b;
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .mirror-enter-btn:hover {
-      background: rgba(168, 85, 247, 0.85);
-    }
-    .mirror-reflection-text {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #d1d5db;
-    }
-    .mirror-reflection-text em {
-      color: #A855F7;
-    }
-    @media (max-width: 640px) {
-      .mirror-options {
-        grid-template-columns: 1fr;
-      }
-      #mirror-gate {
-        padding: 5rem 1rem 3rem;
-      }
-    }
-  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -245,15 +45,16 @@
   }
   </script>
 </head>
-<body class="bg-darkBg text-gray-300 font-sans selection:bg-brand selection:text-darkBg">
+<body class="bg-dark-bg text-gray-300 font-sans selection:bg-brand selection:text-dark-bg">
+  <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-brand focus:text-dark-bg focus:rounded-lg focus:text-sm focus:font-bold" href="#main-content">Skip to main content</a>
 
   <!-- Sticky Nav -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-darkBg/85 backdrop-blur-xl border-b border-white/5">
+  <nav aria-label="Main navigation" class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/85 backdrop-blur-xl border-b border-white/5">
     <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
       <a href="index.html" class="text-white font-bold tracking-tight text-sm hover:text-brand transition-colors">Vlad Sterngold</a>
       <div class="flex gap-6">
         <a href="index.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Home</a>
-        <a href="research.html" class="text-xs uppercase tracking-widest text-white hover:text-brand transition-colors">Research</a>
+        <a href="research.html" aria-current="page" class="text-xs uppercase tracking-widest text-white hover:text-brand transition-colors">Research</a>
         <a href="writing.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Writing</a>
         <a href="cooking.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Cooking</a>
       </div>
@@ -261,6 +62,7 @@
   </nav>
 
   <!-- ===== MIRROR GATE ===== -->
+  <div id="main-content"></div>
   <div id="mirror-gate">
     <div class="mirror-container">
 
@@ -280,7 +82,7 @@
       <div class="mirror-step" id="mirror-step-1">
         <p class="mirror-step-indicator">Question 1 of 3</p>
         <p class="mirror-question">When AI does something faster than you at work, what&rsquo;s your first feeling?</p>
-        <div class="mirror-options">
+        <div class="mirror-options" role="group">
           <button class="mirror-option" data-q="1" data-a="withdrawal" onclick="mirrorSelect(this)">&ldquo;I need to learn that too&rdquo;</button>
           <button class="mirror-option" data-q="1" data-a="avoidance" onclick="mirrorSelect(this)">&ldquo;Great &mdash; another tool in the kit&rdquo;</button>
           <button class="mirror-option" data-q="1" data-a="attack-self" onclick="mirrorSelect(this)">&ldquo;What I spent years learning just got&hellip; smaller&rdquo;</button>
@@ -293,7 +95,7 @@
       <div class="mirror-step" id="mirror-step-2">
         <p class="mirror-step-indicator">Question 2 of 3</p>
         <p class="mirror-question">When you have a half-formed idea, who do you think it through with first?</p>
-        <div class="mirror-options">
+        <div class="mirror-options" role="group">
           <button class="mirror-option" data-q="2" data-a="human-colleague" onclick="mirrorSelect(this)">A colleague I trust</button>
           <button class="mirror-option" data-q="2" data-a="ai-partner" onclick="mirrorSelect(this)">ChatGPT, Claude, or another AI</button>
           <button class="mirror-option" data-q="2" data-a="alone" onclick="mirrorSelect(this)">I sit with it alone first</button>
@@ -306,7 +108,7 @@
       <div class="mirror-step" id="mirror-step-3">
         <p class="mirror-step-indicator">Question 3 of 3</p>
         <p class="mirror-question">What do you hope stays the same about how you work?</p>
-        <div class="mirror-options">
+        <div class="mirror-options" role="group">
           <button class="mirror-option" data-q="3" data-a="relationships" onclick="mirrorSelect(this)">The human relationships</button>
           <button class="mirror-option" data-q="3" data-a="expertise" onclick="mirrorSelect(this)">My expertise mattering</button>
           <button class="mirror-option" data-q="3" data-a="freedom" onclick="mirrorSelect(this)">The creative freedom</button>
@@ -367,7 +169,7 @@
   </section>
 
   <!-- The Framework -->
-  <section class="py-24 bg-cardBg/30 border-y border-white/5">
+  <section class="py-24 bg-card-bg/30 border-y border-white/5">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-4 font-semibold">The Framework</h2>
       <p class="text-gray-500 text-sm mb-12 max-w-2xl">Three concepts. One gap. Each builds on the last.</p>
@@ -476,7 +278,7 @@
   </section>
 
   <!-- The Question -->
-  <section class="py-24 bg-cardBg/30 border-y border-white/5">
+  <section class="py-24 bg-card-bg/30 border-y border-white/5">
     <div class="max-w-3xl mx-auto px-6 text-center">
       <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-12 font-semibold">The Question</h2>
       <p class="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8 font-display">
@@ -536,7 +338,7 @@
   </section>
 
   <!-- About the Researcher -->
-  <section class="py-24 bg-cardBg/30 border-y border-white/5">
+  <section class="py-24 bg-card-bg/30 border-y border-white/5">
     <div class="max-w-3xl mx-auto px-6">
       <h2 class="text-xs uppercase tracking-[0.3em] text-brand mb-8 font-semibold">About the Researcher</h2>
       <p class="text-gray-300 leading-relaxed mb-4">
@@ -560,14 +362,14 @@
   </section>
 
   <!-- Footer / CTA -->
-  <footer class="py-32 bg-darkBg text-center px-6">
+  <footer aria-label="Site footer" class="py-32 bg-dark-bg text-center px-6">
     <div class="max-w-3xl mx-auto">
       <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
         Navigating the <span class="pride-text">gap?</span>
       </h2>
       <p class="text-gray-500 mb-12">If your organization is between humans and machines, I'd welcome a conversation.</p>
       <div class="flex flex-col sm:flex-row justify-center gap-6">
-        <a class="px-10 py-4 bg-brand text-darkBg font-bold rounded-lg hover:bg-brand/90 transition-all text-sm uppercase tracking-widest shadow-lg shadow-brand/20" href="mailto:vlad@sterngold.nl">
+        <a class="px-10 py-4 bg-brand text-dark-bg font-bold rounded-lg hover:bg-brand/90 transition-all text-sm uppercase tracking-widest shadow-lg shadow-brand/20" href="mailto:vlad@sterngold.nl">
           Email Me
         </a>
         <a class="px-10 py-4 border border-white/10 text-white font-bold rounded-lg hover:bg-white/5 transition-all text-sm uppercase tracking-widest" href="https://linkedin.com/in/sterngold" target="_blank" rel="noopener">
