@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -15,14 +15,13 @@
   <link rel="canonical" href="https://sterngold.nl/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Vlad Sterngold — Six Careers. One Thread.">
-  <meta name="twitter:description" content="Six careers — from professional kitchens and military service to building data and AI teams at Booking.com and Danone. He writes about what happens to people when machines get better than them.">
+  <meta name="twitter:description" content="Six careers — from professional kitchens and military service to building data and AI teams at Booking.com and Danone.">
   <meta property="og:image" content="https://sterngold.nl/img/social-card-default.png">
   <meta name="twitter:image" content="https://sterngold.nl/img/social-card-default.png">
-  <link rel="preload" as="image" href="img/hero-sailing-full.jpg">
   <link href="/dist/output.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet"/>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -53,7 +52,6 @@
           "https://linkedin.com/in/sterngold",
           "https://medium.com/@Sterngold",
           "https://vladsterngold.substack.com",
-          "https://www.reddit.com/user/vlad_sterngold/",
           "https://werkanders.com"
         ]
       },
@@ -64,105 +62,166 @@
         "url": "https://sterngold.nl",
         "description": "Personal website of Vlad Sterngold — six careers, one thread.",
         "author": {"@id": "https://sterngold.nl/#person"}
-      },
-      {
-        "@type": "ScholarlyArticle",
-        "@id": "https://sterngold.nl/research.html",
-        "name": "The Promethean Gap",
-        "url": "https://sterngold.nl/research.html",
-        "author": {"@id": "https://sterngold.nl/#person"},
-        "description": "The gap between what humans can build and what humans can feel about what they've built. Shows up as shame, blindness, and the quiet moment when someone realizes the machine doesn't need them anymore.",
-        "about": [
-          "Promethean shame",
-          "algorithmic bias",
-          "AI transformation",
-          "human-machine relationship"
-        ],
-        "isPartOf": {"@id": "https://sterngold.nl/#website"}
       }
     ]
   }
   </script>
 </head>
-<body class="bg-dark-bg text-gray-300 font-sans selection:bg-brand selection:text-dark-bg">
-  <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-brand focus:text-dark-bg focus:rounded-lg focus:text-sm focus:font-bold" href="#main-content">Skip to main content</a>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- Sticky Nav -->
-  <nav aria-label="Main navigation" class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/85 backdrop-blur-xl border-b border-white/5">
+  <!-- Ghost Nav — hidden until scroll -->
+  <nav class="ghost-nav" id="ghostNav" aria-label="Main navigation">
     <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
-      <a href="index.html" class="text-white font-bold tracking-tight text-sm hover:text-brand transition-colors">Vlad Sterngold</a>
-      <div class="flex gap-4 md:gap-6">
-        <a href="index.html" aria-current="page" class="text-xs uppercase tracking-widest text-white hover:text-brand transition-colors">Home</a>
-        <a href="about.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Virtual Me</a>
-        <a href="research.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Research</a>
-        <a href="writing.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Writing</a>
-        <a href="cooking.html" class="text-xs uppercase tracking-widest text-gray-500 hover:text-brand transition-colors">Cooking</a>
+      <a href="index.html" class="text-sm font-bold tracking-tight" style="color: var(--color-text);">Vlad Sterngold</a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="index.html" aria-current="page" class="text-xs uppercase tracking-[0.15em]">Home</a>
+        <a href="about.html" class="text-xs uppercase tracking-[0.15em]">About</a>
+        <a href="coaching.html" class="text-xs uppercase tracking-[0.15em]">WerkAnders</a>
+        <a href="writing.html" class="text-xs uppercase tracking-[0.15em]">Writing</a>
+        <a href="playground.html" class="text-xs uppercase tracking-[0.15em]">Reality</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+          <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
       </div>
+      <button class="md:hidden theme-toggle" id="menuToggle" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="main-content" class="relative h-screen flex flex-col items-center justify-center text-center px-4 hero-bg">
-    <div class="max-w-4xl">
-      <h1 class="text-6xl md:text-8xl font-extrabold mb-4 tracking-tight">
-        Vlad <span class="pride-text">Sterngold</span>
-      </h1>
-      <p class="text-xl md:text-2xl text-gray-400 font-light tracking-wide max-w-2xl mx-auto">
-        Six careers. One thread.
-      </p>
-      <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4">
-        <a class="px-10 py-4 bg-brand text-dark-bg font-bold rounded-lg hover:bg-brand/90 transition-all text-sm uppercase tracking-widest shadow-lg shadow-brand/20" href="research.html">
-          Explore the Research
-        </a>
-        <a class="px-10 py-4 border border-white/10 text-white font-bold rounded-lg hover:bg-white/5 transition-all text-sm uppercase tracking-widest" href="writing.html">
-          Read the Essays
-        </a>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button id="menuClose" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--color-text);font-size:2rem;cursor:pointer;">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="coaching.html">WerkAnders</a>
+    <a href="writing.html">Writing</a>
+    <a href="playground.html">Reality</a>
+    <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle dark/light mode" style="margin-top:1rem;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+  </div>
+
+  <!-- ============================================
+       HERO — First screen: Name + Photo + Numbers
+       ============================================ -->
+  <section id="main-content" class="min-h-screen flex items-center px-6 pt-8 pb-16">
+    <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+
+      <!-- Left: Photo -->
+      <div class="order-2 md:order-1 flex justify-center">
+        <div class="relative">
+          <img src="img/hero-sailing-full.jpg"
+               alt="Vlad Sterngold"
+               class="w-full max-w-md rounded-2xl shadow-2xl"
+               style="aspect-ratio: 4/5; object-fit: cover; object-position: center 30%;">
+          <!-- Accent border glow -->
+          <div class="absolute -inset-1 rounded-2xl opacity-20" style="background: linear-gradient(135deg, var(--color-accent), transparent); z-index: -1;"></div>
+        </div>
       </div>
-    </div>
-    <div class="absolute bottom-10 animate-bounce">
-      <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+
+      <!-- Right: Name + Tagline + Numbers -->
+      <div class="order-1 md:order-2">
+        <h1 class="heading-xl mb-4">
+          Vlad<br><span class="pride-text">Sterngold</span>
+        </h1>
+        <p class="text-lg md:text-xl tracking-wide" style="color: var(--color-text-dim); font-weight: 300;">
+          Six Careers. One Thread.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- Tagline Section -->
-  <section class="py-32 px-6">
+  <!-- ============================================
+       Dictionary Entry — The Anders Connection
+       ============================================ -->
+  <section class="py-16 px-6 reveal" style="border-top: 1px solid var(--color-border);">
     <div class="max-w-3xl mx-auto text-center">
-      <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light">
-        From professional kitchens and military service to building data and AI teams at Booking.com and Danone. He writes about what happens to people when machines get better than them.
+      <p class="text-lg md:text-xl" style="color: var(--color-text-dim); font-weight: 300; font-style: italic;">
+        <span style="color: var(--color-accent); font-style: normal; font-weight: 600;">anders</span>
+        <span class="text-sm" style="color: var(--color-text-muted);"> /ˈɑn.dərs/</span>
+        &nbsp;&mdash;&nbsp; Dutch &amp; German: <em>different, otherwise.</em>
       </p>
-      <a class="inline-flex items-center text-brand text-sm font-semibold hover:gap-2 transition-all mt-10" href="about.html">
-        Read the full story <span class="ml-1">&rarr;</span>
-      </a>
     </div>
   </section>
 
-  <!-- Footer / CTA -->
-  <footer aria-label="Site footer" class="py-32 bg-dark-bg text-center px-6 border-t border-white/5">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-        I'd welcome a <span class="pride-text">conversation.</span>
-      </h2>
-      <p class="text-gray-500 mb-12">Amsterdam, Netherlands</p>
-      <div class="flex flex-col sm:flex-row justify-center gap-6">
-        <a class="px-10 py-4 bg-brand text-dark-bg font-bold rounded-lg hover:bg-brand/90 transition-all text-sm uppercase tracking-widest shadow-lg shadow-brand/20" href="mailto:vlad@sterngold.nl">
-          Email Me
+  <!-- ============================================
+       Three Anders — Guide, Name, Build
+       ============================================ -->
+  <section class="py-16 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- WerkAnders -->
+        <a href="coaching.html" class="card card-accent block text-left reveal">
+          <p class="subheading mb-3">I guide it.</p>
+          <h3 class="heading-md mb-1" style="color: var(--color-text);">WerkAnders</h3>
+          <p class="text-xs mb-3" style="color: var(--color-text-muted); font-style: italic;">Work, differently.</p>
+          <p class="text-sm" style="color: var(--color-text-dim);">
+            Coaching executives through AI transformation. The fear, the shame, the identity shift &mdash; and what comes after.
+          </p>
+          <span class="inline-block mt-4 text-xs uppercase tracking-widest" style="color: var(--color-accent);">Explore &rarr;</span>
         </a>
-        <a class="px-10 py-4 border border-white/10 text-white font-bold rounded-lg hover:bg-white/5 transition-all text-sm uppercase tracking-widest" href="https://linkedin.com/in/sterngold" target="_blank" rel="noopener">
-          LinkedIn
+
+        <!-- Anders Writing -->
+        <a href="writing.html" class="card card-accent block text-left reveal reveal-delay-1">
+          <p class="subheading mb-3">I name it.</p>
+          <h3 class="heading-md mb-1" style="color: var(--color-text);">Anders Writing</h3>
+          <p class="text-xs mb-3" style="color: var(--color-text-muted); font-style: italic;">Think, differently.</p>
+          <p class="text-sm" style="color: var(--color-text-dim);">
+            Essays on what machines do to people. Shame, adaptation, the moment someone realizes they've been replaced.
+          </p>
+          <span class="inline-block mt-4 text-xs uppercase tracking-widest" style="color: var(--color-accent);">Read &rarr;</span>
         </a>
+
+        <!-- Anders Reality -->
+        <a href="playground.html" class="card card-accent block text-left reveal reveal-delay-2">
+          <p class="subheading mb-3">I build it.</p>
+          <h3 class="heading-md mb-1" style="color: var(--color-text);">Anders Reality</h3>
+          <p class="text-xs mb-3" style="color: var(--color-text-muted); font-style: italic;">Build, differently.</p>
+          <p class="text-sm" style="color: var(--color-text-dim);">
+            Experiments, tools, and projects built with AI. A 893-recipe cooking archive. A food tracker. And whatever comes next.
+          </p>
+          <span class="inline-block mt-4 text-xs uppercase tracking-widest" style="color: var(--color-accent);">Explore &rarr;</span>
+        </a>
+
       </div>
-      <div class="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-gray-600 gap-6">
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer aria-label="Site footer" class="py-20 px-6" style="border-top: 1px solid var(--color-border);">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        <div>
+          <h2 class="heading-md mb-2" style="color: var(--color-text);">Let's talk.</h2>
+          <p class="text-sm" style="color: var(--color-text-muted);">Amsterdam, Netherlands</p>
+        </div>
+        <div class="flex gap-4">
+          <a href="mailto:vlad@sterngold.nl" class="btn-primary">Email</a>
+          <a href="https://linkedin.com/in/sterngold" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a>
+        </div>
+      </div>
+      <div class="mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.15em] gap-4" style="border-top: 1px solid var(--color-border); color: var(--color-text-muted);">
         <div>&copy; 2026 Vlad Sterngold</div>
-        <nav class="flex gap-8">
-          <a class="hover:text-brand transition-colors" href="index.html">Home</a>
-          <a class="hover:text-brand transition-colors" href="about.html">Virtual Me</a>
-          <a class="hover:text-brand transition-colors" href="research.html">Research</a>
-          <a class="hover:text-brand transition-colors" href="writing.html">Writing</a>
-          <a class="hover:text-brand transition-colors" href="cooking.html">Cooking</a>
+        <nav class="flex gap-6">
+          <a class="footer-link" href="index.html">Home</a>
+          <a class="footer-link" href="about.html">About</a>
+          <a class="footer-link" href="coaching.html">WerkAnders</a>
+          <a class="footer-link" href="writing.html">Writing</a>
+          <a class="footer-link" href="playground.html">Reality</a>
         </nav>
       </div>
     </div>
   </footer>
 
+  <!-- ============================================
+       Scripts
+       ============================================ -->
+  <script src="js/main.js"></script>
 </body>
 </html>

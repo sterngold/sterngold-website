@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Anders Reality | Vlad Sterngold</title>
+  <meta name="description" content="Anders Reality: experiments, tools, and projects built with AI. A 893-recipe cooking archive, a food tracker, and whatever comes next.">
+  <meta property="og:title" content="Anders Reality — Build, Differently.">
+  <meta property="og:description" content="Experiments, tools, and projects built with AI.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sterngold.nl/playground.html">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="canonical" href="https://sterngold.nl/playground.html">
+  <link href="/dist/output.css" rel="stylesheet">
+  <style>
+    .cooking-photo {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border: 3px solid white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex-shrink: 0;
+    }
+    .cooking-photo:hover {
+      transform: rotate(0deg) scale(1.15) !important;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      z-index: 10;
+      position: relative;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Ghost Nav -->
+  <nav class="ghost-nav" id="ghostNav" aria-label="Main navigation">
+    <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="index.html" class="text-sm font-bold tracking-tight" style="color: var(--color-text);">Vlad Sterngold</a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-xs uppercase tracking-[0.15em]">Home</a>
+        <a href="about.html" class="text-xs uppercase tracking-[0.15em]">About</a>
+        <a href="coaching.html" class="text-xs uppercase tracking-[0.15em]">WerkAnders</a>
+        <a href="writing.html" class="text-xs uppercase tracking-[0.15em]">Writing</a>
+        <a href="playground.html" aria-current="page" class="text-xs uppercase tracking-[0.15em]">Reality</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+          <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+      <button class="md:hidden theme-toggle" id="menuToggle" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button id="menuClose" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--color-text);font-size:2rem;cursor:pointer;">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="coaching.html">WerkAnders</a>
+    <a href="writing.html">Writing</a>
+    <a href="playground.html">Reality</a>
+  </div>
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section id="main-content" class="pt-32 pb-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="subheading mb-4">I build it.</p>
+      <h1 class="heading-lg mb-3">Anders <span class="pride-text">Reality</span></h1>
+      <p class="text-lg" style="color: var(--color-text-dim); font-weight: 300; font-style: italic;">Build, differently.</p>
+      <p class="body-text mt-8 max-w-xl mx-auto">
+        I don't just write about AI &mdash; I build with it. These are experiments, tools, and side projects. Some are useful. Some are just fun. All of them taught me something.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PROJECTS
+       ============================================ -->
+  <section class="py-16 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Sterngold's Cooking -->
+        <a href="cooking/index.html" class="card card-accent block reveal" style="grid-column: 1 / -1;">
+          <p class="subheading mb-2">Archive</p>
+          <h3 class="heading-md mb-3" style="color: var(--color-text);">Sterngold's Cooking</h3>
+          <blockquote class="body-text mb-4" style="border-left: 2px solid var(--color-accent); padding-left: 1rem; font-style: italic; color: var(--color-text-dim);">
+            &ldquo;Your body is not a temple, it&rsquo;s an amusement park. Enjoy the ride.&rdquo;
+            <span class="block text-xs mt-1" style="color: var(--color-accent); font-style: normal;">&mdash; Anthony Bourdain</span>
+          </blockquote>
+          <div class="flex justify-center items-center py-4" style="min-height: 160px; position: relative;">
+            <img src="cooking/img/chef/chef3.jpg" alt="Vlad at Kocharena, DCT Switzerland" class="cooking-photo" style="transform: rotate(-6deg) translateX(-40px);" loading="lazy">
+            <img src="cooking/img/optimized/Pictures/And_chef3.jpg" alt="Herb mousse with salmon" class="cooking-photo" style="transform: rotate(3deg) translateX(-20px) translateY(8px);" loading="lazy">
+            <img src="cooking/img/chef/chef1.jpg" alt="Vlad cooking at competition" class="cooking-photo" style="transform: rotate(-2deg);" loading="lazy">
+            <img src="cooking/img/optimized/Pictures/Charlotte_Russe.jpg" alt="Charlotte Russe" class="cooking-photo" style="transform: rotate(5deg) translateX(20px) translateY(-6px);" loading="lazy">
+            <img src="cooking/img/optimized/Pictures/DSC02613.jpg" alt="Salmon mille-feuille" class="cooking-photo" style="transform: rotate(-4deg) translateX(40px) translateY(4px);" loading="lazy">
+          </div>
+          <div class="flex justify-between items-center mt-2">
+            <p class="text-xs" style="color: var(--color-text-muted);">893 recipes &middot; 8 stations &middot; 248 photos &middot; 152 dictionary terms</p>
+            <span class="text-xs uppercase tracking-widest" style="color: var(--color-accent);">Browse the archive &rarr;</span>
+          </div>
+        </a>
+
+        <!-- FoodLog -->
+        <div class="card reveal reveal-delay-1">
+          <div class="flex items-start gap-3 mb-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="1.5" class="flex-shrink-0 mt-0.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            <div>
+              <p class="subheading mb-1">Tool</p>
+              <h3 class="heading-md" style="color: var(--color-text);">FoodLog</h3>
+            </div>
+          </div>
+          <p class="body-text mb-3">
+            Voice-first nutrition tracker. Speak what you ate, Claude extracts the macros. Built in a day, deployed on Render, input via Apple Shortcut.
+          </p>
+          <span class="inline-block text-xs uppercase tracking-widest" style="color: var(--color-text-muted);">Private tool</span>
+        </div>
+
+        <!-- EventRadar -->
+        <div class="card reveal reveal-delay-2">
+          <div class="flex items-start gap-3 mb-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="1.5" class="flex-shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
+            <div>
+              <p class="subheading mb-1">Discovery</p>
+              <h3 class="heading-md" style="color: var(--color-text);">EventRadar</h3>
+            </div>
+          </div>
+          <p class="body-text mb-3">
+            Personal event discovery engine. Scrapes concerts, exhibitions, and theater across Amsterdam, London, Frankfurt, and Sofia. AI-scored recommendations.
+          </p>
+          <span class="inline-block text-xs uppercase tracking-widest" style="color: var(--color-text-muted);">Private tool</span>
+        </div>
+
+        <!-- Coming Next -->
+        <div class="card reveal reveal-delay-3" style="border-style: dashed;">
+          <div class="flex items-start gap-3 mb-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="1.5" class="flex-shrink-0 mt-0.5"><path d="M9 3h6v4l-2 2 2 4v4h-2v3h-2v-3H9v-4l2-4-2-2V3z"/><line x1="9" y1="3" x2="15" y2="3"/></svg>
+            <div>
+              <p class="subheading mb-1">Next</p>
+              <h3 class="heading-md" style="color: var(--color-text);">What's cooking</h3>
+            </div>
+          </div>
+          <p class="body-text mb-3">
+            An ear training app. A graph-retrieval research toolkit. An AI coaching intake agent. Whatever problem looks interesting next.
+          </p>
+          <span class="inline-block text-xs uppercase tracking-widest" style="color: var(--color-text-muted);">In progress</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA
+       ============================================ -->
+  <section class="py-16 px-6" style="border-top: 1px solid var(--color-border);">
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <p class="body-text mb-6">
+        Everything here was built with Claude Code. The essays. The websites. The trackers. Even this page.
+      </p>
+      <a href="https://andersreality.com" target="_blank" rel="noopener" class="btn-ghost">andersreality.com &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer aria-label="Site footer" class="py-20 px-6" style="border-top: 1px solid var(--color-border);">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.15em] gap-4" style="color: var(--color-text-muted);">
+        <div>&copy; 2026 Vlad Sterngold</div>
+        <nav class="flex gap-6">
+          <a class="footer-link" href="index.html">Home</a>
+          <a class="footer-link" href="about.html">About</a>
+          <a class="footer-link" href="coaching.html">WerkAnders</a>
+          <a class="footer-link" href="writing.html">Writing</a>
+          <a class="footer-link" href="playground.html">Reality</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

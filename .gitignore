@@ -1,3 +1,5 @@
 node_modules/
-dist/
 .DS_Store
+cooking/img/Pictures/
+cooking/img/Pictures_gallery/
+cooking/tools/

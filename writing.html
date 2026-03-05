@@ -1,237 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Writing — Vlad Sterngold</title>
-  <meta name="description" content="Essays on AI transformation, aging bodies, and building things. By Vlad Sterngold.">
-  <meta property="og:title" content="Writing — Vlad Sterngold">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Anders Writing | Vlad Sterngold</title>
+  <meta name="description" content="Essays on what machines do to people. Shame, adaptation, identity — and the moments nobody writes about in the vendor deck.">
+  <meta property="og:title" content="Anders Writing — Think, Differently.">
   <meta property="og:description" content="Essays on AI transformation, aging bodies, and building things. By Vlad Sterngold.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sterngold.nl/writing.html">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
   <link rel="canonical" href="https://sterngold.nl/writing.html">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Writing — Vlad Sterngold">
-  <meta name="twitter:description" content="Essays on AI transformation, aging bodies, and building things. By Vlad Sterngold.">
   <meta property="og:image" content="https://sterngold.nl/img/social-card-writing.png">
-  <meta name="twitter:image" content="https://sterngold.nl/img/social-card-writing.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="/dist/output.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    /* Filter pills */
+    .filter-pill {
+      padding: 0.4rem 1rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--color-text-dim);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-pill:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+    .filter-pill.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-bg);
+    }
+
+    /* Category dots */
+    .category-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.35rem;
+    }
+    .category-dot.machines { background: var(--color-accent); }
+    .category-dot.bodies { background: #ef4444; }
+    .category-dot.building { background: #3b82f6; }
+
+    /* Category tag (featured) */
+    .category-tag {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+    .category-tag.machines {
+      background: var(--color-accent-surface);
+      color: var(--color-accent);
+    }
+    .category-tag.bodies {
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+    }
+    .category-tag.building {
+      background: rgba(59, 130, 246, 0.1);
+      color: #3b82f6;
+    }
+
+    /* Essay card */
+    .essay-card {
+      display: flex;
+      gap: 0.75rem;
+      padding: 1.25rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .essay-card:hover {
+      border-color: var(--color-accent);
+      background: var(--color-accent-surface);
+    }
+    .essay-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      line-height: 1.3;
+      color: var(--color-text);
+      margin-bottom: 0.35rem;
+    }
+    .essay-card p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--color-text-dim);
+    }
+    .essay-date {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* Featured card */
+    .featured-card {
+      padding: 2rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    .featured-card:hover {
+      border-color: var(--color-accent);
+      background: var(--color-accent-surface);
+    }
+    .featured-card h2 a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+      line-height: 1.3;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+    .featured-card h2 a:hover {
+      color: var(--color-accent);
+    }
+    .featured-quote {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--color-text-dim);
+      margin-top: 0.75rem;
+    }
+  </style>
 </head>
 <body>
-  <a class="sr-only" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- ===== NAV ===== -->
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="container nav-inner">
-      <a href="index.html" class="nav-name">Vlad Sterngold</a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">Virtual Me</a>
-        <a href="research.html">Research</a>
-        <a href="writing.html" class="active" aria-current="page">Writing</a>
-        <a href="cooking.html">Cooking</a>
+  <!-- Ghost Nav -->
+  <nav class="ghost-nav" id="ghostNav" aria-label="Main navigation">
+    <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="index.html" class="text-sm font-bold tracking-tight" style="color: var(--color-text);">Vlad Sterngold</a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-xs uppercase tracking-[0.15em]">Home</a>
+        <a href="about.html" class="text-xs uppercase tracking-[0.15em]">About</a>
+        <a href="coaching.html" class="text-xs uppercase tracking-[0.15em]">WerkAnders</a>
+        <a href="writing.html" aria-current="page" class="text-xs uppercase tracking-[0.15em]">Writing</a>
+        <a href="playground.html" class="text-xs uppercase tracking-[0.15em]">Reality</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+          <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
       </div>
+      <button class="md:hidden theme-toggle" id="menuToggle" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
     </div>
   </nav>
 
-  <!-- ===== WRITING HEADER ===== -->
-  <section id="main-content" class="writing-header">
-    <div class="container">
-      <h1 class="gradient-text reveal">Writing</h1>
-      <p class="writing-intro reveal">Field notes from the Promethean Gap. On machines and the people who live with them. On bodies that age and the work nobody can do for you. On building things that didn't exist yesterday.</p>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button id="menuClose" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--color-text);font-size:2rem;cursor:pointer;">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="coaching.html">WerkAnders</a>
+    <a href="writing.html">Writing</a>
+    <a href="playground.html">Reality</a>
+  </div>
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section id="main-content" class="pt-32 pb-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="subheading mb-4">I name it.</p>
+      <h1 class="heading-lg mb-3">Anders <span class="pride-text">Writing</span></h1>
+      <p class="text-lg" style="color: var(--color-text-dim); font-weight: 300; font-style: italic;">Think, differently.</p>
+      <p class="body-text mt-8 max-w-xl mx-auto">
+        Field notes from the Promethean Gap. On machines and the people who live with them. On bodies that age and the work nobody can do for you. On building things that didn&rsquo;t exist yesterday.
+      </p>
     </div>
   </section>
 
-  <!-- ===== FILTERS ===== -->
-  <section class="writing-filters" style="padding: 0;">
-    <div class="container">
-      <div class="filter-pills reveal" role="tablist" aria-label="Filter essays by category">
-        <button class="filter-pill active" role="tab" aria-selected="true" data-filter="all">All</button>
-        <button class="filter-pill" role="tab" aria-selected="false" data-filter="machines">Machines &amp; People</button>
+  <!-- ============================================
+       FILTERS
+       ============================================ -->
+  <section class="px-6 pb-8">
+    <div class="max-w-5xl mx-auto flex justify-center">
+      <div class="flex flex-wrap gap-2 justify-center reveal" role="tablist" aria-label="Filter essays by category">
+        <button class="filter-pill active" role="tab" aria-selected="true" data-filter="machines">Machines &amp; People</button>
         <button class="filter-pill" role="tab" aria-selected="false" data-filter="bodies">Bodies &amp; Time</button>
         <button class="filter-pill" role="tab" aria-selected="false" data-filter="building">Building Things</button>
       </div>
     </div>
   </section>
 
-  <!-- ===== FEATURED PIECE ===== -->
-  <section class="writing-featured" style="padding-top: 2rem;">
-    <div class="container">
-      <div class="featured-card reveal" data-category="machines">
+  <!-- ============================================
+       FEATURED
+       ============================================ -->
+  <section class="writing-featured px-6 pb-8">
+    <div class="max-w-3xl mx-auto">
+      <a href="writing/the-doctor-and-the-machine.html" class="featured-card block reveal" data-category="machines" style="text-decoration:none;">
         <span class="category-tag machines">Machines &amp; People</span>
-        <h2><a href="writing/the-doctor-and-the-machine.html">The Doctor and the Machine</a></h2>
-        <blockquote class="featured-quote">"The machine is faster at pattern recognition. The doctor is doing something the machine mathematically cannot do."</blockquote>
-        <span class="piece-date">February 2026</span>
-      </div>
+        <h2><span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(1.3rem,2.5vw,1.6rem);color:var(--color-text);">The Doctor and the Machine</span></h2>
+        <p class="featured-quote">&ldquo;The machine is faster at pattern recognition. The doctor is doing something the machine mathematically cannot do.&rdquo;</p>
+        <span class="essay-date">February 2026</span>
+      </a>
     </div>
   </section>
 
-  <div class="container"><hr class="spectrum-line-thin"></div>
+  <!-- ============================================
+       ESSAY GRID
+       ============================================ -->
+  <section class="py-8 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-  <!-- ===== ESSAY GRID ===== -->
-  <section class="writing-grid-section">
-    <div class="container">
-      <div class="writing-grid">
-
-        <!-- New — Mar 2, 2026 -->
         <a href="writing/the-hands-already-knew.html" class="essay-card reveal" data-category="machines">
           <span class="category-dot machines"></span>
-          <div class="essay-content">
+          <div>
             <h3>The Hands Already Knew</h3>
             <p>A Georgian psychologist proved that perception is pre-set before the encounter. The same thing happens in every boardroom where someone demos an AI tool.</p>
+            <div class="essay-date">Mar 2026</div>
           </div>
-          <span class="piece-date">Mar 2026</span>
         </a>
 
         <a href="writing/the-bias-i-didnt-see.html" class="essay-card reveal" data-category="machines">
           <span class="category-dot machines"></span>
-          <div class="essay-content">
+          <div>
             <h3>I Write About Dehumanization. I Was Doing It in My Own Sentences.</h3>
             <p>Ten pieces. Every authority figure: male. Every woman: reactive. I audited my own writing for bias.</p>
+            <div class="essay-date">Feb 2026</div>
           </div>
-          <span class="piece-date">Feb 2026</span>
         </a>
 
         <a href="writing/a-philosopher-named-it.html" class="essay-card reveal" data-category="machines">
           <span class="category-dot machines"></span>
-          <div class="essay-content">
+          <div>
             <h3>A Philosopher Named It in 1956. Your Employees Feel It Every Day.</h3>
-            <p>G&uuml;nther Anders saw factory workers ashamed of being slower than machines. Seventy years later, it's happening at standing desks.</p>
+            <p>G&uuml;nther Anders saw factory workers ashamed of being slower than machines. Seventy years later, it&rsquo;s happening at standing desks.</p>
+            <div class="essay-date">Feb 2026</div>
           </div>
-          <span class="piece-date">Feb 2026</span>
         </a>
 
         <a href="writing/the-dropped-vowels.html" class="essay-card reveal" data-category="bodies">
           <span class="category-dot bodies"></span>
-          <div class="essay-content">
+          <div>
             <h3>The Dropped Vowels</h3>
             <p>Hebrew drops the vowels. Systems process compressed versions of you. Six context files, thirty years, and the vowels that waited.</p>
+            <div class="essay-date">Feb 2026</div>
           </div>
-          <span class="piece-date">Feb 2026</span>
         </a>
 
         <a href="writing/i-automated-my-morning-context-load.html" class="essay-card reveal" data-category="building">
           <span class="category-dot building"></span>
-          <div class="essay-content">
-            <h3>I Automated My Morning Context Load. Here's What I Learned.</h3>
+          <div>
+            <h3>I Automated My Morning Context Load. Here&rsquo;s What I Learned.</h3>
             <p>100 lines of markdown. 20 seconds. A skill that replaced 15 minutes of tab-switching every morning.</p>
+            <div class="essay-date">Feb 2026</div>
           </div>
-          <span class="piece-date">Feb 2026</span>
         </a>
 
-        <!-- Machines & People -->
         <a href="writing/the-machine-builds-the-machine.html" class="essay-card reveal" data-category="machines">
           <span class="category-dot machines"></span>
-          <div class="essay-content">
+          <div>
             <h3>The Machine That Builds the Machine</h3>
             <p>When AI builds AI, humans become spectators. Anders warned us about this in 1956.</p>
+            <div class="essay-date">Feb 2026</div>
           </div>
-          <span class="piece-date">Feb 2026</span>
         </a>
 
         <a href="writing/we-adapted-to-the-machine.html" class="essay-card reveal" data-category="machines">
           <span class="category-dot machines"></span>
-          <div class="essay-content">
+          <div>
             <h3>Your AI Transformation Program Is 113 Years Old</h3>
-            <p>Frederick Taylor, 1911. The first automation of human work. We're still running his playbook.</p>
+            <p>Frederick Taylor, 1911. The first automation of human work. We&rsquo;re still running his playbook.</p>
+            <div class="essay-date">Feb 2026</div>
           </div>
-          <span class="piece-date">Feb 2026</span>
         </a>
 
         <a href="writing/the-lumieres-didnt-know.html" class="essay-card reveal" data-category="machines">
           <span class="category-dot machines"></span>
-          <div class="essay-content">
-            <h3>The Lumières Didn't Know They Were Making Art. Neither Does AI.</h3>
-            <p>1895, 2024, and the pattern nobody sees while it's happening.</p>
+          <div>
+            <h3>The Lumi&egrave;res Didn&rsquo;t Know They Were Making Art. Neither Does AI.</h3>
+            <p>1895, 2024, and the pattern nobody sees while it&rsquo;s happening.</p>
+            <div class="essay-date">Feb 2026</div>
           </div>
-          <span class="piece-date">Feb 2026</span>
+        </a>
+
+        <a href="writing/what-stops-you-from-being-strong.html" class="essay-card reveal" data-category="bodies">
+          <span class="category-dot bodies"></span>
+          <div>
+            <h3>What Stops You From Being Strong?</h3>
+            <p>Three bodies, three stories, one family. On muscle, aging, and the work nobody can do for you.</p>
+            <div class="essay-date">Feb 2026</div>
+          </div>
         </a>
 
         <a href="writing/werkanders-name-story.html" class="essay-card reveal" data-category="machines">
           <span class="category-dot machines"></span>
-          <div class="essay-content">
-            <h3>What's in a Name</h3>
-            <p>The story behind WerkAnders — family, philosophy, and a company that died so a new one could start.</p>
+          <div>
+            <h3>What&rsquo;s in a Name</h3>
+            <p>The story behind WerkAnders &mdash; family, philosophy, and a company that died so a new one could start.</p>
+            <div class="essay-date">Feb 2026</div>
           </div>
-          <span class="piece-date">Feb 2026</span>
         </a>
 
-        <!-- Bodies & Time -->
-        <a href="writing/what-stops-you-from-being-strong.html" class="essay-card reveal" data-category="bodies">
-          <span class="category-dot bodies"></span>
-          <div class="essay-content">
-            <h3>What Stops You From Being Strong?</h3>
-            <p>Three bodies, three stories, one family. On muscle, aging, and the work nobody can do for you.</p>
-          </div>
-          <span class="piece-date">Feb 2026</span>
-        </a>
-
-        <!-- Machines & People (continued) -->
         <a href="writing/fear-underneath.html" class="essay-card reveal" data-category="machines">
           <span class="category-dot machines"></span>
-          <div class="essay-content">
-            <h3>I Spent 15 Years Translating Tech to Business. Here's What Nobody Tells You.</h3>
-            <p>On the discomfort underneath — when the bridge you built stops working.</p>
+          <div>
+            <h3>I Spent 15 Years Translating Tech to Business. Here&rsquo;s What Nobody Tells You.</h3>
+            <p>On the discomfort underneath &mdash; when the bridge you built stops working.</p>
+            <div class="essay-date">Feb 2026</div>
           </div>
-          <span class="piece-date">Feb 2026</span>
         </a>
 
         <a href="writing/ran-out-of-languages.html" class="essay-card reveal" data-category="machines">
           <span class="category-dot machines"></span>
-          <div class="essay-content">
+          <div>
             <h3>I Built My Career on Being the Translator. Then I Ran Out of Languages.</h3>
             <p>When the language you speak becomes the language everyone speaks.</p>
+            <div class="essay-date">Feb 2026</div>
           </div>
-          <span class="piece-date">Feb 2026</span>
         </a>
 
         <a href="writing/the-serve-nobody-taught-me.html" class="essay-card reveal" data-category="machines">
           <span class="category-dot machines"></span>
-          <div class="essay-content">
+          <div>
             <h3>The Serve Nobody Taught Me</h3>
-            <p>A tennis metaphor for the moment AI forces a decision you haven't practiced for.</p>
+            <p>A tennis metaphor for the moment AI forces a decision you haven&rsquo;t practiced for.</p>
+            <div class="essay-date">Feb 2026</div>
           </div>
-          <span class="piece-date">Feb 2026</span>
         </a>
 
         <a href="writing/sitting-with-losing.html" class="essay-card reveal" data-category="machines">
           <span class="category-dot machines"></span>
-          <div class="essay-content">
+          <div>
             <h3>What Tennis Taught Me About Sitting With Losing</h3>
-            <p>Panic, clarity, and what happens when you can't win the point back.</p>
+            <p>Panic, clarity, and what happens when you can&rsquo;t win the point back.</p>
+            <div class="essay-date">Feb 2026</div>
           </div>
-          <span class="piece-date">Feb 2026</span>
         </a>
 
       </div>
     </div>
   </section>
 
-  <div class="container"><hr class="spectrum-line-thin"></div>
-
-  <!-- ===== CONNECT ===== -->
-  <section class="connect" id="connect">
-    <div class="container">
-      <h2 class="gradient-text reveal">More writing on the way.</h2>
-      <p class="connect-tagline reveal">The same research, three angles: technical on Substack, philosophical on Medium, corporate on LinkedIn.</p>
-      <div class="connect-links reveal">
-        <a href="https://vladsterngold.substack.com" class="connect-link" target="_blank" rel="noopener">Substack</a>
-        <a href="https://medium.com/@Sterngold" class="connect-link" target="_blank" rel="noopener">Medium</a>
-        <a href="https://linkedin.com/in/sterngold" class="connect-link" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:vlad@sterngold.nl" class="connect-link">vlad@sterngold.nl</a>
+  <!-- ============================================
+       CTA
+       ============================================ -->
+  <section class="py-16 px-6" style="border-top: 1px solid var(--color-border);">
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <h2 class="heading-md mb-4" style="color: var(--color-text);">More writing on the way.</h2>
+      <p class="body-text mb-8">The same research, three angles: philosophical on the page, personal on LinkedIn, technical on Substack.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://linkedin.com/in/sterngold" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a>
+        <a href="https://vladsterngold.substack.com" target="_blank" rel="noopener" class="btn-ghost">Substack</a>
+        <a href="https://medium.com/@Sterngold" target="_blank" rel="noopener" class="btn-ghost">Medium</a>
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer aria-label="Site footer">
-    <p>&copy; 2026 Vlad Sterngold</p>
+  <!-- Footer -->
+  <footer aria-label="Site footer" class="py-20 px-6" style="border-top: 1px solid var(--color-border);">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.15em] gap-4" style="color: var(--color-text-muted);">
+        <div>&copy; 2026 Vlad Sterngold</div>
+        <nav class="flex gap-6">
+          <a class="footer-link" href="index.html">Home</a>
+          <a class="footer-link" href="about.html">About</a>
+          <a class="footer-link" href="coaching.html">WerkAnders</a>
+          <a class="footer-link" href="writing.html">Writing</a>
+          <a class="footer-link" href="playground.html">Reality</a>
+        </nav>
+      </div>
+    </div>
   </footer>
 
   <script src="js/main.js"></script>

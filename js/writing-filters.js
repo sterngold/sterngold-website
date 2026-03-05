@@ -3,17 +3,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.essay-card');
   const featured = document.querySelector('.featured-card');
 
+  function showAll() {
+    pills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-selected', 'false'); });
+    if (featured) {
+      featured.style.display = '';
+      featured.closest('.writing-featured').style.display = '';
+    }
+    cards.forEach(card => {
+      card.style.display = '';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    });
+  }
+
+  // Show all essays on load
+  showAll();
+
   pills.forEach(pill => {
     pill.addEventListener('click', () => {
+      const filter = pill.dataset.filter;
+      const wasActive = pill.classList.contains('active');
+
+      // Toggle: clicking active pill resets to show all
+      if (wasActive) {
+        showAll();
+        return;
+      }
+
+      // Activate this pill
       pills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-selected', 'false'); });
       pill.classList.add('active');
       pill.setAttribute('aria-selected', 'true');
 
-      const filter = pill.dataset.filter;
-
       // Featured card
       if (featured) {
-        if (filter === 'all' || featured.dataset.category === filter) {
+        if (featured.dataset.category === filter) {
           featured.style.display = '';
           featured.closest('.writing-featured').style.display = '';
         } else {
@@ -24,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Essay cards
       cards.forEach(card => {
-        if (filter === 'all' || card.dataset.category === filter) {
+        if (card.dataset.category === filter) {
           card.style.display = '';
           card.style.opacity = '1';
           card.style.transform = 'translateY(0)';
