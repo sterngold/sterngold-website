@@ -8,8 +8,10 @@
 @theme {
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
+}
 
-  /* Dark mode defaults (html has no .light class) */
+/* Design system variables — outside @theme to avoid @layer cascade issues */
+:root {
   --color-bg: #0a0a0b;
   --color-surface: #141415;
   --color-surface-hover: #1e1e20;
