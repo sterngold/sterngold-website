@@ -3,22 +3,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── Ghost Navigation ──────────────────────────
-  const ghostNav = document.getElementById('ghostNav');
-  if (ghostNav) {
-    let lastScrollY = 0;
-    const threshold = 100; // px before nav appears
-
-    window.addEventListener('scroll', () => {
-      const currentY = window.scrollY;
-      if (currentY > threshold) {
-        ghostNav.classList.add('visible');
-      } else {
-        ghostNav.classList.remove('visible');
-      }
-      lastScrollY = currentY;
-    }, { passive: true });
-  }
+  // ── Navigation (always visible) ──────────────────────────
 
   // ── Theme Toggle (dark/light) ─────────────────
   function setTheme(mode) {
