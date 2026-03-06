@@ -965,6 +965,11 @@ body {
   color: var(--color-text);
   font-family: 'Inter', sans-serif;
   transition: background 0.3s ease, color 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+img {
+  max-width: 100%;
+  height: auto;
 }
 ::selection {
   background: var(--color-accent);
@@ -994,8 +999,8 @@ body {
   color: var(--color-accent);
 }
 .theme-toggle {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid var(--color-border);
   background: transparent;
@@ -1009,6 +1014,9 @@ body {
 .theme-toggle:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
+}
+.theme-toggle:active {
+  transform: scale(0.9);
 }
 .pride-text {
   background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #a855f7);
@@ -1192,6 +1200,10 @@ blockquote::before {
   opacity: 0.9;
   transform: translateY(-1px);
 }
+.btn-primary:active {
+  transform: translateY(1px);
+  opacity: 0.85;
+}
 .btn-ghost {
   display: inline-flex;
   align-items: center;
@@ -1212,6 +1224,10 @@ blockquote::before {
 .btn-ghost:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
+}
+.btn-ghost:active {
+  transform: translateY(1px);
+  opacity: 0.85;
 }
 .footer-link {
   color: var(--color-text-muted);
@@ -1236,6 +1252,8 @@ blockquote::before {
 }
 .skip-link:focus {
   top: 0.5rem;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 .mobile-menu {
   position: fixed;
@@ -1439,6 +1457,37 @@ blockquote::before {
     font-size: 1.6rem;
   }
 }
+.card:active {
+  transform: translateY(1px);
+  border-color: var(--color-accent);
+  background: var(--color-accent-surface);
+}
+.career-card:active {
+  transform: translateY(0);
+  border-color: var(--color-accent);
+}
+.career-card:active::before {
+  opacity: 1;
+}
+@media (hover: none) {
+  .card:hover {
+    border-color: var(--color-border);
+    background: var(--color-surface);
+  }
+  .card-accent:hover {
+    border-color: var(--color-border);
+    background: var(--color-surface);
+  }
+  .career-card:hover {
+    border-color: var(--color-border);
+    transform: none;
+  }
+}
+.mobile-menu a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
 .colophon {
   margin-top: 2rem;
   padding: 1.5rem;
@@ -1604,6 +1653,11 @@ blockquote::before {
 }
 .xray-legend.visible {
   transform: translateY(0);
+}
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .xray-legend {
+    padding-bottom: calc(0.6rem + env(safe-area-inset-bottom));
+  }
 }
 .xray-legend-item {
   display: inline-flex;
