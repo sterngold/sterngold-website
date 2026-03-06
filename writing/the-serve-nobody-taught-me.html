@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="../dist/output.css?v=4" rel="stylesheet">
+  <link href="../dist/output.css?v=5" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -101,29 +101,29 @@
 
         <div class="essay-body">
 
-          <p>I play tennis three times a week. Not well &mdash; but consistently. And the thing that took me years to learn wasn&rsquo;t the grip, the footwork, or the toss. It was the half-second before the swing.</p>
+          <p data-author="vlad">I play tennis three times a week. Not well &mdash; but consistently. And the thing that took me years to learn wasn&rsquo;t the grip, the footwork, or the toss. It was the half-second before the swing.</p>
 
-          <p>That&rsquo;s where the match is won or lost. You read the opponent. You pick a direction. And you commit. No hedging. No halfway. You go.</p>
+          <p data-author="vlad">That&rsquo;s where the match is won or lost. You read the opponent. You pick a direction. And you commit. No hedging. No halfway. You go.</p>
 
-          <p>The worst serves I&rsquo;ve ever hit were the ones where I changed my mind mid-motion. Tried to split the difference between going wide and going down the T. The ball ends up in the net or floating to exactly where your opponent wanted it. Every time.</p>
-
-          <hr class="spectrum-line">
-
-          <p>I have a steady partner who&rsquo;s been beating me for months. Early on I was furious. I wanted to quit. I&rsquo;d been training, working on technique &mdash; I was playing technically better than him and still losing. It felt idiotic.</p>
-
-          <p>Then it came to me. It had nothing to do with him. Not with the training, not with the technical game. It was about making small adjustments: move a bit forward. Move my feet quicker. Do split steps. Focus on the ball, not the score.</p>
-
-          <p>It was all me.</p>
-
-          <p>I still don&rsquo;t beat him much. But I come close now, and I feel good. The shift wasn&rsquo;t a breakthrough &mdash; it was a series of tiny commitments. Each one a serve where I picked a direction.</p>
+          <p data-author="vlad">The worst serves I&rsquo;ve ever hit were the ones where I changed my mind mid-motion. Tried to split the difference between going wide and going down the T. The ball ends up in the net or floating to exactly where your opponent wanted it. Every time.</p>
 
           <hr class="spectrum-line">
 
-          <p>My trainer tells me I&rsquo;m too analytical on the court. I over-think. I bring too much of the work brain &mdash; reading patterns, calculating angles, trying to predict three shots ahead. He says I need a bit more heart.</p>
+          <p data-author="vlad">I have a steady partner who&rsquo;s been beating me for months. Early on I was furious. I wanted to quit. I&rsquo;d been training, working on technique &mdash; I was playing technically better than him and still losing. It felt idiotic.</p>
 
-          <p>He&rsquo;s probably right. The best points I play aren&rsquo;t the ones I plan. They&rsquo;re the ones where my body moves before my mind catches up. Where the adjustment is so small that I couldn&rsquo;t explain it afterward &mdash; I just went.</p>
+          <p data-author="vlad">Then it came to me. It had nothing to do with him. Not with the training, not with the technical game. It was about making small adjustments: move a bit forward. Move my feet quicker. Do split steps. Focus on the ball, not the score.</p>
 
-          <p>The ball is already in the air.</p>
+          <p data-author="vlad">It was all me.</p>
+
+          <p data-author="vlad">I still don&rsquo;t beat him much. But I come close now, and I feel good. The shift wasn&rsquo;t a breakthrough &mdash; it was a series of tiny commitments. Each one a serve where I picked a direction.</p>
+
+          <hr class="spectrum-line">
+
+          <p data-author="vlad">My trainer tells me I&rsquo;m too analytical on the court. I over-think. I bring too much of the work brain &mdash; reading patterns, calculating angles, trying to predict three shots ahead. He says I need a bit more heart.</p>
+
+          <p data-author="vlad">He&rsquo;s probably right. The best points I play aren&rsquo;t the ones I plan. They&rsquo;re the ones where my body moves before my mind catches up. Where the adjustment is so small that I couldn&rsquo;t explain it afterward &mdash; I just went.</p>
+
+          <p data-author="mixed">The ball is already in the air.</p>
 
         </div>
 
@@ -131,6 +131,7 @@
 
         <footer class="essay-footer">
           <p class="essay-bio"><em>Vlad Sterngold is a digital transformation executive with six careers behind him &mdash; from professional kitchens and military service to building data and AI teams at Booking.com and Danone. He writes about what happens to people when machines get better than them.</em></p>
+          <section class="colophon" id="colophon" aria-label="Essay attribution"></section>
           <a href="../writing.html" class="back-link">&larr; All writing</a>
         </footer>
 
@@ -181,6 +182,10 @@
     </div>
   </footer>
 
+  <script type="application/json" id="essay-colophon-data">
+  {"contributors":[{"name":"Vlad Sterngold","id":"vlad","pct":80,"role":"Tennis experience, personal reflection, trainer quotes"},{"name":"Anders","id":"anders","pct":15,"role":"Structure, pacing, line editing"},{"name":"Reader Panel","id":"panel","pct":5,"role":"Feedback via /reader skill"}],"process":{"versions":2,"sessions":1,"editPasses":1,"tools":["vladvoice","editor"]}}
+  </script>
   <script src="../js/main.js"></script>
+  <script src="../js/colophon.js"></script>
 </body>
 </html>

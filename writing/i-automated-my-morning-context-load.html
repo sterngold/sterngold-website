@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="../dist/output.css?v=4" rel="stylesheet">
+  <link href="../dist/output.css?v=5" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -96,55 +96,55 @@
 
         <div class="essay-body">
 
-          <p>For the first few weeks of using Claude Code seriously, I noticed I was losing 10&ndash;15 minutes at the start of every session doing the same things.</p>
+          <p data-author="vlad">For the first few weeks of using Claude Code seriously, I noticed I was losing 10&ndash;15 minutes at the start of every session doing the same things.</p>
 
-          <p>Open the action items file. Check git. Scan email. Try to remember where I left off yesterday. Mentally reconstruct the priority stack. By the time I was actually thinking, a significant chunk of the morning was already gone.</p>
+          <p data-author="vlad">Open the action items file. Check git. Scan email. Try to remember where I left off yesterday. Mentally reconstruct the priority stack. By the time I was actually thinking, a significant chunk of the morning was already gone.</p>
 
-          <p>The irony wasn't lost on me: I was using an AI coding assistant, and I was spending my first fifteen minutes being a human file system.</p>
+          <p data-author="vlad">The irony wasn't lost on me: I was using an AI coding assistant, and I was spending my first fifteen minutes being a human file system.</p>
 
-          <p>So I built a skill to handle it.</p>
+          <p data-author="vlad">So I built a skill to handle it.</p>
 
           <hr class="essay-break">
 
           <h2>What a &ldquo;skill&rdquo; is</h2>
 
-          <p>Claude Code has a system for custom instructions called skills &mdash; markdown files stored in <code>~/.claude/skills/</code> that the model loads and executes when you type a trigger phrase. They're natural-language programs. No code, no deployment, no dependencies. Just structured instructions that tell the model what to do and in what order.</p>
+          <p data-author="anders">Claude Code has a system for custom instructions called skills &mdash; markdown files stored in <code>~/.claude/skills/</code> that the model loads and executes when you type a trigger phrase. They're natural-language programs. No code, no deployment, no dependencies. Just structured instructions that tell the model what to do and in what order.</p>
 
-          <p>I already had a <code>session-wrap</code> skill for closing sessions &mdash; it commits code, updates my context files, runs a short retrospective. What was missing was the mirror: something to <em>open</em> a session.</p>
+          <p data-author="vlad">I already had a <code>session-wrap</code> skill for closing sessions &mdash; it commits code, updates my context files, runs a short retrospective. What was missing was the mirror: something to <em>open</em> a session.</p>
 
-          <p>I called it <code>session-start</code>.</p>
+          <p data-author="vlad">I called it <code>session-start</code>.</p>
 
           <hr class="essay-break">
 
           <h2>What it does</h2>
 
-          <p>When I type <code>/start</code>, Claude runs five phases silently and produces a single Daily Brief. The whole thing takes about 20 seconds.</p>
+          <p data-author="mixed">When I type <code>/start</code>, Claude runs five phases silently and produces a single Daily Brief. The whole thing takes about 20 seconds.</p>
 
-          <p><strong>Phase 1 &mdash; Context sync.</strong> Reads my action items, goals, and work context files. Extracts open items and deadlines. Identifies anything time-sensitive. Produces no output &mdash; this feeds the brief.</p>
+          <p data-author="mixed"><strong>Phase 1 &mdash; Context sync.</strong> Reads my action items, goals, and work context files. Extracts open items and deadlines. Identifies anything time-sensitive. Produces no output &mdash; this feeds the brief.</p>
 
-          <p><strong>Phase 2 &mdash; Workspace check.</strong> Runs <code>git status</code>. Lists any uncommitted files. Never auto-commits &mdash; just flags. If the workspace is clean, it notes that and moves on.</p>
+          <p data-author="mixed"><strong>Phase 2 &mdash; Workspace check.</strong> Runs <code>git status</code>. Lists any uncommitted files. Never auto-commits &mdash; just flags. If the workspace is clean, it notes that and moves on.</p>
 
-          <p><strong>Phase 3 &mdash; Calendar scan.</strong> Fetches today's events from my iCloud calendar via a public iCal URL &mdash; a <code>curl</code> request and a few lines of Python to parse it. No calendar app integration needed, no API credentials. Just a URL and a date filter.</p>
+          <p data-author="mixed"><strong>Phase 3 &mdash; Calendar scan.</strong> Fetches today's events from my iCloud calendar via a public iCal URL &mdash; a <code>curl</code> request and a few lines of Python to parse it. No calendar app integration needed, no API credentials. Just a URL and a date filter.</p>
 
-          <p><strong>Phase 4 &mdash; Email triage.</strong> Hits the Gmail API, pulls 15 message metadata records first (subject + sender only), filters out newsletters and automated mail, then reads full content only for human-sent messages. Maximum 5 full reads. Flags anything requiring action.</p>
+          <p data-author="mixed"><strong>Phase 4 &mdash; Email triage.</strong> Hits the Gmail API, pulls 15 message metadata records first (subject + sender only), filters out newsletters and automated mail, then reads full content only for human-sent messages. Maximum 5 full reads. Flags anything requiring action.</p>
 
-          <p><strong>Phase 5 &mdash; Daily Brief.</strong> One structured markdown output: workspace state, calendar, email flags, top 3 priorities ranked by deadline, and a concrete recommendation for what to do first.</p>
+          <p data-author="mixed"><strong>Phase 5 &mdash; Daily Brief.</strong> One structured markdown output: workspace state, calendar, email flags, top 3 priorities ranked by deadline, and a concrete recommendation for what to do first.</p>
 
           <hr class="essay-break">
 
           <h2>The design decisions worth knowing</h2>
 
-          <p><strong>Metadata before content.</strong> The email phase fetches subjects and senders for all 15 messages before reading anything in full. This means the model can filter out newsletters without loading their bodies into context. Saves tokens, keeps the brief tight. It's a small thing, but it matters when you're doing this every morning.</p>
+          <p data-author="mixed"><strong>Metadata before content.</strong> The email phase fetches subjects and senders for all 15 messages before reading anything in full. This means the model can filter out newsletters without loading their bodies into context. Saves tokens, keeps the brief tight. It's a small thing, but it matters when you're doing this every morning.</p>
 
-          <p><strong>Fallbacks with no drama.</strong> I wrote the skill to degrade gracefully. If the calendar URL fails, it says so briefly and moves on. If there's no unread email, it says &ldquo;inbox clear&rdquo; &mdash; one line, no commentary. The brief happens regardless.</p>
+          <p data-author="mixed"><strong>Fallbacks with no drama.</strong> I wrote the skill to degrade gracefully. If the calendar URL fails, it says so briefly and moves on. If there's no unread email, it says &ldquo;inbox clear&rdquo; &mdash; one line, no commentary. The brief happens regardless.</p>
 
-          <p><strong>Instruction documents, not code.</strong> The skill file is pure markdown: phase descriptions, decision logic, edge case handling. There's no interpreter, no runtime, no deployment step. Claude reads it and executes it. The tradeoff is you can't loop or retry &mdash; but for a morning brief, you don't need to.</p>
+          <p data-author="mixed"><strong>Instruction documents, not code.</strong> The skill file is pure markdown: phase descriptions, decision logic, edge case handling. There's no interpreter, no runtime, no deployment step. Claude reads it and executes it. The tradeoff is you can't loop or retry &mdash; but for a morning brief, you don't need to.</p>
 
           <hr class="essay-break">
 
           <h2>The priority ranking</h2>
 
-          <p>The brief ranks the top three open action items by a cascade I made explicit in the skill instructions:</p>
+          <p data-author="mixed">The brief ranks the top three open action items by a cascade I made explicit in the skill instructions:</p>
 
           <ol>
             <li>Items with hard deadlines &mdash; soonest first</li>
@@ -154,19 +154,19 @@
             <li>Domain priority &mdash; roughly: financial and legal before business, business before creative</li>
           </ol>
 
-          <p>The ranking sounds obvious when you write it out. That's the point. Encoding it means the model applies it consistently rather than defaulting to whatever feels most salient in the moment &mdash; which is usually the most recently mentioned thing, not the most important one.</p>
+          <p data-author="mixed">The ranking sounds obvious when you write it out. That's the point. Encoding it means the model applies it consistently rather than defaulting to whatever feels most salient in the moment &mdash; which is usually the most recently mentioned thing, not the most important one.</p>
 
           <hr class="essay-break">
 
           <h2>What changed</h2>
 
-          <p>The session starts with a brief now instead of a blank slate. I know what's on my calendar before I open the calendar. I know if anything urgent arrived before I open email. I know the git state before I type a command.</p>
+          <p data-author="vlad">The session starts with a brief now instead of a blank slate. I know what's on my calendar before I open the calendar. I know if anything urgent arrived before I open email. I know the git state before I type a command.</p>
 
-          <p>The real value isn't the brief itself. It's that the brief forces the context loading that I'd otherwise do scattered across fifteen minutes of tab-switching. It's the same information &mdash; just structured, front-loaded, and not dependent on my memory being reliable at 8am.</p>
+          <p data-author="vlad">The real value isn't the brief itself. It's that the brief forces the context loading that I'd otherwise do scattered across fifteen minutes of tab-switching. It's the same information &mdash; just structured, front-loaded, and not dependent on my memory being reliable at 8am.</p>
 
-          <p>The whole skill file is about 100 lines of markdown. It took one session to build and debug.</p>
+          <p data-author="vlad">The whole skill file is about 100 lines of markdown. It took one session to build and debug.</p>
 
-          <p>I've been running it every morning since.</p>
+          <p data-author="vlad">I've been running it every morning since.</p>
 
         </div>
 
@@ -174,6 +174,7 @@
 
         <footer class="essay-footer">
           <p class="essay-bio"><em>Vlad Sterngold is a digital transformation executive with six careers behind him &mdash; from professional kitchens and military service to building data and AI teams at Booking.com and Danone. He writes about what happens to people when machines get better than them.</em></p>
+          <section class="colophon" id="colophon" aria-label="Essay attribution"></section>
           <a href="../writing.html" class="back-link">&larr; All writing</a>
         </footer>
 
@@ -224,6 +225,10 @@
     </div>
   </footer>
 
+  <script type="application/json" id="essay-colophon-data">
+  {"contributors":[{"name":"Vlad Sterngold","id":"vlad","pct":55,"role":"Problem identification, design decisions, personal experience"},{"name":"Anders","id":"anders","pct":40,"role":"Technical documentation, structure, skill architecture description"},{"name":"Reader Panel","id":"panel","pct":5,"role":"Feedback via /reader skill"}],"process":{"versions":1,"sessions":1,"editPasses":0,"tools":["vladvoice"]}}
+  </script>
   <script src="../js/main.js"></script>
+  <script src="../js/colophon.js"></script>
 </body>
 </html>

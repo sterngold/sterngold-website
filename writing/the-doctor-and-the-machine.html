@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="../dist/output.css?v=4" rel="stylesheet">
+  <link href="../dist/output.css?v=5" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -100,69 +100,69 @@
 
         <div class="essay-body">
 
-          <p>In February 2026, I lay on a dermatologist&rsquo;s table while a machine scanned every mole on my body. Two hundred and seven of them.</p>
+          <p data-author="vlad">In February 2026, I lay on a dermatologist&rsquo;s table while a machine scanned every mole on my body. Two hundred and seven of them.</p>
 
-          <p>I was very, very happy.</p>
+          <p data-author="vlad">I was very, very happy.</p>
 
-          <p>I knew about the technology &mdash; Neko, backed by the Spotify founder. Not yet available in Holland, but my dermatologist had an earlier version of the same idea: a dermatoscope with AI pattern recognition, each mole photographed and compared against millions of training images. Nine minutes. Two hundred and seven moles. Twelve flagged for closer inspection.</p>
+          <p data-author="vlad">I knew about the technology &mdash; Neko, backed by the Spotify founder. Not yet available in Holland, but my dermatologist had an earlier version of the same idea: a dermatoscope with AI pattern recognition, each mole photographed and compared against millions of training images. Nine minutes. Two hundred and seven moles. Twelve flagged for closer inspection.</p>
 
-          <p>Finally, I was living my future.</p>
-
-          <hr class="essay-break">
-
-          <p>That might surprise you. Most writing about AI in medicine assumes the patient lies there vulnerable, watched by an inhuman eye, reduced to data. That&rsquo;s not what I felt. I&rsquo;d been checking my skin regularly for years &mdash; my mother survived bone cancer, caught early in Israel where preventive care is excellent. My father has carcinoma. I&rsquo;ve had carcinoma myself, caught because I check, and because I once pushed a doctor to examine something he might have waved away.</p>
-
-          <p>Prevention is the thread. Israel does it well; Holland, not well enough. And here was a machine that could see all 207 moles in nine minutes, flag the ones that mattered, and free the doctor to focus on what only a doctor can do.</p>
-
-          <p>When twelve moles were flagged, I wasn&rsquo;t scared. I was empowered. Now let&rsquo;s find the doctor who specialises in those specific moles. Merge human with machine.</p>
+          <p data-author="vlad">Finally, I was living my future.</p>
 
           <hr class="essay-break">
 
-          <p>And that&rsquo;s what happened.</p>
+          <p data-author="vlad">That might surprise you. Most writing about AI in medicine assumes the patient lies there vulnerable, watched by an inhuman eye, reduced to data. That&rsquo;s not what I felt. I&rsquo;d been checking my skin regularly for years &mdash; my mother survived bone cancer, caught early in Israel where preventive care is excellent. My father has carcinoma. I&rsquo;ve had carcinoma myself, caught because I check, and because I once pushed a doctor to examine something he might have waved away.</p>
 
-          <p>Examining the twelve flagged moles one by one, she didn&rsquo;t just look at the data &mdash; she looked at me. My skin type, my family history &mdash; the bone cancer, the carcinoma, the fact that I check. A mole on my left shoulder she&rsquo;d been tracking for years, weighed against my move from a sun-drenched country to one with far less UV.</p>
+          <p data-author="vlad">Prevention is the thread. Israel does it well; Holland, not well enough. And here was a machine that could see all 207 moles in nine minutes, flag the ones that mattered, and free the doctor to focus on what only a doctor can do.</p>
 
-          <p>I loved that the machine gave her time to focus on what mattered. Not the routine scan of two hundred moles, but the careful, human attention to the twelve that needed a doctor&rsquo;s eye. What I felt most in that room wasn&rsquo;t relief. It was trust.</p>
-
-          <p>The machine saw patterns. The doctor saw causes. Together, they saw me.</p>
+          <p data-author="vlad">When twelve moles were flagged, I wasn&rsquo;t scared. I was empowered. Now let&rsquo;s find the doctor who specialises in those specific moles. Merge human with machine.</p>
 
           <hr class="essay-break">
 
-          <p>That seamless division &mdash; machine sorts, doctor thinks &mdash; has a mathematical proof. I first encountered it through Judea Pearl&rsquo;s work at Booking.com, where I led analytics and science teams working with ML every day. Later, at the University of Amsterdam, I went deeper. Pearl offered something different from the dominant view that more data solves everything.</p>
+          <p data-author="vlad">And that&rsquo;s what happened.</p>
 
-          <p>He&rsquo;d spent decades building Bayesian networks &mdash; the probabilistic engines behind most AI. Then he proved something uncomfortable: those engines have a mathematical ceiling. He described it as a ladder with three rungs.</p>
+          <p data-author="vlad">Examining the twelve flagged moles one by one, she didn&rsquo;t just look at the data &mdash; she looked at me. My skin type, my family history &mdash; the bone cancer, the carcinoma, the fact that I check. A mole on my left shoulder she&rsquo;d been tracking for years, weighed against my move from a sun-drenched country to one with far less UV.</p>
 
-          <p><strong>Rung 1: Association.</strong> Seeing patterns in data. <em>This mole&rsquo;s shape matches shapes that tend to be melanoma.</em> That&rsquo;s what the machine next to my exam table did &mdash; all 207 moles in nine minutes. It&rsquo;s what all machine learning does, no matter how many parameters you add.</p>
+          <p data-author="vlad">I loved that the machine gave her time to focus on what mattered. Not the routine scan of two hundred moles, but the careful, human attention to the twelve that needed a doctor&rsquo;s eye. What I felt most in that room wasn&rsquo;t relief. It was trust.</p>
 
-          <p><strong>Rung 2: Intervention.</strong> Asking what happens if you <em>do</em> something. <em>If we remove this flagged mole, does my risk actually decrease?</em> This requires a causal model &mdash; a map of what causes what &mdash; that no amount of data alone can produce.</p>
-
-          <p><strong>Rung 3: Counterfactual.</strong> Asking what <em>would have</em> happened. <em>If I had never moved from Sofia to Amsterdam, would this mole on my left shoulder have changed?</em> This requires not just a causal model but individual-level knowledge about a specific person in a specific life.</p>
-
-          <p>Each rung is strictly more powerful than the one below. And each rung requires something the lower one cannot provide.</p>
+          <p data-author="mixed">The machine saw patterns. The doctor saw causes. Together, they saw me.</p>
 
           <hr class="essay-break">
 
-          <p>I learned this the hard way. Early at Booking.com, I sent an analysis to a very senior analyst &mdash; bar graphs, clean conclusions, no confidence intervals. What I got back wasn&rsquo;t a lecture but a conversation, the kind where someone genuinely smart is also genuinely humble. The width of the bar matters as much as the height, he said. A result that looks decisive might be noise. You can&rsquo;t know unless you measure the uncertainty.</p>
+          <p data-author="mixed">That seamless division &mdash; machine sorts, doctor thinks &mdash; has a mathematical proof. I first encountered it through Judea Pearl&rsquo;s work at Booking.com, where I led analytics and science teams working with ML every day. Later, at the University of Amsterdam, I went deeper. Pearl offered something different from the dominant view that more data solves everything.</p>
 
-          <p>That lesson &mdash; about humility before numbers, about measuring what you don&rsquo;t know &mdash; is the same lesson Pearl formalised into mathematics. The machine gives you a number. Understanding what that number <em>means</em> requires a different kind of thinking entirely.</p>
+          <p data-author="anders">He&rsquo;d spent decades building Bayesian networks &mdash; the probabilistic engines behind most AI. Then he proved something uncomfortable: those engines have a mathematical ceiling. He described it as a ladder with three rungs.</p>
+
+          <p data-author="anders"><strong>Rung 1: Association.</strong> Seeing patterns in data. <em>This mole&rsquo;s shape matches shapes that tend to be melanoma.</em> That&rsquo;s what the machine next to my exam table did &mdash; all 207 moles in nine minutes. It&rsquo;s what all machine learning does, no matter how many parameters you add.</p>
+
+          <p data-author="anders"><strong>Rung 2: Intervention.</strong> Asking what happens if you <em>do</em> something. <em>If we remove this flagged mole, does my risk actually decrease?</em> This requires a causal model &mdash; a map of what causes what &mdash; that no amount of data alone can produce.</p>
+
+          <p data-author="anders"><strong>Rung 3: Counterfactual.</strong> Asking what <em>would have</em> happened. <em>If I had never moved from Sofia to Amsterdam, would this mole on my left shoulder have changed?</em> This requires not just a causal model but individual-level knowledge about a specific person in a specific life.</p>
+
+          <p data-author="anders">Each rung is strictly more powerful than the one below. And each rung requires something the lower one cannot provide.</p>
 
           <hr class="essay-break">
 
-          <p>When she finished, her verdict gave me the closure the machine couldn&rsquo;t: nothing to cut today. A few spots to watch together. The nine-minute scan had done its job &mdash; turning a vague anxiety into a plan.</p>
+          <p data-author="vlad">I learned this the hard way. Early at Booking.com, I sent an analysis to a very senior analyst &mdash; bar graphs, clean conclusions, no confidence intervals. What I got back wasn&rsquo;t a lecture but a conversation, the kind where someone genuinely smart is also genuinely humble. The width of the bar matters as much as the height, he said. A result that looks decisive might be noise. You can&rsquo;t know unless you measure the uncertainty.</p>
 
-          <p>Here&rsquo;s where my story parts from the usual script.</p>
+          <p data-author="mixed">That lesson &mdash; about humility before numbers, about measuring what you don&rsquo;t know &mdash; is the same lesson Pearl formalised into mathematics. The machine gives you a number. Understanding what that number <em>means</em> requires a different kind of thinking entirely.</p>
 
-          <p>G&uuml;nther Anders wrote about the Promethean Gap &mdash; the shame humans feel when confronted by the superiority of their own machines. The phone that remembers everything you forget. The algorithm that processes what you cannot. The scanner that sees all 207 moles in nine minutes while you&rsquo;d need an hour.</p>
+          <hr class="essay-break">
 
-          <p>I was very comfortable on that table. I don&rsquo;t think I feel the Promethean Gap.</p>
+          <p data-author="vlad">When she finished, her verdict gave me the closure the machine couldn&rsquo;t: nothing to cut today. A few spots to watch together. The nine-minute scan had done its job &mdash; turning a vague anxiety into a plan.</p>
 
-          <p>Not because I&rsquo;m special. Because I understand the rungs. I know what the machine is doing &mdash; pattern matching on rung 1 &mdash; and I know what the doctor is doing &mdash; causal reasoning on rungs 2 and 3. The machine isn&rsquo;t replacing the doctor. It&rsquo;s freeing her to be more fully a doctor &mdash; and turning a nine-minute scan into the prevention that catches cancer early.</p>
+          <p data-author="mixed">Here&rsquo;s where my story parts from the usual script.</p>
 
-          <p>The Gap doesn&rsquo;t come from the machine being powerful. It comes from not understanding what the machine is actually doing. A senior analyst at Booking taught me to read uncertainty. Pearl proved that uncertainty has structure. My dermatologist showed me what it looks like when the two meet. When you understand the rungs, the machine isn&rsquo;t a threat. It&rsquo;s a partner.</p>
+          <p data-author="anders">G&uuml;nther Anders wrote about the Promethean Gap &mdash; the shame humans feel when confronted by the superiority of their own machines. The phone that remembers everything you forget. The algorithm that processes what you cannot. The scanner that sees all 207 moles in nine minutes while you&rsquo;d need an hour.</p>
 
-          <p>The question isn&rsquo;t whether the machine is faster than you. It was always faster than you.</p>
+          <p data-author="vlad">I was very comfortable on that table. I don&rsquo;t think I feel the Promethean Gap.</p>
 
-          <p class="essay-closing">The question is whether you understand the rungs well enough to stop being afraid &mdash; and to climb the ones the machine can&rsquo;t reach.</p>
+          <p data-author="mixed">Not because I&rsquo;m special. Because I understand the rungs. I know what the machine is doing &mdash; pattern matching on rung 1 &mdash; and I know what the doctor is doing &mdash; causal reasoning on rungs 2 and 3. The machine isn&rsquo;t replacing the doctor. It&rsquo;s freeing her to be more fully a doctor &mdash; and turning a nine-minute scan into the prevention that catches cancer early.</p>
+
+          <p data-author="mixed">The Gap doesn&rsquo;t come from the machine being powerful. It comes from not understanding what the machine is actually doing. A senior analyst at Booking taught me to read uncertainty. Pearl proved that uncertainty has structure. My dermatologist showed me what it looks like when the two meet. When you understand the rungs, the machine isn&rsquo;t a threat. It&rsquo;s a partner.</p>
+
+          <p data-author="mixed">The question isn&rsquo;t whether the machine is faster than you. It was always faster than you.</p>
+
+          <p class="essay-closing" data-author="mixed">The question is whether you understand the rungs well enough to stop being afraid &mdash; and to climb the ones the machine can&rsquo;t reach.</p>
 
           <hr class="spectrum-line">
 
@@ -180,6 +180,7 @@
 
         <footer class="essay-footer">
           <p class="essay-bio"><em>Vlad Sterngold is a digital transformation executive with six careers behind him &mdash; from professional kitchens and military service to building data and AI teams at Booking.com and Danone. He writes about what happens to people when machines get better than them.</em></p>
+          <section class="colophon" id="colophon" aria-label="Essay attribution"></section>
           <a href="../writing.html" class="back-link">&larr; All writing</a>
         </footer>
 
@@ -230,6 +231,10 @@
     </div>
   </footer>
 
+  <script type="application/json" id="essay-colophon-data">
+  {"contributors":[{"name":"Vlad Sterngold","id":"vlad","pct":55,"role":"Dermatology scene, Booking anecdote, personal experience"},{"name":"Anders","id":"anders","pct":40,"role":"Judea Pearl framework, ladder of causation, Anders philosophy, sources"},{"name":"Reader Panel","id":"panel","pct":5,"role":"Feedback via /reader skill"}],"process":{"versions":4,"sessions":4,"editPasses":2,"tools":["interview","vladvoice","editor","reader"]}}
+  </script>
   <script src="../js/main.js"></script>
+  <script src="../js/colophon.js"></script>
 </body>
 </html>

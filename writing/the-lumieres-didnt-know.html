@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="../dist/output.css?v=4" rel="stylesheet">
+  <link href="../dist/output.css?v=5" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -100,23 +100,23 @@
 
         <div class="essay-body">
 
-          <p>On December 28, 1895, the Lumiere brothers screened ten short films in Paris. Workers leaving a factory. A train arriving at a station. A baby being fed. The newspapers reviewed the device, not the films. Nobody called it art. It was a fairground novelty — vulgar, lowbrow, for people who didn't know better.</p>
+          <p data-author="anders">On December 28, 1895, the Lumiere brothers screened ten short films in Paris. Workers leaving a factory. A train arriving at a station. A baby being fed. The newspapers reviewed the device, not the films. Nobody called it art. It was a fairground novelty — vulgar, lowbrow, for people who didn't know better.</p>
 
-          <p>It took thirty years. Thirty years of "it's just moving pictures" before cinema was accepted as art. Not because the technology changed — but because people like Melies and Guy-Blache took the camera and used it for purposes its inventors never imagined.</p>
+          <p data-author="anders">It took thirty years. Thirty years of "it's just moving pictures" before cinema was accepted as art. Not because the technology changed — but because people like Melies and Guy-Blache took the camera and used it for purposes its inventors never imagined.</p>
 
-          <p>AI is in its Lumiere phase. It generates text, images, music, code. People look at the output and ask: is this art? Is this going to replace us? The Lumieres said cinema had "no future" as entertainment. We're having the same conversation. The same blindness.</p>
+          <p data-author="mixed">AI is in its Lumiere phase. It generates text, images, music, code. People look at the output and ask: is this art? Is this going to replace us? The Lumieres said cinema had "no future" as entertainment. We're having the same conversation. The same blindness.</p>
 
-          <p>I watched this happen at Danone. We built a marketing mix model — months of pulling data from local countries, cleaning it, organizing it into something usable. We showed the steering committee a 2-3% improvement. They wanted miracles. The percentage became the excuse. Back to gut feeling. Back to the world before.</p>
+          <p data-author="vlad">I watched this happen at Danone. We built a marketing mix model — months of pulling data from local countries, cleaning it, organizing it into something usable. We showed the steering committee a 2-3% improvement. They wanted miracles. The percentage became the excuse. Back to gut feeling. Back to the world before.</p>
 
-          <p>But underneath that number, something else was happening. In Belgium, a data lead — a woman nobody in that room would have asked to present — took the granular numbers and made people see it. The local marketers loved it. They could think with it. They trusted it. The VPs upstairs never noticed.</p>
+          <p data-author="vlad">But underneath that number, something else was happening. In Belgium, a data lead — a woman nobody in that room would have asked to present — took the granular numbers and made people see it. The local marketers loved it. They could think with it. They trusted it. The VPs upstairs never noticed.</p>
 
-          <p>In 1896, a secretary at the Gaumont film company asked her boss if she could borrow a camera. Within a year, Alice Guy-Blache was directing narrative films — among the first ever made. She went on to run her own studio, direct over a thousand films, and pioneer techniques that shaped cinema for decades. And we still say Lumiere invented cinema. Not because her work was lesser. Because she was a woman. Because she was ahead of her time. Because pioneers who don't look like what we expect get written out of the story — and it takes a century to write them back in.</p>
+          <p data-author="anders">In 1896, a secretary at the Gaumont film company asked her boss if she could borrow a camera. Within a year, Alice Guy-Blache was directing narrative films — among the first ever made. She went on to run her own studio, direct over a thousand films, and pioneer techniques that shaped cinema for decades. And we still say Lumiere invented cinema. Not because her work was lesser. Because she was a woman. Because she was ahead of her time. Because pioneers who don't look like what we expect get written out of the story — and it takes a century to write them back in.</p>
 
-          <p>That data lead in Belgium. She was technical. She was quiet. She was a woman in a room where the loud voices decided things. The steerCo wasn't blind to her because she lacked credentials. They were blind because they were staring at a percentage and missed what the people below them — the ones actually doing the work — already loved.</p>
+          <p data-author="vlad">That data lead in Belgium. She was technical. She was quiet. She was a woman in a room where the loud voices decided things. The steerCo wasn't blind to her because she lacked credentials. They were blind because they were staring at a percentage and missed what the people below them — the ones actually doing the work — already loved.</p>
 
-          <p>Both saw something the room couldn't see. That's always how it starts.</p>
+          <p data-author="mixed">Both saw something the room couldn't see. That's always how it starts.</p>
 
-          <p>Who is the Guy-Blache in your organization? They might be there right now — too quiet for the steerCo, too technical for the boardroom, too creative for the people who decide what counts. Your people are already ahead of you.</p>
+          <p data-author="mixed">Who is the Guy-Blache in your organization? They might be there right now — too quiet for the steerCo, too technical for the boardroom, too creative for the people who decide what counts. Your people are already ahead of you.</p>
 
           <hr class="spectrum-line">
 
@@ -133,6 +133,7 @@
 
         <footer class="essay-footer">
           <p class="essay-bio"><em>Vlad Sterngold is a digital transformation executive with six careers behind him &mdash; from professional kitchens and military service to building data and AI teams at Booking.com and Danone. He writes about what happens to people when machines get better than them.</em></p>
+          <section class="colophon" id="colophon" aria-label="Essay attribution"></section>
           <a href="../writing.html" class="back-link">&larr; All writing</a>
         </footer>
 
@@ -183,6 +184,10 @@
     </div>
   </footer>
 
+  <script type="application/json" id="essay-colophon-data">
+  {"contributors":[{"name":"Vlad Sterngold","id":"vlad","pct":45,"role":"Danone vignette, corporate observation"},{"name":"Anders","id":"anders","pct":50,"role":"Lumière/Guy-Blaché history, cinema parallels, sources"},{"name":"Reader Panel","id":"panel","pct":5,"role":"Feedback via /reader skill"}],"process":{"versions":4,"sessions":3,"editPasses":2,"tools":["vladvoice","editor","reader"]}}
+  </script>
   <script src="../js/main.js"></script>
+  <script src="../js/colophon.js"></script>
 </body>
 </html>
