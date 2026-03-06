@@ -25,18 +25,12 @@ Essays exploring the human side of technology, identity, and work.
 - [The Hands Already Knew](https://sterngold.nl/writing/the-hands-already-knew.html) — A Georgian psychologist proved in the 1930s that perception is pre-set before the encounter happens. The same thing happens in every boardroom where someone demos an AI tool.
 - [The Discomfort Underneath 15 Years of Translating Tech](https://sterngold.nl/writing/fear-underneath.html) — Fifteen years translating tech to business. The bridge worked until AI made the translation unnecessary.
 - [I Built My Career on Being the Translator. Then I Ran Out of Languages.](https://sterngold.nl/writing/ran-out-of-languages.html) — For 15 years, my job was standing between the people who build technology and the people who pay for it. Then the gap closed.
-- [The Serve Nobody Taught Me](https://sterngold.nl/writing/the-serve-nobody-taught-me.html) — Tennis teaches you that the serve you need most is the one nobody taught you. AI forces the same kind of decision.
-- [What Tennis Taught Me About Sitting With Losing](https://sterngold.nl/writing/sitting-with-losing.html) — Down 2-5 in a set, your body wants to fix it. The real lesson is learning to stay.
 - [What's in a Name](https://sterngold.nl/writing/werkanders-name-story.html) — My father sent lectures from Sofia to two sons in different countries. The company that died so a new one could start.
 
 ### Bodies & Identity
 
 - [What Stops You From Being Strong?](https://sterngold.nl/writing/what-stops-you-from-being-strong.html) — Three bodies, three stories, one family. On muscle, aging, and the work nobody can do for you.
 - [The Dropped Vowels](https://sterngold.nl/writing/the-dropped-vowels.html) — Hebrew drops the vowels because it trusts the reader. Systems process compressed versions of you.
-
-### Building
-
-- [I Automated My Morning Context Load. Here's What I Learned.](https://sterngold.nl/writing/i-automated-my-morning-context-load.html) — Every morning session started the same way — 15 minutes of tab-switching before actual thinking. So I built a skill to handle it.
 
 ## Virtual Me (Full Bio)
 
