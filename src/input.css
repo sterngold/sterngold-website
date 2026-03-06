@@ -358,6 +358,8 @@ blockquote::before {
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .btn-primary:hover {
@@ -463,4 +465,229 @@ blockquote::before {
 
 .mobile-menu a:hover {
   color: var(--color-accent);
+}
+
+
+/* ============================================
+   Essay Pages
+   ============================================ */
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.prose {
+  max-width: 720px;
+}
+
+.essay {
+  padding: 6rem 0 2rem; /* extra top for fixed ghost-nav */
+}
+
+.essay-header {
+  margin-bottom: 2rem;
+}
+
+.essay-header h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  color: var(--color-text);
+}
+
+.essay-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+.essay-body {
+  margin-top: 2.5rem;
+}
+
+.essay-body p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.essay-body a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.essay-body a:hover {
+  opacity: 0.8;
+}
+
+.essay-body strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.essay-body em {
+  color: var(--color-accent);
+}
+
+.essay-body h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.essay-body ul, .essay-body ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.essay-body li {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text-dim);
+  margin-bottom: 0.5rem;
+}
+
+.essay-body li a {
+  color: var(--color-accent);
+}
+
+.essay-break {
+  border: none;
+  height: 1px;
+  background: var(--color-border);
+  margin: 2.5rem auto;
+  max-width: 80px;
+}
+
+.essay-pull {
+  font-size: 1.3rem !important;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  line-height: 1.5 !important;
+  color: var(--color-text) !important;
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.25rem;
+  margin: 2rem 0 !important;
+}
+
+.essay-closing {
+  font-size: 1.2rem !important;
+  font-weight: 500;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.essay-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+
+.essay-bio {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  opacity: 0.8;
+}
+
+.spectrum-line {
+  height: 2px;
+  background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #a855f7);
+  border: none;
+  border-radius: 1px;
+}
+
+/* Category tags (essay pages) */
+.category-tag {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.category-tag.machines {
+  background: var(--color-accent-surface);
+  color: var(--color-accent);
+}
+
+.category-tag.bodies {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.category-tag.building {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+
+/* Giscus comments */
+.comments-section {
+  padding: 3rem 0 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.comments-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.giscus-wrapper {
+  min-height: 260px;
+}
+
+/* Essay responsive */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+  .essay {
+    padding: 5rem 0 1.5rem;
+  }
+  .essay-header h1 {
+    font-size: 1.6rem;
+  }
+}
+
+
+/* ============================================
+   Cooking Photos (playground.html) — Mobile Fix
+   ============================================ */
+
+@media (max-width: 640px) {
+  .cooking-photo {
+    width: 64px !important;
+    height: 64px !important;
+  }
+  .cooking-photo:nth-child(4),
+  .cooking-photo:nth-child(5) {
+    display: none;
+  }
 }

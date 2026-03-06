@@ -20,8 +20,8 @@
   <meta name="twitter:image" content="https://sterngold.nl/img/social-card-article.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="../dist/output.css?v=4" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,21 +44,41 @@
   </script>
 </head>
 <body>
-<a class="sr-only" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- ===== NAV ===== -->
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="container nav-inner">
-      <a href="../index.html" class="nav-name">Vlad Sterngold</a>
-      <div class="nav-links">
-        <a href="../index.html">Home</a>
-        <a href="../about.html">Virtual Me</a>
-        <a href="../research.html">Research</a>
-        <a href="../writing.html" class="active">Writing</a>
-        <a href="../cooking.html">Cooking</a>
+  <!-- Ghost Nav -->
+  <nav class="ghost-nav" id="ghostNav" aria-label="Main navigation">
+    <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="../index.html" class="text-sm font-bold tracking-tight" style="color: var(--color-text);">Vlad Sterngold</a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="../index.html" class="text-xs uppercase tracking-[0.15em]">Home</a>
+        <a href="../about.html" class="text-xs uppercase tracking-[0.15em]">About</a>
+        <a href="../coaching.html" class="text-xs uppercase tracking-[0.15em]">WerkAnders</a>
+        <a href="../writing.html" aria-current="page" class="text-xs uppercase tracking-[0.15em]">Writing</a>
+        <a href="../playground.html" class="text-xs uppercase tracking-[0.15em]">Reality</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+          <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
       </div>
+      <button class="md:hidden theme-toggle" id="menuToggle" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button id="menuClose" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--color-text);font-size:2rem;cursor:pointer;">&times;</button>
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../coaching.html">WerkAnders</a>
+    <a href="../writing.html">Writing</a>
+    <a href="../playground.html">Reality</a>
+    <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle dark/light mode" style="margin-top:1rem;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+  </div>
 
   <!-- ===== ESSAY ===== -->
   <article class="essay" id="main-content">
@@ -73,7 +93,7 @@
 
         <hr class="spectrum-line">
 
-        <div class="essay-body reveal">
+        <div class="essay-body">
 
           <p>I completely broke down at the end of 2024. I was training, losing weight, looking good — but mentally I was fried. So I broke. And then physically, for a few months, I lost everything. Down to 75 kg. Muscle mass gone. I felt it.</p>
 
@@ -148,7 +168,7 @@
 
         <hr class="spectrum-line">
 
-        <footer class="essay-footer reveal">
+        <footer class="essay-footer">
           <p class="essay-bio"><em>Vlad Sterngold is a digital transformation executive with six careers behind him &mdash; from professional kitchens and military service to building data and AI teams at Booking.com and Danone. He writes about what happens to people when machines get better than them.</em></p>
           <a href="../writing.html" class="back-link">&larr; All writing</a>
         </footer>
@@ -184,9 +204,20 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer aria-label="Site footer">
-    <p>&copy; 2026 Vlad Sterngold</p>
+  <!-- Footer -->
+  <footer aria-label="Site footer" class="py-20 px-6" style="border-top: 1px solid var(--color-border);">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.15em] gap-4" style="color: var(--color-text-muted);">
+        <div>&copy; 2026 Vlad Sterngold</div>
+        <nav class="flex gap-6">
+          <a class="footer-link" href="../index.html">Home</a>
+          <a class="footer-link" href="../about.html">About</a>
+          <a class="footer-link" href="../coaching.html">WerkAnders</a>
+          <a class="footer-link" href="../writing.html">Writing</a>
+          <a class="footer-link" href="../playground.html">Reality</a>
+        </nav>
+      </div>
+    </div>
   </footer>
 
   <script src="../js/main.js"></script>
